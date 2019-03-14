@@ -1,4 +1,4 @@
-package stanislav.danylenko.coursepet;
+package stanislav.danylenko.coursepet.config.init;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

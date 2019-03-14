@@ -1,4 +1,4 @@
-package stanislav.danylenko.coursepet.web.model;
+package stanislav.danylenko.coursepet.web.model.auth;
 
 import lombok.*;
 

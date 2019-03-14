@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 import stanislav.danylenko.coursepet.config.security.jwt.JwtTokenProvider;
 import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.db.repository.UserRepository;
-import stanislav.danylenko.coursepet.web.model.AuthenticationRequestModel;
-import stanislav.danylenko.coursepet.web.model.AuthenticationRersponseModel;
-
-import java.util.HashMap;
-import java.util.Map;
+import stanislav.danylenko.coursepet.web.model.auth.AuthenticationRequestModel;
+import stanislav.danylenko.coursepet.web.model.auth.AuthenticationRersponseModel;
 
 import static org.springframework.http.ResponseEntity.ok;
 
