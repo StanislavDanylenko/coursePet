@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // TODO: 28.03.2019 ALL AUTHORITIES SET HERE 
         //@formatter:off
         http
             .httpBasic().disable()
@@ -39,9 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .and()
                 .authorizeRequests()
                 .antMatchers("/auth/signin").permitAll()
-                .antMatchers(HttpMethod.GET, "/vehicles/**").permitAll()
-                .antMatchers(HttpMethod.DELETE, "/vehicles/**").hasAuthority("ADMIN")
-                .antMatchers(HttpMethod.GET, "/v1/vehicles/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/animalClass/**").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
             .and()
             .apply(new JwtConfigurer(jwtTokenProvider));
