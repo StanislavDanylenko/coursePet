@@ -15,7 +15,7 @@ import stanislav.danylenko.coursepet.config.security.jwt.JwtTokenProvider;
 import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.db.repository.UserRepository;
 import stanislav.danylenko.coursepet.web.model.auth.AuthenticationRequestModel;
-import stanislav.danylenko.coursepet.web.model.auth.AuthenticationRersponseModel;
+import stanislav.danylenko.coursepet.web.model.auth.AuthenticationResponseModel;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -47,7 +47,7 @@ public class AuthController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
             String token = jwtTokenProvider.createToken(username, user.getRoles());
 
-            AuthenticationRersponseModel rersponseModel = new AuthenticationRersponseModel(id, token);
+            AuthenticationResponseModel rersponseModel = new AuthenticationResponseModel(id, token);
 
             return ok(rersponseModel);
         } catch (AuthenticationException e) {

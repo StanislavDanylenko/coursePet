@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.enumeration.Role;
 import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.service.impl.UserService;

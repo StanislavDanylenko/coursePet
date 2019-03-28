@@ -8,7 +8,7 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AuthenticationRersponseModel implements Serializable {
+public class AuthenticationResponseModel implements Serializable {
 
     @NonNull
     private Long id;

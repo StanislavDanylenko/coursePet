@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
+import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -25,8 +27,8 @@ public class Graft implements Serializable {
     @OneToMany(mappedBy = "graft", cascade = CascadeType.ALL)
     private List<AnimalGraft> animalGrafts;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "country_id")
-    private Country country;
+    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    private List<CountryGraft> countryGrafts;
+
 
 }

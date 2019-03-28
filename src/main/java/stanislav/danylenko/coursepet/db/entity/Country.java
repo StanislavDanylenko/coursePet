@@ -3,11 +3,13 @@ package stanislav.danylenko.coursepet.db.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -25,6 +27,6 @@ public class Country implements Serializable {
     private List<User> users = new ArrayList<>();
 
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
-    private List<Graft> grafts;
+    private List<CountryGraft> countryGrafts;
     
 }
