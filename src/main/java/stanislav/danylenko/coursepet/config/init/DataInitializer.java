@@ -9,7 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import stanislav.danylenko.coursepet.db.enumeration.Role;
 import stanislav.danylenko.coursepet.db.entity.User;
-import stanislav.danylenko.coursepet.service.UserService;
+import stanislav.danylenko.coursepet.service.impl.UserService;
 
 import java.util.Arrays;
 import java.util.HashSet;

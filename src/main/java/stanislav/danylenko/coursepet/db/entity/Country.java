@@ -22,7 +22,7 @@ public class Country implements Serializable {
     private String name;
 
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
-    private List<Animal> animals = new ArrayList<>();
+    private List<User> users = new ArrayList<>();
 
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private List<Graft> grafts;

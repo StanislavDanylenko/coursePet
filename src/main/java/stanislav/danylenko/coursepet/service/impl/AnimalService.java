@@ -1,12 +1,13 @@
-package stanislav.danylenko.coursepet.service;
+package stanislav.danylenko.coursepet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.repository.AnimalRepository;
+import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
-public class AnimalService implements GenericService<Animal> {
+public class AnimalService implements SimpleIdService<Animal> {
     
     @Autowired
     private AnimalRepository animalRepository;

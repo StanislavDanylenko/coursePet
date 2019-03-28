@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnimalClass implements Serializable {
+public class AnimalsClass implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,7 +21,7 @@ public class AnimalClass implements Serializable {
 
     private String name;
 
-    @OneToMany(mappedBy = "animalClass", cascade = CascadeType.ALL)
-    private List<AnimalBreed> animalBreeds = new ArrayList<>();
+    @OneToMany(mappedBy = "animalsClass", cascade = CascadeType.ALL)
+    private List<AnimalsBreed> animalsBreeds = new ArrayList<>();
 
 }

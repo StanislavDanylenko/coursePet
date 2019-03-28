@@ -1,12 +1,14 @@
-package stanislav.danylenko.coursepet.service;
+package stanislav.danylenko.coursepet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.db.repository.CountryRepository;
+import stanislav.danylenko.coursepet.service.GenericService;
+import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
-public class CountryService implements GenericService<Country> {
+public class CountryService implements SimpleIdService<Country> {
     
     @Autowired
     private CountryRepository countryRepository;

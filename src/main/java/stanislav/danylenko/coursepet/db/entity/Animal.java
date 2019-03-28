@@ -33,17 +33,11 @@ public class Animal implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animalBreed_id")
-    private AnimalBreed animalBreed;
+    private AnimalsBreed animalsBreed;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "country_id")
-    private Country country;
-
-
 
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
     private List<SmartDevice> smartDevices = new ArrayList<>();

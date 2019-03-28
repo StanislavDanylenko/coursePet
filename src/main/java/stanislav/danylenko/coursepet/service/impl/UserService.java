@@ -1,4 +1,4 @@
-package stanislav.danylenko.coursepet.service;
+package stanislav.danylenko.coursepet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
@@ -8,10 +8,12 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.db.repository.UserRepository;
+import stanislav.danylenko.coursepet.service.GenericService;
+import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
 @Primary
-public class UserService implements GenericService<User>, UserDetailsService {
+public class UserService implements SimpleIdService<User>, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;

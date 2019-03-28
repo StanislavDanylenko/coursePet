@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnimalBreed implements Serializable {
+public class AnimalsBreed implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,9 +23,9 @@ public class AnimalBreed implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animalClass_id")
-    private AnimalClass animalClass;
+    private AnimalsClass animalsClass;
 
-    @OneToMany(mappedBy = "animalBreed", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "animalsBreed", cascade = CascadeType.ALL)
     private List<Animal> animals = new ArrayList<>();
 
 }
