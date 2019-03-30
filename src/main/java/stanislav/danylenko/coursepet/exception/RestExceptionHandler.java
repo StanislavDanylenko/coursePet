@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 
+import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
-import static org.springframework.http.ResponseEntity.notFound;
 import static org.springframework.http.ResponseEntity.status;
 
 @RestControllerAdvice
@@ -19,5 +19,11 @@ public class RestExceptionHandler {
     public ResponseEntity invalidJwtAuthentication(BadCredentialsException ex, WebRequest request) {
         log.debug("handling InvalidJwtAuthenticationException...");
         return status(UNAUTHORIZED).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(UserRegistrationException.class)
+    public ResponseEntity userExists(UserRegistrationException ex, WebRequest request) {
+        log.debug("handling UserRegistrationException...");
+        return status(CONFLICT).body(ex.getMessage());
     }
 }
