@@ -19,6 +19,7 @@ public class Disease implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "disease", cascade = CascadeType.ALL)

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,10 +22,14 @@ public class SmartDevice implements Serializable {
     @Column(nullable = false, unique = true)
     private String mac;
 
+    @Column(nullable = false)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animal_id")
     private Animal animal;
+
+    @OneToMany(mappedBy = "smartDevice", cascade = CascadeType.ALL)
+    private List<Record> records = new ArrayList<>();
 
 }

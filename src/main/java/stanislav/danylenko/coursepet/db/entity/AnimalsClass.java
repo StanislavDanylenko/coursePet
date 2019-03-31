@@ -19,6 +19,7 @@ public class AnimalsClass implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "animalsClass", cascade = CascadeType.ALL)

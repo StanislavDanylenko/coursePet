@@ -22,9 +22,13 @@ public class Animal implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+    private String photoURL;
 
+    @Column(nullable = false)
     private String gender;
+    @Column(nullable = false)
     private LocalDateTime birthDate;
 
     private Double weight;

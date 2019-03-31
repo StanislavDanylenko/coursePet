@@ -21,7 +21,9 @@ public class Graft implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(nullable = false)
     private String name;
+    @Column(nullable = false)
     private Double frequency;
 
     @OneToMany(mappedBy = "graft", cascade = CascadeType.ALL)
