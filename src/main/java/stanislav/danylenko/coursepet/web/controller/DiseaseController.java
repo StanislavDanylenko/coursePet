@@ -37,9 +37,10 @@ public class DiseaseController {
 
     @PutMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<Disease> updateDisease(@RequestBody Disease newAnimal, @PathVariable Long id) {
+    ResponseEntity<Disease> updateDisease(@RequestBody Disease dto, @PathVariable Long id) {
         Disease disease = service.find(id);
-        service.update(newAnimal);
+        disease.setName(dto.getName());
+        service.update(disease);
         return ResponseEntity.ok(disease);
     }
 
