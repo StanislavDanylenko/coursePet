@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Record;
 import stanislav.danylenko.coursepet.service.impl.RecordService;
+import stanislav.danylenko.coursepet.web.model.RecordDto;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,19 +29,24 @@ public class RecordController {
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
-    @PostMapping
+    @GetMapping("/device/{id}")
     public @ResponseBody
-    ResponseEntity<Record> createRecord(@RequestBody Record record) {
-        service.save(record);
-        return new ResponseEntity<>(record, HttpStatus.CREATED);
+    ResponseEntity<Iterable<Record>> getRecordsByDeviceId(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getRecordsBySmartDeviceId(id));
     }
 
-    @PutMapping("/{id}")
+    @GetMapping("/device/last/{id}")
     public @ResponseBody
-    ResponseEntity<Record> updateRecord(@RequestBody Record newAnimal, @PathVariable Long id) {
-        Record record = service.find(id);
-        service.update(newAnimal);
-        return ResponseEntity.ok(record);
+    ResponseEntity<Record> getLastRecordByDeviceId(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getLastRecordByDeviceId(id));
+    }
+
+    @PostMapping
+    public @ResponseBody
+    ResponseEntity<Record> createRecord(@RequestBody RecordDto dto) {
+        Record record = service.prepareForSaving(dto);
+        service.save(record);
+        return new ResponseEntity<>(record, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{id}")

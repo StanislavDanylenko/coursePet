@@ -3,14 +3,19 @@ package stanislav.danylenko.coursepet.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Record;
+import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 import stanislav.danylenko.coursepet.db.repository.RecordRepository;
 import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.web.model.RecordDto;
 
 @Service
 public class RecordService implements SimpleIdService<Record> {
     
     @Autowired
     private RecordRepository recordRepository;
+
+    @Autowired
+    private SmartDeviceService smartDeviceService;
     
     @Override
     public Record save(Record entity) {
@@ -40,5 +45,45 @@ public class RecordService implements SimpleIdService<Record> {
     @Override
     public void delete(Long id) {
         recordRepository.deleteById(id);
+    }
+
+    public Record prepareForSaving(RecordDto dto) {
+
+        Record record = new Record();
+
+        if(dto.getSmartDeviceId() != null) {
+            SmartDevice smartDevice = smartDeviceService.find(dto.getSmartDeviceId());
+            record.setSmartDevice(smartDevice);
+        }
+
+        if(dto.getAnimalState() != null) {
+            record.setAnimalState(dto.getAnimalState());
+        }
+
+        if(dto.getLatitude() != null) {
+            record.setLatitude(dto.getLatitude());
+        }
+
+        if(dto.getLongitude() != null) {
+            record.setLongitude(dto.getLongitude());
+        }
+
+        if(dto.getPulse() != null) {
+            record.setPulse(dto.getPulse());
+        }
+
+        if(dto.getTemperature() != null) {
+            record.setTemperature(dto.getTemperature());
+        }
+
+        return record;
+    }
+
+    public Iterable<Record> getRecordsBySmartDeviceId(Long id) {
+        return recordRepository.findBySmartDeviceId(id);
+    }
+
+    public Record getLastRecordByDeviceId(Long id) {
+        return recordRepository.findBySmartDeviceIdOrderByCreationDateDesc(id);
     }
 }

@@ -1,5 +1,6 @@
 package stanislav.danylenko.coursepet.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,6 +8,7 @@ import stanislav.danylenko.coursepet.db.enumeration.AnimalState;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -25,6 +27,9 @@ public class Record implements Serializable {
 
     private AnimalState animalState;
 
+    private LocalDateTime creationDate;
+
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "smart_device_id")
     private SmartDevice smartDevice;
