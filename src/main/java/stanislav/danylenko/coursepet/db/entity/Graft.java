@@ -21,7 +21,7 @@ public class Graft implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(value = JsonRules.AnimalGraft.class)
+    @JsonView(value = {JsonRules.AnimalGraft.class, JsonRules.CountryGraft.class})
     private Long id;
 
     @Column(nullable = false)

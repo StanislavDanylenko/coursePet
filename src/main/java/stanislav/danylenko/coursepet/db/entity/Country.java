@@ -1,10 +1,12 @@
 package stanislav.danylenko.coursepet.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
+import stanislav.danylenko.coursepet.web.JsonRules;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,6 +21,7 @@ public class Country implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(value = JsonRules.CountryGraft.class)
     private Long id;
 
     @Column(nullable = false)

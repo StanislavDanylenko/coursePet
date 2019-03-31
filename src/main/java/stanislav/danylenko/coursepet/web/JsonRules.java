@@ -10,4 +10,7 @@ public final class JsonRules {
 
     public interface AnimalGraft extends Id {
     }
+
+    public interface CountryGraft extends Id {
+    }
 }
