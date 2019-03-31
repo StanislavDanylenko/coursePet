@@ -41,4 +41,14 @@ public class GraftService implements SimpleIdService<Graft> {
     public void delete(Long id) {
         graftRepository.deleteById(id);
     }
+
+    public Graft prepareForUpdating(Graft graft, Graft dto) {
+        if(dto.getName() != null) {
+            graft.setName(dto.getName());
+        }
+        if(dto.getFrequency() != null) {
+            graft.setFrequency(dto.getFrequency());
+        }
+        return graft;
+    }
 }

@@ -37,9 +37,10 @@ public class GraftController {
 
     @PutMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<Graft> updateGraft(@RequestBody Graft newAnimal, @PathVariable Long id) {
+    ResponseEntity<Graft> updateGraft(@RequestBody Graft dto, @PathVariable Long id) {
         Graft graft = service.find(id);
-        service.update(newAnimal);
+        service.prepareForUpdating(graft, dto);
+        service.update(graft);
         return ResponseEntity.ok(graft);
     }
 
