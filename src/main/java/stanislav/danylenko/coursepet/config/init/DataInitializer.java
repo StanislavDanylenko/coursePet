@@ -1,6 +1,5 @@
 package stanislav.danylenko.coursepet.config.init;
 
-import javassist.NotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,7 +13,6 @@ import stanislav.danylenko.coursepet.db.enumeration.Role;
 import stanislav.danylenko.coursepet.service.impl.CountryService;
 import stanislav.danylenko.coursepet.service.impl.UserService;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Arrays;
 import java.util.HashSet;
 

@@ -37,9 +37,10 @@ public class CountryController {
 
     @PutMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<Country> updateCountry(@RequestBody Country newAnimal, @PathVariable Long id) {
+    ResponseEntity<Country> updateCountry(@RequestBody Country newCountry, @PathVariable Long id) {
         Country country = service.find(id);
-        service.update(newAnimal);
+        country.setName(newCountry.getName());
+        service.update(country);
         return ResponseEntity.ok(country);
     }
 
