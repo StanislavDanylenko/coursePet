@@ -1,5 +1,6 @@
 package stanislav.danylenko.coursepet.web.controller.associative;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.pk.AnimalDiseasePK;
 import stanislav.danylenko.coursepet.service.impl.associative.AnimalDiseaseService;
+import stanislav.danylenko.coursepet.web.JsonRules;
 import stanislav.danylenko.coursepet.web.model.associative.AnimalDiseaseDto;
 
 import javax.servlet.http.HttpServletResponse;
@@ -18,12 +20,14 @@ public class AnimalDiseaseController {
     @Autowired
     private AnimalDiseaseService service;
 
+    @JsonView(value = JsonRules.AnimalDisease.class)
     @GetMapping
     public @ResponseBody
     ResponseEntity<Iterable<AnimalDisease>> getAnimalDiseases() {
         return ResponseEntity.ok(service.findAll());
     }
 
+    @JsonView(value = JsonRules.AnimalDisease.class)
     @GetMapping("/animal/{animalId}/disease/{diseaseId}")
     public @ResponseBody
     ResponseEntity<AnimalDisease> getAnimalDisease(@PathVariable Long animalId, @PathVariable Long diseaseId) {
@@ -31,6 +35,7 @@ public class AnimalDiseaseController {
         return new ResponseEntity<>(service.find(pk), HttpStatus.OK);
     }
 
+    @JsonView(value = JsonRules.AnimalDisease.class)
     @PostMapping
     public @ResponseBody
     ResponseEntity<AnimalDisease> createAnimalDisease(@RequestBody AnimalDiseaseDto dto) {
@@ -39,6 +44,7 @@ public class AnimalDiseaseController {
         return new ResponseEntity<>(animalDisease, HttpStatus.CREATED);
     }
 
+    @JsonView(value = JsonRules.AnimalDisease.class)
     @PutMapping("/animal/{animalId}/disease/{diseaseId}")
     public @ResponseBody
     ResponseEntity<AnimalDisease> updateAnimalDisease(@RequestBody AnimalDiseaseDto dto,
