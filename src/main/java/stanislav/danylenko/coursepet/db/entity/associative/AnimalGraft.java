@@ -1,11 +1,13 @@
 package stanislav.danylenko.coursepet.db.entity.associative;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.entity.pk.AnimalGraftPK;
+import stanislav.danylenko.coursepet.web.JsonRules;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +18,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonView(value = JsonRules.AnimalGraft.class)
 public class AnimalGraft implements Serializable {
 
     @Id

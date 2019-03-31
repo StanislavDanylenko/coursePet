@@ -8,6 +8,9 @@ import stanislav.danylenko.coursepet.db.repository.associative.AnimalGraftReposi
 import stanislav.danylenko.coursepet.service.ComplexIdService;
 import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.service.impl.AnimalService;
+import stanislav.danylenko.coursepet.service.impl.GraftService;
+import stanislav.danylenko.coursepet.web.model.associative.AnimalGraftDto;
 
 @Service
 public class AnimalGraftService implements ComplexIdService<AnimalGraft, AnimalGraftPK> {
@@ -15,6 +18,11 @@ public class AnimalGraftService implements ComplexIdService<AnimalGraft, AnimalG
     @Autowired
     private AnimalGraftRepository animalDiseaseRepository;
 
+    @Autowired
+    private AnimalService animalService;
+
+    @Autowired
+    GraftService graftService;
 
     @Override
     public AnimalGraft save(AnimalGraft entity) {
@@ -43,5 +51,21 @@ public class AnimalGraftService implements ComplexIdService<AnimalGraft, AnimalG
     @Override
     public void delete(AnimalGraftPK id) {
        animalDiseaseRepository.deleteById(id);
+    }
+
+    public AnimalGraft prepareForSaving(AnimalGraftDto dto) {
+
+        AnimalGraft animalGraft = new AnimalGraft();
+
+        if(dto.getAnimalId() != null) {
+            animalGraft.setAnimal(animalService.find(dto.getAnimalId()));
+        }
+        if(dto.getGraftId() != null) {
+           animalGraft.setGraft(graftService.find(dto.getGraftId()));
+        }
+        if(dto.getLocalDateTime() != null) {
+            animalGraft.setDate(dto.getLocalDateTime());
+        }
+        return animalGraft;
     }
 }

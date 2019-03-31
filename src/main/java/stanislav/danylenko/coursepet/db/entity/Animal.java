@@ -25,7 +25,7 @@ public class Animal implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(value = JsonRules.AnimalDisease.class)
+    @JsonView(value = {JsonRules.AnimalDisease.class, JsonRules.AnimalGraft.class})
     private Long id;
 
     @Column(nullable = false)
