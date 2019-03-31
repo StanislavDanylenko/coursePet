@@ -8,8 +8,6 @@ import stanislav.danylenko.coursepet.service.SimpleIdService;
 import stanislav.danylenko.coursepet.web.model.AnimalCreateDto;
 import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
 
-import java.time.LocalDateTime;
-
 @Service
 public class AnimalService implements SimpleIdService<Animal> {
     

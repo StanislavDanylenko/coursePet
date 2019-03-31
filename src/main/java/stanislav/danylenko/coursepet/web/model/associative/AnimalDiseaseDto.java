@@ -1,4 +1,4 @@
-package stanislav.danylenko.coursepet.web.model;
+package stanislav.danylenko.coursepet.web.model.associative;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnimalDesiaseDto implements Serializable {
+public class AnimalDiseaseDto implements Serializable {
 
     private Long animalId;
     private Long diseaseId;

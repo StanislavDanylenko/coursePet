@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.pk.AnimalDiseasePK;
 import stanislav.danylenko.coursepet.service.impl.associative.AnimalDiseaseService;
+import stanislav.danylenko.coursepet.web.model.associative.AnimalDiseaseDto;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -23,30 +24,42 @@ public class AnimalDiseaseController {
         return ResponseEntity.ok(service.findAll());
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/animal/{animalId}/disease/{diseaseId}")
     public @ResponseBody
-    ResponseEntity<AnimalDisease> getAnimalDisease(@PathVariable AnimalDiseasePK id) {
-        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
+    ResponseEntity<AnimalDisease> getAnimalDisease(@PathVariable Long animalId, @PathVariable Long diseaseId) {
+        AnimalDiseasePK pk = new AnimalDiseasePK(animalId, diseaseId);
+        return new ResponseEntity<>(service.find(pk), HttpStatus.OK);
     }
 
     @PostMapping
     public @ResponseBody
-    ResponseEntity<AnimalDisease> createAnimalDisease(@RequestBody AnimalDisease animalDisease) {
+    ResponseEntity<AnimalDisease> createAnimalDisease(@RequestBody AnimalDiseaseDto dto) {
+        AnimalDisease animalDisease = service.prepareForSaving(dto);
         service.save(animalDisease);
         return new ResponseEntity<>(animalDisease, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/animal/{animalId}/disease/{diseaseId}")
     public @ResponseBody
-    ResponseEntity<AnimalDisease> updateAnimalDisease(@RequestBody AnimalDisease newAnimal, @PathVariable AnimalDiseasePK id) {
-        AnimalDisease animalDisease = service.find(id);
-        service.update(newAnimal);
+    ResponseEntity<AnimalDisease> updateAnimalDisease(@RequestBody AnimalDiseaseDto dto,
+                                                      @PathVariable Long animalId,
+                                                      @PathVariable Long diseaseId) {
+
+        AnimalDiseasePK pk = new AnimalDiseasePK(animalId, diseaseId);
+        AnimalDisease animalDisease = service.find(pk);
+
+        service.prepareForUpdating(animalDisease, dto);
+        service.update(animalDisease);
+
         return ResponseEntity.ok(animalDisease);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteAnimalDisease(@PathVariable AnimalDiseasePK id, HttpServletResponse response)  {
-        service.delete(id);
+    @DeleteMapping("/animal/{animalId}/disease/{diseaseId}")
+    public void deleteAnimalDisease(@PathVariable Long animalId,
+                                    @PathVariable Long diseaseId, HttpServletResponse response)  {
+
+        AnimalDiseasePK pk = new AnimalDiseasePK(animalId, diseaseId);
+        service.delete(pk);
         response.setStatus(HttpServletResponse.SC_OK);
     }
     
