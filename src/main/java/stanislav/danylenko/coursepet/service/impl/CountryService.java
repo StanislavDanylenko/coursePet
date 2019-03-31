@@ -9,6 +9,8 @@ import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
 public class CountryService implements SimpleIdService<Country> {
+
+    public static final String DEFAULT_COUNTRY = "Ukraine";
     
     @Autowired
     private CountryRepository countryRepository;
@@ -41,5 +43,9 @@ public class CountryService implements SimpleIdService<Country> {
     @Override
     public void delete(Long id) {
         countryRepository.deleteById(id);
+    }
+
+    public Country getDefaultCountry() {
+        return countryRepository.findByName(DEFAULT_COUNTRY);
     }
 }

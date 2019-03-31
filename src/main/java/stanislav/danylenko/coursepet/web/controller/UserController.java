@@ -9,9 +9,12 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.service.impl.UserService;
+import stanislav.danylenko.coursepet.web.model.UserDto;
+import stanislav.danylenko.coursepet.web.model.auth.UserDetailsDto;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.util.stream.Collectors.toList;
@@ -36,18 +39,19 @@ public class UserController {
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
-    @PostMapping
+    /*@PostMapping
     public @ResponseBody
     ResponseEntity<User> createUser(@RequestBody User user) {
         service.save(user);
         return new ResponseEntity<>(user, HttpStatus.CREATED);
-    }
+    }*/
 
     @PutMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<User> updateUser(@RequestBody User newAnimal, @PathVariable Long id) {
+    ResponseEntity<User> updateUser(@RequestBody UserDto newUser, @PathVariable Long id) {
         User user = service.find(id);
-        service.update(newAnimal);
+        service.prepareUserForUpdate(user, newUser);
+        service.update(user);
         return ResponseEntity.ok(user);
     }
 
@@ -63,14 +67,15 @@ public class UserController {
 
     @GetMapping("/me")
     public ResponseEntity currentUser(@AuthenticationPrincipal UserDetails userDetails) {
-        Map<Object, Object> model = new HashMap<>();
-        model.put("username", userDetails.getUsername());
-        model.put("roles", userDetails.getAuthorities()
-                .stream()
-                .map(a -> ((GrantedAuthority) a).getAuthority())
-                .collect(toList())
-        );
-        return ok(model);
+        UserDetailsDto dto = new UserDetailsDto();
+
+        dto.setUsername(userDetails.getUsername());
+        List<String> roles =  userDetails.getAuthorities()
+                                     .stream()
+                                     .map(a -> a.getAuthority())
+                                     .collect(toList());
+        dto.setRoles(roles);
+        return ok(dto);
     }
     
 }

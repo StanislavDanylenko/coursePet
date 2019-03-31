@@ -1,4 +1,4 @@
-package stanislav.danylenko.coursepet.exception;
+package stanislav.danylenko.coursepet.exception.handler;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -6,6 +6,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
+import stanislav.danylenko.coursepet.exception.UserRegistrationException;
 
 import static org.springframework.http.HttpStatus.CONFLICT;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;

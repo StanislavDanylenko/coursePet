@@ -2,6 +2,7 @@ package stanislav.danylenko.coursepet.config.security.jwt;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.GenericFilterBean;
 import stanislav.danylenko.coursepet.exception.InvalidJwtAuthenticationException;
@@ -39,6 +40,11 @@ public class JwtTokenFilter extends GenericFilterBean {
         } catch (InvalidJwtAuthenticationException ex) {
             HttpServletResponse resp = (HttpServletResponse) res;
             resp.getWriter().append(ex.getMessage());
+            resp.setStatus(401);
+            return;
+        } catch (UsernameNotFoundException ex) {
+            HttpServletResponse resp = (HttpServletResponse) res;
+            resp.getWriter().append("Expired or invalid JWT token");
             resp.setStatus(401);
             return;
         }

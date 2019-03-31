@@ -16,14 +16,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import stanislav.danylenko.coursepet.config.security.jwt.JwtTokenProvider;
 import stanislav.danylenko.coursepet.db.entity.User;
+import stanislav.danylenko.coursepet.db.enumeration.Localization;
 import stanislav.danylenko.coursepet.db.enumeration.Role;
 import stanislav.danylenko.coursepet.db.repository.UserRepository;
 import stanislav.danylenko.coursepet.exception.UserRegistrationException;
+import stanislav.danylenko.coursepet.service.impl.CountryService;
 import stanislav.danylenko.coursepet.service.impl.UserService;
 import stanislav.danylenko.coursepet.web.model.auth.AuthenticationRequestModel;
 import stanislav.danylenko.coursepet.web.model.auth.AuthenticationResponseModel;
 import stanislav.danylenko.coursepet.web.model.auth.RegistrationRequestModel;
 
+import javax.persistence.Column;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -44,6 +47,9 @@ public class AuthController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private CountryService countryService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -80,8 +86,12 @@ public class AuthController {
             }
 
             User user = new User();
+
             user.setUsername(data.getUsername());
             user.setPassword(passwordEncoder.encode(data.getPassword()));
+            user.setCountry(countryService.getDefaultCountry());
+            user.setLocalization(Localization.ENGLISH);
+
             Set<Role> roles = new HashSet<>();
             roles.add(Role.USER);
             user.setRoles(roles);

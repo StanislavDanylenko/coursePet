@@ -1,10 +1,13 @@
 package stanislav.danylenko.coursepet.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
+import stanislav.danylenko.coursepet.db.enumeration.Gender;
+import stanislav.danylenko.coursepet.service.GenericService;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,7 +30,7 @@ public class Animal implements Serializable {
     private String photoURL;
 
     @Column(nullable = false)
-    private String gender;
+    private Gender gender;
     @Column(nullable = false)
     private LocalDateTime birthDate;
 
@@ -39,6 +42,7 @@ public class Animal implements Serializable {
     @JoinColumn(name = "animalBreed_id")
     private AnimalsBreed animalsBreed;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;

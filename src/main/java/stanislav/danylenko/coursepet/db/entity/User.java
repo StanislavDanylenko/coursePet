@@ -1,6 +1,7 @@
 package stanislav.danylenko.coursepet.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,7 +51,7 @@ public class User implements UserDetails {
     private LocalDateTime updateDateTime;
 
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Animal> animals = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)

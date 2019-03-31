@@ -1,5 +1,6 @@
 package stanislav.danylenko.coursepet.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,9 +24,11 @@ public class Country implements Serializable {
     @Column(nullable = false)
     private String name;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private List<User> users = new ArrayList<>();
 
+    @JsonIgnore
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private List<CountryGraft> countryGrafts;
     

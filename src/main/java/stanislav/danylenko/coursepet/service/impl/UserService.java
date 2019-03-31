@@ -6,10 +6,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.db.entity.User;
+import stanislav.danylenko.coursepet.db.enumeration.Localization;
 import stanislav.danylenko.coursepet.db.repository.UserRepository;
 import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.web.model.UserDto;
 
 @Service
 @Primary
@@ -17,6 +20,9 @@ public class UserService implements SimpleIdService<User>, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private CountryService countryService;
 
     @Override
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
@@ -52,5 +58,19 @@ public class UserService implements SimpleIdService<User>, UserDetailsService {
     @Override
     public void delete(Long id) {
         userRepository.deleteById(id);
+    }
+
+    public User prepareUserForUpdate(User user, UserDto newUser) {
+        Localization localization = newUser.getLocalization();
+        Long countryId = newUser.getCountryId();
+
+        if(localization != null) {
+            user.setLocalization(localization);
+        }
+        if(countryId != null) {
+            Country country = countryService.find(countryId);
+            user.setCountry(country);
+        }
+        return user;
     }
 }
