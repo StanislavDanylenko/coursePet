@@ -37,9 +37,10 @@ public class AnimalsClassController {
 
     @PutMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<AnimalsClass> updateAnimalClass(@RequestBody AnimalsClass newAnimal, @PathVariable Long id) {
+    ResponseEntity<AnimalsClass> updateAnimalClass(@RequestBody AnimalsClass dto, @PathVariable Long id) {
         AnimalsClass animalsClass = service.find(id);
-        service.update(newAnimal);
+        animalsClass.setName(dto.getName());
+        service.update(animalsClass);
         return ResponseEntity.ok(animalsClass);
     }
 

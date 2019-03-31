@@ -38,6 +38,7 @@ public class Animal implements Serializable {
     private Double height;
     private Double length;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animalBreed_id")
     private AnimalsBreed animalsBreed;

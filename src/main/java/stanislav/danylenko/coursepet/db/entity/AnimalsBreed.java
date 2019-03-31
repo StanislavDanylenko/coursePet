@@ -1,8 +1,10 @@
 package stanislav.danylenko.coursepet.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnJava;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,6 +24,7 @@ public class AnimalsBreed implements Serializable {
     @Column(nullable = false)
     private String name;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animalClass_id")
     private AnimalsClass animalsClass;
