@@ -6,4 +6,7 @@ import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 
 @Repository
 public interface SmartDeviceRepository extends JpaRepository<SmartDevice, Long> {
+
+    Iterable<SmartDevice> findByAnimalId(Long animalId);
+
 }

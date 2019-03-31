@@ -12,6 +12,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 public class SmartDeviceDto implements Serializable {
 
+    private String mac;
+    private String name;
     private Long animalId;
+    private Double batteryLevel;
 
 }

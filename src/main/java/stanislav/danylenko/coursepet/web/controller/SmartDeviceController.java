@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 import stanislav.danylenko.coursepet.service.impl.SmartDeviceService;
+import stanislav.danylenko.coursepet.web.model.SmartDeviceDto;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -28,18 +29,26 @@ public class SmartDeviceController {
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
+    @GetMapping("/animal/{id}")
+    public @ResponseBody
+    ResponseEntity<Iterable<SmartDevice>> getSmartDevices(@PathVariable Long id) {
+        return ResponseEntity.ok(service.getSmartDevicesByAnimalId(id));
+    }
+
     @PostMapping
     public @ResponseBody
-    ResponseEntity<SmartDevice> createSmartDevice(@RequestBody SmartDevice smartDevice) {
+    ResponseEntity<SmartDevice> createSmartDevice(@RequestBody SmartDeviceDto dto) {
+        SmartDevice smartDevice = service.prepareForSaving(dto);
         service.save(smartDevice);
         return new ResponseEntity<>(smartDevice, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<SmartDevice> updateSmartDevice(@RequestBody SmartDevice newAnimal, @PathVariable Long id) {
+    ResponseEntity<SmartDevice> updateSmartDevice(@RequestBody SmartDeviceDto dto, @PathVariable Long id) {
         SmartDevice smartDevice = service.find(id);
-        service.update(newAnimal);
+        service.prepareForUpdating(smartDevice, dto);
+        service.update(smartDevice);
         return ResponseEntity.ok(smartDevice);
     }
 
