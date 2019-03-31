@@ -6,6 +6,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.service.impl.AnimalService;
+import stanislav.danylenko.coursepet.web.model.AnimalCreateDto;
+import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,16 +32,18 @@ public class AnimalController {
 
     @PostMapping
     public @ResponseBody
-    ResponseEntity<Animal> createAnimal(@RequestBody Animal animal) {
+    ResponseEntity<Animal> createAnimal(@RequestBody AnimalCreateDto dto) {
+        Animal animal = service.prepareForSaving(dto);
         service.save(animal);
         return new ResponseEntity<>(animal, HttpStatus.CREATED);
     }
 
     @PutMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<Animal> updateAnimal(@RequestBody Animal newAnimal, @PathVariable Long id) {
+    ResponseEntity<Animal> updateAnimal(@RequestBody AnimalUpdateDto dto, @PathVariable Long id) {
         Animal animal = service.find(id);
-        service.update(newAnimal);
+        service.prepareForUpdating(animal, dto);
+        service.update(animal);
         return ResponseEntity.ok(animal);
     }
 

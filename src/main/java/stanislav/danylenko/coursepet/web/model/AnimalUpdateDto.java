@@ -3,6 +3,7 @@ package stanislav.danylenko.coursepet.web.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import stanislav.danylenko.coursepet.db.enumeration.Gender;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,13 +11,13 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AnimalDesiaseDto implements Serializable {
+public class AnimalUpdateDto implements Serializable {
 
-    private Long animalId;
-    private Long diseaseId;
 
-    private LocalDateTime startData;
-    private LocalDateTime endDate;
-    private String treatment;
+    private String photoURL;
+
+    private Double weight;
+    private Double height;
+    private Double length;
 
 }

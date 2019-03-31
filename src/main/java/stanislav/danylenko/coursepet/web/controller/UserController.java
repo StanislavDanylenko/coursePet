@@ -36,13 +36,6 @@ public class UserController {
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
-    /*@PostMapping
-    public @ResponseBody
-    ResponseEntity<User> createUser(@RequestBody User user) {
-        service.save(user);
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
-    }*/
-
     @PutMapping("/{id}")
     public @ResponseBody
     ResponseEntity<User> updateUser(@RequestBody UserDto newUser, @PathVariable Long id) {

@@ -8,6 +8,8 @@ import stanislav.danylenko.coursepet.db.repository.RecordRepository;
 import stanislav.danylenko.coursepet.service.SimpleIdService;
 import stanislav.danylenko.coursepet.web.model.RecordDto;
 
+import java.time.LocalDateTime;
+
 @Service
 public class RecordService implements SimpleIdService<Record> {
     
@@ -76,6 +78,8 @@ public class RecordService implements SimpleIdService<Record> {
             record.setTemperature(dto.getTemperature());
         }
 
+        record.setCreationDate(LocalDateTime.now());
+
         return record;
     }
 
@@ -84,6 +88,6 @@ public class RecordService implements SimpleIdService<Record> {
     }
 
     public Record getLastRecordByDeviceId(Long id) {
-        return recordRepository.findBySmartDeviceIdOrderByCreationDateDesc(id);
+        return recordRepository.findFirstBySmartDeviceIdOrderByCreationDateDesc(id);
     }
 }

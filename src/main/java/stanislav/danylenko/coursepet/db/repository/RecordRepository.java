@@ -9,6 +9,6 @@ import stanislav.danylenko.coursepet.db.enumeration.Localization;
 public interface RecordRepository extends JpaRepository<Record, Long> {
 
     Iterable<Record> findBySmartDeviceId(Long smartDeviceId);
-    Record findBySmartDeviceIdOrderByCreationDateDesc (Long smartDeviceId);
+    Record findFirstBySmartDeviceIdOrderByCreationDateDesc (Long smartDeviceId);
 
 }
