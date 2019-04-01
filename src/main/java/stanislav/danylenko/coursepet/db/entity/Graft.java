@@ -1,5 +1,6 @@
 package stanislav.danylenko.coursepet.db.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,9 +30,11 @@ public class Graft implements Serializable {
     @Column(nullable = false)
     private Double frequency;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "graft", cascade = CascadeType.ALL)
     private List<AnimalGraft> animalGrafts;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private List<CountryGraft> countryGrafts;
 

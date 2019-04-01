@@ -51,6 +51,7 @@ public class User implements UserDetails {
     private LocalDateTime updateDateTime;
 
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Animal> animals = new ArrayList<>();
 

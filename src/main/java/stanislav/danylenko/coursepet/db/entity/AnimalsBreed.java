@@ -29,6 +29,7 @@ public class AnimalsBreed implements Serializable {
     @JoinColumn(name = "animalClass_id")
     private AnimalsClass animalsClass;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "animalsBreed", cascade = CascadeType.ALL)
     private List<Animal> animals = new ArrayList<>();
 
