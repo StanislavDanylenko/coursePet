@@ -12,6 +12,8 @@ import stanislav.danylenko.coursepet.web.model.SmartDeviceDto;
 
 @Service
 public class SmartDeviceService implements SimpleIdService<SmartDevice> {
+
+    public static String DEFAULT_SMART_DEVICE = "DefaultSmartDevice";
     
     @Autowired
     private SmartDeviceRepository smartDeviceRepository;
@@ -38,6 +40,10 @@ public class SmartDeviceService implements SimpleIdService<SmartDevice> {
     @Override
     public SmartDevice find(Long id) {
         return smartDeviceRepository.getOne(id);
+    }
+
+    public SmartDevice findByMac(String mac) {
+        return smartDeviceRepository.findByMac(mac);
     }
 
     @Override
@@ -86,4 +92,9 @@ public class SmartDeviceService implements SimpleIdService<SmartDevice> {
 
         return smartDevice;
     }
+
+    public SmartDevice getDefaultSmartDevice(){
+        return findByMac(DEFAULT_SMART_DEVICE);
+    }
+
 }

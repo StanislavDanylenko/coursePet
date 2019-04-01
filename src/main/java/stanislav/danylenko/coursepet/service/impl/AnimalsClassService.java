@@ -2,12 +2,15 @@ package stanislav.danylenko.coursepet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.entity.AnimalsClass;
 import stanislav.danylenko.coursepet.db.repository.AnimalsClassRepository;
 import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
 public class AnimalsClassService implements SimpleIdService<AnimalsClass> {
+
+    public static String DEFAULT_ANIMAL_CLASS = "DefaultAnimalClass";
 
     @Autowired
     private AnimalsClassRepository animalsClassRepository;
@@ -32,6 +35,10 @@ public class AnimalsClassService implements SimpleIdService<AnimalsClass> {
         return animalsClassRepository.getOne(id);
     }
 
+    public AnimalsClass findByName(String name) {
+        return animalsClassRepository.findByName(name);
+    }
+
     @Override
     public Iterable<AnimalsClass> findAll() {
         return animalsClassRepository.findAll();
@@ -40,5 +47,9 @@ public class AnimalsClassService implements SimpleIdService<AnimalsClass> {
     @Override
     public void delete(Long id) {
         animalsClassRepository.deleteById(id);
+    }
+
+    public AnimalsClass getDefaultAnimalClass() {
+        return findByName(DEFAULT_ANIMAL_CLASS);
     }
 }

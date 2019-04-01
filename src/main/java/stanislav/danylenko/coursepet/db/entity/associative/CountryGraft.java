@@ -22,7 +22,7 @@ public class CountryGraft implements Serializable {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "animal_id")
+    @JoinColumn(name = "country_id")
     private Country country;
 
     @Id

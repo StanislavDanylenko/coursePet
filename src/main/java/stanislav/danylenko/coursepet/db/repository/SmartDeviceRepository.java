@@ -8,5 +8,6 @@ import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 public interface SmartDeviceRepository extends JpaRepository<SmartDevice, Long> {
 
     Iterable<SmartDevice> findByAnimalId(Long animalId);
+    SmartDevice findByMac(String mac);
 
 }

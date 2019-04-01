@@ -9,6 +9,8 @@ import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
 public class DiseaseService implements SimpleIdService<Disease> {
+
+    public static String DEFAULT_DISEASE = "DefaultDISEASE";
     
     @Autowired
     private DiseaseRepository diseaseRepository;
@@ -33,6 +35,10 @@ public class DiseaseService implements SimpleIdService<Disease> {
         return diseaseRepository.getOne(id);
     }
 
+    public Disease findByName(String name) {
+        return diseaseRepository.findByName(name);
+    }
+
     @Override
     public Iterable<Disease> findAll() {
         return diseaseRepository.findAll();
@@ -41,5 +47,9 @@ public class DiseaseService implements SimpleIdService<Disease> {
     @Override
     public void delete(Long id) {
         diseaseRepository.deleteById(id);
+    }
+
+    public Disease getDefaultDisease() {
+        return findByName(DEFAULT_DISEASE);
     }
 }

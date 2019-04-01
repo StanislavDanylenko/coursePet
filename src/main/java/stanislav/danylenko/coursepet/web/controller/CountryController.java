@@ -1,11 +1,13 @@
 package stanislav.danylenko.coursepet.web.controller;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.service.impl.CountryService;
+import stanislav.danylenko.coursepet.web.JsonRules;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -25,6 +27,14 @@ public class CountryController {
     @GetMapping("/{id}")
     public @ResponseBody
     ResponseEntity<Country> getCountry(@PathVariable Long id) {
+        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
+    }
+
+    @JsonView(value = JsonRules.CountryFullInfo.class)
+    @GetMapping("/full/{id}")
+    public @ResponseBody
+    ResponseEntity<Country> getFullInfoCountry(@PathVariable Long id) {
+        Country country = new Country();
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 

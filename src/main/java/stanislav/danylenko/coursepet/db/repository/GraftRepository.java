@@ -6,4 +6,7 @@ import stanislav.danylenko.coursepet.db.entity.Graft;
 
 @Repository
 public interface GraftRepository extends JpaRepository<Graft, Long> {
+
+    Graft findByName(String name);
+
 }

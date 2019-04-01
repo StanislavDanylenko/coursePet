@@ -10,6 +10,8 @@ import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
 
 @Service
 public class AnimalService implements SimpleIdService<Animal> {
+
+    public static String DEFAULT_ANIMAL = "DefaultAnimal";
     
     @Autowired
     private AnimalRepository animalRepository;
@@ -32,6 +34,10 @@ public class AnimalService implements SimpleIdService<Animal> {
     @Override
     public Animal find(Long id) {
         return animalRepository.getOne(id);
+    }
+
+    public Animal findByName(String name) {
+        return animalRepository.findByName(name);
     }
 
     @Override
@@ -106,6 +112,10 @@ public class AnimalService implements SimpleIdService<Animal> {
         }
 
         return animal;
+    }
+
+    public Animal getDefaultAnimnal(){
+        return animalRepository.findByName(DEFAULT_ANIMAL);
     }
 
 }

@@ -6,4 +6,7 @@ import stanislav.danylenko.coursepet.db.entity.AnimalsBreed;
 
 @Repository
 public interface AnimalsBreedRepository extends JpaRepository<AnimalsBreed, Long> {
+
+    AnimalsBreed findByName(String name);
+
 }

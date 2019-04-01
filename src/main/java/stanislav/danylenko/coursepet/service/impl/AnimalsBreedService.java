@@ -11,6 +11,8 @@ import stanislav.danylenko.coursepet.web.model.AnimalsBreedDto;
 
 @Service
 public class AnimalsBreedService implements SimpleIdService<AnimalsBreed> {
+
+    public static String DEFAULT_ANIMAL_BREED = "DefaultAnimalBreed";
     
     @Autowired
     private AnimalsBreedRepository animalsBreedRepository;
@@ -38,6 +40,10 @@ public class AnimalsBreedService implements SimpleIdService<AnimalsBreed> {
         return animalsBreedRepository.getOne(id);
     }
 
+    public AnimalsBreed findByName(String name) {
+        return animalsBreedRepository.findByName(name);
+    }
+
     @Override
     public Iterable<AnimalsBreed> findAll() {
         return animalsBreedRepository.findAll();
@@ -57,5 +63,9 @@ public class AnimalsBreedService implements SimpleIdService<AnimalsBreed> {
             animalsBreed.setAnimalsClass(animalsClass);
         }
         return animalsBreed;
+    }
+
+    public AnimalsBreed getDefaultAnimalBreed(){
+        return animalsBreedRepository.findByName(DEFAULT_ANIMAL_BREED);
     }
 }

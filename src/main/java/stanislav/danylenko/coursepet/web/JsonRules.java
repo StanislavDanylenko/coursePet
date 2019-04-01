@@ -13,4 +13,7 @@ public final class JsonRules {
 
     public interface CountryGraft extends Id {
     }
+
+    public interface CountryFullInfo extends Id {
+    }
 }

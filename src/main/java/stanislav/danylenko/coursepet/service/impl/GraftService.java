@@ -8,6 +8,8 @@ import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
 public class GraftService implements SimpleIdService<Graft> {
+
+    public static String DEFAULT_GRAFT = "DefaultGRAFT";
     
     @Autowired
     private GraftRepository graftRepository;
@@ -32,6 +34,10 @@ public class GraftService implements SimpleIdService<Graft> {
         return graftRepository.getOne(id);
     }
 
+    public Graft findByName(String name) {
+        return graftRepository.findByName(name);
+    }
+
     @Override
     public Iterable<Graft> findAll() {
         return graftRepository.findAll();
@@ -50,5 +56,9 @@ public class GraftService implements SimpleIdService<Graft> {
             graft.setFrequency(dto.getFrequency());
         }
         return graft;
+    }
+
+    public Graft getDefaultGraft(){
+        return findByName(DEFAULT_GRAFT);
     }
 }

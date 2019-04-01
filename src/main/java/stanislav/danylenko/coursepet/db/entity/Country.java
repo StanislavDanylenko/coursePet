@@ -21,11 +21,12 @@ public class Country implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonView(value = JsonRules.CountryGraft.class)
     private Long id;
 
     @Column(nullable = false)
     private String name;
+
+    private String description;
 
     @JsonIgnore
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
@@ -34,5 +35,5 @@ public class Country implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
     private List<CountryGraft> countryGrafts;
-    
+
 }
