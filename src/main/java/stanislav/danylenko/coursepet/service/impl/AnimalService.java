@@ -69,6 +69,10 @@ public class AnimalService implements SimpleIdService<Animal> {
         return animalGraftRepository.findByAnimalId(id);
     }
 
+    public List<Animal> findAnimalByUserCountryId(Long userCountryId) {
+        return animalRepository.findByUser_CountryId(userCountryId);
+    }
+
 
     public Animal findByName(String name) {
         return animalRepository.findByName(name);
