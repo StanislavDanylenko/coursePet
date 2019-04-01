@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class AnimalUpdateDto implements Serializable {
 
-
     private String photoURL;
 
     private Double weight;

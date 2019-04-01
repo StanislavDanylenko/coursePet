@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.service.impl.CountryService;
 import stanislav.danylenko.coursepet.web.JsonRules;
+import stanislav.danylenko.coursepet.web.model.CountryWithGraftDto;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,12 +31,10 @@ public class CountryController {
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
-    @JsonView(value = JsonRules.CountryFullInfo.class)
     @GetMapping("/full/{id}")
     public @ResponseBody
-    ResponseEntity<Country> getFullInfoCountry(@PathVariable Long id) {
-        Country country = new Country();
-        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
+    ResponseEntity<CountryWithGraftDto> getFullInfoCountry(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getCountryWithGrafts(id), HttpStatus.OK);
     }
 
     @PostMapping
