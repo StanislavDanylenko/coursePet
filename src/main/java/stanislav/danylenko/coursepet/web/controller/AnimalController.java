@@ -9,6 +9,7 @@ import stanislav.danylenko.coursepet.service.impl.AnimalService;
 import stanislav.danylenko.coursepet.web.model.AnimalCreateDto;
 import stanislav.danylenko.coursepet.web.model.AnimalFullInfoDto;
 import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
+import stanislav.danylenko.coursepet.web.model.IsAvailableCountry;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,6 +36,12 @@ public class AnimalController {
     public @ResponseBody
     ResponseEntity<AnimalFullInfoDto> getAnimalFullInfo(@PathVariable Long id) {
         return new ResponseEntity<>(service.getAnimalFullInfo(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/country/{countryId}/animal/{animalId}")
+    public @ResponseBody
+    ResponseEntity<IsAvailableCountry> getAnimalIsAvailableCountryfo(@PathVariable Long countryId, @PathVariable Long animalId) {
+        return new ResponseEntity<>(service.checkIsAvailableCountry(animalId, countryId), HttpStatus.OK);
     }
 
     @PostMapping

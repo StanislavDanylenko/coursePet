@@ -21,6 +21,7 @@ public class Country implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonView(value = JsonRules.CountryGraft.class)
     private Long id;
 
     @Column(nullable = false)

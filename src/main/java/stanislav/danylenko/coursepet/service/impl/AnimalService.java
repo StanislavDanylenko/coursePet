@@ -1,12 +1,15 @@
 package stanislav.danylenko.coursepet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Animal;
+import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.db.entity.Disease;
 import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
+import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
 import stanislav.danylenko.coursepet.db.repository.AnimalRepository;
 import stanislav.danylenko.coursepet.db.repository.associative.AnimalDiseaseRepository;
 import stanislav.danylenko.coursepet.db.repository.associative.AnimalGraftRepository;
@@ -14,9 +17,12 @@ import stanislav.danylenko.coursepet.service.SimpleIdService;
 import stanislav.danylenko.coursepet.web.model.AnimalCreateDto;
 import stanislav.danylenko.coursepet.web.model.AnimalFullInfoDto;
 import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
+import stanislav.danylenko.coursepet.web.model.IsAvailableCountry;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AnimalService implements SimpleIdService<Animal> {
@@ -31,6 +37,9 @@ public class AnimalService implements SimpleIdService<Animal> {
 
     @Autowired
     private AnimalGraftRepository animalGraftRepository;
+
+    @Autowired
+    private CountryService countryService;
 
     @Override
     public Animal save(Animal entity) {
@@ -162,6 +171,34 @@ public class AnimalService implements SimpleIdService<Animal> {
         dto.setGrafts(grafts);
 
         return dto;
+    }
+
+    public IsAvailableCountry checkIsAvailableCountry(Long animalId, Long countryId) {
+
+        Country country = countryService.find(countryId);
+        Animal animal = find(animalId);
+
+        List<AnimalGraft> animalGrafts = animal.getAnimalGrafts();
+        List<CountryGraft> countryGrafts = country.getCountryGrafts();
+
+        Set<Graft> realCountryGrafts = new HashSet<>();
+        Set<Graft> realAnimalGrafts = new HashSet<>();
+
+        for(AnimalGraft animalGraft : animalGrafts) {
+            realAnimalGrafts.add(animalGraft.getGraft());
+        }
+
+        for(CountryGraft countryGraft : countryGrafts) {
+            realCountryGrafts.add(countryGraft.getGraft());
+        }
+
+        if(realAnimalGrafts.containsAll(realCountryGrafts)) {
+            return new IsAvailableCountry(true, null);
+        }
+
+        realCountryGrafts.removeAll(realAnimalGrafts);
+        return new IsAvailableCountry(false, realCountryGrafts);
+
     }
 
 }
