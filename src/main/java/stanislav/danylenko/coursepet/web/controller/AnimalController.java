@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.service.impl.AnimalService;
 import stanislav.danylenko.coursepet.web.model.AnimalCreateDto;
+import stanislav.danylenko.coursepet.web.model.AnimalFullInfoDto;
 import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
 
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,12 @@ public class AnimalController {
     public @ResponseBody
     ResponseEntity<Animal> getAnimal(@PathVariable Long id) {
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/full/{id}")
+    public @ResponseBody
+    ResponseEntity<AnimalFullInfoDto> getAnimalFullInfo(@PathVariable Long id) {
+        return new ResponseEntity<>(service.getAnimalFullInfo(id), HttpStatus.OK);
     }
 
     @PostMapping

@@ -5,6 +5,12 @@ import org.springframework.stereotype.Repository;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 import stanislav.danylenko.coursepet.db.entity.pk.AnimalGraftPK;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Repository
 public interface AnimalGraftRepository extends JpaRepository<AnimalGraft, AnimalGraftPK> {
+
+    List<AnimalGraft> findByAnimalId(Long animalId);
+
 }

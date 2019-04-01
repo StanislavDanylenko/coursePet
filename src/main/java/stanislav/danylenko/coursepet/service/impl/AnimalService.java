@@ -3,19 +3,35 @@ package stanislav.danylenko.coursepet.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Animal;
+import stanislav.danylenko.coursepet.db.entity.Disease;
+import stanislav.danylenko.coursepet.db.entity.Graft;
+import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
+import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 import stanislav.danylenko.coursepet.db.repository.AnimalRepository;
+import stanislav.danylenko.coursepet.db.repository.associative.AnimalDiseaseRepository;
+import stanislav.danylenko.coursepet.db.repository.associative.AnimalGraftRepository;
 import stanislav.danylenko.coursepet.service.SimpleIdService;
 import stanislav.danylenko.coursepet.web.model.AnimalCreateDto;
+import stanislav.danylenko.coursepet.web.model.AnimalFullInfoDto;
 import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AnimalService implements SimpleIdService<Animal> {
 
     public static String DEFAULT_ANIMAL = "DefaultAnimal";
-    
+
     @Autowired
     private AnimalRepository animalRepository;
-    
+
+    @Autowired
+    private AnimalDiseaseRepository animalDiseaseRepository;
+
+    @Autowired
+    private AnimalGraftRepository animalGraftRepository;
+
     @Override
     public Animal save(Animal entity) {
         return animalRepository.save(entity);
@@ -36,6 +52,15 @@ public class AnimalService implements SimpleIdService<Animal> {
         return animalRepository.getOne(id);
     }
 
+    public List<AnimalDisease> findAnimalDiseasesByAnimalId(Long id) {
+        return animalDiseaseRepository.findByAnimalId(id);
+    }
+
+    public List<AnimalGraft> findAnimalGraftsByAnimalId(Long id) {
+        return animalGraftRepository.findByAnimalId(id);
+    }
+
+
     public Animal findByName(String name) {
         return animalRepository.findByName(name);
     }
@@ -55,15 +80,15 @@ public class AnimalService implements SimpleIdService<Animal> {
 
         Animal animal = new Animal();
 
-        if(dto.getName() != null) {
+        if (dto.getName() != null) {
             animal.setName(dto.getName());
         }
 
-        if(dto.getGender() != null) {
+        if (dto.getGender() != null) {
             animal.setGender(dto.getGender());
         }
 
-        if(dto.getBirthDate() != null) {
+        if (dto.getBirthDate() != null) {
             animal.setBirthDate(dto.getBirthDate());
         }
 
@@ -74,19 +99,19 @@ public class AnimalService implements SimpleIdService<Animal> {
 
     public Animal prepareForUpdating(Animal animal, AnimalUpdateDto dto) {
 
-        if(dto.getPhotoURL() != null) {
+        if (dto.getPhotoURL() != null) {
             animal.setPhotoURL(dto.getPhotoURL());
         }
 
-        if(dto.getHeight() != null) {
+        if (dto.getHeight() != null) {
             animal.setHeight(dto.getHeight());
         }
 
-        if(dto.getLength() != null) {
+        if (dto.getLength() != null) {
             animal.setLength(dto.getLength());
         }
 
-        if(dto.getWeight() != null) {
+        if (dto.getWeight() != null) {
             animal.setWeight(dto.getWeight());
         }
 
@@ -95,27 +120,48 @@ public class AnimalService implements SimpleIdService<Animal> {
 
     private Animal prepareForUpdating(Animal animal, AnimalCreateDto dto) {
 
-        if(dto.getPhotoURL() != null) {
+        if (dto.getPhotoURL() != null) {
             animal.setPhotoURL(dto.getPhotoURL());
         }
 
-        if(dto.getHeight() != null) {
+        if (dto.getHeight() != null) {
             animal.setHeight(dto.getHeight());
         }
 
-        if(dto.getLength() != null) {
+        if (dto.getLength() != null) {
             animal.setLength(dto.getLength());
         }
 
-        if(dto.getWeight() != null) {
+        if (dto.getWeight() != null) {
             animal.setWeight(dto.getWeight());
         }
 
         return animal;
     }
 
-    public Animal getDefaultAnimnal(){
+    public Animal getDefaultAnimal() {
         return animalRepository.findByName(DEFAULT_ANIMAL);
+    }
+
+    public AnimalFullInfoDto getAnimalFullInfo(Long id) {
+        Animal animal = find(id);
+        List<Disease> diseases = new ArrayList<>();
+        List<AnimalDisease> animalDiseases = findAnimalDiseasesByAnimalId(id);
+        for(AnimalDisease animalDisease : animalDiseases) {
+            diseases.add(animalDisease.getDisease());
+        }
+        List<AnimalGraft> animalGrafts = findAnimalGraftsByAnimalId(id);
+        List<Graft> grafts = new ArrayList<>();
+        for(AnimalGraft animalGraft : animalGrafts) {
+            grafts.add(animalGraft.getGraft());
+        }
+        AnimalFullInfoDto dto = new AnimalFullInfoDto();
+
+        dto.setAnimal(animal);
+        dto.setDiseases(diseases);
+        dto.setGrafts(grafts);
+
+        return dto;
     }
 
 }

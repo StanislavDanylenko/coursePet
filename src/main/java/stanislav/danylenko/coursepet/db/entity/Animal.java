@@ -51,7 +51,6 @@ public class Animal implements Serializable {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "animal", cascade = CascadeType.ALL)
     private List<SmartDevice> smartDevices = new ArrayList<>();
 

@@ -11,9 +11,6 @@ import stanislav.danylenko.coursepet.db.entity.*;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
-import stanislav.danylenko.coursepet.db.entity.pk.AnimalDiseasePK;
-import stanislav.danylenko.coursepet.db.entity.pk.AnimalGraftPK;
-import stanislav.danylenko.coursepet.db.entity.pk.CountryGraftPK;
 import stanislav.danylenko.coursepet.db.enumeration.AnimalState;
 import stanislav.danylenko.coursepet.db.enumeration.Gender;
 import stanislav.danylenko.coursepet.db.enumeration.Localization;
@@ -142,7 +139,7 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         ////////////Animal
-        Animal animal= animalService.getDefaultAnimnal();
+        Animal animal= animalService.getDefaultAnimal();
         if(animal != null) {
             log.info("Test Animal is already in DB");
         } else {
