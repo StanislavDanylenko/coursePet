@@ -1,6 +1,5 @@
 package stanislav.danylenko.coursepet.service.impl.bl;
 
-import javafx.animation.KeyValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Animal;
