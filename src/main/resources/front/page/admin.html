@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hello</title>
+    <title>PETREW User</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/css/font-awesome.min.css">
@@ -14,233 +14,264 @@
     <link rel="stylesheet" href="../lib/css/typography.css">
     <link rel="stylesheet" href="../lib/css/default-css.css">
     <link rel="stylesheet" href="../lib/css/styles.css">
+    <link rel="stylesheet" href="../lib/css/responsive.css">
 
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </head>
 
 <body>
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- preloader area end -->
-    <!-- page container area start -->
-    <div class="page-container">
-        <!-- sidebar menu area start -->
-        <div class="sidebar-menu">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <a href="#"><h1 style="color: white;">PETREW</h1></a>
-                </div>
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- preloader area end -->
+<!-- page container area start -->
+<div class="page-container">
+    <!-- sidebar menu area start -->
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a href="#"><h1 style="color: white;">PETREW</h1></a>
             </div>
-            <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                            <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a>
-                                <ul class="collapse">
-                                    <li class="active"><a href="#">Active Menu Item</a></li>
-                                    <li><a href="#">Menuitem 2</a></li>
-                                    <li><a href="#">Menuitem 3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#"><i class="ti-map-alt"></i><span>Not expanding</span></a></li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
-                                    <span>Multi
-                                        level menu</span></a>
-                                <ul class="collapse">
-                                    <li><a href="#">Item level (1)</a></li>
-                                    <li><a href="#">Item level (1)</a></li>
-                                    <li><a href="#" aria-expanded="true">Item level (1)</a>
-                                        <ul class="collapse">
-                                            <li><a href="#">Item level (2)</a></li>
-                                            <li><a href="#">Item level (2)</a></li>
-                                            <li><a href="#">Item level (2)</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Item level (1)</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </nav>
+        </div>
+        <div class="main-menu">
+            <div class="menu-inner">
+                <nav>
+                    <ul class="metismenu" id="menu">
+                        <li class="active"><a href="#country"><i class="fa fa-globe"></i><span>Country</span></a></li>
+                        <li><a href="#graft"><i class="fa fa-list-alt"></i><span>Graft</span></a></li>
+                        <li><a href="#disease"><i class="fa fa-medkit"></i><span>Disease</span></a></li>
+                        <li><a href="#users"><i class="fa fa-users"></i><span>Users</span></a></li>
+
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
+                                <span>Multi level menu</span></a>
+                            <ul class="collapse">
+                                <li><a href="#">Item level (1)</a></li>
+                                <li><a href="#">Item level (1)</a></li>
+                                <li><a href="#" aria-expanded="true">Item level (1)</a>
+                                    <ul class="collapse">
+                                        <li><a href="#">Item level (2)</a></li>
+                                        <li><a href="#">Item level (2)</a></li>
+                                        <li><a href="#">Item level (2)</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Item level (1)</a></li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar menu area end -->
+    <!-- main content area start -->
+    <div class="main-content">
+        <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <div class="nav-btn pull-left" style="margin-top: 3px;">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <h4 class="page-title">Dashboard</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="../lib/images/avatar.png" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username<i
+                                class="fa fa-angle-down"></i></h4>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item profile" href="#profile">Profile</a>
+                            <a class="dropdown-item log-out" href="#">Log Out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- sidebar menu area end -->
-        <!-- main content area start -->
-        <div class="main-content">
-            <!-- page title area start -->
-            <div class="page-title-area">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <div class="nav-btn pull-left" style="margin-top: 3px;">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <!-- MAIN CONTENT GOES HERE -->
+            <!-- Primary table end -->
+            <!-- Dark table start -->
+
+            <div class="col-12 mt-5" id="table">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex mb-3">
+                            <div><h4 class="header-title mt-2">Data Table Dark</h4></div>
+                            <div>
+                                <button type="button" class="btn btn-primary ml-2" data-toggle="modal"
+                                        data-target="#exampleModalCenter"><span class="fa fa-plus"> </span>Add
+                                </button>
                             </div>
-                            <h4 class="page-title">Dashboard</h4>
                         </div>
-                    </div>
-                    <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="../lib/images/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
-                            </div>
+                        <div class="data-tables datatable-dark">
+                            <table id="dataTable" class="text-center">
+                                <thead class="text-capitalize">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Position</th>
+                                    <th>Office</th>
+                                    <th>Age</th>
+                                    <th>Start Date</th>
+                                    <th>salary</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Airi Satou</td>
+                                    <td>Accountant</td>
+                                    <td>Tokyo</td>
+                                    <td>33</td>
+                                    <td>2008/11/28</td>
+                                    <td>$162,700</td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- page title area end -->
-            <div class="main-content-inner">
-                <!-- MAIN CONTENT GOES HERE -->
-                <!-- Primary table end -->
-                <!-- Dark table start -->
-                <div class="col-12 mt-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="header-title">Data Table Dark</h4>
-                            <div class="data-tables datatable-dark">
-                                <table id="dataTable" class="text-center">
-                                    <thead class="text-capitalize">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start Date</th>
-                                        <th>salary</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Angelica Ramos</td>
-                                        <td>Chief Executive Officer (CEO)</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009/10/09</td>
-                                        <td>$1,200,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13</td>
-                                        <td>$132,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011/06/07</td>
-                                        <td>$206,850</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td>Pre-Sales Support</td>
-                                        <td>New York</td>
-                                        <td>29</td>
-                                        <td>2011/12/12</td>
-                                        <td>$106,450</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bruno Nash</td>
-                                        <td>Software Engineer</td>
-                                        <td>Edinburgh</td>
-                                        <td>21</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13</td>
-                                        <td>$132,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011/06/07</td>
-                                        <td>$206,850</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td>Pre-Sales Support</td>
-                                        <td>New York</td>
-                                        <td>29</td>
-                                        <td>2011/12/12</td>
-                                        <td>$106,450</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bruno Nash</td>
-                                        <td>Software Engineer</td>
-                                        <td>Edinburgh</td>
-                                        <td>21</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+            <!-- Dark table end -->
+        </div>
+    </div>
+    <!-- main content area end -->
+
+
+    <!--Modals here-->
+    <div class="modal fade" id="exampleModalCenter" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Country action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        <label for="countryName" id="countryIdLabel">Country Id</label>
+                        <input type="text" class="form-control" id="countryId">
+                    </div>
+                    <div class="form-group">
+                        <label for="countryName" id="countryNameLabel">Country Name</label>
+                        <input type="text" class="form-control" id="countryName">
+                    </div>
+                    <div class="form-group">
+                        <label for="countryDescription" id="countryDescriptionLabel">Country Description</label>
+                        <input type="text" class="form-control" id="countryDescription">
+                    </div>
+                    <div class="form-group">
+                        <label for="countryGrafts" id="countryGraftsLabel">Country Grafts</label>
+                        <select multiple  class="form-control" id="countryGrafts">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
                     </div>
                 </div>
-                <!-- Dark table end -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-country">Save changes</button>
+                </div>
             </div>
         </div>
-        <!-- main content area end -->
-        <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-            </div>
-        </footer>
-        <!-- footer area end-->
     </div>
-    <!-- page container area end -->
-    <!-- jquery latest version -->
-    <script src="../lib/js/jquery-2.2.4.min.js"></script>
-    <!-- bootstrap 4 js -->
-    <script src="../lib/js/popper.min.js"></script>
-    <script src="../lib/js/bootstrap.min.js"></script>
-    <script src="../lib/js/metisMenu.min.js"></script>
-    <script src="../lib/js/jquery.slimscroll.min.js"></script>
+    <!---->
 
-    <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a
+                    href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        </div>
+    </footer>
+    <!-- footer area end-->
+</div>
+<!-- page container area end -->
+<!-- jquery latest version -->
+<script src="../lib/js/jquery-2.2.4.min.js"></script>
+<!-- bootstrap 4 js -->
+<script src="../lib/js/popper.min.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+<script src="../lib/js/metisMenu.min.js"></script>
+<script src="../lib/js/jquery.slimscroll.min.js"></script>
 
-    <!-- others plugins -->
-    <script src="../lib/js/scripts.js"></script>
+<!-- Start datatable js -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<!--Handlebars-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+
+<!-- others plugins -->
+<script src="../lib/js/scripts.js"></script>
+<script src="../custom/js/audit.js"></script>
+<script src="../custom/js/l10n/jquery.i18n.js"></script>
+<script src="../custom/js/l10n/l10n.js"></script>
+<script src="../custom/js/common/common.js"></script>
+<script src="../custom/js/common/constants.js"></script>
+<script src="../custom/js/admin/admin.js"></script>
+<script src="../custom/js/admin/country.js"></script>
+
+
+<!--Country-->
+<script id="countryTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2">Data Table Dark</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-country" data-toggle="modal"
+                                data-target="#exampleModalCenter"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="countryTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+                            <th class="description">Description</th>
+                            <th class="countryGrafts">Grafts</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ description }}</td>
+                            <td>{{ countryGrafts }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-country text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-country text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
 </body>
 
 </html>

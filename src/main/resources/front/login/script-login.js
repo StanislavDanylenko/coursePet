@@ -47,6 +47,7 @@ function loginUser() {
         contentType: "application/json",
         success: function (response, status, xhr) {
             console.log('ok');
+            saveUserLS(response);
             window.location = 'admin.html'
         },
         error: function(xhr, ajaxOptions, thrownError) {

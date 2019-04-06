@@ -24,7 +24,7 @@ function setL10n(loc) {
 
 function loadLocale() {
 
-    initUSER();
+    loadUserLS();
 
    if(USER !== undefined) {
        if(USER.localization === "ENGLISH") {

@@ -92,10 +92,10 @@
     datatable active
     ==================================*/
 
-    if ($('#dataTable').length) {
+    /*if ($('#dataTable').length) {
         $('#dataTable').DataTable({
             responsive: true
         });
-    }
+    }*/
 
 })(jQuery);
