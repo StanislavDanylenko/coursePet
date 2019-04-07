@@ -103,8 +103,8 @@
             <!-- MAIN CONTENT GOES HERE -->
             <!-- Primary table end -->
             <!-- Dark table start -->
-
-            <div class="col-12 mt-5" id="table">
+            <h1> USER WORKFLOW HERE</h1>
+            <!--<div class="col-12 mt-5" id="table">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex mb-3">
@@ -141,7 +141,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <!-- Dark table end -->
         </div>
     </div>
@@ -149,7 +149,7 @@
 
 
     <!--Modals here-->
-    <div class="modal fade" id="exampleModalCenter" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="countryModal" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -172,11 +172,6 @@
                     <div class="form-group">
                         <label for="countryGrafts" id="countryGraftsLabel">Country Grafts</label>
                         <select multiple  class="form-control" id="countryGrafts">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
                         </select>
                     </div>
                 </div>
@@ -230,10 +225,10 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">Data Table Dark</h4></div>
+                    <div><h4 class="header-title mt-2">Country</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-country" data-toggle="modal"
-                                data-target="#exampleModalCenter"><span class="fa fa-plus"> </span>Add
+                                data-target="#countryModal"><span class="fa fa-plus"> </span>Add
                         </button>
                     </div>
                 </div>
@@ -255,7 +250,7 @@
                             <td hidden>{{ id }}</td>
                             <td>{{ name }}</td>
                             <td>{{ description }}</td>
-                            <td>{{ countryGrafts }}</td>
+                            <td>{{ grafts }}</td>
 
                             <td class="text-center">
                                 <button class="btn btn-warning edit-country text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>

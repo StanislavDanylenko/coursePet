@@ -36,7 +36,7 @@ public class Graft implements Serializable {
     private List<AnimalGraft> animalGrafts;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "country")
     private List<CountryGraft> countryGrafts;
 
 

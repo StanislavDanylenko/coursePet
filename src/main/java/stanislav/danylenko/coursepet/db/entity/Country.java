@@ -34,7 +34,7 @@ public class Country implements Serializable {
     private List<User> users = new ArrayList<>();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "country", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "country")
     private List<CountryGraft> countryGrafts;
 
 }

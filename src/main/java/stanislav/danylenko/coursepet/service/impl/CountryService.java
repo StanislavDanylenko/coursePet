@@ -5,10 +5,13 @@ import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
+import stanislav.danylenko.coursepet.db.entity.pk.CountryGraftPK;
 import stanislav.danylenko.coursepet.db.repository.CountryRepository;
 import stanislav.danylenko.coursepet.db.repository.associative.CountryGraftRepository;
 import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.service.impl.associative.CountryGraftService;
 import stanislav.danylenko.coursepet.web.model.CountryWithGraftDto;
+import stanislav.danylenko.coursepet.web.model.CountryWithGraftUpdateDto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,13 +20,17 @@ import java.util.List;
 public class CountryService implements SimpleIdService<Country> {
 
     public static final String DEFAULT_COUNTRY = "Ukraine";
-    
+
     @Autowired
     private CountryRepository countryRepository;
+    @Autowired
+    private CountryGraftService countryGraftService;
+    @Autowired
+    private GraftService graftService;
 
     @Autowired
     private CountryGraftRepository countryGraftRepository;
-    
+
     @Override
     public Country save(Country entity) {
         return countryRepository.save(entity);
@@ -47,7 +54,7 @@ public class CountryService implements SimpleIdService<Country> {
     public List<Graft> findGraftsByCountryId(Long countryId) {
         List<CountryGraft> countryGrafts = countryGraftRepository.findByCountryId(countryId);
         List<Graft> grafts = new ArrayList<>();
-        for(CountryGraft countryGraft : countryGrafts) {
+        for (CountryGraft countryGraft : countryGrafts) {
             grafts.add(countryGraft.getGraft());
         }
         return grafts;
@@ -63,11 +70,43 @@ public class CountryService implements SimpleIdService<Country> {
         countryRepository.deleteById(id);
     }
 
+    public void fullUpdate(Country country, CountryWithGraftUpdateDto dto) {
+
+        country.setName(dto.getCountry().getName());
+        country.setDescription(dto.getCountry().getDescription());
+        save(country);
+
+        List<CountryGraft> countryGrafts =  country.getCountryGrafts();
+        for(CountryGraft countryGraft : countryGrafts) {
+            CountryGraftPK pk = new CountryGraftPK(countryGraft.getCountry().getId(), countryGraft.getGraft().getId());
+            countryGraftService.delete(pk);
+        }
+
+        for (Long id : dto.getGraftIds()) {
+            Graft graft = graftService.find(id);
+            countryGraftService.save(new CountryGraft(country, graft));
+        }
+    }
+
     public Country getDefaultCountry() {
         return countryRepository.findByName(DEFAULT_COUNTRY);
     }
 
-    public CountryWithGraftDto getCountryWithGrafts(Long id){
+    public List<CountryWithGraftDto> getCountriesWithGrafts() {
+        Iterable<Country> countries = findAll();
+        List<CountryWithGraftDto> fullCountries = new ArrayList<>();
+        for (Country country : countries) {
+            CountryWithGraftDto fullCountry = new CountryWithGraftDto();
+            fullCountry.setCountry(country);
+            List<Graft> grafts = findGraftsByCountryId(country.getId());
+            fullCountry.setGrafts(grafts);
+
+            fullCountries.add(fullCountry);
+        }
+        return fullCountries;
+    }
+
+    public CountryWithGraftDto getCountryWithGrafts(Long id) {
         Country country = find(id);
         List<Graft> grafts = findGraftsByCountryId(id);
         return new CountryWithGraftDto(country, grafts);
