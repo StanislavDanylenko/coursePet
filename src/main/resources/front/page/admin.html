@@ -42,28 +42,10 @@
             <div class="menu-inner">
                 <nav>
                     <ul class="metismenu" id="menu">
-                        <li class="active"><a href="#country"><i class="fa fa-globe"></i><span>Country</span></a></li>
-                        <li><a href="#graft"><i class="fa fa-list-alt"></i><span>Graft</span></a></li>
-                        <li><a href="#disease"><i class="fa fa-medkit"></i><span>Disease</span></a></li>
-                        <li><a href="#users"><i class="fa fa-users"></i><span>Users</span></a></li>
-
-                        <li>
-                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
-                                <span>Multi level menu</span></a>
-                            <ul class="collapse">
-                                <li><a href="#">Item level (1)</a></li>
-                                <li><a href="#">Item level (1)</a></li>
-                                <li><a href="#" aria-expanded="true">Item level (1)</a>
-                                    <ul class="collapse">
-                                        <li><a href="#">Item level (2)</a></li>
-                                        <li><a href="#">Item level (2)</a></li>
-                                        <li><a href="#">Item level (2)</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Item level (1)</a></li>
-                            </ul>
-                        </li>
-
+                        <li id="country" class="active"><a href="#country"><i class="fa fa-globe"></i><span>Country</span></a></li>
+                        <li id="graft"><a href="#graft"><i class="fa fa-list-alt"></i><span>Graft</span></a></li>
+                        <li id="disease"><a href="#disease"><i class="fa fa-medkit"></i><span>Disease</span></a></li>
+                        <li id="users"><a href="#users"><i class="fa fa-users"></i><span>Users</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -103,46 +85,7 @@
             <!-- MAIN CONTENT GOES HERE -->
             <!-- Primary table end -->
             <!-- Dark table start -->
-            <h1> USER WORKFLOW HERE</h1>
-            <!--<div class="col-12 mt-5" id="table">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex mb-3">
-                            <div><h4 class="header-title mt-2">Data Table Dark</h4></div>
-                            <div>
-                                <button type="button" class="btn btn-primary ml-2" data-toggle="modal"
-                                        data-target="#exampleModalCenter"><span class="fa fa-plus"> </span>Add
-                                </button>
-                            </div>
-                        </div>
-                        <div class="data-tables datatable-dark">
-                            <table id="dataTable" class="text-center">
-                                <thead class="text-capitalize">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start Date</th>
-                                    <th>salary</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Airi Satou</td>
-                                    <td>Accountant</td>
-                                    <td>Tokyo</td>
-                                    <td>33</td>
-                                    <td>2008/11/28</td>
-                                    <td>$162,700</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>-->
-            <!-- Dark table end -->
+            <h1> USER WORKSPACE HERE</h1>
         </div>
     </div>
     <!-- main content area end -->
@@ -183,6 +126,36 @@
         </div>
     </div>
     <!---->
+    <!--Modals here-->
+    <div class="modal fade" id="graftModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Graft action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        <label for="graftName" id="graftIdLabel">Graft Id</label>
+                        <input type="text" class="form-control" id="graftId">
+                    </div>
+                    <div class="form-group">
+                        <label for="graftName" id="graftNameLabel">Graft Name</label>
+                        <input type="text" class="form-control" id="graftName">
+                    </div>
+                    <div class="form-group">
+                        <label for="graftFrequency" id="graftFrequencyLabel">Graft Frequency</label>
+                        <input type="text" class="form-control" id="graftFrequency">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-graft">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
 
     <!-- footer area start-->
     <footer>
@@ -217,6 +190,7 @@
 <script src="../custom/js/common/constants.js"></script>
 <script src="../custom/js/admin/admin.js"></script>
 <script src="../custom/js/admin/country.js"></script>
+<script src="../custom/js/admin/graft.js"></script>
 
 
 <!--Country-->
@@ -255,6 +229,51 @@
                             <td class="text-center">
                                 <button class="btn btn-warning edit-country text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
                                 <button class="btn btn-danger delete-country text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--Graft-->
+<script id="graftTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2">Graft</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
+                                data-target="#graftModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="graftTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+                            <th class="frequency">Frequency</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ frequency }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-graft text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
                             </td>
                         </tr>
                         {{/this}}

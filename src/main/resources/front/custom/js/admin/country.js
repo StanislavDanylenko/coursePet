@@ -59,7 +59,7 @@ function createCountry() {
         button.unbind();
         button.bind('click', saveCountry);
         // $('#countryOperation')._t('addCountry');
-        getGrafts();
+        getGraftsCountry();
     }
 
 
@@ -241,7 +241,7 @@ function getGraftsId(data) {
 
 /////////////
 
-function getGrafts() {
+function getGraftsCountry() {
     $.ajax({
         url: HOST + "/graft/",
         type: "GET",
