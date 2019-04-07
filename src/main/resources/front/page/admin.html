@@ -126,7 +126,6 @@
         </div>
     </div>
     <!---->
-    <!--Modals here-->
     <div class="modal fade" id="graftModal" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
@@ -151,6 +150,31 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary action-graft">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="modal fade" id="diseaseModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Disease action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group" hidden>
+                        <label for="diseaseName" id="diseaseIdLabel">Disease Id</label>
+                        <input type="text" class="form-control" id="diseaseId">
+                    </div>
+                    <div class="form-group">
+                        <label for="diseaseName" id="diseaseNameLabel">Disease Name</label>
+                        <input type="text" class="form-control" id="diseaseName">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-disease">Save changes</button>
                 </div>
             </div>
         </div>
@@ -191,6 +215,7 @@
 <script src="../custom/js/admin/admin.js"></script>
 <script src="../custom/js/admin/country.js"></script>
 <script src="../custom/js/admin/graft.js"></script>
+<script src="../custom/js/admin/disease.js"></script>
 
 
 <!--Country-->
@@ -274,6 +299,49 @@
                             <td class="text-center">
                                 <button class="btn btn-warning edit-graft text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
                                 <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--Disease-->
+<script id="diseaseTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2">Disease</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-disease" data-toggle="modal"
+                                data-target="#diseaseModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="diseaseTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-disease text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
                             </td>
                         </tr>
                         {{/this}}
