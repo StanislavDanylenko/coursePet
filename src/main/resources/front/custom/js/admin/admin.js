@@ -1,6 +1,7 @@
 var countryTableTemplate;
 var graftTableTemplate;
 var diseaseTableTemplate;
+var userTableTemplate;
 
 $(document).ready(function() {
 
@@ -19,6 +20,7 @@ $(document).ready(function() {
     loadCountries();
     loadGrafts();
     loadDiseases();
+    loadUsers();
 
 });
 
@@ -33,12 +35,9 @@ function checkHash() {
         case "#disease": getDiseases();
             refreshMenu("#disease");
             break;
-       /* case "#profile": getOrdinalUser();
+        case "#users": getUsers();
+            refreshMenu("#user");
             break;
-        case "#statistic": getStatistic();
-            break;
-        case "#home": renderHome();
-            break;*/
         default: renderHome();
     }
 }
@@ -72,6 +71,13 @@ function loadDiseases() {
     $(document).on('click', '.add-disease', createDisease);
     $(document).on('click', '.edit-disease', editDisease);
     $(document).on('click', '.delete-disease', deleteDisease);
+}
+
+function loadUsers() {
+    userTableTemplate = Handlebars.compile($('#userTemplate').html());
+
+    $(document).on('click', '.add-user', createUser);
+    $(document).on('click', '.delete-user', deleteUser);
 }
 
 function setUpUserWorkspace() {

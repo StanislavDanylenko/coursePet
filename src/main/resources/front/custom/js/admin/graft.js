@@ -110,7 +110,7 @@ function saveGraft() {
             // alert($.i18n._('saveGraftError'));
         }
     });
-
+    $('#graftModal').find('input, select').val('');
 }
 
 function updateGraft(graft) {

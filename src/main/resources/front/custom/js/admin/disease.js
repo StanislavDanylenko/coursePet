@@ -109,7 +109,7 @@ function saveDisease() {
             // alert($.i18n._('saveDiseaseError'));
         }
     });
-
+    $('#diseaseModal').find('input, select').val('');
 }
 
 function updateDisease(disease) {
