@@ -36,7 +36,9 @@ function checkHash() {
             refreshMenu("#disease");
             break;
         case "#users": getUsers();
-            refreshMenu("#user");
+            refreshMenu("#users");
+            break;
+        case "#profile": updateProfile();
             break;
         default: renderHome();
     }

@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity signup(@RequestBody RegistrationRequestModel data) throws UserRegistrationException {
+    public ResponseEntity addAdmin(@RequestBody RegistrationRequestModel data) throws UserRegistrationException {
 
         UserDetails userDetails;
 
