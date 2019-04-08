@@ -20,6 +20,10 @@
 
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </head>
 
 <body>
@@ -96,65 +100,7 @@
                 <!-- Primary table end -->
 
                 <!--Animal select-->
-                <div class="animal-area my-area">
-                    <div class="card-area">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="card card-bordered">
-                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
-                                    <div class="card-body">
-                                        <h5 class="title">Name1</h5>
-                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="card card-bordered">
-                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
-                                    <div class="card-body">
-                                        <h5 class="title">Name2</h5>
-                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="card card-bordered">
-                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
-                                    <div class="card-body">
-                                        <h5 class="title">Name3</h5>
-                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="card card-bordered">
-                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
-                                    <div class="card-body">
-                                        <h5 class="title">Name4</h5>
-                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="card card-bordered">
-                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
-                                    <div class="card-body">
-                                        <h5 class="title">Name5</h5>
-                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 mt-5">
-                                <div class="card card-bordered">
-                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
-                                    <div class="card-body">
-                                        <a href="#" class="btn btn-success btn-lg">ADD NEW</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="animal-area my-area"></div>
                 <!--Action section-->
                 <div class="col mt-5 action-area my-area">
                     <div class="card">
@@ -181,22 +127,65 @@
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
                                 <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                    <p>1</p>
+                                    <div class="m-5">
+                                        <div class="row">
+                                            <div class="col justify-content-center align-self-center m-2">
+                                                <img src="../custom/img/card.jpg" alt="image"/>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label for="animalName" id="animalNameLabel" class="animal-name">Name</label>
+                                                    <input class="form-control" id="animalName" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="animalGender" id="animalGenderLabel" class="animal-name">Gender</label>
+                                                    <input class="form-control" id="animalGender" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="animalBirth" id="animalBirthLabel" class="animal-name">Date of birth</label>
+                                                    <input class="form-control" id="animalBirth" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="animalWeight" id="animalWeightLabel" class="animal-name">Weight</label>
+                                                    <input class="form-control" id="animalWeight" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="animalHeight" id="animalHeightLabel" class="animal-name">Height</label>
+                                                    <input class="form-control" id="animalHeight" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="animalLength" id="animalLengthLabel" class="animal-name">Length</label>
+                                                    <input class="form-control" id="animalLength" readonly>
+                                                </div>
+                                                <button class="edit-animal btn btn-success">Edit</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                    <p>2</p>
+                                    <div class="animal-grafts"></div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                    <p>3</p>
+                                    <div class="animal-diseases"></div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                    <p>4</p>
+                                    <div class="animal-sd"></div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-contact3" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                    <p>5</p>
+                                    <div class="row justify-content-center">
+                                        <div  style="width: 250px; height: 250px;" class="m-5">
+                                            <!--<img id="QR" src="" alt="QR here"/>-->
+                                        </div>
+                                    </div>
+                                    <div class="text-center"><p class="m-1">SmartCard ID: <b id="SCID"></b></p></div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-contact4" role="tabpanel" aria-labelledby="pills-contact-tab">
                                     <div id="chartdiv"></div>
+                                     <div class="form-group ui-widget">
+                                         <label for="countriesAutocomplete" id="countrySearchLabel">Country</label>
+                                         <input class="form-control" id="countriesAutocomplete" />
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -278,6 +267,8 @@
     <!-- page container area end -->
     <!-- jquery latest version -->
     <script src="../lib/js/jquery-2.2.4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <!-- bootstrap 4 js -->
     <script src="../lib/js/popper.min.js"></script>
     <script src="../lib/js/bootstrap.min.js"></script>
@@ -287,6 +278,9 @@
     <!-- Start datatable js -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <!--Handlebars-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
 
     <!-- Map -->
     <script src="https://www.amcharts.com/lib/4/core.js"></script>
@@ -307,8 +301,178 @@
     <script src="../custom/js/admin/profile.js"></script>
     <script src="../custom/js/user/user.js"></script>
     <script src="../custom/js/user/statistic.js"></script>
+    <script src="../custom/js/user/animal.js"></script>
 
     <script src="../custom/js/user/map.js"></script>
+
+    <!--Animal card-->
+    <script id="animalCardTemplate" type="text/x-handlebars-template">
+        <!--Animal select-->
+        <div class="animal-area my-area">
+            <div class="card-area">
+                <div class="row">
+                    {{#this}}
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="card card-bordered">
+                            <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                            <div class="card-body">
+                                <h5 class="title"> {{ name }}</h5>
+                                <a href="#" class="btn btn-primary actions-button choose-animal" animal-id="{{ id }}">Choose</a>
+                            </div>
+                        </div>
+                    </div>
+                    {{/this}}
+                    <div class="col-lg-4 col-md-6 mt-5">
+                        <div class="card card-bordered">
+                            <!--<img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">-->
+                            <div class="card-body">
+                                <a href="#" class="btn btn-success btn-lg add-animal">ADD NEW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!--Disease-->
+    <script id="diseaseTemplate" type="text/x-handlebars-template">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex mb-3">
+                        <div><h4 class="header-title mt-2">Disease</h4></div>
+                        <div>
+                            <button type="button" class="btn btn-primary ml-2 add-disease" data-toggle="modal"
+                                    data-target="#diseaseModal"><span class="fa fa-plus"> </span>Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="data-tables datatable-dark">
+                        <table id="diseaseTableTemplate" class="display responsive nowrap" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th class="id" hidden>Id</th>
+                                <th class="name">Name</th>
+
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#this}}
+                            <tr>
+                                <td hidden>{{ id }}</td>
+                                <td>{{ name }}</td>
+
+                                <td class="text-center">
+                                    <button class="btn btn-warning edit-disease text-td edit" type="button">Edit <i
+                                            class="fa fa-edit"></i></button>
+                                    <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete
+                                        <i class="fa fa-close"></i></button>
+                                    </button>
+                                </td>
+                            </tr>
+                            {{/this}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!--Graft-->
+    <script id="graftTemplate" type="text/x-handlebars-template">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex mb-3">
+                        <div><h4 class="header-title mt-2">Graft</h4></div>
+                        <div>
+                            <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
+                                    data-target="#graftModal"><span class="fa fa-plus"> </span>Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="data-tables datatable-dark">
+                        <table id="graftTableTemplate" class="display responsive nowrap" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th class="id" hidden>Id</th>
+                                <th class="name">Name</th>
+                                <th class="frequency">Frequency</th>
+
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#this}}
+                            <tr>
+                                <td hidden>{{ id }}</td>
+                                <td>{{ name }}</td>
+                                <td>{{ frequency }}</td>
+
+                                <td class="text-center">
+                                    <button class="btn btn-warning edit-graft text-td edit" type="button">Edit <i
+                                            class="fa fa-edit"></i></button>
+                                    <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete
+                                        <i class="fa fa-close"></i></button>
+                                    </button>
+                                </td>
+                            </tr>
+                            {{/this}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!--Graft-->
+    <script id="smartDeviceTemplate" type="text/x-handlebars-template">
+        <div class="col-12 mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex mb-3">
+                        <div><h4 class="header-title mt-2">SD</h4></div>
+                        <div>
+                            <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
+                                    data-target="#graftModal"><span class="fa fa-plus"> </span>Add
+                            </button>
+                        </div>
+                    </div>
+                    <div class="data-tables datatable-dark">
+                        <table id="smartDeviceTableTemplate" class="display responsive nowrap" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th class="id" hidden>Id</th>
+                                <th class="mac">mac</th>
+                                <th class="name">Name</th>
+
+                                <th class="status">Status</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {{#this}}
+                            <tr>
+                                <td hidden>{{ id }}</td>
+                                <td>{{ mac }}</td>
+                                <td>{{ name }}</td>
+
+                                <td class="text-center">
+                                    {{ isActive }}
+                                </td>
+                            </tr>
+                            {{/this}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
 </body>
 
 </html>

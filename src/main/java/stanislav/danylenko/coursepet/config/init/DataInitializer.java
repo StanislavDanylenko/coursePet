@@ -23,6 +23,7 @@ import stanislav.danylenko.coursepet.service.impl.associative.CountryGraftServic
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 @Slf4j
@@ -63,8 +64,12 @@ public class DataInitializer implements CommandLineRunner {
 
     @Autowired
     private CountryGraftService countryGraftService;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private AtomicLong smartCardIdCreator;
 
     @Override
     public void run(String... args) throws Exception {
@@ -152,6 +157,7 @@ public class DataInitializer implements CommandLineRunner {
             animal.setHeight(40d);
             animal.setGender(Gender.MALE);
             animal.setUser((User)user);
+            animal.setSmartCardId(smartCardIdCreator.incrementAndGet() + "");
             animalService.save(animal);
             log.info("Created Animal {Animal}");
         }

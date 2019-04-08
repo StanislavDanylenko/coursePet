@@ -73,6 +73,9 @@ public class AnimalService implements SimpleIdService<Animal> {
         return animalRepository.findByUser_CountryId(userCountryId);
     }
 
+    public List<Animal> findAnimalsByUserId(Long userId) {
+        return animalRepository.findByUserId(userId);
+    }
 
     public Animal findByName(String name) {
         return animalRepository.findByName(name);

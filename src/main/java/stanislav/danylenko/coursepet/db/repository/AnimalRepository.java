@@ -11,4 +11,5 @@ public interface AnimalRepository extends JpaRepository<Animal, Long> {
 
     Animal findByName(String name);
     List<Animal> findByUser_CountryId(Long userCountryId);
+    List<Animal> findByUserId(Long userId);
 }

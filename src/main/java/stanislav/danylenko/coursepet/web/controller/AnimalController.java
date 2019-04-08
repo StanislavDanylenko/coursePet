@@ -12,6 +12,7 @@ import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
 import stanislav.danylenko.coursepet.web.model.IsAvailableCountry;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 @RestController
 @RequestMapping("/animal")
@@ -36,6 +37,12 @@ public class AnimalController {
     public @ResponseBody
     ResponseEntity<AnimalFullInfoDto> getAnimalFullInfo(@PathVariable Long id) {
         return new ResponseEntity<>(service.getAnimalFullInfo(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/user/{id}")
+    public @ResponseBody
+    ResponseEntity<List<Animal>> getAnimalsByUser(@PathVariable Long id) {
+        return new ResponseEntity<>(service.findAnimalsByUserId(id), HttpStatus.OK);
     }
 
     @GetMapping("/country/{countryId}/animal/{animalId}")

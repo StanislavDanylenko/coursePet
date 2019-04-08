@@ -1,3 +1,8 @@
+var animalCardTemplate;
+var diseaseTemplate;
+var graftTemplate;
+var smartDeviceTemplate;
+
 $(document).ready(function() {
 
     setUpUserWorkspace();
@@ -14,6 +19,7 @@ $(document).ready(function() {
     loadProfile();
     loadMenuActions();
     getUser();
+    loadAnimal();
 
 });
 
@@ -54,6 +60,18 @@ function loadProfile() {
     $(document).on('click', '.profile', getProfileCountries);
 }
 
+function loadAnimal() {
+
+    animalCardTemplate = Handlebars.compile($('#animalCardTemplate').html());
+    diseaseTemplate = Handlebars.compile($('#diseaseTemplate').html());
+    graftTemplate = Handlebars.compile($('#graftTemplate').html());
+    smartDeviceTemplate = Handlebars.compile($('#smartDeviceTemplate').html());
+
+    $(document).on('click', '.choose-animal', chooseAnimal);
+    /*$(document).on('click', '.statistic-button', showStatistic);
+    $(document).on('click', '.actions-button', showAnimalActions);*/
+}
+
 function setUpUserWorkspace() {
     try{
         loadUserLS();
@@ -76,6 +94,7 @@ function showStatistic() {
 function showAnimalList() {
     $('.my-area').hide();
     $('.animal-area').show();
+    getAnimals();
 }
 
 function showAnimalActions() {
@@ -94,7 +113,8 @@ function getUser() {
             }
         },
         success: function (data) {
-           CUSTOMER = data
+            CUSTOMER = data;
+            getAnimals();
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('getUserError'));
