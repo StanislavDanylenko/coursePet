@@ -26,7 +26,7 @@ function logout() {
     window.location = 'index.html'
 }
 
-function loadProfile() {
+function loadProfileAudit() {
 
     $.ajax({
         url: HOST + "/user/" + USER.id,

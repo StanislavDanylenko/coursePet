@@ -1,5 +1,4 @@
 function getProfile() {
-    getCountries();
     console.log('in the get profile method, id = ' + USER.id);
     $.ajax({
         url: HOST + "/user/" + USER.id,
@@ -14,6 +13,9 @@ function getProfile() {
             $('#userLocalization').val(data.localization);
             $('#userCountry').val(data.country.id);
             $('.profile-update')[0].click();
+
+            updateUserLS(data);
+            $('.user-name').text(data.username);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('getUserError'));

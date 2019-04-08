@@ -15,7 +15,7 @@ $(document).ready(function() {
 
     checkHash();
 
-    loadProfile();
+    loadProfileAudit();
 
     loadCountries();
     loadGrafts();
@@ -99,5 +99,4 @@ function setUpUserWorkspace() {
 
 function renderHome() {
     $(MAIN_CONTAINER).empty().append('<h1> USER WORKSPACE HERE</h1>');
-
 }

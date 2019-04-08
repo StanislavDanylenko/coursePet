@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="../lib/css/styles.css">
     <link rel="stylesheet" href="../lib/css/responsive.css">
 
+    <link rel="stylesheet" href="../custom/style/map.css">
+
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
@@ -40,29 +42,19 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li class="active">
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="ti-dashboard"></i><span>Dashboard</span></a>
+                                <a href="javascript:void(0)" class="animals-button" aria-expanded="true"><i class="ti-dashboard"></i><span>Animals</span></a>
                                 <ul class="collapse">
                                     <li class="active"><a href="#">Active Menu Item</a></li>
                                     <li><a href="#">Menuitem 2</a></li>
                                     <li><a href="#">Menuitem 3</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#"><i class="ti-map-alt"></i><span>Not expanding</span></a></li>
+                            <!--<li><a href="#"><i class="ti-map-alt"></i><span>Not expanding</span></a></li>-->
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
-                                    <span>Multi
-                                        level menu</span></a>
+                                    <span>Statistic</span></a>
                                 <ul class="collapse">
-                                    <li><a href="#">Item level (1)</a></li>
-                                    <li><a href="#">Item level (1)</a></li>
-                                    <li><a href="#" aria-expanded="true">Item level (1)</a>
-                                        <ul class="collapse">
-                                            <li><a href="#">Item level (2)</a></li>
-                                            <li><a href="#">Item level (2)</a></li>
-                                            <li><a href="#">Item level (2)</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="#">Item level (1)</a></li>
+                                    <li><a href="#" class="statistic-button">Breed in countries</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -89,11 +81,10 @@
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="../lib/images/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Kumkum Rai <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">user<i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="#">Message</a>
-                                <a class="dropdown-item" href="#">Settings</a>
-                                <a class="dropdown-item" href="#">Log Out</a>
+                                <a class="dropdown-item profile" href="#">Profile</a>
+                                <a class="dropdown-item log-out" href="#">Log Out</a>
                             </div>
                         </div>
                     </div>
@@ -103,122 +94,179 @@
             <div class="main-content-inner">
                 <!-- MAIN CONTENT GOES HERE -->
                 <!-- Primary table end -->
-                <!-- Dark table start -->
-                <div class="col-12 mt-5">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="header-title">Data Table Dark</h4>
-                            <div class="data-tables datatable-dark">
-                                <table id="dataTable" class="text-center">
-                                    <thead class="text-capitalize">
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Position</th>
-                                        <th>Office</th>
-                                        <th>Age</th>
-                                        <th>Start Date</th>
-                                        <th>salary</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>Airi Satou</td>
-                                        <td>Accountant</td>
-                                        <td>Tokyo</td>
-                                        <td>33</td>
-                                        <td>2008/11/28</td>
-                                        <td>$162,700</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Angelica Ramos</td>
-                                        <td>Chief Executive Officer (CEO)</td>
-                                        <td>London</td>
-                                        <td>47</td>
-                                        <td>2009/10/09</td>
-                                        <td>$1,200,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Ashton Cox</td>
-                                        <td>Junior Technical Author</td>
-                                        <td>San Francisco</td>
-                                        <td>66</td>
-                                        <td>2009/01/12</td>
-                                        <td>$86,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13</td>
-                                        <td>$132,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011/06/07</td>
-                                        <td>$206,850</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td>Pre-Sales Support</td>
-                                        <td>New York</td>
-                                        <td>29</td>
-                                        <td>2011/12/12</td>
-                                        <td>$106,450</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bruno Nash</td>
-                                        <td>Software Engineer</td>
-                                        <td>Edinburgh</td>
-                                        <td>21</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bradley Greer</td>
-                                        <td>Software Engineer</td>
-                                        <td>London</td>
-                                        <td>41</td>
-                                        <td>2012/10/13</td>
-                                        <td>$132,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Brenden Wagner</td>
-                                        <td>Software Engineer</td>
-                                        <td>San Francisco</td>
-                                        <td>28</td>
-                                        <td>2011/06/07</td>
-                                        <td>$206,850</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Caesar Vance</td>
-                                        <td>Pre-Sales Support</td>
-                                        <td>New York</td>
-                                        <td>29</td>
-                                        <td>2011/12/12</td>
-                                        <td>$106,450</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Bruno Nash</td>
-                                        <td>Software Engineer</td>
-                                        <td>Edinburgh</td>
-                                        <td>21</td>
-                                        <td>2012/03/29</td>
-                                        <td>$433,060</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+
+                <!--Animal select-->
+                <div class="animal-area my-area">
+                    <div class="card-area">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mt-5">
+                                <div class="card card-bordered">
+                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                                    <div class="card-body">
+                                        <h5 class="title">Name1</h5>
+                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-5">
+                                <div class="card card-bordered">
+                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                                    <div class="card-body">
+                                        <h5 class="title">Name2</h5>
+                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-5">
+                                <div class="card card-bordered">
+                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                                    <div class="card-body">
+                                        <h5 class="title">Name3</h5>
+                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-5">
+                                <div class="card card-bordered">
+                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                                    <div class="card-body">
+                                        <h5 class="title">Name4</h5>
+                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-5">
+                                <div class="card card-bordered">
+                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                                    <div class="card-body">
+                                        <h5 class="title">Name5</h5>
+                                        <a href="#" class="btn btn-primary actions-button">Choose</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mt-5">
+                                <div class="card card-bordered">
+                                    <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                                    <div class="card-body">
+                                        <a href="#" class="btn btn-success btn-lg">ADD NEW</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- Dark table end -->
+                <!--Action section-->
+                <div class="col mt-5 action-area my-area">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Info</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Grafts</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact1-tab" data-toggle="pill" href="#pills-contact1" role="tab" aria-controls="pills-contact" aria-selected="false">Diseases</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact" aria-selected="false">Smart Devices</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3" role="tab" aria-controls="pills-contact" aria-selected="false">Smart Card</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4" role="tab" aria-controls="pills-contact" aria-selected="false">Country</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content" id="pills-tabContent">
+                                <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                                    <p>1</p>
+                                </div>
+                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                    <p>2</p>
+                                </div>
+                                <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <p>3</p>
+                                </div>
+                                <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <p>4</p>
+                                </div>
+                                <div class="tab-pane fade" id="pills-contact3" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <p>5</p>
+                                </div>
+                                <div class="tab-pane fade" id="pills-contact4" role="tabpanel" aria-labelledby="pills-contact-tab">
+                                    <div id="chartdiv"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--Statistics-->
+                <div class="col mt-5 statistic-area my-area">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1>Statistic here</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- main content area end -->
+        <!---->
+        <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal" hidden><span class="fa fa-plus"> </span></button>
+        <!---->
+        <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">profile action</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group" hidden>
+                                    <label for="profileId" id="profileIdLabel">user Id</label>
+                                    <input type="text" class="form-control" id="profileId">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userLocalization" id="userLocalizationLabel">Localization</label>
+                                    <select class="form-control" id="userLocalization" style="height: auto !important;">
+                                        <option value="UKRAINIAN">Українська</option>
+                                        <option value="ENGLISH">English</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="userCountry" id="userCountryLabel">Country</label>
+                                    <select class="form-control" id="userCountry" style="height: auto !important;"></select>
+                                </div>
+                            </div>
+                            <div class="col bg-light">
+                                <h3>Change password</h3>
+                                <div class="form-group">
+                                    <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
+                                    <input type="password" class="form-control" id="userOldPassword" name="userOldPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
+                                    <input type="password" class="form-control" id="userNewPassword" name="userNewPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new password</label>
+                                    <input type="password" class="form-control" id="userNewPasswordRepeat" name="userNewPasswordRepeat">
+                                </div>
+                                <button type="button" class="btn btn-primary update-password">Update password</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary action-profile">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- footer area start-->
         <footer>
             <div class="footer-area">
@@ -240,8 +288,23 @@
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
+    <!-- Map -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
+    <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
     <!-- others plugins -->
     <script src="../lib/js/scripts.js"></script>
+    <script src="../custom/js/audit.js"></script>
+    <script src="../custom/js/l10n/jquery.i18n.js"></script>
+    <script src="../custom/js/l10n/l10n.js"></script>
+    <script src="../custom/js/common/common.js"></script>
+    <script src="../custom/js/common/constants.js"></script>
+    <script src="../custom/js/admin/profile.js"></script>
+    <script src="../custom/js/user/user.js"></script>
+
+    <script src="../custom/js/user/map.js"></script>
 </body>
 
 </html>
