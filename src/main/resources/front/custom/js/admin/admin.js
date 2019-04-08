@@ -21,6 +21,7 @@ $(document).ready(function() {
     loadGrafts();
     loadDiseases();
     loadUsers();
+    loadProfile();
 
 });
 
@@ -37,8 +38,6 @@ function checkHash() {
             break;
         case "#users": getUsers();
             refreshMenu("#users");
-            break;
-        case "#profile": updateProfile();
             break;
         default: renderHome();
     }
@@ -80,6 +79,13 @@ function loadUsers() {
 
     $(document).on('click', '.add-user', createUser);
     $(document).on('click', '.delete-user', deleteUser);
+}
+
+function loadProfile() {
+
+    $(document).on('click', '.update-password', updateUserPassword);
+    $(document).on('click', '.action-profile', updateProfile);
+    $(document).on('click', '.profile', getProfileCountries);
 }
 
 function setUpUserWorkspace() {

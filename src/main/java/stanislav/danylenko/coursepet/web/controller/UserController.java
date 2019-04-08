@@ -3,6 +3,7 @@ package stanislav.danylenko.coursepet.web.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -14,6 +15,7 @@ import stanislav.danylenko.coursepet.db.enumeration.Role;
 import stanislav.danylenko.coursepet.exception.UserRegistrationException;
 import stanislav.danylenko.coursepet.service.impl.CountryService;
 import stanislav.danylenko.coursepet.service.impl.UserService;
+import stanislav.danylenko.coursepet.web.model.UpdatePasswordModel;
 import stanislav.danylenko.coursepet.web.model.UserDto;
 import stanislav.danylenko.coursepet.web.model.auth.RegistrationRequestModel;
 import stanislav.danylenko.coursepet.web.model.auth.UserDetailsDto;
@@ -108,6 +110,20 @@ public class UserController {
                                      .collect(toList());
         dto.setRoles(roles);
         return ok(dto);
+    }
+
+    ///////////
+
+    @PostMapping("/password")
+    @PreAuthorize("hasAuthority('ADMIN') or hasAuthority('USER')")
+    public @ResponseBody
+    ResponseEntity<User> updatePassword(@RequestBody UpdatePasswordModel userModel) {
+        User user = service.find(userModel.getId());
+        boolean isChanged = service.changePassword(userModel);
+        if (isChanged) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(user, HttpStatus.CONFLICT);
     }
     
 }

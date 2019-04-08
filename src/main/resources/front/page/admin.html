@@ -18,7 +18,8 @@
 
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js">
+    <link rel="stylesheet" type="text/css"
+          href="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 </head>
@@ -42,7 +43,8 @@
             <div class="menu-inner">
                 <nav>
                     <ul class="metismenu" id="menu">
-                        <li id="country" class="active"><a href="#country"><i class="fa fa-globe"></i><span>Country</span></a></li>
+                        <li id="country" class="active"><a href="#country"><i
+                                class="fa fa-globe"></i><span>Country</span></a></li>
                         <li id="graft"><a href="#graft"><i class="fa fa-list-alt"></i><span>Graft</span></a></li>
                         <li id="disease"><a href="#disease"><i class="fa fa-medkit"></i><span>Disease</span></a></li>
                         <li id="users"><a href="#users"><i class="fa fa-users"></i><span>Users</span></a></li>
@@ -73,7 +75,7 @@
                         <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username<i
                                 class="fa fa-angle-down"></i></h4>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item profile" href="#profile">Profile</a>
+                            <a class="dropdown-item profile" href="#">Profile</a>
                             <a class="dropdown-item log-out" href="#">Log Out</a>
                         </div>
                     </div>
@@ -114,7 +116,7 @@
                     </div>
                     <div class="form-group">
                         <label for="countryGrafts" id="countryGraftsLabel">Country Grafts</label>
-                        <select multiple  class="form-control" id="countryGrafts">
+                        <select multiple class="form-control" id="countryGrafts">
                         </select>
                     </div>
                 </div>
@@ -213,6 +215,60 @@
         </div>
     </div>
     <!---->
+    <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal" hidden><span class="fa fa-plus"> </span></button>
+    <!---->
+    <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">profile action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" hidden>
+                                <label for="profileId" id="profileIdLabel">user Id</label>
+                                <input type="text" class="form-control" id="profileId">
+                            </div>
+                            <div class="form-group">
+                                <label for="userLocalization" id="userLocalizationLabel">Localization</label>
+                                <select class="form-control" id="userLocalization" style="height: auto !important;">
+                                    <option value="UKRAINIAN">Українська</option>
+                                    <option value="ENGLISH">English</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="userCountry" id="userCountryLabel">Country</label>
+                                <select class="form-control" id="userCountry" style="height: auto !important;"></select>
+                            </div>
+                        </div>
+                        <div class="col bg-light">
+                            <h3>Change password</h3>
+                            <div class="form-group">
+                                <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
+                                <input type="password" class="form-control" id="userOldPassword" name="userOldPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
+                                <input type="password" class="form-control" id="userNewPassword" name="userNewPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new password</label>
+                                <input type="password" class="form-control" id="userNewPasswordRepeat" name="userNewPasswordRepeat">
+                            </div>
+                            <button type="button" class="btn btn-primary update-password">Update password</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-profile">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
     <!-- footer area start-->
     <footer>
         <div class="footer-area">
@@ -249,6 +305,7 @@
 <script src="../custom/js/admin/graft.js"></script>
 <script src="../custom/js/admin/disease.js"></script>
 <script src="../custom/js/admin/a-user.js"></script>
+<script src="../custom/js/admin/profile.js"></script>
 
 
 <!--Country-->
@@ -285,8 +342,11 @@
                             <td>{{ grafts }}</td>
 
                             <td class="text-center">
-                                <button class="btn btn-warning edit-country text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
-                                <button class="btn btn-danger delete-country text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
+                                <button class="btn btn-warning edit-country text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-country text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
                             </td>
                         </tr>
                         {{/this}}
@@ -330,8 +390,11 @@
                             <td>{{ frequency }}</td>
 
                             <td class="text-center">
-                                <button class="btn btn-warning edit-graft text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
-                                <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
+                                <button class="btn btn-warning edit-graft text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
                             </td>
                         </tr>
                         {{/this}}
@@ -373,8 +436,11 @@
                             <td>{{ name }}</td>
 
                             <td class="text-center">
-                                <button class="btn btn-warning edit-disease text-td edit" type="button">Edit <i class="fa fa-edit"></i></button>
-                                <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
+                                <button class="btn btn-warning edit-disease text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
                             </td>
                         </tr>
                         {{/this}}
@@ -416,7 +482,9 @@
                             <td>{{ username }}</td>
 
                             <td class="text-center">
-                                <button class="btn btn-danger delete-user text-td changeStatus" type="button"> Delete <i class="fa fa-close"></i></button>                               </button>
+                                <button class="btn btn-danger delete-user text-td changeStatus" type="button"> Delete <i
+                                        class="fa fa-close"></i></button>
+                                </button>
                             </td>
                         </tr>
                         {{/this}}
