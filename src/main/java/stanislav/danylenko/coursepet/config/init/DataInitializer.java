@@ -227,6 +227,7 @@ public class DataInitializer implements CommandLineRunner {
             smartDevice.setName(SmartDeviceService.DEFAULT_SMART_DEVICE);
             smartDevice.setBatteryLevel(100d);
             smartDevice.setMac(SmartDeviceService.DEFAULT_SMART_DEVICE);
+            smartDevice.setIsActive(false);
             smartDeviceService.save(smartDevice);
             log.info("Created SmartDevice {SmartDevice}");
 

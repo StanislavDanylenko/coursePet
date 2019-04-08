@@ -13,6 +13,7 @@ $(document).ready(function() {
     loadProfileAudit();
     loadProfile();
     loadMenuActions();
+    getUser();
 
 });
 
@@ -69,6 +70,7 @@ function renderHome() {
 function showStatistic() {
     $('.my-area').hide();
     $('.statistic-area').show();
+    getStatisticData();
 }
 
 function showAnimalList() {
@@ -79,4 +81,24 @@ function showAnimalList() {
 function showAnimalActions() {
     $('.my-area').hide();
     $('.action-area').show();
+}
+
+function getUser() {
+    console.log('in the get profile method, id = ' + USER.id);
+    $.ajax({
+        url: HOST + "/user/" + USER.id,
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+           CUSTOMER = data
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            // alert($.i18n._('getUserError'));
+            alert('error');
+        }
+    });
 }

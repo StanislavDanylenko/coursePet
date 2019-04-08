@@ -1,4 +1,5 @@
 var USER = {};
+var CUSTOMER = {};
 
 function saveUserLS(user) {
     localStorage.setItem('USER', JSON.stringify(user));

@@ -15,7 +15,7 @@ public class StatisticController {
     @Autowired
     private StatisticService statisticService;
 
-    @GetMapping("/test/{countryId}")
+    @GetMapping("/{countryId}")
     public @ResponseBody
     ResponseEntity<List<CountByBreedInCountryStatisticDto>> getStat(@PathVariable("countryId") Long countryId) {
         return ResponseEntity.ok(statisticService.getCountByBreedInCountryStatistic(countryId));

@@ -26,6 +26,9 @@ public class SmartDevice implements Serializable {
     @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private Boolean isActive;
+
     private Double batteryLevel = 0.0;
 
     @JsonIgnore

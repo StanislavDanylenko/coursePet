@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Hello</title>
+    <title>PETREW user</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
     <link rel="stylesheet" href="../lib/css/font-awesome.min.css">
@@ -205,8 +205,10 @@
                 <!--Statistics-->
                 <div class="col mt-5 statistic-area my-area">
                     <div class="card">
-                        <div class="card-body">
-                            <h1>Statistic here</h1>
+                        <div class="card-body text-center m-5">
+                            <div id="canvas">
+                                <canvas id="popChart" width="600" height="400"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -268,11 +270,9 @@
             </div>
         </div>
         <!-- footer area start-->
-        <footer>
-            <div class="footer-area">
-                <p>© Copyright 2018. All right reserved. Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-            </div>
-        </footer>
+        <div class="footer-area">
+            <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        </div>
         <!-- footer area end-->
     </div>
     <!-- page container area end -->
@@ -294,6 +294,9 @@
     <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
     <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
+    <!--Charts-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
     <!-- others plugins -->
     <script src="../lib/js/scripts.js"></script>
     <script src="../custom/js/audit.js"></script>
@@ -303,6 +306,7 @@
     <script src="../custom/js/common/constants.js"></script>
     <script src="../custom/js/admin/profile.js"></script>
     <script src="../custom/js/user/user.js"></script>
+    <script src="../custom/js/user/statistic.js"></script>
 
     <script src="../custom/js/user/map.js"></script>
 </body>
