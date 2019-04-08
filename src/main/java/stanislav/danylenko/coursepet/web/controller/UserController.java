@@ -21,6 +21,7 @@ import stanislav.danylenko.coursepet.web.model.auth.RegistrationRequestModel;
 import stanislav.danylenko.coursepet.web.model.auth.UserDetailsDto;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -70,7 +71,7 @@ public class UserController {
             user.setCountry(countryService.getDefaultCountry());
             user.setLocalization(Localization.ENGLISH);
 
-            Set<Role> roles = new HashSet<>();
+            List<Role> roles = new ArrayList<>();
             roles.add(Role.ADMIN);
             user.setRoles(roles);
 

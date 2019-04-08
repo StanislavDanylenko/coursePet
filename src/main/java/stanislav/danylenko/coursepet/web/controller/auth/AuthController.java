@@ -26,8 +26,9 @@ import stanislav.danylenko.coursepet.web.model.auth.AuthenticationRequestModel;
 import stanislav.danylenko.coursepet.web.model.auth.AuthenticationResponseModel;
 import stanislav.danylenko.coursepet.web.model.auth.RegistrationRequestModel;
 
-import javax.persistence.Column;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.springframework.http.ResponseEntity.ok;
@@ -65,9 +66,10 @@ public class AuthController {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(username, data.getPassword()));
             String token = jwtTokenProvider.createToken(username, user.getRoles());
 
-            AuthenticationResponseModel rersponseModel = new AuthenticationResponseModel(id, token);
 
-            return ok(rersponseModel);
+            AuthenticationResponseModel responseModel = new AuthenticationResponseModel(id, token, user.getRoles().get(0).name());
+
+            return ok(responseModel);
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("Invalid username/password supplied");
         }
@@ -92,7 +94,7 @@ public class AuthController {
             user.setCountry(countryService.getDefaultCountry());
             user.setLocalization(Localization.ENGLISH);
 
-            Set<Role> roles = new HashSet<>();
+            List<Role> roles = new ArrayList<>();
             roles.add(Role.USER);
             user.setRoles(roles);
 

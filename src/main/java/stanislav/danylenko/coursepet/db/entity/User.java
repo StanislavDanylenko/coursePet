@@ -39,7 +39,7 @@ public class User implements UserDetails {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
-    private Set<Role> roles = new HashSet<>();
+    private List<Role> roles = new ArrayList<>();
 
     @Enumerated
     private Localization localization;
@@ -52,7 +52,7 @@ public class User implements UserDetails {
 
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Animal> animals = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)

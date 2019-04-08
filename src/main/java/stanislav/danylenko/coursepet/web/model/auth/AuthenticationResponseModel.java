@@ -14,5 +14,7 @@ public class AuthenticationResponseModel implements Serializable {
     private Long id;
     @NonNull
     private String token;
+    @NonNull
+    private String role;
 
 }

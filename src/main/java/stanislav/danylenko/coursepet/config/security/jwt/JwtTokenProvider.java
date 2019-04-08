@@ -15,6 +15,7 @@ import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Component
@@ -34,7 +35,7 @@ public class JwtTokenProvider {
         secretKey = Base64.getEncoder().encodeToString(secretKey.getBytes());
     }
 
-    public String createToken(String username, Set<Role> roles) {
+    public String createToken(String username, List<Role> roles) {
 
         Claims claims = Jwts.claims().setSubject(username);
         claims.put("roles", roles);

@@ -48,7 +48,11 @@ function loginUser() {
         success: function (response, status, xhr) {
             console.log('ok');
             saveUserLS(response);
-            window.location = 'admin.html'
+            if(response.role === 'ADMIN') {
+                window.location = 'admin.html'
+            } else {
+                window.location = 'user.html'
+            }
         },
         error: function(xhr, ajaxOptions, thrownError) {
             console.log('bad');
