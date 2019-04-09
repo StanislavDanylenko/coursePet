@@ -149,7 +149,7 @@
                                                     <label for="animalLength" id="animalLengthLabel" class="animal-name">Length</label>
                                                     <input class="form-control" id="animalLength" readonly>
                                                 </div>
-                                                <button class="edit-animal btn btn-success">Edit</button>
+                                                <button class="edit-animal btn btn-success edit-animal" data-toggle="modal" data-target="#animalUpdateModal">Edit</button>
                                             </div>
                                         </div>
 
@@ -343,7 +343,35 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary action-animal">Save changes</button>
+                        <button type="button" class="btn btn-primary save-animal">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="animalUpdateModal" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">SD action</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="animalUpdateWeight" id="animalUpdateWeightLabel">Weight</label>
+                            <input type="number" class="form-control" id="animalUpdateWeight">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalUpdateHeight" id="animalUpdateHeightLabel">Height</label>
+                            <input type="number" class="form-control" id="animalUpdateHeight">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalUpdateLength" id="animalUpdateLengthLabel">Length</label>
+                            <input type="number" class="form-control" id="animalUpdateLength">
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary update-animal">Save changes</button>
                     </div>
                 </div>
             </div>

@@ -75,7 +75,9 @@ function loadAnimal() {
     $(document).on('click', '.choose-animal', chooseAnimal);
     $(document).on('click', '.remove-animal', removeAnimal);
     $(document).on('click', '.add-animal', addAnimal);
-    $(document).on('click', '.action-animal', saveAnimal);
+    $(document).on('click', '.save-animal', saveAnimal);
+    $(document).on('click', '.update-animal', updateAnimal);
+    $(document).on('click', '.edit-animal', fillUpdateModal);
 }
 
 function loadSmartDevice() {

@@ -69,6 +69,11 @@ function deleteAnimal(id) {
         },
         success: function () {
            getAnimals();
+            Swal.fire(
+                'SUCCES!',
+                'Deleted!',
+                'success'
+            )
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('deleteCountryError'));
@@ -116,6 +121,11 @@ function saveAnimal() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimals();
+            Swal.fire(
+                'SUCCES!',
+                'Saved!',
+                'success'
+            )
         },
         error: function (data) {
             Swal.fire(
@@ -127,6 +137,56 @@ function saveAnimal() {
         }
     });
     $('#animalCreateModal').find('input, select').val('');
+}
+
+function updateAnimal() {
+
+    var animal = {
+        weight: $('#animalUpdateWeight').val(),
+        height: $('#animalUpdateHeight').val(),
+        length: $('#animalUpdateLength').val()
+    };
+
+    /*    if (!$('#countryForm').valid()) {
+            return;
+        }*/
+
+    $.ajax({
+        url: HOST + "/animal/" + ANIMAL.animal.id,
+        type: "PUT",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(animal),
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            $("[data-dismiss=modal]").trigger({type: "click"});
+            getAnimal(ANIMAL.animal.id);
+            Swal.fire(
+                'SUCCES!',
+                'Updated!',
+                'success'
+            )
+        },
+        error: function (data) {
+            Swal.fire(
+                'BAD!',
+                'Can not create',
+                'error'
+            )
+            // alert($.i18n._('saveCountryError'));
+        }
+    });
+    $('#animalUpdateModal').find('input, select').val('');
+}
+
+function fillUpdateModal() {
+    $('#animalUpdateWeight').val(ANIMAL.animal.weight);
+    $('#animalUpdateHeight').val(ANIMAL.animal.height);
+    $('#animalUpdateLength').val(ANIMAL.animal.length);
 }
 
 function chooseAnimal(e) {
@@ -249,6 +309,11 @@ function deleteSmartDevice(e) {
         },
         success: function () {
             getAnimal(ANIMAL.animal.id);
+            Swal.fire(
+                'SUCCESS!',
+                'Deleted',
+                'success'
+            )
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('deleteCountryError'));
@@ -288,6 +353,11 @@ function saveSmartDevice() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimal(ANIMAL.animal.id);
+            Swal.fire(
+                'SUCCESS!',
+                'Saved!',
+                'success'
+            )
         },
         error: function (data) {
             Swal.fire(
