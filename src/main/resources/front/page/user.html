@@ -45,15 +45,7 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li class="active">
-                                <a href="javascript:void(0)" class="animals-button" aria-expanded="true"><i class="ti-dashboard"></i><span>Animals</span></a>
-                                <ul class="collapse">
-                                    <li class="active"><a href="#">Active Menu Item</a></li>
-                                    <li><a href="#">Menuitem 2</a></li>
-                                    <li><a href="#">Menuitem 3</a></li>
-                                </ul>
-                            </li>
-                            <!--<li><a href="#"><i class="ti-map-alt"></i><span>Not expanding</span></a></li>-->
+                            <li><a href="#" class="animals-button"><i class="ti-dashboard"></i><span>Animals</span></a></li>
                             <li>
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
                                     <span>Statistic</span></a>
@@ -205,7 +197,9 @@
         </div>
         <!-- main content area end -->
         <!---->
+        <!--MODAL HERE-->
         <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal" hidden><span class="fa fa-plus"> </span></button>
+        <button type="button" class="btn btn-primary ml-2 record-window" data-toggle="modal" data-target="#recordModal" hidden><span class="fa fa-plus"> </span></button>
         <!---->
         <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -258,6 +252,49 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade" id="recordModal" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">record action</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="recordTableContainer"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="sdModal" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">SD action</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="sdName" id=sdNameLabel">SD Name</label>
+                            <input type="text" class="form-control" id="sdName">
+                        </div>
+                        <div class="form-group">
+                            <label for="sdMac" id="sdMacLabel">SD Mac</label>
+                            <input type="text" class="form-control" id="sdMac">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary action-sd">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- footer area start-->
         <div class="footer-area">
             <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
@@ -318,6 +355,7 @@
                             <div class="card-body">
                                 <h5 class="title"> {{ name }}</h5>
                                 <a href="#" class="btn btn-primary actions-button choose-animal" animal-id="{{ id }}">Choose</a>
+                                <a href="#" class="btn btn-danger actions-button remove-animal" animal-id="{{ id }}">DELETE</a>
                             </div>
                         </div>
                     </div>
@@ -326,7 +364,7 @@
                         <div class="card card-bordered">
                             <!--<img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">-->
                             <div class="card-body">
-                                <a href="#" class="btn btn-success btn-lg add-animal">ADD NEW</a>
+                                <a href="#" class="btn btn-success btn-block btn-lg add-animal">ADD NEW</a>
                             </div>
                         </div>
                     </div>
@@ -429,7 +467,7 @@
         </div>
     </script>
 
-    <!--Graft-->
+    <!--Smart Device-->
     <script id="smartDeviceTemplate" type="text/x-handlebars-template">
         <div class="col-12 mt-5">
             <div class="card">
@@ -437,8 +475,8 @@
                     <div class="d-flex mb-3">
                         <div><h4 class="header-title mt-2">SD</h4></div>
                         <div>
-                            <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
-                                    data-target="#graftModal"><span class="fa fa-plus"> </span>Add
+                            <button type="button" class="btn btn-primary ml-2 add-sd" data-toggle="modal"
+                                    data-target="#sdModal"><span class="fa fa-plus"> </span>Add
                             </button>
                         </div>
                     </div>
@@ -449,8 +487,10 @@
                                 <th class="id" hidden>Id</th>
                                 <th class="mac">mac</th>
                                 <th class="name">Name</th>
+                                <th class="battery-level">Battery level</th>
+                                <th class="status">Is Active</th>
 
-                                <th class="status">Status</th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -459,10 +499,12 @@
                                 <td hidden>{{ id }}</td>
                                 <td>{{ mac }}</td>
                                 <td>{{ name }}</td>
+                                <td>{{ batteryLevel }}</td>
+                                <td class="text-center">{{ isActive }}</td>
 
-                                <td class="text-center">
-                                    {{ isActive }}
-                                </td>
+                                <td><button class="btn btn-primary sd-info text-td" type="button" sd-id="{{ id }}"> Show records </button>
+                                    <button class="btn btn-danger sd-delete text-td" type="button" sd-id="{{ id }}"> DELETE </button></td>
+
                             </tr>
                             {{/this}}
                             </tbody>
@@ -471,6 +513,36 @@
                 </div>
             </div>
         </div>
+    </script>
+
+    <!--Record-->
+    <script id="recordTemplate" type="text/x-handlebars-template">
+           <div class="data-tables datatable-dark">
+               <table id="recordTableTemplate" class="display responsive nowrap" style="width:100%">
+                   <thead>
+                   <tr>
+                       <th class="animal-state">Animal State</th>
+                       <th class="creation-date">Creation Date</th>
+                       <!--<th class="latitude">Latitude</th>-->
+                       <th class="pulse">Pulse</th>
+                       <th class="temperature">Temperature</th>
+
+                   </tr>
+                   </thead>
+                   <tbody>
+                   {{#this}}
+                   <tr>
+                       <td>{{ animalState }}</td>
+                       <td>{{ creationDate }}</td>
+                       <!--<td>{{ latitude }}</td>
+                       <td>{{ longitude }}</td>-->
+                       <td>{{ pulse }}</td>
+                       <td>{{ temperature }}</td>
+                   </tr>
+                   {{/this}}
+                   </tbody>
+               </table>
+           </div>
     </script>
 
 </body>

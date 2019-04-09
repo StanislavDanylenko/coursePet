@@ -75,6 +75,7 @@ public class SmartDeviceService implements SimpleIdService<SmartDevice> {
         }
 
         smartDevice = prepareForUpdating(smartDevice, dto);
+        smartDevice.setIsActive(true);
 
         return smartDevice;
     }

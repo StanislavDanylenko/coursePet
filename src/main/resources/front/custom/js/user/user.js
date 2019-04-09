@@ -2,6 +2,7 @@ var animalCardTemplate;
 var diseaseTemplate;
 var graftTemplate;
 var smartDeviceTemplate;
+var recordTemplate;
 
 $(document).ready(function() {
 
@@ -14,12 +15,14 @@ $(document).ready(function() {
     });
 
     checkHash();
+    hideAll();
 
     loadProfileAudit();
     loadProfile();
     loadMenuActions();
     getUser();
     loadAnimal();
+    loadSmartDevice();
 
 });
 
@@ -68,8 +71,18 @@ function loadAnimal() {
     smartDeviceTemplate = Handlebars.compile($('#smartDeviceTemplate').html());
 
     $(document).on('click', '.choose-animal', chooseAnimal);
+    $(document).on('click', '.remove-animal', removeAnimal);
     /*$(document).on('click', '.statistic-button', showStatistic);
     $(document).on('click', '.actions-button', showAnimalActions);*/
+}
+
+function loadSmartDevice() {
+
+    recordTemplate = Handlebars.compile($('#recordTemplate').html());
+
+    $(document).on('click', '.sd-info', getSmartDeviceInfo);
+    $(document).on('click', '.sd-delete', deleteSmartDevice);
+    $(document).on('click', '.action-sd', saveSmartDevice);
 }
 
 function setUpUserWorkspace() {
@@ -100,6 +113,10 @@ function showAnimalList() {
 function showAnimalActions() {
     $('.my-area').hide();
     $('.action-area').show();
+}
+
+function hideAll() {
+    $('.my-area').hide();
 }
 
 function getUser() {
