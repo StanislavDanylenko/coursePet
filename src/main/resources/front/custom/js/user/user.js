@@ -74,8 +74,8 @@ function loadAnimal() {
 
     $(document).on('click', '.choose-animal', chooseAnimal);
     $(document).on('click', '.remove-animal', removeAnimal);
-    /*$(document).on('click', '.statistic-button', showStatistic);
-    $(document).on('click', '.actions-button', showAnimalActions);*/
+    $(document).on('click', '.add-animal', addAnimal);
+    $(document).on('click', '.action-animal', saveAnimal);
 }
 
 function loadSmartDevice() {
@@ -89,7 +89,6 @@ function loadSmartDevice() {
 
 function loadMap() {
     $(document).on('click', '.check-info', checkInfo);
-
     countryGraftsTemplate = Handlebars.compile($('#countryGraftsTemplate').html());
 }
 

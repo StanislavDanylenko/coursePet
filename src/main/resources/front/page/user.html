@@ -167,7 +167,7 @@
                                 <div class="tab-pane fade" id="pills-contact3" role="tabpanel" aria-labelledby="pills-contact-tab">
                                     <div class="row justify-content-center">
                                         <div  style="width: 250px; height: 250px;" class="m-5">
-                                            <!--<img id="QR" src="" alt="QR here"/>-->
+                                            <img id="QR" src="" alt="QR here"/>
                                         </div>
                                     </div>
                                     <div class="text-center"><p class="m-1">SmartCard ID: <b id="SCID"></b></p></div>
@@ -202,6 +202,7 @@
         <!--MODAL HERE-->
         <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal" hidden><span class="fa fa-plus"> </span></button>
         <button type="button" class="btn btn-primary ml-2 record-window" data-toggle="modal" data-target="#recordModal" hidden><span class="fa fa-plus"> </span></button>
+        <button type="button" class="btn btn-primary ml-2 record-window animalCreateModal" data-toggle="modal" data-target="#animalCreateModal" hidden><span class="fa fa-plus"> </span></button>
         <!---->
         <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -292,6 +293,57 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary action-sd">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="animalCreateModal" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">SD action</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="animalName" id=animalNameLabel">Animal Name</label>
+                            <input type="text" class="form-control" id="animalCreateName">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalCreateWeight" id="animalCreateWeightLabel">Weight</label>
+                            <input type="number" class="form-control" id="animalCreateWeight">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalCreateHeight" id="animalCreateHeightLabel">Height</label>
+                            <input type="number" class="form-control" id="animalCreateHeight">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalCreateLength" id="animalCreateLengthLabel">Length</label>
+                            <input type="number" class="form-control" id="animalCreateLength">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalsBreed" id="animalsBreedLabel">Breed</label>
+                            <select class="form-control" id="animalsBreed" style="height: auto !important;"></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="animalCreateBirth" id="animalCreateBirthLabel">Date of birth</label>
+                            <input type="date" class="form-control" id="animalCreateBirth">
+                        </div>
+                        <div class="form-group">
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="animalCreateGenderMale" name="animalCreateGender" value="customEx" checked>
+                                <label class="custom-control-label userAvailable" for="animalCreateGenderMale">Male</label>
+                            </div>
+                            <div class="custom-control custom-radio custom-control-inline">
+                                <input type="radio" class="custom-control-input" id="animalCreateGenderFemale" name="animalCreateGender" value="customEx">
+                                <label class="custom-control-label userUnavailable" for="animalCreateGenderFemale">Female</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary action-animal">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -525,7 +577,6 @@
                    <tr>
                        <th class="animal-state">Animal State</th>
                        <th class="creation-date">Creation Date</th>
-                       <!--<th class="latitude">Latitude</th>-->
                        <th class="pulse">Pulse</th>
                        <th class="temperature">Temperature</th>
 
@@ -536,8 +587,6 @@
                    <tr>
                        <td>{{ animalState }}</td>
                        <td>{{ creationDate }}</td>
-                       <!--<td>{{ latitude }}</td>
-                       <td>{{ longitude }}</td>-->
                        <td>{{ pulse }}</td>
                        <td>{{ temperature }}</td>
                    </tr>

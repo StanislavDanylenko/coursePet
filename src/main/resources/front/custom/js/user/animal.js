@@ -2,6 +2,7 @@ var ANIMAL_LIST = {};
 var ANIMAL = {};
 var COUNTRIES = {};
 var COUNTRIES_LABELS = {};
+var BREEDS = {};
 
 function renderAnimalList(data) {
     var html = animalCardTemplate(data);
@@ -28,6 +29,7 @@ function getAnimals() {
             alert('error');
         }
     });
+    getAnimalBreeds();
 }
 
 function getAnimal(id) {
@@ -45,6 +47,7 @@ function getAnimal(id) {
             fillDiseases();
             fillGrafts();
             fillSmartDevices();
+            fillAnimalInfo();
             getAnimalCountries();
         },
         error: function (xhr, ajaxOptions, thrownError) {
@@ -76,6 +79,54 @@ function deleteAnimal(id) {
             )
         }
     });
+}
+
+function addAnimal() {
+    $('.animalCreateModal')[0].click();
+}
+
+function saveAnimal() {
+
+    var animal = {
+        name: $('#animalCreateName').val(),
+        gender: getAnimalGender(),
+        weight: $('#animalCreateWeight').val(),
+        height: $('#animalCreateHeight').val(),
+        length: $('#animalCreateLength').val(),
+        animalsBreedId: $('#animalsBreed').val(),
+        userId: USER.id,
+        birthDate: $('#animalCreateBirth').val()
+    };
+
+    /*    if (!$('#countryForm').valid()) {
+            return;
+        }*/
+
+    $.ajax({
+        url: HOST + "/animal",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(animal),
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            $("[data-dismiss=modal]").trigger({type: "click"});
+            getAnimals();
+        },
+        error: function (data) {
+            Swal.fire(
+                'BAD!',
+                'Can not create',
+                'error'
+            )
+            // alert($.i18n._('saveCountryError'));
+        }
+    });
+    $('#animalCreateModal').find('input, select').val('');
 }
 
 function chooseAnimal(e) {
@@ -116,6 +167,15 @@ function fillSmartDevices() {
     $('.animal-sd').empty().append(html);
     setDataTable('smartDeviceTableTemplate');
 
+}
+
+function fillAnimalInfo() {
+    $('#animalName').val(ANIMAL.animal.name);
+    $('#animalGender').val(ANIMAL.animal.gender);
+    $('#animalBirth').val(ANIMAL.animal.birthDate);
+    $('#animalWeight').val(ANIMAL.animal.weight);
+    $('#animalHeight').val(ANIMAL.animal.height);
+    $('#animalLength').val(ANIMAL.animal.length);
 }
 
 ////////////////
@@ -238,7 +298,7 @@ function saveSmartDevice() {
             // alert($.i18n._('saveCountryError'));
         }
     });
-
+    $('#sdModal').find('input, select').val('');
 }
 
 ///////////////
@@ -297,4 +357,38 @@ function getAnimalAvailability(countryId) {
 function getHtmlForNoAlert(grafts) {
     var html = countryGraftsTemplate(grafts);
     return html;
+}
+
+/////////////////
+
+function getAnimalBreeds() {
+    $.ajax({
+        url: HOST + "/animalBreed/",
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            BREEDS = data;
+            $("#animalsBreed").empty();
+            for (var i = 0; i < data.length; i++) {
+                $("#animalsBreed").append(new Option(data[i].name, data[i].id));
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            // alert($.i18n._('getCountryListError'));
+            alert('error');
+        }
+    });
+}
+
+/////////
+
+function getAnimalGender() {
+    if($('#animalCreateGenderMale').is(":checked")){
+        return 'MALE';
+    }
+    return 'FEMALE';
 }

@@ -20,8 +20,10 @@ import stanislav.danylenko.coursepet.service.impl.associative.AnimalDiseaseServi
 import stanislav.danylenko.coursepet.service.impl.associative.AnimalGraftService;
 import stanislav.danylenko.coursepet.service.impl.associative.CountryGraftService;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -151,7 +153,7 @@ public class DataInitializer implements CommandLineRunner {
             animal = new Animal();
             animal.setName(AnimalService.DEFAULT_ANIMAL);
             animal.setAnimalsBreed(animalsBreed);
-            animal.setBirthDate(LocalDateTime.now());
+            animal.setBirthDate(Date.from(Instant.now()));
             animal.setWeight(40d);
             animal.setLength(40d);
             animal.setHeight(40d);

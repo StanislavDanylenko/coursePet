@@ -3,10 +3,7 @@ package stanislav.danylenko.coursepet.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
-import stanislav.danylenko.coursepet.db.entity.Animal;
-import stanislav.danylenko.coursepet.db.entity.Country;
-import stanislav.danylenko.coursepet.db.entity.Disease;
-import stanislav.danylenko.coursepet.db.entity.Graft;
+import stanislav.danylenko.coursepet.db.entity.*;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
@@ -23,6 +20,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class AnimalService implements SimpleIdService<Animal> {
@@ -36,10 +34,19 @@ public class AnimalService implements SimpleIdService<Animal> {
     private AnimalDiseaseRepository animalDiseaseRepository;
 
     @Autowired
+    private AnimalsBreedService animalsBreedService;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
     private AnimalGraftRepository animalGraftRepository;
 
     @Autowired
     private CountryService countryService;
+
+    @Autowired
+    private AtomicLong smartCardIdCreator;
 
     @Override
     public Animal save(Animal entity) {
@@ -108,6 +115,18 @@ public class AnimalService implements SimpleIdService<Animal> {
             animal.setBirthDate(dto.getBirthDate());
         }
 
+        if (dto.getAnimalsBreedId() != null) {
+            AnimalsBreed animalsBreed = animalsBreedService.find(dto.getAnimalsBreedId());
+            animal.setAnimalsBreed(animalsBreed);
+        }
+
+        if (dto.getUserId() != null) {
+            User user = userService.find(dto.getUserId());
+            animal.setUser(user);
+        }
+
+        animal.setSmartCardId(smartCardIdCreator.incrementAndGet() + "");
+
         animal = prepareForUpdating(animal, dto);
 
         return animal;
@@ -159,6 +178,7 @@ public class AnimalService implements SimpleIdService<Animal> {
         return animalRepository.findByName(DEFAULT_ANIMAL);
     }
 
+    // todo change here
     public AnimalFullInfoDto getAnimalFullInfo(Long id) {
         Animal animal = find(id);
         List<Disease> diseases = new ArrayList<>();

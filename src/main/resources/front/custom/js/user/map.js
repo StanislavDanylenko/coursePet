@@ -35,7 +35,7 @@ polygonTemplate.events.on("hit", function(ev) {
         // 2. Previously activated countries should be de-activated.
         lastSelected.isActive = false;
     }
-    ev.target.series.chart.zoomToMapObject(ev.target);
+    //ev.target.series.chart.zoomToMapObject(ev.target);
     if (lastSelected !== ev.target) {
         lastSelected = ev.target;
         // alert(lastSelected.dataItem._dataContext.name);

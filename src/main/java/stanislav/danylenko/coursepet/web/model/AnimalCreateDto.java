@@ -7,6 +7,7 @@ import stanislav.danylenko.coursepet.db.enumeration.Gender;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class AnimalCreateDto implements Serializable {
     private String photoURL;
 
     private Gender gender;
-    private LocalDateTime birthDate;
+    private Date birthDate;
 
     private Double weight;
     private Double height;
