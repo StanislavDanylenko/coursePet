@@ -3,6 +3,7 @@ var diseaseTemplate;
 var graftTemplate;
 var smartDeviceTemplate;
 var recordTemplate;
+var countryGraftsTemplate;
 
 $(document).ready(function() {
 
@@ -23,6 +24,7 @@ $(document).ready(function() {
     getUser();
     loadAnimal();
     loadSmartDevice();
+    loadMap();
 
 });
 
@@ -83,6 +85,12 @@ function loadSmartDevice() {
     $(document).on('click', '.sd-info', getSmartDeviceInfo);
     $(document).on('click', '.sd-delete', deleteSmartDevice);
     $(document).on('click', '.action-sd', saveSmartDevice);
+}
+
+function loadMap() {
+    $(document).on('click', '.check-info', checkInfo);
+
+    countryGraftsTemplate = Handlebars.compile($('#countryGraftsTemplate').html());
 }
 
 function setUpUserWorkspace() {

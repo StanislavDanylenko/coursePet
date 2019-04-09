@@ -177,7 +177,9 @@
                                      <div class="form-group ui-widget">
                                          <label for="countriesAutocomplete" id="countrySearchLabel">Country</label>
                                          <input class="form-control" id="countriesAutocomplete" />
+
                                      </div>
+                                    <div class="text-center"><button class="btn btn-primary check-info">Get info</button></div>
                                 </div>
                             </div>
                         </div>
@@ -543,6 +545,16 @@
                    </tbody>
                </table>
            </div>
+    </script>
+
+    <!--Record-->
+    <script id="countryGraftsTemplate" type="text/x-handlebars-template">
+        <h3> Grafts yoa are needed</h3>
+        <ul class="list-group">
+            {{#this}}
+            <li class="list-group-item">{{ name }}</li>
+            {{/this}}
+        </ul>
     </script>
 
 </body>

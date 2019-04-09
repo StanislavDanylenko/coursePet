@@ -38,7 +38,8 @@ polygonTemplate.events.on("hit", function(ev) {
     ev.target.series.chart.zoomToMapObject(ev.target);
     if (lastSelected !== ev.target) {
         lastSelected = ev.target;
-        alert(lastSelected.dataItem._dataContext.name);
+        // alert(lastSelected.dataItem._dataContext.name);
+        checkInfo(lastSelected.dataItem._dataContext.name);
     }
 });
 
