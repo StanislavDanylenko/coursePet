@@ -15,6 +15,6 @@ public class AnimalGraftDto implements Serializable {
 
     private Long animalId;
     private Long graftId;
-    private Date localDateTime;
+    private Date date;
 
 }

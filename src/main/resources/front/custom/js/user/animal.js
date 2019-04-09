@@ -214,6 +214,7 @@ function fillDiseases() {
 
     for(var i = 0; i < ANIMAL.diseases.length; i++) {
         ANIMAL.diseases[i].name = ANIMAL.diseases[i].disease.name;
+        ANIMAL.diseases[i].id = ANIMAL.diseases[i].disease.id;
     }
 
     var html = diseaseTemplate(ANIMAL.diseases);
@@ -225,6 +226,7 @@ function fillGrafts() {
 
     for(var i = 0; i < ANIMAL.grafts.length; i++) {
         ANIMAL.grafts[i].name = ANIMAL.grafts[i].graft.name;
+        ANIMAL.grafts[i].id = ANIMAL.grafts[i].graft.id;
         ANIMAL.grafts[i].frequency = ANIMAL.grafts[i].graft.frequency;
     }
 
@@ -465,6 +467,205 @@ function getAnimalBreeds() {
     });
 }
 
+function getAnimalDiseases() {
+    $.ajax({
+        url: HOST + "/disease/",
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            $("#animalDisease").empty();
+            for (var i = 0; i < data.length; i++) {
+                $("#animalDisease").append(new Option(data[i].name, data[i].id));
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            // alert($.i18n._('getCountryListError'));
+            alert('error');
+        }
+    });
+}
+
+function getAnimalGrafts() {
+    $.ajax({
+        url: HOST + "/graft/",
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            $("#animalGraft").empty();
+            for (var i = 0; i < data.length; i++) {
+                $("#animalGraft").append(new Option(data[i].name, data[i].id));
+            }
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            // alert($.i18n._('getCountryListError'));
+            alert('error');
+        }
+    });
+}
+
+////////
+
+function deleteAnimalDisease(e) {
+
+    var id = getID(e, '#diseaseTableTemplate');
+
+    $.ajax({
+        url: HOST + "/animalDisease/animal/" +  ANIMAL.animal.id + "/disease/" + id,
+        type: "DELETE",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function () {
+            getAnimal(ANIMAL.animal.id);
+            Swal.fire(
+                'Success!',
+                'Was deleted',
+                'success'
+            )
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            // alert($.i18n._('deleteDiseaseError'));
+            Swal.fire(
+                'BAD!',
+                'Error while deleting',
+                'error'
+            )
+        }
+    });
+}
+
+function deleteAnimalGraft(e) {
+
+    var id = getID(e, '#graftTableTemplate');
+
+    $.ajax({
+        url: HOST + "/animalGraft/animal/" + ANIMAL.animal.id + "/graft/" + id,
+        type: "DELETE",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function () {
+            getAnimal(ANIMAL.animal.id);
+            Swal.fire(
+                'Success!',
+                'Was deleted',
+                'success'
+            )
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            // alert($.i18n._('deleteGraftError'));
+            Swal.fire(
+                'BAD!',
+                'Error while deleting',
+                'error'
+            )
+        }
+    });
+}
+
+/////////////////
+
+function saveAnimalGraft() {
+
+    var graft = {
+        animalId: ANIMAL.animal.id,
+        graftId: $('#animalGraft').val(),
+        date: $('#animalGraftDate').val()
+    };
+
+    /*    if (!$('#graftForm').valid()) {
+            return;
+        }*/
+
+    $.ajax({
+        url: HOST + "/animalGraft",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(graft),
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            $("[data-dismiss=modal]").trigger({type: "click"});
+            getAnimal(ANIMAL.animal.id);
+            Swal.fire(
+                'Success!',
+                'Was created',
+                'success'
+            )
+        },
+        error: function (data) {
+            Swal.fire(
+                'BAD!',
+                'Can not create',
+                'error'
+            )
+            // alert($.i18n._('saveGraftError'));
+        }
+    });
+    $('#graftModal').find('input, select').val('');
+}
+
+function saveAnimalDisease() {
+
+    var disease = {
+        animalId: ANIMAL.animal.id,
+        diseaseId: $('#animalDisease').val(),
+        treatment: $('#animalTreathment').val(),
+        startData: $('#animalDiseaseStartDate').val(),
+        endDate: $('#animalDiseaseFinishDate').val()
+    };
+
+    /*    if (!$('#diseaseForm').valid()) {
+            return;
+        }*/
+
+    $.ajax({
+        url: HOST + "/animalDisease",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(disease),
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            $("[data-dismiss=modal]").trigger({type: "click"});
+            getAnimal(ANIMAL.animal.id);
+            Swal.fire(
+                'Success!',
+                'Was created',
+                'success'
+            )
+        },
+        error: function (data) {
+            Swal.fire(
+                'BAD!',
+                'Can not create',
+                'error'
+            )
+            // alert($.i18n._('saveDiseaseError'));
+        }
+    });
+    $('#diseaseModal').find('input, select').val('');
+}
 /////////
 
 function getAnimalGender() {

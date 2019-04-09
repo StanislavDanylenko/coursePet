@@ -63,8 +63,8 @@ public class AnimalGraftService implements ComplexIdService<AnimalGraft, AnimalG
         if(dto.getGraftId() != null) {
            animalGraft.setGraft(graftService.find(dto.getGraftId()));
         }
-        if(dto.getLocalDateTime() != null) {
-            animalGraft.setDate(dto.getLocalDateTime());
+        if(dto.getDate() != null) {
+            animalGraft.setDate(dto.getDate());
         }
         return animalGraft;
     }

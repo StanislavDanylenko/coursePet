@@ -27,348 +27,381 @@
 </head>
 
 <body>
-    <!-- preloader area start -->
-    <div id="preloader">
-        <div class="loader"></div>
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- preloader area end -->
+<!-- page container area start -->
+<div class="page-container">
+    <!-- sidebar menu area start -->
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a href="#"><h1 style="color: white;">PETREW</h1></a>
+            </div>
+        </div>
+        <div class="main-menu">
+            <div class="menu-inner">
+                <nav>
+                    <ul class="metismenu" id="menu">
+                        <li><a href="#" class="animals-button"><i class="ti-dashboard"></i><span>Animals</span></a></li>
+                        <li>
+                            <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
+                                <span>Statistic</span></a>
+                            <ul class="collapse">
+                                <li><a href="#" class="statistic-button">Breed in countries</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
-    <!-- preloader area end -->
-    <!-- page container area start -->
-    <div class="page-container">
-        <!-- sidebar menu area start -->
-        <div class="sidebar-menu">
-            <div class="sidebar-header">
-                <div class="logo">
-                    <a href="#"><h1 style="color: white;">PETREW</h1></a>
+    <!-- sidebar menu area end -->
+    <!-- main content area start -->
+    <div class="main-content">
+        <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <div class="nav-btn pull-left" style="margin-top: 3px;">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <h4 class="page-title">Dashboard</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="../lib/images/avatar.png" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">user<i
+                                class="fa fa-angle-down"></i></h4>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item profile" href="#">Profile</a>
+                            <a class="dropdown-item log-out" href="#">Log Out</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="main-menu">
-                <div class="menu-inner">
-                    <nav>
-                        <ul class="metismenu" id="menu">
-                            <li><a href="#" class="animals-button"><i class="ti-dashboard"></i><span>Animals</span></a></li>
-                            <li>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
-                                    <span>Statistic</span></a>
-                                <ul class="collapse">
-                                    <li><a href="#" class="statistic-button">Breed in countries</a></li>
-                                </ul>
+        </div>
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <!-- MAIN CONTENT GOES HERE -->
+            <!-- Primary table end -->
+
+            <!--Animal select-->
+            <div class="animal-area my-area"></div>
+            <!--Action section-->
+            <div class="col mt-5 action-area my-area">
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active show" id="pills-home-tab" data-toggle="pill"
+                                   href="#pills-home" role="tab" aria-controls="pills-home"
+                                   aria-selected="true">Info</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                   role="tab" aria-controls="pills-profile" aria-selected="false">Grafts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact1-tab" data-toggle="pill" href="#pills-contact1"
+                                   role="tab" aria-controls="pills-contact" aria-selected="false">Diseases</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2"
+                                   role="tab" aria-controls="pills-contact" aria-selected="false">Smart Devices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3"
+                                   role="tab" aria-controls="pills-contact" aria-selected="false">Smart Card</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4"
+                                   role="tab" aria-controls="pills-contact" aria-selected="false">Country</a>
                             </li>
                         </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
-        <!-- sidebar menu area end -->
-        <!-- main content area start -->
-        <div class="main-content">
-            <!-- page title area start -->
-            <div class="page-title-area">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <div class="nav-btn pull-left" style="margin-top: 3px;">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                            <h4 class="page-title">Dashboard</h4>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="../lib/images/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">user<i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item profile" href="#">Profile</a>
-                                <a class="dropdown-item log-out" href="#">Log Out</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- page title area end -->
-            <div class="main-content-inner">
-                <!-- MAIN CONTENT GOES HERE -->
-                <!-- Primary table end -->
-
-                <!--Animal select-->
-                <div class="animal-area my-area"></div>
-                <!--Action section-->
-                <div class="col mt-5 action-area my-area">
-                    <div class="card">
-                        <div class="card-body">
-                            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active show" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Info</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Grafts</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact1-tab" data-toggle="pill" href="#pills-contact1" role="tab" aria-controls="pills-contact" aria-selected="false">Diseases</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2" role="tab" aria-controls="pills-contact" aria-selected="false">Smart Devices</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3" role="tab" aria-controls="pills-contact" aria-selected="false">Smart Card</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4" role="tab" aria-controls="pills-contact" aria-selected="false">Country</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade active show" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                                    <div class="m-5">
-                                        <div class="row">
-                                            <div class="col justify-content-center align-self-center m-2">
-                                                <img src="../custom/img/card.jpg" alt="image"/>
-                                            </div>
-                                            <div class="col">
-                                                <div class="form-group">
-                                                    <label for="animalName" id="animalNameLabel" class="animal-name">Name</label>
-                                                    <input class="form-control" id="animalName" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="animalGender" id="animalGenderLabel" class="animal-name">Gender</label>
-                                                    <input class="form-control" id="animalGender" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="animalBirth" id="animalBirthLabel" class="animal-name">Date of birth</label>
-                                                    <input class="form-control" id="animalBirth" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="animalWeight" id="animalWeightLabel" class="animal-name">Weight</label>
-                                                    <input class="form-control" id="animalWeight" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="animalHeight" id="animalHeightLabel" class="animal-name">Height</label>
-                                                    <input class="form-control" id="animalHeight" readonly>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="animalLength" id="animalLengthLabel" class="animal-name">Length</label>
-                                                    <input class="form-control" id="animalLength" readonly>
-                                                </div>
-                                                <button class="edit-animal btn btn-success edit-animal" data-toggle="modal" data-target="#animalUpdateModal">Edit</button>
-                                            </div>
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade active show" id="pills-home" role="tabpanel"
+                                 aria-labelledby="pills-home-tab">
+                                <div class="m-5">
+                                    <div class="row">
+                                        <div class="col justify-content-center align-self-center m-2">
+                                            <img src="../custom/img/card.jpg" alt="image"/>
                                         </div>
-
-                                    </div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                                    <div class="animal-grafts"></div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-contact1" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                    <div class="animal-diseases"></div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-contact2" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                    <div class="animal-sd"></div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-contact3" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                    <div class="row justify-content-center">
-                                        <div  style="width: 250px; height: 250px;" class="m-5">
-                                            <img id="QR" src="" alt="QR here"/>
+                                        <div class="col">
+                                            <div class="form-group">
+                                                <label for="animalName" id="animalNameLabel"
+                                                       class="animal-name">Name</label>
+                                                <input class="form-control" id="animalName" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="animalGender" id="animalGenderLabel" class="animal-name">Gender</label>
+                                                <input class="form-control" id="animalGender" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="animalBirth" id="animalBirthLabel" class="animal-name">Date
+                                                    of birth</label>
+                                                <input class="form-control" id="animalBirth" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="animalWeight" id="animalWeightLabel" class="animal-name">Weight</label>
+                                                <input class="form-control" id="animalWeight" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="animalHeight" id="animalHeightLabel" class="animal-name">Height</label>
+                                                <input class="form-control" id="animalHeight" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="animalLength" id="animalLengthLabel" class="animal-name">Length</label>
+                                                <input class="form-control" id="animalLength" readonly>
+                                            </div>
+                                            <button class="edit-animal btn btn-success edit-animal" data-toggle="modal"
+                                                    data-target="#animalUpdateModal">Edit
+                                            </button>
                                         </div>
                                     </div>
-                                    <div class="text-center"><p class="m-1">SmartCard ID: <b id="SCID"></b></p></div>
-                                </div>
-                                <div class="tab-pane fade" id="pills-contact4" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                    <div id="chartdiv"></div>
-                                     <div class="form-group ui-widget">
-                                         <label for="countriesAutocomplete" id="countrySearchLabel">Country</label>
-                                         <input class="form-control" id="countriesAutocomplete" />
 
-                                     </div>
-                                    <div class="text-center"><button class="btn btn-primary check-info">Get info</button></div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Statistics-->
-                <div class="col mt-5 statistic-area my-area">
-                    <div class="card">
-                        <div class="card-body text-center m-5">
-                            <div id="canvas">
-                                <canvas id="popChart" width="600" height="400"></canvas>
+                            <div class="tab-pane fade" id="pills-profile" role="tabpanel"
+                                 aria-labelledby="pills-profile-tab">
+                                <div class="animal-grafts"></div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact1" role="tabpanel"
+                                 aria-labelledby="pills-contact-tab">
+                                <div class="animal-diseases"></div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact2" role="tabpanel"
+                                 aria-labelledby="pills-contact-tab">
+                                <div class="animal-sd"></div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact3" role="tabpanel"
+                                 aria-labelledby="pills-contact-tab">
+                                <div class="row justify-content-center">
+                                    <div style="width: 250px; height: 250px;" class="m-5">
+                                        <img id="QR" src="" alt="QR here"/>
+                                    </div>
+                                </div>
+                                <div class="text-center"><p class="m-1">SmartCard ID: <b id="SCID"></b></p></div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact4" role="tabpanel"
+                                 aria-labelledby="pills-contact-tab">
+                                <div id="chartdiv"></div>
+                                <div class="form-group ui-widget">
+                                    <label for="countriesAutocomplete" id="countrySearchLabel">Country</label>
+                                    <input class="form-control" id="countriesAutocomplete"/>
+
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-primary check-info">Get info</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- main content area end -->
-        <!---->
-        <!--MODAL HERE-->
-        <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal" hidden><span class="fa fa-plus"> </span></button>
-        <button type="button" class="btn btn-primary ml-2 record-window" data-toggle="modal" data-target="#recordModal" hidden><span class="fa fa-plus"> </span></button>
-        <button type="button" class="btn btn-primary ml-2 record-window animalCreateModal" data-toggle="modal" data-target="#animalCreateModal" hidden><span class="fa fa-plus"> </span></button>
-        <!---->
-        <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">profile action</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-group" hidden>
-                                    <label for="profileId" id="profileIdLabel">user Id</label>
-                                    <input type="text" class="form-control" id="profileId">
-                                </div>
-                                <div class="form-group">
-                                    <label for="userLocalization" id="userLocalizationLabel">Localization</label>
-                                    <select class="form-control" id="userLocalization" style="height: auto !important;">
-                                        <option value="UKRAINIAN">Українська</option>
-                                        <option value="ENGLISH">English</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="userCountry" id="userCountryLabel">Country</label>
-                                    <select class="form-control" id="userCountry" style="height: auto !important;"></select>
-                                </div>
-                            </div>
-                            <div class="col bg-light">
-                                <h3>Change password</h3>
-                                <div class="form-group">
-                                    <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
-                                    <input type="password" class="form-control" id="userOldPassword" name="userOldPassword">
-                                </div>
-                                <div class="form-group">
-                                    <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
-                                    <input type="password" class="form-control" id="userNewPassword" name="userNewPassword">
-                                </div>
-                                <div class="form-group">
-                                    <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new password</label>
-                                    <input type="password" class="form-control" id="userNewPasswordRepeat" name="userNewPasswordRepeat">
-                                </div>
-                                <button type="button" class="btn btn-primary update-password">Update password</button>
-                            </div>
+            <!--Statistics-->
+            <div class="col mt-5 statistic-area my-area">
+                <div class="card">
+                    <div class="card-body text-center m-5">
+                        <div id="canvas">
+                            <canvas id="popChart" width="600" height="400"></canvas>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary action-profile">Save changes</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+    <!-- main content area end -->
+    <!---->
+    <!--MODAL HERE-->
+    <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal"
+            hidden><span class="fa fa-plus"> </span></button>
+    <button type="button" class="btn btn-primary ml-2 record-window" data-toggle="modal" data-target="#recordModal"
+            hidden><span class="fa fa-plus"> </span></button>
+    <button type="button" class="btn btn-primary ml-2 record-window animalCreateModal" data-toggle="modal"
+            data-target="#animalCreateModal" hidden><span class="fa fa-plus"> </span></button>
 
-        <div class="modal fade" id="recordModal" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">record action</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="recordTableContainer"></div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    </div>
+    <button type="button" class="btn btn-primary ml-2 record-window graftModal" data-toggle="modal"
+            data-target="#graftModal" hidden><span class="fa fa-plus"> </span></button>
+    <button type="button" class="btn btn-primary ml-2 record-window diseaseModal" data-toggle="modal"
+            data-target="#diseaseModal" hidden><span class="fa fa-plus"> </span></button>
+    <!---->
+    <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">profile action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="sdModal" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">SD action</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="sdName" id=sdNameLabel">SD Name</label>
-                            <input type="text" class="form-control" id="sdName">
-                        </div>
-                        <div class="form-group">
-                            <label for="sdMac" id="sdMacLabel">SD Mac</label>
-                            <input type="text" class="form-control" id="sdMac">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary action-sd">Save changes</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal fade" id="animalCreateModal" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">SD action</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="animalName" id=animalNameLabel">Animal Name</label>
-                            <input type="text" class="form-control" id="animalCreateName">
-                        </div>
-                        <div class="form-group">
-                            <label for="animalCreateWeight" id="animalCreateWeightLabel">Weight</label>
-                            <input type="number" class="form-control" id="animalCreateWeight">
-                        </div>
-                        <div class="form-group">
-                            <label for="animalCreateHeight" id="animalCreateHeightLabel">Height</label>
-                            <input type="number" class="form-control" id="animalCreateHeight">
-                        </div>
-                        <div class="form-group">
-                            <label for="animalCreateLength" id="animalCreateLengthLabel">Length</label>
-                            <input type="number" class="form-control" id="animalCreateLength">
-                        </div>
-                        <div class="form-group">
-                            <label for="animalsBreed" id="animalsBreedLabel">Breed</label>
-                            <select class="form-control" id="animalsBreed" style="height: auto !important;"></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="animalCreateBirth" id="animalCreateBirthLabel">Date of birth</label>
-                            <input type="date" class="form-control" id="animalCreateBirth">
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="animalCreateGenderMale" name="animalCreateGender" value="customEx" checked>
-                                <label class="custom-control-label userAvailable" for="animalCreateGenderMale">Male</label>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" hidden>
+                                <label for="profileId" id="profileIdLabel">user Id</label>
+                                <input type="text" class="form-control" id="profileId">
                             </div>
-                            <div class="custom-control custom-radio custom-control-inline">
-                                <input type="radio" class="custom-control-input" id="animalCreateGenderFemale" name="animalCreateGender" value="customEx">
-                                <label class="custom-control-label userUnavailable" for="animalCreateGenderFemale">Female</label>
+                            <div class="form-group">
+                                <label for="userLocalization" id="userLocalizationLabel">Localization</label>
+                                <select class="form-control" id="userLocalization" style="height: auto !important;">
+                                    <option value="UKRAINIAN">Українська</option>
+                                    <option value="ENGLISH">English</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="userCountry" id="userCountryLabel">Country</label>
+                                <select class="form-control" id="userCountry" style="height: auto !important;"></select>
                             </div>
                         </div>
+                        <div class="col bg-light">
+                            <h3>Change password</h3>
+                            <div class="form-group">
+                                <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
+                                <input type="password" class="form-control" id="userOldPassword" name="userOldPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
+                                <input type="password" class="form-control" id="userNewPassword" name="userNewPassword">
+                            </div>
+                            <div class="form-group">
+                                <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new
+                                    password</label>
+                                <input type="password" class="form-control" id="userNewPasswordRepeat"
+                                       name="userNewPasswordRepeat">
+                            </div>
+                            <button type="button" class="btn btn-primary update-password">Update password</button>
+                        </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary save-animal">Save changes</button>
-                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-profile">Save changes</button>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="modal fade" id="animalUpdateModal" aria-hidden="true" style="display: none;">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">SD action</h5>
-                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+    <div class="modal fade" id="recordModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">record action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="recordTableContainer"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="sdModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">SD action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="sdName" id=sdNameLabel">SD Name</label>
+                        <input type="text" class="form-control" id="sdName">
                     </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="animalUpdateWeight" id="animalUpdateWeightLabel">Weight</label>
-                            <input type="number" class="form-control" id="animalUpdateWeight">
+                    <div class="form-group">
+                        <label for="sdMac" id="sdMacLabel">SD Mac</label>
+                        <input type="text" class="form-control" id="sdMac">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-sd">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="animalCreateModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">SD action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="animalName" id=animalNameLabel">Animal Name</label>
+                        <input type="text" class="form-control" id="animalCreateName">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalCreateWeight" id="animalCreateWeightLabel">Weight</label>
+                        <input type="number" class="form-control" id="animalCreateWeight">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalCreateHeight" id="animalCreateHeightLabel">Height</label>
+                        <input type="number" class="form-control" id="animalCreateHeight">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalCreateLength" id="animalCreateLengthLabel">Length</label>
+                        <input type="number" class="form-control" id="animalCreateLength">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalsBreed" id="animalsBreedLabel">Breed</label>
+                        <select class="form-control" id="animalsBreed" style="height: auto !important;"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="animalCreateBirth" id="animalCreateBirthLabel">Date of birth</label>
+                        <input type="date" class="form-control" id="animalCreateBirth">
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="animalCreateGenderMale"
+                                   name="animalCreateGender" value="customEx" checked>
+                            <label class="custom-control-label userAvailable" for="animalCreateGenderMale">Male</label>
                         </div>
-                        <div class="form-group">
-                            <label for="animalUpdateHeight" id="animalUpdateHeightLabel">Height</label>
-                            <input type="number" class="form-control" id="animalUpdateHeight">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" class="custom-control-input" id="animalCreateGenderFemale"
+                                   name="animalCreateGender" value="customEx">
+                            <label class="custom-control-label userUnavailable"
+                                   for="animalCreateGenderFemale">Female</label>
                         </div>
-                        <div class="form-group">
-                            <label for="animalUpdateLength" id="animalUpdateLengthLabel">Length</label>
-                            <input type="number" class="form-control" id="animalUpdateLength">
-                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary save-animal">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="animalUpdateModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">SD action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="animalUpdateWeight" id="animalUpdateWeightLabel">Weight</label>
+                        <input type="number" class="form-control" id="animalUpdateWeight">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalUpdateHeight" id="animalUpdateHeightLabel">Height</label>
+                        <input type="number" class="form-control" id="animalUpdateHeight">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalUpdateLength" id="animalUpdateLengthLabel">Length</label>
+                        <input type="number" class="form-control" id="animalUpdateLength">
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary update-animal">Save changes</button>
@@ -376,267 +409,335 @@
                 </div>
             </div>
         </div>
-
-        <!-- footer area start-->
-        <div class="footer-area">
-            <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
-        </div>
-        <!-- footer area end-->
     </div>
-    <!-- page container area end -->
-    <!-- jquery latest version -->
-    <script src="../lib/js/jquery-2.2.4.min.js"></script>
 
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <!-- bootstrap 4 js -->
-    <script src="../lib/js/popper.min.js"></script>
-    <script src="../lib/js/bootstrap.min.js"></script>
-    <script src="../lib/js/metisMenu.min.js"></script>
-    <script src="../lib/js/jquery.slimscroll.min.js"></script>
+    <div class="modal fade" id="diseaseModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">SD action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="animalDisease" id="animalDiseaseLabel">Disease</label>
+                        <select class="form-control" id="animalDisease" style="height: auto !important;"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="animalDiseaseStartDate" id="animalDiseaseStartDateLabel">Start Date</label>
+                        <input type="date" class="form-control" id="animalDiseaseStartDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalDiseaseFinishDate" id="animalDiseaseFinishDateLabel">Finish Date</label>
+                        <input type="date" class="form-control" id="animalDiseaseFinishDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="animalTreathment" id="animalTreathmentLabel">Treathment</label>
+                        <input type="text" class="form-control" id="animalTreathment">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary save-animal-disease">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!-- Start datatable js -->
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <div class="modal fade" id="graftModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">SD action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="animalGraft" id="animalGraftLabel">Graft</label>
+                        <select class="form-control" id="animalGraft" style="height: auto !important;"></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="animalGraftDate" id="animalGraftDateLabel">Date</label>
+                        <input type="date" class="form-control" id="animalGraftDate">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary save-animal-graft">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    <!--Handlebars-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
+    <!-- footer area start-->
+    <div class="footer-area">
+        <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a
+                href="https://colorlib.com/wp/">Colorlib</a>.</p>
+    </div>
+    <!-- footer area end-->
+</div>
+<!-- page container area end -->
+<!-- jquery latest version -->
+<script src="../lib/js/jquery-2.2.4.min.js"></script>
 
-    <!-- Map -->
-    <script src="https://www.amcharts.com/lib/4/core.js"></script>
-    <script src="https://www.amcharts.com/lib/4/maps.js"></script>
-    <script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
-    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- bootstrap 4 js -->
+<script src="../lib/js/popper.min.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+<script src="../lib/js/metisMenu.min.js"></script>
+<script src="../lib/js/jquery.slimscroll.min.js"></script>
 
-    <!--Charts-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<!-- Start datatable js -->
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-    <!-- others plugins -->
-    <script src="../lib/js/scripts.js"></script>
-    <script src="../custom/js/audit.js"></script>
-    <script src="../custom/js/l10n/jquery.i18n.js"></script>
-    <script src="../custom/js/l10n/l10n.js"></script>
-    <script src="../custom/js/common/common.js"></script>
-    <script src="../custom/js/common/constants.js"></script>
-    <script src="../custom/js/admin/profile.js"></script>
-    <script src="../custom/js/user/user.js"></script>
-    <script src="../custom/js/user/statistic.js"></script>
-    <script src="../custom/js/user/animal.js"></script>
+<!--Handlebars-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.js"></script>
 
-    <script src="../custom/js/user/map.js"></script>
+<!-- Map -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/maps.js"></script>
+<script src="https://www.amcharts.com/lib/4/geodata/worldLow.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
-    <!--Animal card-->
-    <script id="animalCardTemplate" type="text/x-handlebars-template">
-        <!--Animal select-->
-        <div class="animal-area my-area">
-            <div class="card-area">
-                <div class="row">
-                    {{#this}}
-                    <div class="col-lg-4 col-md-6 mt-5">
-                        <div class="card card-bordered">
-                            <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
-                            <div class="card-body">
-                                <h5 class="title"> {{ name }}</h5>
-                                <a href="#" class="btn btn-primary actions-button choose-animal" animal-id="{{ id }}">Choose</a>
-                                <a href="#" class="btn btn-danger actions-button remove-animal" animal-id="{{ id }}">DELETE</a>
-                            </div>
+<!--Charts-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<!-- others plugins -->
+<script src="../lib/js/scripts.js"></script>
+<script src="../custom/js/audit.js"></script>
+<script src="../custom/js/l10n/jquery.i18n.js"></script>
+<script src="../custom/js/l10n/l10n.js"></script>
+<script src="../custom/js/common/common.js"></script>
+<script src="../custom/js/common/constants.js"></script>
+<script src="../custom/js/admin/profile.js"></script>
+<script src="../custom/js/user/user.js"></script>
+<script src="../custom/js/user/statistic.js"></script>
+<script src="../custom/js/user/animal.js"></script>
+
+<script src="../custom/js/user/map.js"></script>
+
+<!--Animal card-->
+<script id="animalCardTemplate" type="text/x-handlebars-template">
+    <!--Animal select-->
+    <div class="animal-area my-area">
+        <div class="card-area">
+            <div class="row">
+                {{#this}}
+                <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="card card-bordered">
+                        <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                        <div class="card-body">
+                            <h5 class="title"> {{ name }}</h5>
+                            <a href="#" class="btn btn-primary actions-button choose-animal"
+                               animal-id="{{ id }}">Choose</a>
+                            <a href="#" class="btn btn-danger actions-button remove-animal"
+                               animal-id="{{ id }}">DELETE</a>
                         </div>
                     </div>
-                    {{/this}}
-                    <div class="col-lg-4 col-md-6 mt-5">
-                        <div class="card card-bordered">
-                            <!--<img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">-->
-                            <div class="card-body">
-                                <a href="#" class="btn btn-success btn-block btn-lg add-animal">ADD NEW</a>
-                            </div>
+                </div>
+                {{/this}}
+                <div class="col-lg-4 col-md-6 mt-5">
+                    <div class="card card-bordered">
+                        <!--<img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">-->
+                        <div class="card-body">
+                            <a href="#" class="btn btn-success btn-block btn-lg add-animal">ADD NEW</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </script>
+    </div>
+</script>
 
-    <!--Disease-->
-    <script id="diseaseTemplate" type="text/x-handlebars-template">
-        <div class="col-12 mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex mb-3">
-                        <div><h4 class="header-title mt-2">Disease</h4></div>
-                        <div>
-                            <button type="button" class="btn btn-primary ml-2 add-disease" data-toggle="modal"
-                                    data-target="#diseaseModal"><span class="fa fa-plus"> </span>Add
-                            </button>
-                        </div>
+<!--Disease-->
+<script id="diseaseTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2">Disease</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-disease" data-toggle="modal"
+                                data-target="#diseaseModal"><span class="fa fa-plus"> </span>Add
+                        </button>
                     </div>
-                    <div class="data-tables datatable-dark">
-                        <table id="diseaseTableTemplate" class="display responsive nowrap" style="width:100%">
-                            <thead>
-                            <tr>
-                                <th class="id" hidden>Id</th>
-                                <th class="name">Name</th>
-                                <th class="start-date">Start Date</th>
-                                <th class="end-date">End Date</th>
-                                <th class="treatment">Treatment</th>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="diseaseTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+                            <th class="start-date">Start Date</th>
+                            <th class="end-date">End Date</th>
+                            <th class="treatment">Treatment</th>
 
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {{#this}}
-                            <tr>
-                                <td hidden>{{ id }}</td>
-                                <td>{{ name }}</td>
-                                <td>{{ startData }}</td>
-                                <td>{{ endDate }}</td>
-                                <td>{{ treatment }}</td>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ startData }}</td>
+                            <td>{{ endDate }}</td>
+                            <td>{{ treatment }}</td>
 
-                                <td class="text-center">
-                                    <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete
-                                        <i class="fa fa-close"></i></button>
-                                    </button>
-                                </td>
-                            </tr>
-                            {{/this}}
-                            </tbody>
-                        </table>
-                    </div>
+                            <td class="text-center">
+                                <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </script>
+    </div>
+</script>
 
-    <!--Graft-->
-    <script id="graftTemplate" type="text/x-handlebars-template">
-        <div class="col-12 mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex mb-3">
-                        <div><h4 class="header-title mt-2">Graft</h4></div>
-                        <div>
-                            <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
-                                    data-target="#graftModal"><span class="fa fa-plus"> </span>Add
-                            </button>
-                        </div>
+<!--Graft-->
+<script id="graftTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2">Graft</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
+                                data-target="#graftModal"><span class="fa fa-plus"> </span>Add
+                        </button>
                     </div>
-                    <div class="data-tables datatable-dark">
-                        <table id="graftTableTemplate" class="display responsive nowrap" style="width:100%">
-                            <thead>
-                            <tr>
-                                <th class="id" hidden>Id</th>
-                                <th class="name">Name</th>
-                                <th class="frequency">Frequency</th>
-                                <th class="date">Date</th>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="graftTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+                            <th class="frequency">Frequency</th>
+                            <th class="date">Date</th>
 
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {{#this}}
-                            <tr>
-                                <td hidden>{{ id }}</td>
-                                <td>{{ name }}</td>
-                                <td>{{ frequency }}</td>
-                                <td>{{ date }}</td>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ frequency }}</td>
+                            <td>{{ date }}</td>
 
-                                <td class="text-center">
-                                    <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete
-                                        <i class="fa fa-close"></i></button>
-                                    </button>
-                                </td>
-                            </tr>
-                            {{/this}}
-                            </tbody>
-                        </table>
-                    </div>
+                            <td class="text-center">
+                                <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </script>
+    </div>
+</script>
 
-    <!--Smart Device-->
-    <script id="smartDeviceTemplate" type="text/x-handlebars-template">
-        <div class="col-12 mt-5">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex mb-3">
-                        <div><h4 class="header-title mt-2">SD</h4></div>
-                        <div>
-                            <button type="button" class="btn btn-primary ml-2 add-sd" data-toggle="modal"
-                                    data-target="#sdModal"><span class="fa fa-plus"> </span>Add
-                            </button>
-                        </div>
+<!--Smart Device-->
+<script id="smartDeviceTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2">SD</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-sd" data-toggle="modal"
+                                data-target="#sdModal"><span class="fa fa-plus"> </span>Add
+                        </button>
                     </div>
-                    <div class="data-tables datatable-dark">
-                        <table id="smartDeviceTableTemplate" class="display responsive nowrap" style="width:100%">
-                            <thead>
-                            <tr>
-                                <th class="id" hidden>Id</th>
-                                <th class="mac">mac</th>
-                                <th class="name">Name</th>
-                                <th class="battery-level">Battery level</th>
-                                <th class="status">Is Active</th>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="smartDeviceTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="mac">mac</th>
+                            <th class="name">Name</th>
+                            <th class="battery-level">Battery level</th>
+                            <th class="status">Is Active</th>
 
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {{#this}}
-                            <tr>
-                                <td hidden>{{ id }}</td>
-                                <td>{{ mac }}</td>
-                                <td>{{ name }}</td>
-                                <td>{{ batteryLevel }}</td>
-                                <td class="text-center">{{ isActive }}</td>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ mac }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ batteryLevel }}</td>
+                            <td class="text-center">{{ isActive }}</td>
 
-                                <td><button class="btn btn-primary sd-info text-td" type="button" sd-id="{{ id }}"> Show records </button>
-                                    <button class="btn btn-danger sd-delete text-td" type="button" sd-id="{{ id }}"> DELETE </button></td>
+                            <td>
+                                <button class="btn btn-primary sd-info text-td" type="button" sd-id="{{ id }}"> Show
+                                    records
+                                </button>
+                                <button class="btn btn-danger sd-delete text-td" type="button" sd-id="{{ id }}">
+                                    DELETE
+                                </button>
+                            </td>
 
-                            </tr>
-                            {{/this}}
-                            </tbody>
-                        </table>
-                    </div>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-    </script>
+    </div>
+</script>
 
-    <!--Record-->
-    <script id="recordTemplate" type="text/x-handlebars-template">
-           <div class="data-tables datatable-dark">
-               <table id="recordTableTemplate" class="display responsive nowrap" style="width:100%">
-                   <thead>
-                   <tr>
-                       <th class="animal-state">Animal State</th>
-                       <th class="creation-date">Creation Date</th>
-                       <th class="pulse">Pulse</th>
-                       <th class="temperature">Temperature</th>
+<!--Record-->
+<script id="recordTemplate" type="text/x-handlebars-template">
+    <div class="data-tables datatable-dark">
+        <table id="recordTableTemplate" class="display responsive nowrap" style="width:100%">
+            <thead>
+            <tr>
+                <th class="animal-state">Animal State</th>
+                <th class="creation-date">Creation Date</th>
+                <th class="pulse">Pulse</th>
+                <th class="temperature">Temperature</th>
 
-                   </tr>
-                   </thead>
-                   <tbody>
-                   {{#this}}
-                   <tr>
-                       <td>{{ animalState }}</td>
-                       <td>{{ creationDate }}</td>
-                       <td>{{ pulse }}</td>
-                       <td>{{ temperature }}</td>
-                   </tr>
-                   {{/this}}
-                   </tbody>
-               </table>
-           </div>
-    </script>
-
-    <!--Record-->
-    <script id="countryGraftsTemplate" type="text/x-handlebars-template">
-        <h3> Grafts yoa are needed</h3>
-        <ul class="list-group">
+            </tr>
+            </thead>
+            <tbody>
             {{#this}}
-            <li class="list-group-item">{{ name }}</li>
+            <tr>
+                <td>{{ animalState }}</td>
+                <td>{{ creationDate }}</td>
+                <td>{{ pulse }}</td>
+                <td>{{ temperature }}</td>
+            </tr>
             {{/this}}
-        </ul>
-    </script>
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<!--Record-->
+<script id="countryGraftsTemplate" type="text/x-handlebars-template">
+    <h3> Grafts yoa are needed</h3>
+    <ul class="list-group">
+        {{#this}}
+        <li class="list-group-item">{{ name }}</li>
+        {{/this}}
+    </ul>
+</script>
 
 </body>
 

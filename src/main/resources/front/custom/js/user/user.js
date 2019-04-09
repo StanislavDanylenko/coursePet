@@ -25,6 +25,8 @@ $(document).ready(function() {
     loadAnimal();
     loadSmartDevice();
     loadMap();
+    loadDiseases();
+    loadGrafts();
 
 });
 
@@ -92,6 +94,22 @@ function loadSmartDevice() {
 function loadMap() {
     $(document).on('click', '.check-info', checkInfo);
     countryGraftsTemplate = Handlebars.compile($('#countryGraftsTemplate').html());
+}
+
+function loadDiseases() {
+    $(document).on('click', '.add-disease', function () {
+        getAnimalDiseases();
+    });
+    $(document).on('click', '.delete-disease', deleteAnimalDisease);
+    $(document).on('click', '.save-animal-disease', saveAnimalDisease);
+}
+
+function loadGrafts() {
+    $(document).on('click', '.add-graft', function () {
+        getAnimalGrafts();
+    });
+    $(document).on('click', '.delete-graft', deleteAnimalGraft);
+    $(document).on('click', '.save-animal-graft', saveAnimalGraft);
 }
 
 function setUpUserWorkspace() {

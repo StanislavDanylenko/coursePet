@@ -53,8 +53,8 @@ public class AnimalGraftController {
 
         AnimalGraftPK pk = new AnimalGraftPK(animalId, graftId);
         AnimalGraft animalGraft = service.find(pk);
-        if(dto.getLocalDateTime() != null) {
-            animalGraft.setDate(dto.getLocalDateTime());
+        if(dto.getDate() != null) {
+            animalGraft.setDate(dto.getDate());
         }
         service.update(animalGraft);
         return ResponseEntity.ok(animalGraft);
