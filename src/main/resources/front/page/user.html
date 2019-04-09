@@ -474,6 +474,9 @@
                             <tr>
                                 <th class="id" hidden>Id</th>
                                 <th class="name">Name</th>
+                                <th class="start-date">Start Date</th>
+                                <th class="end-date">End Date</th>
+                                <th class="treatment">Treatment</th>
 
                                 <th></th>
                             </tr>
@@ -483,10 +486,11 @@
                             <tr>
                                 <td hidden>{{ id }}</td>
                                 <td>{{ name }}</td>
+                                <td>{{ startData }}</td>
+                                <td>{{ endDate }}</td>
+                                <td>{{ treatment }}</td>
 
                                 <td class="text-center">
-                                    <button class="btn btn-warning edit-disease text-td edit" type="button">Edit <i
-                                            class="fa fa-edit"></i></button>
                                     <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete
                                         <i class="fa fa-close"></i></button>
                                     </button>
@@ -521,6 +525,7 @@
                                 <th class="id" hidden>Id</th>
                                 <th class="name">Name</th>
                                 <th class="frequency">Frequency</th>
+                                <th class="date">Date</th>
 
                                 <th></th>
                             </tr>
@@ -531,10 +536,9 @@
                                 <td hidden>{{ id }}</td>
                                 <td>{{ name }}</td>
                                 <td>{{ frequency }}</td>
+                                <td>{{ date }}</td>
 
                                 <td class="text-center">
-                                    <button class="btn btn-warning edit-graft text-td edit" type="button">Edit <i
-                                            class="fa fa-edit"></i></button>
                                     <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete
                                         <i class="fa fa-close"></i></button>
                                     </button>

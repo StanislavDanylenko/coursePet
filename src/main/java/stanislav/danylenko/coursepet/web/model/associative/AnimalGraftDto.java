@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -14,6 +15,6 @@ public class AnimalGraftDto implements Serializable {
 
     private Long animalId;
     private Long graftId;
-    private LocalDateTime localDateTime;
+    private Date localDateTime;
 
 }

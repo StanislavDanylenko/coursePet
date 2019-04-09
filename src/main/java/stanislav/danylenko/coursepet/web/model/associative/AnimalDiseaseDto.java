@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -15,8 +16,8 @@ public class AnimalDiseaseDto implements Serializable {
     private Long animalId;
     private Long diseaseId;
 
-    private LocalDateTime startData;
-    private LocalDateTime endDate;
+    private Date startData;
+    private Date endDate;
     private String treatment;
 
 }

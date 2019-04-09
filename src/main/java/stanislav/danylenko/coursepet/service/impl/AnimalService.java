@@ -181,21 +181,19 @@ public class AnimalService implements SimpleIdService<Animal> {
     // todo change here
     public AnimalFullInfoDto getAnimalFullInfo(Long id) {
         Animal animal = find(id);
-        List<Disease> diseases = new ArrayList<>();
         List<AnimalDisease> animalDiseases = findAnimalDiseasesByAnimalId(id);
         for(AnimalDisease animalDisease : animalDiseases) {
-            diseases.add(animalDisease.getDisease());
+            animalDisease.setAnimal(null);
         }
         List<AnimalGraft> animalGrafts = findAnimalGraftsByAnimalId(id);
-        List<Graft> grafts = new ArrayList<>();
         for(AnimalGraft animalGraft : animalGrafts) {
-            grafts.add(animalGraft.getGraft());
+            animalGraft.setAnimal(null);
         }
         AnimalFullInfoDto dto = new AnimalFullInfoDto();
 
         dto.setAnimal(animal);
-        dto.setDiseases(diseases);
-        dto.setGrafts(grafts);
+        dto.setDiseases(animalDiseases);
+        dto.setGrafts(animalGrafts);
 
         return dto;
     }

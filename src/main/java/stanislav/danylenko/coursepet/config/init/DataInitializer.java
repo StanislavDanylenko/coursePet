@@ -192,7 +192,7 @@ public class DataInitializer implements CommandLineRunner {
             AnimalGraft animalGraft = new AnimalGraft();
             animalGraft.setAnimal(animal);
             animalGraft.setGraft(graft);
-            animalGraft.setDate(LocalDateTime.now());
+            animalGraft.setDate(Date.from(Instant.now()));
             animalGraftService.save(animalGraft);
             log.info("Created AnimalGraft {AnimalGraft}");
         } catch (Exception ex) {
@@ -206,8 +206,8 @@ public class DataInitializer implements CommandLineRunner {
             animalDisease.setAnimal(animal);
             animalDisease.setDisease(disease);
             animalDisease.setTreatment("Treathment default");
-            animalDisease.setStartData(LocalDateTime.now());
-            animalDisease.setEndDate(LocalDateTime.now());
+            animalDisease.setStartData(Date.from(Instant.now()));
+            animalDisease.setEndDate(Date.from(Instant.now()));
             animalDiseaseService.save(animalDisease);
             log.info("Created AnimalDisease {AnimalDisease}");
         } catch (Exception ex) {

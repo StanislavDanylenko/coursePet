@@ -211,12 +211,23 @@ function getQR() {
 }
 
 function fillDiseases() {
+
+    for(var i = 0; i < ANIMAL.diseases.length; i++) {
+        ANIMAL.diseases[i].name = ANIMAL.diseases[i].disease.name;
+    }
+
     var html = diseaseTemplate(ANIMAL.diseases);
     $('.animal-diseases').empty().append(html);
     setDataTable('diseaseTableTemplate');
 }
 
 function fillGrafts() {
+
+    for(var i = 0; i < ANIMAL.grafts.length; i++) {
+        ANIMAL.grafts[i].name = ANIMAL.grafts[i].graft.name;
+        ANIMAL.grafts[i].frequency = ANIMAL.grafts[i].graft.frequency;
+    }
+
     var html = graftTemplate(ANIMAL.grafts);
     $('.animal-grafts').empty().append(html);
     setDataTable('graftTableTemplate');
