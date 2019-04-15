@@ -13,6 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class AnimalDiseaseDto implements Serializable {
 
+    private Long id;
+
     private Long animalId;
     private Long diseaseId;
 

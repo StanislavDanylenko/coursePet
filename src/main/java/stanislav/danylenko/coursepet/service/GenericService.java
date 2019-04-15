@@ -11,4 +11,10 @@ public interface GenericService<T> {
 
     Iterable<T> findAll();
 
+    T find(Long id);
+
+    void delete(Long id);
+
+    void delete(T item);
+
 }

@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Country;
@@ -13,15 +12,12 @@ import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.db.enumeration.Localization;
 import stanislav.danylenko.coursepet.db.repository.UserRepository;
 import stanislav.danylenko.coursepet.service.GenericService;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
 import stanislav.danylenko.coursepet.web.model.UpdatePasswordModel;
 import stanislav.danylenko.coursepet.web.model.UserDto;
 
-import java.util.List;
-
 @Service
 @Primary
-public class UserService implements SimpleIdService<User>, UserDetailsService {
+public class UserService implements GenericService<User>, UserDetailsService {
 
     @Autowired
     private UserRepository userRepository;

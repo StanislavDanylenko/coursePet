@@ -6,8 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.orm.jpa.JpaObjectRetrievalFailureException;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Country;
-import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
-import stanislav.danylenko.coursepet.db.entity.pk.CountryGraftPK;
 import stanislav.danylenko.coursepet.service.impl.CountryService;
 import stanislav.danylenko.coursepet.service.impl.associative.CountryGraftService;
 import stanislav.danylenko.coursepet.web.model.CountryWithGraftDto;

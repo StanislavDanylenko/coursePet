@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
-import stanislav.danylenko.coursepet.db.entity.pk.CountryGraftPK;
 import stanislav.danylenko.coursepet.service.impl.associative.CountryGraftService;
 import stanislav.danylenko.coursepet.web.JsonRules;
 import stanislav.danylenko.coursepet.web.model.associative.CountryGraftDto;
@@ -28,11 +27,10 @@ public class CountryGraftController {
     }
 
     @JsonView(value = JsonRules.CountryGraft.class)
-    @GetMapping("/country/{countryId}/graft/{graftId}")
+    @GetMapping("/country/{id}")
     public @ResponseBody
-    ResponseEntity<CountryGraft> getCountryGraft(@PathVariable Long countryId, @PathVariable Long graftId) {
-        CountryGraftPK pk = new CountryGraftPK(countryId, graftId);
-        return new ResponseEntity<>(service.find(pk), HttpStatus.OK);
+    ResponseEntity<CountryGraft> getCountryGraft(@PathVariable Long id) {
+        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
     @JsonView(value = JsonRules.CountryGraft.class)
@@ -45,10 +43,9 @@ public class CountryGraftController {
     }
 
 
-    @DeleteMapping("/country/{countryId}/graft/{graftId}")
-    public void deleteCountryGraft(@PathVariable Long countryId, @PathVariable Long graftId, HttpServletResponse response)  {
-        CountryGraftPK pk = new CountryGraftPK(countryId, graftId);
-        service.delete(pk);
+    @DeleteMapping("/country/id}")
+    public void deleteCountryGraft(@PathVariable Long id, HttpServletResponse response)  {
+        service.delete(id);
         response.setStatus(HttpServletResponse.SC_OK);
     }
     

@@ -3,17 +3,14 @@ package stanislav.danylenko.coursepet.service.impl.associative;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
-import stanislav.danylenko.coursepet.db.entity.pk.AnimalGraftPK;
 import stanislav.danylenko.coursepet.db.repository.associative.AnimalGraftRepository;
-import stanislav.danylenko.coursepet.service.ComplexIdService;
 import stanislav.danylenko.coursepet.service.GenericService;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
 import stanislav.danylenko.coursepet.service.impl.AnimalService;
 import stanislav.danylenko.coursepet.service.impl.GraftService;
 import stanislav.danylenko.coursepet.web.model.associative.AnimalGraftDto;
 
 @Service
-public class AnimalGraftService implements ComplexIdService<AnimalGraft, AnimalGraftPK> {
+public class AnimalGraftService implements GenericService<AnimalGraft> {
     
     @Autowired
     private AnimalGraftRepository animalDiseaseRepository;
@@ -39,7 +36,7 @@ public class AnimalGraftService implements ComplexIdService<AnimalGraft, AnimalG
     }
 
     @Override
-    public AnimalGraft find(AnimalGraftPK id) {
+    public AnimalGraft find(Long id) {
         return animalDiseaseRepository.getOne(id);
     }
 
@@ -49,7 +46,7 @@ public class AnimalGraftService implements ComplexIdService<AnimalGraft, AnimalG
     }
 
     @Override
-    public void delete(AnimalGraftPK id) {
+    public void delete(Long id) {
        animalDiseaseRepository.deleteById(id);
     }
 

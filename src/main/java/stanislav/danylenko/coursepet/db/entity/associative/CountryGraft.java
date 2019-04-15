@@ -6,14 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.db.entity.Graft;
-import stanislav.danylenko.coursepet.db.entity.pk.CountryGraftPK;
 import stanislav.danylenko.coursepet.web.JsonRules;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@IdClass(CountryGraftPK.class)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,11 +19,13 @@ import java.io.Serializable;
 public class CountryGraft implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "country_id")
     private Country country;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "graft_id")
     private Graft graft;

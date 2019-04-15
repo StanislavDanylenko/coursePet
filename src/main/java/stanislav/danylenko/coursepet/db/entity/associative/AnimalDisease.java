@@ -8,16 +8,13 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.entity.Disease;
-import stanislav.danylenko.coursepet.db.entity.pk.AnimalDiseasePK;
 import stanislav.danylenko.coursepet.web.JsonRules;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@IdClass(AnimalDiseasePK.class)
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,11 +22,13 @@ import java.util.Date;
 public class AnimalDisease implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @ManyToOne
     @JoinColumn(name = "animal_id")
     private Animal animal;
 
-    @Id
     @ManyToOne
     @JoinColumn(name = "disease_id")
     private Disease disease;

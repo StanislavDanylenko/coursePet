@@ -55,7 +55,7 @@ function getCountry(id) {
 
 function createCountry() {
     if (!isUpdate) {
-        var button = $('.action-country')
+        var button = $('.action-country');
         button.unbind();
         button.bind('click', saveCountry);
         // $('#countryOperation')._t('addCountry');

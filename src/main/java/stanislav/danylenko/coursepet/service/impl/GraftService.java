@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.repository.GraftRepository;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.service.GenericService;
 
 @Service
-public class GraftService implements SimpleIdService<Graft> {
+public class GraftService implements GenericService<Graft> {
 
     public static String DEFAULT_GRAFT = "DefaultGRAFT";
     

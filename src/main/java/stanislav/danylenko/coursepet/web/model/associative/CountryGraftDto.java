@@ -12,6 +12,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CountryGraftDto implements Serializable {
 
+    private Long id;
+
     private Long countryId;
     private Long graftId;
 

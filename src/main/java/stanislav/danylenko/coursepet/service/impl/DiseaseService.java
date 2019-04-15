@@ -5,10 +5,9 @@ import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Disease;
 import stanislav.danylenko.coursepet.db.repository.DiseaseRepository;
 import stanislav.danylenko.coursepet.service.GenericService;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
 
 @Service
-public class DiseaseService implements SimpleIdService<Disease> {
+public class DiseaseService implements GenericService<Disease> {
 
     public static String DEFAULT_DISEASE = "DefaultDISEASE";
     

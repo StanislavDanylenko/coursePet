@@ -3,15 +3,14 @@ package stanislav.danylenko.coursepet.service.impl.associative;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
-import stanislav.danylenko.coursepet.db.entity.pk.CountryGraftPK;
 import stanislav.danylenko.coursepet.db.repository.associative.CountryGraftRepository;
-import stanislav.danylenko.coursepet.service.ComplexIdService;
+import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.service.impl.CountryService;
 import stanislav.danylenko.coursepet.service.impl.GraftService;
 import stanislav.danylenko.coursepet.web.model.associative.CountryGraftDto;
 
 @Service
-public class CountryGraftService implements ComplexIdService<CountryGraft, CountryGraftPK> {
+public class CountryGraftService implements GenericService<CountryGraft> {
     
     @Autowired
     private CountryGraftRepository countryGraftRepository;
@@ -36,7 +35,7 @@ public class CountryGraftService implements ComplexIdService<CountryGraft, Count
         return countryGraftRepository.save(entity);
     }
 
-    public CountryGraft find(CountryGraftPK id) {
+    public CountryGraft find(Long id) {
         return countryGraftRepository.getOne(id);
     }
 
@@ -44,7 +43,7 @@ public class CountryGraftService implements ComplexIdService<CountryGraft, Count
         return countryGraftRepository.findAll();
     }
 
-    public void delete(CountryGraftPK id) {
+    public void delete(Long id) {
        countryGraftRepository.deleteById(id);
     }
 

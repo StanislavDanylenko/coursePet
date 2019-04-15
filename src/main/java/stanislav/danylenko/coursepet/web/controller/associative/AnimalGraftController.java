@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
-import stanislav.danylenko.coursepet.db.entity.pk.AnimalGraftPK;
 import stanislav.danylenko.coursepet.service.impl.associative.AnimalGraftService;
 import stanislav.danylenko.coursepet.web.JsonRules;
 import stanislav.danylenko.coursepet.web.model.associative.AnimalGraftDto;
@@ -28,11 +27,10 @@ public class AnimalGraftController {
     }
 
     @JsonView(value = JsonRules.AnimalGraft.class)
-    @GetMapping("/animal/{animalId}/graft/{graftId}")
+    @GetMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<AnimalGraft> getAnimalGraft(@PathVariable Long animalId, @PathVariable Long graftId) {
-        AnimalGraftPK pk = new AnimalGraftPK(animalId, graftId);
-        return new ResponseEntity<>(service.find(pk), HttpStatus.OK);
+    ResponseEntity<AnimalGraft> getAnimalGraft(@PathVariable Long id) {
+        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
     @JsonView(value = JsonRules.AnimalGraft.class)
@@ -45,14 +43,12 @@ public class AnimalGraftController {
     }
 
     @JsonView(value = JsonRules.AnimalGraft.class)
-    @PutMapping("/animal/{animalId}/graft/{graftId}")
+    @PutMapping("/{id}")
     public @ResponseBody
     ResponseEntity<AnimalGraft> updateAnimalGraft(@RequestBody AnimalGraftDto dto,
-                                                  @PathVariable Long animalId,
-                                                  @PathVariable Long graftId) {
+                                                  @PathVariable Long id) {
 
-        AnimalGraftPK pk = new AnimalGraftPK(animalId, graftId);
-        AnimalGraft animalGraft = service.find(pk);
+        AnimalGraft animalGraft = service.find(id);
         if(dto.getDate() != null) {
             animalGraft.setDate(dto.getDate());
         }
@@ -60,10 +56,9 @@ public class AnimalGraftController {
         return ResponseEntity.ok(animalGraft);
     }
 
-    @DeleteMapping("/animal/{animalId}/graft/{graftId}")
-    public void deleteAnimalGraft(@PathVariable Long animalId, @PathVariable Long graftId, HttpServletResponse response)  {
-        AnimalGraftPK pk = new AnimalGraftPK(animalId, graftId);
-        service.delete(pk);
+    @DeleteMapping("/{id}")
+    public void deleteAnimalGraft(@PathVariable Long id, HttpServletResponse response)  {
+        service.delete(id);
         response.setStatus(HttpServletResponse.SC_OK);
     }
     

@@ -5,10 +5,9 @@ import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Country;
 import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
-import stanislav.danylenko.coursepet.db.entity.pk.CountryGraftPK;
 import stanislav.danylenko.coursepet.db.repository.CountryRepository;
 import stanislav.danylenko.coursepet.db.repository.associative.CountryGraftRepository;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.service.impl.associative.CountryGraftService;
 import stanislav.danylenko.coursepet.web.model.CountryWithGraftDto;
 import stanislav.danylenko.coursepet.web.model.CountryWithGraftUpdateDto;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CountryService implements SimpleIdService<Country> {
+public class CountryService implements GenericService<Country> {
 
     public static final String DEFAULT_COUNTRY = "Ukraine";
 
@@ -78,13 +77,17 @@ public class CountryService implements SimpleIdService<Country> {
 
         List<CountryGraft> countryGrafts =  country.getCountryGrafts();
         for(CountryGraft countryGraft : countryGrafts) {
-            CountryGraftPK pk = new CountryGraftPK(countryGraft.getCountry().getId(), countryGraft.getGraft().getId());
-            countryGraftService.delete(pk);
+            countryGraftService.delete(countryGraft.getId());
         }
 
         for (Long id : dto.getGraftIds()) {
             Graft graft = graftService.find(id);
-            countryGraftService.save(new CountryGraft(country, graft));
+
+            CountryGraft countryGraft = new CountryGraft();
+            countryGraft.setGraft(graft);
+            countryGraft.setCountry(country);
+
+            countryGraftService.save(countryGraft);
         }
     }
 

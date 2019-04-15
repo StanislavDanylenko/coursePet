@@ -2,17 +2,15 @@ package stanislav.danylenko.coursepet.service.impl.associative;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
-import stanislav.danylenko.coursepet.db.entity.pk.AnimalDiseasePK;
 import stanislav.danylenko.coursepet.db.repository.associative.AnimalDiseaseRepository;
-import stanislav.danylenko.coursepet.service.ComplexIdService;
+import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.service.impl.AnimalService;
 import stanislav.danylenko.coursepet.service.impl.DiseaseService;
 import stanislav.danylenko.coursepet.web.model.associative.AnimalDiseaseDto;
 
 @Service
-public class AnimalDiseaseService implements ComplexIdService<AnimalDisease, AnimalDiseasePK> {
+public class AnimalDiseaseService implements GenericService<AnimalDisease> {
     
     @Autowired
     private AnimalDiseaseRepository animalDiseaseRepository;
@@ -36,7 +34,7 @@ public class AnimalDiseaseService implements ComplexIdService<AnimalDisease, Ani
         return animalDiseaseRepository.save(entity);
     }
 
-    public AnimalDisease find(AnimalDiseasePK id) {
+    public AnimalDisease find(Long id) {
         return animalDiseaseRepository.getOne(id);
     }
 
@@ -44,7 +42,7 @@ public class AnimalDiseaseService implements ComplexIdService<AnimalDisease, Ani
         return animalDiseaseRepository.findAll();
     }
 
-    public void delete(AnimalDiseasePK id) {
+    public void delete(Long id) {
        animalDiseaseRepository.deleteById(id);
     }
 

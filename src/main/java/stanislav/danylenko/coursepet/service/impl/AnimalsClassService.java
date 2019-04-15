@@ -2,13 +2,12 @@ package stanislav.danylenko.coursepet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.entity.AnimalsClass;
 import stanislav.danylenko.coursepet.db.repository.AnimalsClassRepository;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.service.GenericService;
 
 @Service
-public class AnimalsClassService implements SimpleIdService<AnimalsClass> {
+public class AnimalsClassService implements GenericService<AnimalsClass> {
 
     public static String DEFAULT_ANIMAL_CLASS = "DefaultAnimalClass";
 

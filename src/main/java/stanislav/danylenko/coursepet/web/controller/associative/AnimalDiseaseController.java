@@ -6,7 +6,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
-import stanislav.danylenko.coursepet.db.entity.pk.AnimalDiseasePK;
 import stanislav.danylenko.coursepet.service.impl.associative.AnimalDiseaseService;
 import stanislav.danylenko.coursepet.web.JsonRules;
 import stanislav.danylenko.coursepet.web.model.associative.AnimalDiseaseDto;
@@ -28,11 +27,10 @@ public class AnimalDiseaseController {
     }
 
     @JsonView(value = JsonRules.AnimalDisease.class)
-    @GetMapping("/animal/{animalId}/disease/{diseaseId}")
+    @GetMapping("/{id}")
     public @ResponseBody
-    ResponseEntity<AnimalDisease> getAnimalDisease(@PathVariable Long animalId, @PathVariable Long diseaseId) {
-        AnimalDiseasePK pk = new AnimalDiseasePK(animalId, diseaseId);
-        return new ResponseEntity<>(service.find(pk), HttpStatus.OK);
+    ResponseEntity<AnimalDisease> getAnimalDisease(@PathVariable Long id) {
+        return new ResponseEntity<>(service.find(id), HttpStatus.OK);
     }
 
     @JsonView(value = JsonRules.AnimalDisease.class)
@@ -45,14 +43,12 @@ public class AnimalDiseaseController {
     }
 
     @JsonView(value = JsonRules.AnimalDisease.class)
-    @PutMapping("/animal/{animalId}/disease/{diseaseId}")
+    @PutMapping("/{id}")
     public @ResponseBody
     ResponseEntity<AnimalDisease> updateAnimalDisease(@RequestBody AnimalDiseaseDto dto,
-                                                      @PathVariable Long animalId,
-                                                      @PathVariable Long diseaseId) {
+                                                      @PathVariable Long id) {
 
-        AnimalDiseasePK pk = new AnimalDiseasePK(animalId, diseaseId);
-        AnimalDisease animalDisease = service.find(pk);
+        AnimalDisease animalDisease = service.find(id);
 
         service.prepareForUpdating(animalDisease, dto);
         service.update(animalDisease);
@@ -60,12 +56,10 @@ public class AnimalDiseaseController {
         return ResponseEntity.ok(animalDisease);
     }
 
-    @DeleteMapping("/animal/{animalId}/disease/{diseaseId}")
-    public void deleteAnimalDisease(@PathVariable Long animalId,
-                                    @PathVariable Long diseaseId, HttpServletResponse response)  {
+    @DeleteMapping("/{id}")
+    public void deleteAnimalDisease(@PathVariable Long id, HttpServletResponse response)  {
 
-        AnimalDiseasePK pk = new AnimalDiseasePK(animalId, diseaseId);
-        service.delete(pk);
+        service.delete(id);
         response.setStatus(HttpServletResponse.SC_OK);
     }
     

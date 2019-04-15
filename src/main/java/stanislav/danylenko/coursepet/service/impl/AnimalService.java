@@ -1,7 +1,6 @@
 package stanislav.danylenko.coursepet.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.*;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
@@ -10,20 +9,19 @@ import stanislav.danylenko.coursepet.db.entity.associative.CountryGraft;
 import stanislav.danylenko.coursepet.db.repository.AnimalRepository;
 import stanislav.danylenko.coursepet.db.repository.associative.AnimalDiseaseRepository;
 import stanislav.danylenko.coursepet.db.repository.associative.AnimalGraftRepository;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.web.model.AnimalCreateDto;
 import stanislav.danylenko.coursepet.web.model.AnimalFullInfoDto;
 import stanislav.danylenko.coursepet.web.model.AnimalUpdateDto;
 import stanislav.danylenko.coursepet.web.model.IsAvailableCountry;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Service
-public class AnimalService implements SimpleIdService<Animal> {
+public class AnimalService implements GenericService<Animal> {
 
     public static String DEFAULT_ANIMAL = "DefaultAnimal";
 

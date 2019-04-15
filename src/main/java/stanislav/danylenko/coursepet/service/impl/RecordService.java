@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Record;
 import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 import stanislav.danylenko.coursepet.db.repository.RecordRepository;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
+import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.web.model.RecordDto;
 
 import java.time.LocalDateTime;
 
 @Service
-public class RecordService implements SimpleIdService<Record> {
+public class RecordService implements GenericService<Record> {
     
     @Autowired
     private RecordRepository recordRepository;

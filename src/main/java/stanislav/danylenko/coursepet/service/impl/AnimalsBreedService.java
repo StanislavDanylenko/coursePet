@@ -6,11 +6,10 @@ import stanislav.danylenko.coursepet.db.entity.AnimalsBreed;
 import stanislav.danylenko.coursepet.db.entity.AnimalsClass;
 import stanislav.danylenko.coursepet.db.repository.AnimalsBreedRepository;
 import stanislav.danylenko.coursepet.service.GenericService;
-import stanislav.danylenko.coursepet.service.SimpleIdService;
 import stanislav.danylenko.coursepet.web.model.AnimalsBreedDto;
 
 @Service
-public class AnimalsBreedService implements SimpleIdService<AnimalsBreed> {
+public class AnimalsBreedService implements GenericService<AnimalsBreed> {
 
     public static String DEFAULT_ANIMAL_BREED = "DefaultAnimalBreed";
     

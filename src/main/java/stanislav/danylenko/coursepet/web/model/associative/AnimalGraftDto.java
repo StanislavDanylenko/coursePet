@@ -13,6 +13,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class AnimalGraftDto implements Serializable {
 
+    private Long id;
+
     private Long animalId;
     private Long graftId;
     private Date date;
