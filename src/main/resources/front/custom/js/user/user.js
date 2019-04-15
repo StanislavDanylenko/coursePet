@@ -79,7 +79,7 @@ function loadAnimal() {
     $(document).on('click', '.add-animal', addAnimal);
     $(document).on('click', '.save-animal', saveAnimal);
     $(document).on('click', '.update-animal', updateAnimal);
-    $(document).on('click', '.edit-animal', fillUpdateModal);
+    $(document).on('click', '.edit-animal', fillAnimalUpdateModal);
 }
 
 function loadSmartDevice() {
