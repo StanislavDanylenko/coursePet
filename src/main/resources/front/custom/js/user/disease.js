@@ -3,7 +3,6 @@ function fillDiseases() {
 
     for(var i = 0; i < ANIMAL.diseases.length; i++) {
         ANIMAL.diseases[i].name = ANIMAL.diseases[i].disease.name;
-        ANIMAL.diseases[i].id = ANIMAL.diseases[i].disease.id;
     }
 
     var html = diseaseTemplate(ANIMAL.diseases);
@@ -38,7 +37,7 @@ function deleteAnimalDisease(e) {
     var id = getID(e, '#diseaseTableTemplate');
 
     $.ajax({
-        url: HOST + "/animalDisease/animal/" +  ANIMAL.animal.id + "/disease/" + id,
+        url: HOST + "/animalDisease/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {

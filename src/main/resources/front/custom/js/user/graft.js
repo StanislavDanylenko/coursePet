@@ -3,7 +3,6 @@ function fillGrafts() {
 
     for(var i = 0; i < ANIMAL.grafts.length; i++) {
         ANIMAL.grafts[i].name = ANIMAL.grafts[i].graft.name;
-        ANIMAL.grafts[i].id = ANIMAL.grafts[i].graft.id;
         ANIMAL.grafts[i].frequency = ANIMAL.grafts[i].graft.frequency;
     }
 
@@ -39,7 +38,7 @@ function deleteAnimalGraft(e) {
     var id = getID(e, '#graftTableTemplate');
 
     $.ajax({
-        url: HOST + "/animalGraft/animal/" + ANIMAL.animal.id + "/graft/" + id,
+        url: HOST + "/animalGraft/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {
