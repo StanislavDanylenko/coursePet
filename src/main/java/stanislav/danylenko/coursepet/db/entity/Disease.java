@@ -19,7 +19,7 @@ import java.util.List;
 public class Disease implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(value = JsonRules.AnimalDisease.class)
     private Long id;
 

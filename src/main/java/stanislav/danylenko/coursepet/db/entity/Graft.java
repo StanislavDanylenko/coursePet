@@ -21,7 +21,7 @@ import java.util.Set;
 public class Graft implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(value = {JsonRules.AnimalGraft.class, JsonRules.CountryGraft.class})
     private Long id;
 

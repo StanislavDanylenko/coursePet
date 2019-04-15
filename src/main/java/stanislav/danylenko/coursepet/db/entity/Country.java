@@ -20,7 +20,7 @@ import java.util.List;
 public class Country implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(value = JsonRules.CountryGraft.class)
     private Long id;
 

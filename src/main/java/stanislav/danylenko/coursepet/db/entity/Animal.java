@@ -28,7 +28,7 @@ import java.util.List;
 public class Animal implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(value = {JsonRules.AnimalDisease.class, JsonRules.AnimalGraft.class})
     private Long id;
 
