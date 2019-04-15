@@ -201,7 +201,7 @@ function removeAnimal(e) {
 
 
 function fillSmartCard() {
-    //getQR();
+    getQR();
     $('#SCID').text(ANIMAL.animal.smartCardId);
 }
 
