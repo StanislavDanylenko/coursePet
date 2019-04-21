@@ -24,8 +24,8 @@ import java.util.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements UserDetails {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,9 +44,11 @@ public class User implements UserDetails {
     @Enumerated
     private Localization localization;
 
+    @JsonIgnore
     @CreationTimestamp
     private LocalDateTime createDateTime;
 
+    @JsonIgnore
     @UpdateTimestamp
     private LocalDateTime updateDateTime;
 
@@ -59,7 +61,7 @@ public class User implements UserDetails {
     @JoinColumn(name = "country_id")
     private Country country;
 
-
+    @JsonIgnore
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return roles;
@@ -75,21 +77,25 @@ public class User implements UserDetails {
         return this.username;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isCredentialsNonExpired() {
         return true;
     }
 
+    @JsonIgnore
     @Override
     public boolean isEnabled() {
         return true;

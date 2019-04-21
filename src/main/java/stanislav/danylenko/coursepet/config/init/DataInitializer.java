@@ -70,8 +70,6 @@ public class DataInitializer implements CommandLineRunner {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private AtomicLong smartCardIdCreator;
 
     @Override
     public void run(String... args) throws Exception {
@@ -159,7 +157,7 @@ public class DataInitializer implements CommandLineRunner {
             animal.setHeight(40d);
             animal.setGender(Gender.MALE);
             animal.setUser((User)user);
-            animal.setSmartCardId(smartCardIdCreator.incrementAndGet() + "");
+            animal.setSmartCardId(animalService.getSmartCardId());
             animalService.save(animal);
             log.info("Created Animal {Animal}");
         }
@@ -241,7 +239,7 @@ public class DataInitializer implements CommandLineRunner {
 
 
             Record record1 = new Record();
-            record1.setCreationDate(LocalDateTime.now());
+            record1.setCreationDate(Date.from(Instant.now()));
             record1.setTemperature(40d);
             record1.setPulse(40d);
             record1.setLongitude(40d);
@@ -250,7 +248,7 @@ public class DataInitializer implements CommandLineRunner {
             record1.setSmartDevice(smartDevice);
 
             Record record2 = new Record();
-            record2.setCreationDate(LocalDateTime.now());
+            record2.setCreationDate(Date.from(Instant.now()));
             record2.setTemperature(20d);
             record2.setPulse(20d);
             record2.setLongitude(30d);

@@ -19,9 +19,4 @@ public class CoursepetApplication {
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-
-    @Bean
-    public AtomicLong smartCardIdCreator() {
-        return new AtomicLong(0);
-    }
 }

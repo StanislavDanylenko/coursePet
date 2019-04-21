@@ -8,7 +8,9 @@ import stanislav.danylenko.coursepet.db.repository.RecordRepository;
 import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.web.model.RecordDto;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Service
 public class RecordService implements GenericService<Record> {
@@ -78,7 +80,7 @@ public class RecordService implements GenericService<Record> {
             record.setTemperature(dto.getTemperature());
         }
 
-        record.setCreationDate(LocalDateTime.now());
+        record.setCreationDate(Date.from(Instant.now()));
 
         return record;
     }

@@ -43,12 +43,13 @@ public class AnimalService implements GenericService<Animal> {
     @Autowired
     private CountryService countryService;
 
-    @Autowired
-    private AtomicLong smartCardIdCreator;
-
     @Override
     public Animal save(Animal entity) {
         return animalRepository.save(entity);
+    }
+
+    public String getSmartCardId() {
+        return animalRepository.getLastInsertedId() + 1 + "";
     }
 
     @Override
@@ -123,7 +124,7 @@ public class AnimalService implements GenericService<Animal> {
             animal.setUser(user);
         }
 
-        animal.setSmartCardId(smartCardIdCreator.incrementAndGet() + "");
+        animal.setSmartCardId(getSmartCardId());
 
         animal = prepareForUpdating(animal, dto);
 

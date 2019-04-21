@@ -2,6 +2,7 @@ package stanislav.danylenko.coursepet.db.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Animal implements Serializable {
 
     @Id
@@ -51,7 +53,7 @@ public class Animal implements Serializable {
     @Column(unique = true)
     private String smartCardId;
 
-    @JsonIgnore
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animalBreed_id")
     private AnimalsBreed animalsBreed;

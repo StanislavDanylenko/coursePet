@@ -24,6 +24,11 @@ public class CountryGraftService implements GenericService<CountryGraft> {
 
 
     public CountryGraft save(CountryGraft entity) {
+
+        CountryGraft countryGraft = countryGraftRepository.findByCountryAndGraft(entity.getCountry(), entity.getGraft());
+        if(countryGraft != null) {
+            return countryGraft;
+        }
         return countryGraftRepository.save(entity);
     }
 
