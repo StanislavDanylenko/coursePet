@@ -53,6 +53,7 @@
                                 <li><a href="#" class="statistic-button">Breed in countries</a></li>
                             </ul>
                         </li>
+                        <li><a href="#" class="notification-button"><i class="ti-dashboard"></i><span>Send notification</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -218,6 +219,39 @@
         </div>
     </div>
     <!-- main content area end -->
+
+
+    <!--Notification-->
+
+    <button type="button" class="btn btn-primary ml-2 notification-trigger" data-toggle="modal" data-target="#notificationModal"
+            hidden><span class="fa fa-plus"> </span></button>
+
+    <div class="modal fade" id="notificationModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Send notification</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="sdName" id=notificationThemeLabel">Notification Theme</label>
+                        <input type="text" class="form-control" id="notificationTheme">
+                    </div>
+                    <div class="form-group">
+                        <label for="sdMac" id="notificationMessageLabel">Notification Message</label>
+                        <input type="text" class="form-control" id="notificationMessage">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary send-notification">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+
     <!---->
     <!--MODAL HERE-->
     <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal"

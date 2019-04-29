@@ -28,6 +28,7 @@ $(document).ready(function() {
     loadDiseases();
     loadGrafts();
 
+    loadNotification();
 });
 
 function checkHash() {
@@ -112,6 +113,15 @@ function loadGrafts() {
     $(document).on('click', '.save-animal-graft', saveAnimalGraft);
 }
 
+function loadNotification() {
+    $(document).on('click', '.notification-button', triggerNotificationButton);
+    $(document).on('click', '.send-notification', sendNotification);
+}
+
+function triggerNotificationButton() {
+    $('.notification-trigger').click();
+}
+
 function setUpUserWorkspace() {
     try{
         loadUserLS();
@@ -165,4 +175,41 @@ function getUser() {
             alert('error');
         }
     });
+}
+
+function sendNotification() {
+
+    var notification = {
+        theme: $('#notificationTheme').val(),
+        message: $('#notificationMessage').val()
+    };
+
+    $.ajax({
+        url: HOST + "/notification",
+        type: "POST",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify(notification),
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            $("[data-dismiss=modal]").trigger({type: "click"});
+            Swal.fire(
+                'SUCCES!',
+                'Sent!',
+                'success'
+            )
+        },
+        error: function (data) {
+            Swal.fire(
+                'BAD!',
+                'Can not send',
+                data
+            )
+        }
+    });
+
 }
