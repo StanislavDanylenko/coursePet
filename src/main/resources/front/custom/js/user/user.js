@@ -3,6 +3,7 @@ var diseaseTemplate;
 var graftTemplate;
 var smartDeviceTemplate;
 var recordTemplate;
+var recordsTemplate;
 var countryGraftsTemplate;
 
 $(document).ready(function() {
@@ -29,6 +30,7 @@ $(document).ready(function() {
     loadGrafts();
 
     loadNotification();
+
 });
 
 function checkHash() {
@@ -86,10 +88,16 @@ function loadAnimal() {
 function loadSmartDevice() {
 
     recordTemplate = Handlebars.compile($('#recordTemplate').html());
+    recordsTemplate = Handlebars.compile($('#recordsTemplate').html());
 
     $(document).on('click', '.sd-info', getSmartDeviceInfo);
     $(document).on('click', '.sd-delete', deleteSmartDevice);
     $(document).on('click', '.action-sd', saveSmartDevice);
+    $(document).on('click', '.enable-sd', processSmartDevice);
+    $(document).on('click', '#pills-contact2-tab', checkActiveSmartDevice);
+    $(document).on('click', '#pills-contact5-tab', getRecords);
+    $(document).on('click', '.swal2-bottom-start', alertClick);
+
 }
 
 function loadMap() {
@@ -115,7 +123,7 @@ function loadGrafts() {
 
 function loadNotification() {
     $(document).on('click', '.notification-button', triggerNotificationButton);
-    $(document).on('click', '.send-notification', sendNotification);
+    $(document).on('click', '.send-notification', prepareNotification);
 }
 
 function triggerNotificationButton() {
@@ -177,12 +185,17 @@ function getUser() {
     });
 }
 
-function sendNotification() {
+function prepareNotification() {
 
     var notification = {
         theme: $('#notificationTheme').val(),
         message: $('#notificationMessage').val()
     };
+
+    sendNotification(notification);
+}
+
+function sendNotification(notification) {
 
     $.ajax({
         url: HOST + "/notification",
@@ -196,19 +209,19 @@ function sendNotification() {
             }
         },
         success: function (data) {
-            $("[data-dismiss=modal]").trigger({type: "click"});
+            /*$("[data-dismiss=modal]").trigger({type: "click"});
             Swal.fire(
                 'SUCCES!',
                 'Sent!',
                 'success'
-            )
+            )*/
         },
         error: function (data) {
-            Swal.fire(
+            /*Swal.fire(
                 'BAD!',
                 'Can not send',
                 data
-            )
+            )*/
         }
     });
 

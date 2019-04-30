@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import stanislav.danylenko.coursepet.db.entity.Record;
 import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 import stanislav.danylenko.coursepet.service.impl.SmartDeviceService;
 import stanislav.danylenko.coursepet.web.model.SmartDeviceDto;
@@ -35,6 +36,24 @@ public class SmartDeviceController {
         return ResponseEntity.ok(service.getSmartDevicesByAnimalId(id));
     }
 
+    @GetMapping("/enable/{id}")
+    public void enableSmartDevice(@PathVariable Long id, HttpServletResponse response) {
+        if (service.enableSmartDevice(id)) {
+            response.setStatus(HttpServletResponse.SC_OK);
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/disable/{id}")
+    public void disableSmartDevice(@PathVariable Long id, HttpServletResponse response) {
+        if (service.disableSmartDevice(id)) {
+            response.setStatus(HttpServletResponse.SC_OK);
+        } else {
+            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
+    }
+
     @PostMapping
     public @ResponseBody
     ResponseEntity<SmartDevice> createSmartDevice(@RequestBody SmartDeviceDto dto) {
@@ -53,9 +72,9 @@ public class SmartDeviceController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSmartDevice(@PathVariable Long id, HttpServletResponse response)  {
+    public void deleteSmartDevice(@PathVariable Long id, HttpServletResponse response) {
         service.delete(id);
         response.setStatus(HttpServletResponse.SC_OK);
     }
-    
+
 }

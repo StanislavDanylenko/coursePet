@@ -30,6 +30,14 @@ $(document).ready(function () {
 
     $(document).on('click', '#register_submit', registerUser);
 
+    $(document).on("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            registerUser();
+        }
+    });
+
+
 });
 
 function registerUser() {

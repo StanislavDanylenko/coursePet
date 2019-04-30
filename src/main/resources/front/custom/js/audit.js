@@ -39,7 +39,7 @@ function loadProfileAudit() {
         },
         success: function (data) {
             updateUserLS(data);
-            $('.user-name').text(data.username);
+            $('.user-name').html(data.username + '<i class="fa fa-angle-down"/>');
         },
         error: function (xhr, ajaxOptions, thrownError) {
             alert('error');

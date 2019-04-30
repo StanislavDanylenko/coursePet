@@ -49,6 +49,7 @@ function getAnimal(id) {
             fillDiseases();
             fillGrafts();
             fillSmartDevices();
+            fillRecords();
             fillAnimalInfo();
             getAnimalCountries();
         },

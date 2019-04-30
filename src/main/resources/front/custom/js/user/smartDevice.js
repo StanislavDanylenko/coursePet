@@ -1,9 +1,44 @@
 
+function alertClick() {
+    $('#pills-contact5-tab').click();
+}
+
+function getRecords() {
+    $.ajax({
+        url: HOST + "/smartDevice/animal/" + ANIMAL.animal.id,
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            ANIMAL.animal.smartDevices = data;
+            fillRecords();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+        }
+    });
+}
 
 function fillSmartDevices() {
     var html = smartDeviceTemplate(ANIMAL.animal.smartDevices);
     $('.animal-sd').empty().append(html);
     setDataTable('smartDeviceTableTemplate');
+}
+
+function fillRecords() {
+    var records = [];
+    var devices = ANIMAL.animal.smartDevices;
+    for (var i = 0; i < devices.length; i++) {
+        var recordz = devices[i].records;
+        for(var j = 0; j < recordz.length; j++) {
+            records.push(recordz[j])
+        }
+    }
+    var html = recordsTemplate(records);
+    $('.animal-records').empty().append(html);
+    setDataTable('recordsTableTemplate');
 
 }
 
@@ -57,6 +92,19 @@ function deleteSmartDevice(e) {
     });
 }
 
+function processSmartDevice(e) {
+
+    var id = $(e.target).attr('sd-id');
+
+    var enableToggle = e.target;
+
+    if(!enableToggle.checked) {
+        offSmartDevice(id, enableToggle);
+    } else {
+        onSmartDevice(id, enableToggle);
+    }
+}
+
 function saveSmartDevice() {
 
     var smartDevice = {
@@ -100,4 +148,69 @@ function saveSmartDevice() {
         }
     });
     $('#sdModal').find('input, select').val('');
+}
+
+function checkActiveSmartDevice() {
+
+    var checkedInputs = $( "input:checked.enable-sd" );
+    if(checkedInputs.length > 0) {
+        var checkedInput = checkedInputs[0];
+        if (timeoutId === undefined) {
+            startEmulation(checkedInput.getAttribute('sd-id'));
+        }
+    }
+
+}
+
+/*=======*/
+function onSmartDevice(id, enableToggle) {
+    $.ajax({
+        url: HOST + "/smartDevice/enable/" + id,
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function () {
+             var checkedInputs = $( "input:checked.enable-sd" );
+             if(checkedInputs.length > 0) {
+                 $('.enable-sd').prop('checked', false);
+                 emulationStoppedAlert();
+             }
+             $(enableToggle).prop('checked', true);
+             startEmulation(id);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            Swal.fire(
+                'BAD!',
+                'Error while updating',
+                'cannot update device status'
+            )
+        }
+    });
+}
+
+function offSmartDevice(id, enableToggle) {
+    $.ajax({
+        url: HOST + "/smartDevice/disable/" + id,
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function () {
+            $(enableToggle).prop('checked', false);
+            cleanSetedTimeout();
+            emulationStoppedAlert();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            Swal.fire(
+                'BAD!',
+                'Error while updating',
+                'cannot update device status'
+            )
+        }
+    });
 }

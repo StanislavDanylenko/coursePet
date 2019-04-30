@@ -9,5 +9,6 @@ public interface SmartDeviceRepository extends JpaRepository<SmartDevice, Long> 
 
     Iterable<SmartDevice> findByAnimalId(Long animalId);
     SmartDevice findByMac(String mac);
+    SmartDevice findByAnimalIdAndIsActiveTrue(Long animalId);
 
 }

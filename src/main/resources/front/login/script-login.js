@@ -30,6 +30,13 @@ $(document).ready(function () {
 
     $(document).on('click', '#login_submit', loginUser);
 
+    $(document).on("keyup", function(event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            loginUser();
+        }
+    });
+
 });
 
 function loginUser() {

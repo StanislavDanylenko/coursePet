@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="../lib/css/responsive.css">
 
     <link rel="stylesheet" href="../custom/style/map.css">
+    <link rel="stylesheet" href="../custom/style/toggleSwitch.css">
 
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -24,6 +25,7 @@
           href="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js">
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
 </head>
 
 <body>
@@ -53,7 +55,7 @@
                                 <li><a href="#" class="statistic-button">Breed in countries</a></li>
                             </ul>
                         </li>
-                        <li><a href="#" class="notification-button"><i class="ti-dashboard"></i><span>Send notification</span></a></li>
+                        <!--<li><a href="#" class="notification-button"><i class="ti-dashboard"></i><span>Send notification</span></a></li>-->
                     </ul>
                 </nav>
             </div>
@@ -116,6 +118,10 @@
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2"
                                    role="tab" aria-controls="pills-contact" aria-selected="false">Smart Devices</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="pills-contact5-tab" data-toggle="pill" href="#pills-contact5"
+                                   role="tab" aria-controls="pills-contact" aria-selected="false">Records</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3"
@@ -201,6 +207,10 @@
                                 <div class="text-center">
                                     <button class="btn btn-primary check-info">Get info</button>
                                 </div>
+                            </div>
+                            <div class="tab-pane fade" id="pills-contact5" role="tabpanel"
+                                 aria-labelledby="pills-contact-tab">
+                                <div class="animal-records"></div>
                             </div>
                         </div>
                     </div>
@@ -555,6 +565,7 @@
 <script src="../custom/js/user/smartDevice.js"></script>
 <script src="../custom/js/user/breed.js"></script>
 <script src="../custom/js/user/country.js"></script>
+<script src="../custom/js/user/emulator.js"></script>
 
 <script src="../custom/js/user/map.js"></script>
 
@@ -710,9 +721,8 @@
                             <th class="mac">mac</th>
                             <th class="name">Name</th>
                             <th class="battery-level">Battery level</th>
-                            <th class="status">Is Active</th>
-
                             <th></th>
+                            <th>switch</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -722,9 +732,8 @@
                             <td>{{ mac }}</td>
                             <td>{{ name }}</td>
                             <td>{{ batteryLevel }}</td>
-                            <td class="text-center">{{ isActive }}</td>
 
-                            <td>
+                            <td class="text-center">
                                 <button class="btn btn-primary sd-info text-td" type="button" sd-id="{{ id }}"> Show
                                     records
                                 </button>
@@ -732,11 +741,21 @@
                                     DELETE
                                 </button>
                             </td>
-
+                            <td class="text-center">
+                                <label class="switch">
+                                {{#if isActive}}
+                                    <input type="checkbox" class="enable-sd" checked sd-id="{{ id }}">
+                                {{else}}
+                                    <input type="checkbox" class="enable-sd" sd-id="{{ id }}">
+                                {{/if}}
+                                    <span class="slider round"></span>
+                                </label>
+                            </td>
                         </tr>
                         {{/this}}
                         </tbody>
                     </table>
+
                 </div>
             </div>
         </div>
@@ -751,7 +770,7 @@
             <tr>
                 <th class="animal-state">Animal State</th>
                 <th class="creation-date">Creation Date</th>
-                <th class="pulse">Pulse</th>
+                <th class="pulze">Pulse</th>
                 <th class="temperature">Temperature</th>
 
             </tr>
@@ -763,6 +782,37 @@
                 <td>{{ creationDate }}</td>
                 <td>{{ pulse }}</td>
                 <td>{{ temperature }}</td>
+            </tr>
+            {{/this}}
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<!--Records-->
+<script id="recordsTemplate" type="text/x-handlebars-template">
+    <div class="data-tables datatable-dark p-5">
+        <table id="recordsTableTemplate" class="display responsive nowrap" style="width:100%">
+            <thead>
+            <tr>
+                <th class="animal-state">Animal State</th>
+                <th class="creation-date">Creation Date</th>
+                <th class="pulze">Pulse</th>
+                <th class="temperature">Temperature</th>
+                <th class="temperature">Longitude</th>
+                <th class="temperature">Latitude</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {{#this}}
+            <tr>
+                <td>{{ animalState }}</td>
+                <td>{{ creationDate }}</td>
+                <td>{{ pulse }}</td>
+                <td>{{ temperature }}</td>
+                <td>{{ longitude }}</td>
+                <td>{{ latitude }}</td>
             </tr>
             {{/this}}
             </tbody>
