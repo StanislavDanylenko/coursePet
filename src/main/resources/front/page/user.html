@@ -18,6 +18,7 @@
 
     <link rel="stylesheet" href="../custom/style/map.css">
     <link rel="stylesheet" href="../custom/style/toggleSwitch.css">
+    <link rel="stylesheet" href="../custom/style/photo.css">
 
     <!-- Start datatable css -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -138,7 +139,22 @@
                                 <div class="m-5">
                                     <div class="row">
                                         <div class="col justify-content-center align-self-center m-2">
-                                            <img src="../custom/img/card.jpg" alt="image"/>
+                                            <div id="container" class="vertical-center rounded">
+                                                <img src="../custom/img/card.jpg" alt="image" id="animal-img" class="img-preview"/>
+                                            </div>
+                                            <!--todo here upload photo-->
+                                            <form action="" method="post" enctype="multipart/form-data" onsubmit="AJAXSubmit(this); return false;">
+
+                                                <div class="text-center">
+                                                    <input type="text" name="upload_preset" value="jquery" hidden>
+
+                                                    <label for="avatar" class="btn btn-primary m-2">Select Image</label>
+                                                    <input type="file" name="file" id="avatar" hidden>
+
+                                                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                                                </div>
+                                                    <!--<div id="results"></div>-->
+                                            </form>
                                         </div>
                                         <div class="col">
                                             <div class="form-group">
@@ -568,6 +584,7 @@
 <script src="../custom/js/user/emulator.js"></script>
 
 <script src="../custom/js/user/map.js"></script>
+<script src="../custom/js/user/photo.js"></script>
 
 <!--Animal card-->
 <script id="animalCardTemplate" type="text/x-handlebars-template">
@@ -578,7 +595,11 @@
                 {{#this}}
                 <div class="col-lg-4 col-md-6 mt-5">
                     <div class="card card-bordered">
+                        {{#if photoURL}}
+                        <img class="card-img-top img-fluid" src="{{ photoURL }}" alt="image">
+                        {{else}}
                         <img class="card-img-top img-fluid" src="../custom/img/card.jpg" alt="image">
+                        {{/if}}
                         <div class="card-body">
                             <h5 class="title"> {{ name }}</h5>
                             <a href="#" class="btn btn-primary actions-button choose-animal"
@@ -731,7 +752,7 @@
                             <td hidden>{{ id }}</td>
                             <td>{{ mac }}</td>
                             <td>{{ name }}</td>
-                            <td>{{ batteryLevel }}</td>
+                            <td class="battery-level" sd-id="{{ id }}">{{ batteryLevel }}</td>
 
                             <td class="text-center">
                                 <button class="btn btn-primary sd-info text-td" type="button" sd-id="{{ id }}"> Show
@@ -739,6 +760,9 @@
                                 </button>
                                 <button class="btn btn-danger sd-delete text-td" type="button" sd-id="{{ id }}">
                                     DELETE
+                                </button>
+                                <button class="btn btn-success sd-charge text-td" type="button" sd-id="{{ id }}">
+                                    CHARGE
                                 </button>
                             </td>
                             <td class="text-center">

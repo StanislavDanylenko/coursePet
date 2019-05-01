@@ -211,6 +211,12 @@ function fillAnimalInfo() {
     $('#animalWeight').val(ANIMAL.animal.weight);
     $('#animalHeight').val(ANIMAL.animal.height);
     $('#animalLength').val(ANIMAL.animal.length);
+
+    if(ANIMAL.animal.photoURL) {
+        $('#animal-img').attr('src', ANIMAL.animal.photoURL);
+    } else {
+        $('#animal-img').attr('src', '../custom/img/card.jpg');
+    }
 }
 
 ///////

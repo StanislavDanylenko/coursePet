@@ -88,14 +88,5 @@
         });
     }, false);
 
-    /*================================
-    datatable active
-    ==================================*/
-
-    /*if ($('#dataTable').length) {
-        $('#dataTable').DataTable({
-            responsive: true
-        });
-    }*/
 
 })(jQuery);

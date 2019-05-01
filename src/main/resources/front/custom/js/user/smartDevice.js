@@ -1,3 +1,6 @@
+var activeDevice;
+var activeDeviceId;
+
 
 function alertClick() {
     $('#pills-contact5-tab').click();
@@ -92,6 +95,36 @@ function deleteSmartDevice(e) {
     });
 }
 
+function chargeSmartDevice(e) {
+
+    var id = getID(e, '#smartDeviceTableTemplate');
+
+    $.ajax({
+        url: HOST + "/smartDevice/charge/" + id,
+        type: "POST",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function () {
+            $('.battery-level[sd-id="' + id + '"]').text(100);
+            Swal.fire(
+                'SUCCESS!',
+                'Successfully charged!',
+                'success'
+            )
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            Swal.fire(
+                'BAD!',
+                'Error while updating battery level.',
+                'error'
+            )
+        }
+    });
+}
+
 function processSmartDevice(e) {
 
     var id = $(e.target).attr('sd-id');
@@ -179,13 +212,20 @@ function onSmartDevice(id, enableToggle) {
                  emulationStoppedAlert();
              }
              $(enableToggle).prop('checked', true);
+             activeDevice = enableToggle;
+             activeDeviceId = id;
              startEmulation(id);
         },
         error: function (xhr, ajaxOptions, thrownError) {
+            $(enableToggle).prop('checked', false);
+            var message = 'Error while updating';
+            if (xhr.status === 409) {
+                message = 'Cannot enable smart device. Low battery level.'
+            }
             Swal.fire(
                 'BAD!',
-                'Error while updating',
-                'cannot update device status'
+                message,
+                'error'
             )
         }
     });

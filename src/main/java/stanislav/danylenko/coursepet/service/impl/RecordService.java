@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Record;
 import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 import stanislav.danylenko.coursepet.db.repository.RecordRepository;
+import stanislav.danylenko.coursepet.exception.LowBatteryLevelException;
 import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.web.model.RecordDto;
 
@@ -51,13 +52,21 @@ public class RecordService implements GenericService<Record> {
         recordRepository.deleteById(id);
     }
 
-    public Record prepareForSaving(RecordDto dto) {
+    public Record prepareForSaving(RecordDto dto) throws LowBatteryLevelException {
 
         Record record = new Record();
 
         if(dto.getSmartDeviceId() != null) {
             SmartDevice smartDevice = smartDeviceService.find(dto.getSmartDeviceId());
+            smartDevice.setBatteryLevel(smartDevice.getBatteryLevel() - 2.0);
+            if (smartDevice.getBatteryLevel() <= 3.0) {
+                smartDevice.setIsActive(false);
+                smartDevice.setBatteryLevel(smartDevice.getBatteryLevel() + 2.0);
+                smartDeviceService.update(smartDevice);
+                throw new LowBatteryLevelException("Low battery level");
+            }
             record.setSmartDevice(smartDevice);
+            smartDeviceService.update(smartDevice);
         }
 
         if(dto.getAnimalState() != null) {

@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Record;
+import stanislav.danylenko.coursepet.exception.LowBatteryLevelException;
 import stanislav.danylenko.coursepet.service.impl.RecordService;
 import stanislav.danylenko.coursepet.web.model.RecordDto;
 
@@ -43,8 +44,13 @@ public class RecordController {
 
     @PostMapping
     public @ResponseBody
-    ResponseEntity<Record> createRecord(@RequestBody RecordDto dto) {
-        Record record = service.prepareForSaving(dto);
+    ResponseEntity<Object> createRecord(@RequestBody RecordDto dto) {
+        Record record = null;
+        try {
+            record = service.prepareForSaving(dto);
+        } catch (LowBatteryLevelException e) {
+            return new ResponseEntity<>(new Object(), HttpStatus.CONFLICT);
+        }
         service.save(record);
         return new ResponseEntity<>(record, HttpStatus.CREATED);
     }

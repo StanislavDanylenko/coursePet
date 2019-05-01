@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import stanislav.danylenko.coursepet.db.entity.Record;
 import stanislav.danylenko.coursepet.db.entity.SmartDevice;
+import stanislav.danylenko.coursepet.exception.LowBatteryLevelException;
 import stanislav.danylenko.coursepet.service.impl.SmartDeviceService;
 import stanislav.danylenko.coursepet.web.model.SmartDeviceDto;
 
@@ -38,10 +39,14 @@ public class SmartDeviceController {
 
     @GetMapping("/enable/{id}")
     public void enableSmartDevice(@PathVariable Long id, HttpServletResponse response) {
-        if (service.enableSmartDevice(id)) {
-            response.setStatus(HttpServletResponse.SC_OK);
-        } else {
-            response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        try {
+            if (service.enableSmartDevice(id)) {
+                response.setStatus(HttpServletResponse.SC_OK);
+            } else {
+                response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+            }
+        } catch (LowBatteryLevelException e) {
+            response.setStatus(HttpServletResponse.SC_CONFLICT);
         }
     }
 
@@ -60,6 +65,12 @@ public class SmartDeviceController {
         SmartDevice smartDevice = service.prepareForSaving(dto);
         service.save(smartDevice);
         return new ResponseEntity<>(smartDevice, HttpStatus.CREATED);
+    }
+
+    @PostMapping("/charge/{id}")
+    public  void chargeSmartDevice(@PathVariable("id") Long id, HttpServletResponse response) {
+        service.chargeSmartDevice(id);
+        response.setStatus(HttpServletResponse.SC_OK);
     }
 
     @PutMapping("/{id}")

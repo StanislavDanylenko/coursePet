@@ -92,6 +92,7 @@ function loadSmartDevice() {
 
     $(document).on('click', '.sd-info', getSmartDeviceInfo);
     $(document).on('click', '.sd-delete', deleteSmartDevice);
+    $(document).on('click', '.sd-charge', chargeSmartDevice);
     $(document).on('click', '.action-sd', saveSmartDevice);
     $(document).on('click', '.enable-sd', processSmartDevice);
     $(document).on('click', '#pills-contact2-tab', checkActiveSmartDevice);

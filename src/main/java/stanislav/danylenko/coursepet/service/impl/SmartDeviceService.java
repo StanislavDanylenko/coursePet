@@ -6,6 +6,7 @@ import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.entity.SmartDevice;
 import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.db.repository.SmartDeviceRepository;
+import stanislav.danylenko.coursepet.exception.LowBatteryLevelException;
 import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.web.model.SmartDeviceDto;
 
@@ -97,10 +98,13 @@ public class SmartDeviceService implements GenericService<SmartDevice> {
         return findByMac(DEFAULT_SMART_DEVICE);
     }
 
-    public boolean enableSmartDevice(Long id) {
+    public boolean enableSmartDevice(Long id) throws LowBatteryLevelException {
         SmartDevice device = find(id);
         if (device == null) {
             return false;
+        }
+        if (device.getBatteryLevel() <= 5.0) {
+            throw new LowBatteryLevelException("Low battery level exception");
         }
         Animal animal = device.getAnimal();
         SmartDevice oldActiveDevice = smartDeviceRepository.findByAnimalIdAndIsActiveTrue(animal.getId());
@@ -121,6 +125,12 @@ public class SmartDeviceService implements GenericService<SmartDevice> {
         device.setIsActive(false);
         save(device);
         return true;
+    }
+
+    public void chargeSmartDevice(Long id) {
+        SmartDevice smartDevice = find(id);
+        smartDevice.setBatteryLevel(100.0);
+        update(smartDevice);
     }
 
 }

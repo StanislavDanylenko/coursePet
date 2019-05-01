@@ -210,10 +210,21 @@ function addRecord() {
             }
         },
         success: function (data) {
+            var value = +$('.battery-level[sd-id="' + activeDeviceId + '"]').text();
+             $('.battery-level[sd-id="' + activeDeviceId + '"]').text(value - 2);
             analyzeRecord(data);
             getRecords();
         },
-        error: function (data) {
+        error: function (xhr, data) {
+            if (xhr.status === 409) {
+                cleanSetedTimeout();
+                $(activeDevice).prop('checked', false);
+                Swal.fire(
+                    'BAD!',
+                    'Emulation stopped. Low battery level.',
+                    'error'
+                )
+            }
         }
     });
 
