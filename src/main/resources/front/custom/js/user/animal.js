@@ -215,7 +215,7 @@ function fillAnimalInfo() {
     if(ANIMAL.animal.photoURL) {
         $('#animal-img').attr('src', ANIMAL.animal.photoURL);
     } else {
-        $('#animal-img').attr('src', '../custom/img/card.jpg');
+        $('#animal-img').attr('src', '../custom/img/default_animal.jpg');
     }
 }
 

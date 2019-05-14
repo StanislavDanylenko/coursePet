@@ -16,7 +16,7 @@ var SLEEP = {
 
 var ACTIVE = {
     name: 'ACTIVE',
-    pulse: [70, 120],
+    pulse: [70, 130],
     temperature: [36, 48],
     latitude: 0,
     longitude: 0,
@@ -163,7 +163,7 @@ function analyzeRecord(record) {
         errorMessage += ' Higher temperature'
     }
 
-    if (record.pulse > 150) {
+    if (record.pulse > 125) {
         errorMessage += ' Higher pulse'
     }
 

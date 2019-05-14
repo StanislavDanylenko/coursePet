@@ -36,6 +36,7 @@ function fillRecords() {
     for (var i = 0; i < devices.length; i++) {
         var recordz = devices[i].records;
         for(var j = 0; j < recordz.length; j++) {
+            recordz[j].creationDate = new Date(recordz[j].creationDate + " UTC").toLocaleString();
             records.push(recordz[j])
         }
     }
@@ -95,6 +96,8 @@ function deleteSmartDevice(e) {
     });
 }
 
+
+///////////////
 function chargeSmartDevice(e) {
 
     var id = getID(e, '#smartDeviceTableTemplate');
