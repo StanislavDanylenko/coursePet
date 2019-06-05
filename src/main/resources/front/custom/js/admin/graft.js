@@ -19,8 +19,8 @@ function getGrafts() {
             renderGraftList(data);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getGraftListError'));
-            alert('error');
+            handleError(xhr, GET);
+
         }
     });
 }
@@ -41,8 +41,8 @@ function getGraft(id) {
             $('#graftFrequency').val(data.frequency);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getGraftError'));
-            alert('error');
+            handleError(xhr, GET);
+
         }
     });
 }
@@ -54,6 +54,7 @@ function createGraft() {
         button.unbind();
         button.bind('click', saveGraft);
         // $('#graftOperation')._t('addGraft');
+        validateGraft();
     }
 }
 
@@ -67,6 +68,7 @@ function editGraft(e) {
     button.bind('click', updateGraft);
     // $('#graftOperation')._t('editGraft');
     getGraft(id);
+    validateGraft();
 }
 
 
@@ -77,9 +79,9 @@ function saveGraft() {
         frequency: $('#graftFrequency').val()
     };
 
-    /*    if (!$('#graftForm').valid()) {
-            return;
-        }*/
+    if (!$('#graftForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/graft",
@@ -95,34 +97,29 @@ function saveGraft() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getGrafts();
-             Swal.fire(
-                 'Success!',
-                 'Was created',
-                 'success'
-             )
-        },
-        error: function (data) {
             Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
+                'Success!',
+                'Was created',
+                'success'
             )
-            // alert($.i18n._('saveGraftError'));
+        },
+        error: function (xhr) {
+            handleError(xhr, CREATE);
         }
     });
     $('#graftModal').find('input, select').val('');
 }
 
 function updateGraft(graft) {
-     graft = {
-         id: $('#graftId').val(),
-         name: $('#graftName').val(),
-         frequency: $('#graftFrequency').val()
-     };
+    graft = {
+        id: $('#graftId').val(),
+        name: $('#graftName').val(),
+        frequency: $('#graftFrequency').val()
+    };
 
-    /*if (!$('#graftForm').valid()) {
+    if (!$('#graftForm').valid()) {
         return;
-    }*/
+    }
 
     $.ajax({
         url: "http://localhost:8080/graft/" + graft.id,
@@ -143,13 +140,8 @@ function updateGraft(graft) {
                 'success'
             )
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('updateGraftError'));
+        error: function (xhr) {
+            handleError(xhr, UPDATE);
         }
     });
     $('#graftModal').find('input, select').val('');
@@ -176,12 +168,35 @@ function deleteGraft(e) {
             )
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteGraftError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
+}
+
+
+//////////
+function validateGraft() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#graftForm').validate({
+        rules: {
+            graftName: {
+                required: true
+            },
+            graftFrequency: {
+                required: true
+            }
+        },
+        messages: {
+            graftName: {
+                required: "required field"
+            },
+            graftFrequency: {
+                required: "required field"
+            }
+        }
+    });
+
 }

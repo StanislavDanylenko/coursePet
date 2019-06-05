@@ -15,6 +15,43 @@ function setDataTable(tableId) {
     }
 }
 
+function handleError(xhr, type) {
+    if (xhr.status == '403' || xhr.status == '401') {
+        handle403();
+    } else {
+        switch (type) {
+            case UPDATE: handleCrudError("update");
+                break;
+            case GET: handleCrudError("get info");
+                break;
+            case CREATE: handleCrudError("create");
+                break;
+            case DELETE: handleCrudError("delete");
+                break;
+            default: handleCrudError("perform operation");
+        }
+    }
+}
+
+function handle403() {
+    window.location = 'login.html'
+}
+
+function handleCrudError(operation) {
+    Swal.fire(
+        'BAD!',
+        'Can not ' + operation,
+        'error'
+    )
+}
+
+function addSamePasswordValidator() {
+    $.validator.addMethod("samePassword", function(value, element) {
+        var firstValue = $('#userNewPassword').val();
+        return value == firstValue;
+
+    }, "Passwords must be the same");
+}
 
 // datatable lang
 var langUA = {

@@ -18,8 +18,7 @@ function getProfile() {
             $('.user-name').text(data.username);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getUserError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -52,13 +51,8 @@ function updateProfile() {
                 'success'
             )
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not update',
-                'error'
-            )
-            // alert($.i18n._('updateUserError'));
+        error: function (xhr) {
+            handleError(xhr, UPDATE);
         }
     });
     $('#profileModal').find('input, select').val('');
@@ -86,8 +80,7 @@ function getProfileCountries() {
 
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -104,9 +97,10 @@ function updateUserPassword() {
         return;
     }
 
-    /*if (!$('#changePasswordForm').valid()) {
+    validatePassword();
+    if (!$('#changePasswordForm').valid()) {
         return;
-    }*/
+    }
 
     var user = {
         id: USER.id,
@@ -139,4 +133,50 @@ function updateUserPassword() {
             alert($.i18n._('updatePasswordError'));
         }
     });
+}
+
+/////////
+
+function validatePassword() {
+
+    $("label.error").remove();
+
+    $('#changePasswordForm').validate({
+        rules: {
+            userOldPassword: {
+                required: true
+            },
+            userNewPassword: {
+                required: true
+            },
+            userNewPasswordRepeat: {
+                required: true,
+                samePassword: true
+            }
+        },
+        // messages: {
+        //     userOldPassword: {
+        //         required: $.i18n._('requiredField')
+        //     },
+        //     userNewPassword: {
+        //         required: $.i18n._('requiredField')
+        //     },
+        //     userNewPasswordRepeat: {
+        //         required: $.i18n._('requiredField'),
+        //         samePassword: $.i18n._('samePassword')
+        //     }
+        // }
+        messages: {
+            userOldPassword: {
+                required: "required field"
+            },
+            userNewPassword: {
+                required: "required field"
+            },
+            userNewPasswordRepeat: {
+                required: "required field"
+            }
+        }
+    });
+
 }

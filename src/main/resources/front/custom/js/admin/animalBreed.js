@@ -21,8 +21,7 @@ function getAnimalBreeds() {
             getAnimalClassesForDD();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getAnimalBreedListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -43,8 +42,7 @@ function getAnimalBreed(id) {
             $('#animalBreedClassName').val(data.animalsClass.id);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getAnimalBreedError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -57,6 +55,7 @@ function createAnimalBreed() {
         button.bind('click', saveAnimalBreed);
         // $('#animalBreedOperation')._t('addAnimalBreed');
     }
+    validateAnimalBreed();
 }
 
 function editAnimalBreed(e) {
@@ -69,6 +68,7 @@ function editAnimalBreed(e) {
     button.bind('click', updateAnimalBreed);
     // $('#animalBreedOperation')._t('editAnimalBreed');
     getAnimalBreed(id);
+    validateAnimalBreed();
 }
 
 
@@ -79,9 +79,9 @@ function saveAnimalBreed() {
         animalClassId: $('#animalBreedClassName').val()
     };
 
-    /*    if (!$('#animalBreedForm').valid()) {
-            return;
-        }*/
+    if (!$('#animalBreedForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/animalBreed",
@@ -103,13 +103,8 @@ function saveAnimalBreed() {
                 'success'
             )
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveAnimalBreedError'));
+        error: function (xhr) {
+            handleError(xhr, CREATE);
         }
     });
     $('#animalBreedModal').find('input, select').val('');
@@ -122,9 +117,9 @@ function updateAnimalBreed(animalBreed) {
         animalClassId: $('#animalBreedClassName').val()
     };
 
-    /*if (!$('#animalBreedForm').valid()) {
+    if (!$('#animalBreedForm').valid()) {
         return;
-    }*/
+    }
 
     $.ajax({
         url: "http://localhost:8080/animalBreed/" + animalBreed.id,
@@ -145,13 +140,8 @@ function updateAnimalBreed(animalBreed) {
                 'success'
             )
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('updateAnimalBreedError'));
+        error: function (xhr) {
+            handleError(xhr, UPDATE);
         }
     });
     $('#animalBreedModal').find('input, select').val('');
@@ -178,12 +168,7 @@ function deleteAnimalBreed(e) {
             )
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteAnimalBreedError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
 }
@@ -215,9 +200,29 @@ function getAnimalClassesForDD() {
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
+}
+
+///////////
+function validateAnimalBreed() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#animalBreedForm').validate({
+        rules: {
+            animalBreedName: {
+                required: true
+            }
+        },
+        messages: {
+            animalBreedName: {
+                required: "required field"
+            }
+        }
+    });
+
 }
 

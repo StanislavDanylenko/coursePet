@@ -19,9 +19,7 @@ function getAnimalClasses() {
             renderAnimalClassList(data);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getAnimalClassListError'));
-            // alert('error');
-            handle403(xhr);
+            handleError(xhr, GET);
         }
     });
 }
@@ -41,9 +39,7 @@ function getAnimalClass(id) {
             $('#animalClassName').val(data.name);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getAnimalClassError'));
-            // alert('error');
-            handle403(xhr);
+            handleError(xhr, GET);
         }
     });
 }
@@ -56,6 +52,7 @@ function createAnimalClass() {
         button.bind('click', saveAnimalClass);
         // $('#animalClassOperation')._t('addAnimalClass');
     }
+    validateAnimalClass();
 }
 
 function editAnimalClass(e) {
@@ -68,6 +65,7 @@ function editAnimalClass(e) {
     button.bind('click', updateAnimalClass);
     // $('#animalClassOperation')._t('editAnimalClass');
     getAnimalClass(id);
+    validateAnimalClass();
 }
 
 
@@ -77,9 +75,9 @@ function saveAnimalClass() {
         name: $('#animalClassName').val()
     };
 
-    /*    if (!$('#animalClassForm').valid()) {
-            return;
-        }*/
+    if (!$('#animalClassForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/animalClass",
@@ -101,14 +99,8 @@ function saveAnimalClass() {
                 'success'
             )
         },
-        error: function (data) {
-            handle403(data);
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveAnimalClassError'));
+        error: function (xhr) {
+            handleError(xhr, CREATE);
         }
     });
     $('#animalClassModal').find('input, select').val('');
@@ -120,9 +112,9 @@ function updateAnimalClass(animalClass) {
         name: $('#animalClassName').val()
     };
 
-    /*if (!$('#animalClassForm').valid()) {
+    if (!$('#animalClassForm').valid()) {
         return;
-    }*/
+    }
 
     $.ajax({
         url: "http://localhost:8080/animalClass/" + animalClass.id,
@@ -143,14 +135,8 @@ function updateAnimalClass(animalClass) {
                 'success'
             )
         },
-        error: function (data) {
-            handle403(data);
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('updateAnimalClassError'));
+        error: function (xhr) {
+            handleError(xhr, UPDATE);
         }
     });
     $('#animalClassModal').find('input, select').val('');
@@ -177,13 +163,29 @@ function deleteAnimalClass(e) {
             )
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteAnimalClassError'));
-            handle403(xhr);
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
+}
+
+/////
+
+function validateAnimalClass() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#animalClassForm').validate({
+        rules: {
+            animalClassName: {
+                required: true
+            }
+        },
+        messages: {
+            animalClassName: {
+                required: "required field"
+            }
+        }
+    });
+
 }

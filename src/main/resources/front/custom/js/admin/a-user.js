@@ -19,9 +19,7 @@ function getUsers() {
             renderUserList(data);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getUserListError'));
-            // alert('error');
-            handle403(xhr);
+            handleError(xhr, GET);
         }
     });
 }
@@ -33,6 +31,7 @@ function createUser() {
         button.bind('click', saveUser);
         // $('#userOperation')._t('addUser');
     }
+    validateUser();
 }
 
 function saveUser() {
@@ -43,9 +42,9 @@ function saveUser() {
         repeatPassword: $('#repeatPassword').val()
     };
 
-    /*    if (!$('#userForm').valid()) {
-            return;
-        }*/
+    if (!$('#userForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/user",
@@ -61,20 +60,14 @@ function saveUser() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getUsers();
-             Swal.fire(
-                 'Success!',
-                 'Was created',
-                 'success'
-             )
-        },
-        error: function (data) {
-            handle403(data);
             Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
+                'Success!',
+                'Was created',
+                'success'
             )
-            // alert($.i18n._('saveUserError'));
+        },
+        error: function (xhr) {
+            handleError(xhr, CREATE);
         }
     });
     $('#userModal').find('input, select').val('');
@@ -101,13 +94,53 @@ function deleteUser(e) {
             )
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteUserError'));
-            handle403(xhr);
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
+}
+
+//////
+function validateUser() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#userForm').validate({
+        rules: {
+            username: {
+                required: true
+            },
+            password: {
+                required: true
+            },
+            repeatPassword: {
+                required: true,
+                samePassword: true
+            }
+        },
+        // messages: {
+        //     userOldPassword: {
+        //         required: $.i18n._('requiredField')
+        //     },
+        //     userNewPassword: {
+        //         required: $.i18n._('requiredField')
+        //     },
+        //     userNewPasswordRepeat: {
+        //         required: $.i18n._('requiredField'),
+        //         samePassword: $.i18n._('samePassword')
+        //     }
+        // }
+        messages: {
+            username: {
+                required: "required field"
+            },
+            password: {
+                required: "required field"
+            },
+            repeatPassword: {
+                required: "required field"
+            }
+        }
+    });
+
 }

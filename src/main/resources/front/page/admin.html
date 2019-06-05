@@ -45,8 +45,10 @@
                     <ul class="metismenu" id="menu">
                         <li id="country"><a href="#country"><i
                                 class="fa fa-globe"></i><span>Country</span></a>
-                        <li id="animalClass"><a href="#animal_class"><i class="fa fa-paw"></i><span>Animal Class</span></a></li>
-                        <li id="animalBreed"><a href="#animal_breed"><i class="fa fa fa-bug"></i><span>Animal Breed</span></a></li>
+                        <li id="animalClass"><a href="#animal_class"><i class="fa fa-paw"></i><span>Animal Class</span></a>
+                        </li>
+                        <li id="animalBreed"><a href="#animal_breed"><i
+                                class="fa fa fa-bug"></i><span>Animal Breed</span></a></li>
                         <li id="graft"><a href="#graft"><i class="fa fa-list-alt"></i><span>Graft</span></a></li>
                         <li id="disease"><a href="#disease"><i class="fa fa-medkit"></i><span>Disease</span></a></li>
                         <li id="users"><a href="#users"><i class="fa fa-users"></i><span>Users</span></a></li>
@@ -104,23 +106,25 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group" hidden>
-                        <label for="countryName" id="countryIdLabel">Country Id</label>
-                        <input type="text" class="form-control" id="countryId">
-                    </div>
-                    <div class="form-group">
-                        <label for="countryName" id="countryNameLabel">Country Name</label>
-                        <input type="text" class="form-control" id="countryName">
-                    </div>
-                    <div class="form-group">
-                        <label for="countryDescription" id="countryDescriptionLabel">Country Description</label>
-                        <input type="text" class="form-control" id="countryDescription">
-                    </div>
-                    <div class="form-group">
-                        <label for="countryGrafts" id="countryGraftsLabel">Country Grafts</label>
-                        <select multiple class="form-control" id="countryGrafts">
-                        </select>
-                    </div>
+                    <form id="countryForm">
+                        <div class="form-group" hidden>
+                            <label for="countryName" id="countryIdLabel">Country Id</label>
+                            <input type="text" class="form-control" id="countryId">
+                        </div>
+                        <div class="form-group">
+                            <label for="countryName" id="countryNameLabel">Country Name</label>
+                            <input type="text" class="form-control" id="countryName" name="countryName">
+                        </div>
+                        <div class="form-group">
+                            <label for="countryDescription" id="countryDescriptionLabel">Country Description</label>
+                            <input type="text" class="form-control" id="countryDescription" name="countryDescription">
+                        </div>
+                        <div class="form-group">
+                            <label for="countryGrafts" id="countryGraftsLabel">Country Grafts</label>
+                            <select multiple class="form-control" id="countryGrafts" name="countryGrafts">
+                            </select>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -138,18 +142,20 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group" hidden>
-                        <label for="graftName" id="graftIdLabel">Graft Id</label>
-                        <input type="text" class="form-control" id="graftId">
-                    </div>
-                    <div class="form-group">
-                        <label for="graftName" id="graftNameLabel">Graft Name</label>
-                        <input type="text" class="form-control" id="graftName">
-                    </div>
-                    <div class="form-group">
-                        <label for="graftFrequency" id="graftFrequencyLabel">Graft Frequency</label>
-                        <input type="text" class="form-control" id="graftFrequency">
-                    </div>
+                    <form id="graftForm">
+                        <div class="form-group" hidden>
+                            <label for="graftName" id="graftIdLabel">Graft Id</label>
+                            <input type="text" class="form-control" id="graftId">
+                        </div>
+                        <div class="form-group">
+                            <label for="graftName" id="graftNameLabel">Graft Name</label>
+                            <input type="text" class="form-control" id="graftName" name="graftName">
+                        </div>
+                        <div class="form-group">
+                            <label for="graftFrequency" id="graftFrequencyLabel">Graft Frequency</label>
+                            <input type="text" class="form-control" id="graftFrequency" name="graftFrequency">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -162,24 +168,26 @@
     <div class="modal fade" id="diseaseModal" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Disease action</h5>
-                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group" hidden>
-                        <label for="diseaseName" id="diseaseIdLabel">Disease Id</label>
-                        <input type="text" class="form-control" id="diseaseId">
+                <form id="diseaseForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Disease action</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                     </div>
-                    <div class="form-group">
-                        <label for="diseaseName" id="diseaseNameLabel">Disease Name</label>
-                        <input type="text" class="form-control" id="diseaseName">
+                    <div class="modal-body">
+                        <div class="form-group" hidden>
+                            <label for="diseaseName" id="diseaseIdLabel">Disease Id</label>
+                            <input type="text" class="form-control" id="diseaseId">
+                        </div>
+                        <div class="form-group">
+                            <label for="diseaseName" id="diseaseNameLabel">Disease Name</label>
+                            <input type="text" class="form-control" id="diseaseName" name="diseaseName">
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary action-disease">Save changes</button>
-                </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary action-disease">Save changes</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -192,22 +200,24 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group" hidden>
-                        <label for="userId" id="userIdLabel">user Id</label>
-                        <input type="text" class="form-control" id="userId">
-                    </div>
-                    <div class="form-group">
-                        <label for="userName" id="usernameLabel">Username</label>
-                        <input type="text" class="form-control" id="username">
-                    </div>
-                    <div class="form-group">
-                        <label for="password" id="passwordLabel">Password</label>
-                        <input type="password" class="form-control" id="password">
-                    </div>
-                    <div class="form-group">
-                        <label for="repeatPassword" id="repeatPasswordLabel">Repeat password</label>
-                        <input type="password" class="form-control" id="repeatPassword">
-                    </div>
+                    <form id="userForm">
+                        <div class="form-group" hidden>
+                            <label for="userId" id="userIdLabel">user Id</label>
+                            <input type="text" class="form-control" id="userId">
+                        </div>
+                        <div class="form-group">
+                            <label for="userName" id="usernameLabel">Username</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" id="passwordLabel">Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="repeatPassword" id="repeatPasswordLabel">Repeat password</label>
+                            <input type="password" class="form-control" id="repeatPassword" name="repeatPassword">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -217,7 +227,8 @@
         </div>
     </div>
     <!---->
-    <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal" hidden><span class="fa fa-plus"> </span></button>
+    <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal"
+            hidden><span class="fa fa-plus"> </span></button>
     <!---->
     <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -247,18 +258,24 @@
                         </div>
                         <div class="col bg-light">
                             <h3>Change password</h3>
-                            <div class="form-group">
-                                <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
-                                <input type="password" class="form-control" id="userOldPassword" name="userOldPassword">
-                            </div>
-                            <div class="form-group">
-                                <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
-                                <input type="password" class="form-control" id="userNewPassword" name="userNewPassword">
-                            </div>
-                            <div class="form-group">
-                                <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new password</label>
-                                <input type="password" class="form-control" id="userNewPasswordRepeat" name="userNewPasswordRepeat">
-                            </div>
+                            <form id="changePasswordForm">
+                                <div class="form-group">
+                                    <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
+                                    <input type="password" class="form-control" id="userOldPassword"
+                                           name="userOldPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
+                                    <input type="password" class="form-control" id="userNewPassword"
+                                           name="userNewPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new
+                                        password</label>
+                                    <input type="password" class="form-control" id="userNewPasswordRepeat"
+                                           name="userNewPasswordRepeat">
+                                </div>
+                            </form>
                             <button type="button" class="btn btn-primary update-password">Update password</button>
                         </div>
                     </div>
@@ -279,14 +296,16 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group" hidden>
-                        <label for="animalClassName" id="animalClassIdLabel">Animal Class Id</label>
-                        <input type="text" class="form-control" id="animalClassId">
-                    </div>
-                    <div class="form-group">
-                        <label for="animalClassName" id="animalClassNameLabel">Animal Class Name</label>
-                        <input type="text" class="form-control" id="animalClassName">
-                    </div>
+                    <form id="animalClassForm">
+                        <div class="form-group" hidden>
+                            <label for="animalClassName" id="animalClassIdLabel">Animal Class Id</label>
+                            <input type="text" class="form-control" id="animalClassId">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalClassName" id="animalClassNameLabel">Animal Class Name</label>
+                            <input type="text" class="form-control" id="animalClassName" name="animalClassName">
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -304,18 +323,22 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group" hidden>
-                        <label for="animalBreedId" id="animalBreedIdLabel">Animal Breed Id</label>
-                        <input type="text" class="form-control" id="animalBreedId">
-                    </div>
-                    <div class="form-group">
-                        <label for="animalBreedName" id="animalBreedNameLabel">Animal Breed Name</label>
-                        <input type="text" class="form-control" id="animalBreedName">
-                    </div>
-                    <div class="form-group">
-                        <label for="animalBreedClassName" id="animalBreedClassNameLabel">Animal Breed Class Name</label>
-                        <select class="form-control" id="animalBreedClassName" style="height: auto !important;"></select>
-                    </div>
+                    <form id="animalBreedForm">
+                        <div class="form-group" hidden>
+                            <label for="animalBreedId" id="animalBreedIdLabel">Animal Breed Id</label>
+                            <input type="text" class="form-control" id="animalBreedId">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalBreedName" id="animalBreedNameLabel">Animal Breed Name</label>
+                            <input type="text" class="form-control" id="animalBreedName" name="animalBreedName">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalBreedClassName" id="animalBreedClassNameLabel">Animal Breed Class
+                                Name</label>
+                            <select class="form-control" id="animalBreedClassName"
+                                    style="height: auto !important;"></select>
+                        </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -324,11 +347,12 @@
             </div>
         </div>
     </div>
-            <!---->
-            <!-- footer area start-->
-            <footer>
-                <div class="footer-area">
-                    <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a href="https://colorlib.com/wp/">Colorlib</a>.</p>
+    <!---->
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a
+                    href="https://colorlib.com/wp/">Colorlib</a>.</p>
         </div>
     </footer>
     <!-- footer area end-->
@@ -341,6 +365,8 @@
 <script src="../lib/js/bootstrap.min.js"></script>
 <script src="../lib/js/metisMenu.min.js"></script>
 <script src="../lib/js/jquery.slimscroll.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 
 <!-- Start datatable js -->
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -495,7 +521,8 @@
                             <td class="text-center">
                                 <button class="btn btn-warning edit-animalClass text-td edit" type="button">Edit <i
                                         class="fa fa-edit"></i></button>
-                                <button class="btn btn-danger delete-animalClass text-td changeStatus" type="button"> Delete
+                                <button class="btn btn-danger delete-animalClass text-td changeStatus" type="button">
+                                    Delete
                                     <i class="fa fa-close"></i></button>
                                 </button>
                             </td>
@@ -543,7 +570,8 @@
                             <td class="text-center">
                                 <button class="btn btn-warning edit-animalBreed text-td edit" type="button">Edit <i
                                         class="fa fa-edit"></i></button>
-                                <button class="btn btn-danger delete-animalBreed text-td changeStatus" type="button"> Delete
+                                <button class="btn btn-danger delete-animalBreed text-td changeStatus" type="button">
+                                    Delete
                                     <i class="fa fa-close"></i></button>
                                 </button>
                             </td>

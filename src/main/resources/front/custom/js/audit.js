@@ -47,9 +47,3 @@ function loadProfileAudit() {
         }
     });
 }
-
-function handle403(xhr) {
-    if(xhr.status == '403' || xhr.status == '401') {
-        window.location = 'login.html'
-    }
-}

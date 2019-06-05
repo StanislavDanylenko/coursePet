@@ -19,8 +19,7 @@ function getDiseases() {
             renderDiseaseList(data);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getDiseaseListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -40,8 +39,7 @@ function getDisease(id) {
             $('#diseaseName').val(data.name);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getDiseaseError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -53,6 +51,7 @@ function createDisease() {
         button.unbind();
         button.bind('click', saveDisease);
         // $('#diseaseOperation')._t('addDisease');
+        validateDisease();
     }
 }
 
@@ -66,6 +65,7 @@ function editDisease(e) {
     button.bind('click', updateDisease);
     // $('#diseaseOperation')._t('editDisease');
     getDisease(id);
+    validateDisease();
 }
 
 
@@ -76,9 +76,9 @@ function saveDisease() {
         frequency: $('#diseaseFrequency').val()
     };
 
-    /*    if (!$('#diseaseForm').valid()) {
-            return;
-        }*/
+    if (!$('#diseaseForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/disease",
@@ -94,33 +94,28 @@ function saveDisease() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getDiseases();
-             Swal.fire(
-                 'Success!',
-                 'Was created',
-                 'success'
-             )
-        },
-        error: function (data) {
             Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
+                'Success!',
+                'Was created',
+                'success'
             )
-            // alert($.i18n._('saveDiseaseError'));
+        },
+        error: function (xhr) {
+            handleError(xhr, CREATE);
         }
     });
     $('#diseaseModal').find('input, select').val('');
 }
 
 function updateDisease(disease) {
-     disease = {
-         id: $('#diseaseId').val(),
-         name: $('#diseaseName').val(),
-     };
+    disease = {
+        id: $('#diseaseId').val(),
+        name: $('#diseaseName').val(),
+    };
 
-    /*if (!$('#diseaseForm').valid()) {
+    if (!$('#diseaseForm').valid()) {
         return;
-    }*/
+    }
 
     $.ajax({
         url: "http://localhost:8080/disease/" + disease.id,
@@ -141,13 +136,8 @@ function updateDisease(disease) {
                 'success'
             )
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('updateDiseaseError'));
+        error: function (xhr) {
+            handleError(xhr, UPDATE);
         }
     });
     $('#diseaseModal').find('input, select').val('');
@@ -174,12 +164,29 @@ function deleteDisease(e) {
             )
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteDiseaseError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
+}
+
+/////////
+
+function validateDisease() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#diseaseForm').validate({
+        rules: {
+            diseaseName: {
+                required: true
+            }
+        },
+        messages: {
+            diseaseName: {
+                required: "required field"
+            }
+        }
+    });
+
 }

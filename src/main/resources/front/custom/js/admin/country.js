@@ -21,8 +21,7 @@ function getCountries() {
             renderCountryList(data);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -46,8 +45,7 @@ function getCountry(id) {
             $("#countryGrafts").val(ids);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -61,7 +59,7 @@ function createCountry() {
         // $('#countryOperation')._t('addCountry');
         getGraftsCountry();
     }
-
+    validateCountry();
 
 }
 
@@ -75,6 +73,7 @@ function editCountry(e) {
     button.bind('click', updateCountry);
     // $('#countryOperation')._t('editCountry');
     getCountry(id);
+    validateCountry();
 }
 
 
@@ -85,9 +84,9 @@ function saveCountry() {
         description: $('#countryDescription').val()
     };
 
-    /*    if (!$('#countryForm').valid()) {
-            return;
-        }*/
+    if (!$('#countryForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/country",
@@ -112,13 +111,8 @@ function saveCountry() {
              )*/
 
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveCountryError'));
+        error: function (xhr) {
+            handleError(xhr, CREATE);
         }
     });
 
@@ -138,9 +132,9 @@ function updateCountry(country) {
         graftIds: grafts
     };
 
-    /*if (!$('#countryForm').valid()) {
+    if (!$('#countryForm').valid()) {
         return;
-    }*/
+    }
 
     $.ajax({
         url: "http://localhost:8080/country/" + country.id,
@@ -161,13 +155,8 @@ function updateCountry(country) {
                 'success'
             )
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('updateCountryError'));
+        error: function (xhr) {
+            handleError(xhr, UPDATE);
         }
     });
     $('#countryModal').find('input, select').val('');
@@ -194,12 +183,7 @@ function deleteCountry(e) {
             )
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteCountryError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
 }
@@ -258,8 +242,41 @@ function getGraftsCountry() {
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
+}
+
+/////////
+
+function validateCountry() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#countryForm').validate({
+        rules: {
+            countryName: {
+                required: true
+            },
+            countryDescription: {
+                required: true
+            },
+            countryGrafts: {
+                required: true
+            }
+        },
+        messages: {
+            countryName: {
+                required: "required field"
+            },
+            countryDescription: {
+                required: "required field"
+            },
+            countryGrafts: {
+                required: "required field"
+            }
+        }
+    });
+
 }
