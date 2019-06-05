@@ -1,5 +1,6 @@
 var countryTableTemplate;
 var graftTableTemplate;
+var animalClassTableTemplate;
 var diseaseTableTemplate;
 var userTableTemplate;
 
@@ -22,6 +23,7 @@ $(document).ready(function() {
     loadDiseases();
     loadUsers();
     loadProfile();
+    loadAnimalClass();
 
 });
 
@@ -38,6 +40,9 @@ function checkHash() {
             break;
         case "#users": getUsers();
             refreshMenu("#users");
+            break;
+        case "#animal_class": getAnimalClasses();
+            refreshMenu("#animalClass");
             break;
         default: renderHome();
     }
@@ -86,6 +91,14 @@ function loadProfile() {
     $(document).on('click', '.update-password', updateUserPassword);
     $(document).on('click', '.action-profile', updateProfile);
     $(document).on('click', '.profile', getProfileCountries);
+}
+
+function loadAnimalClass() {
+    animalClassTableTemplate = Handlebars.compile($('#animalClassTemplate').html());
+
+    $(document).on('click', '.add-animalClass', createAnimalClass);
+    $(document).on('click', '.edit-animalClass', editAnimalClass);
+    $(document).on('click', '.delete-animalClass', deleteAnimalClass);
 }
 
 function setUpUserWorkspace() {
