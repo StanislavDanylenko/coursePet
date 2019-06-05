@@ -42,11 +42,14 @@ function loadProfileAudit() {
             $('.user-name').html(data.username + '<i class="fa fa-angle-down"/>');
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            alert('error');
+            // alert('error');
+            handle403(xhr);
         }
     });
 }
 
-function handle403() {
-    window.location = 'login.html'
+function handle403(xhr) {
+    if(xhr.status == '403' || xhr.status == '401') {
+        window.location = 'login.html'
+    }
 }

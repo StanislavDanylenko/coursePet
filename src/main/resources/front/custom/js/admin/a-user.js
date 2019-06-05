@@ -20,7 +20,8 @@ function getUsers() {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('getUserListError'));
-            alert('error');
+            // alert('error');
+            handle403(xhr);
         }
     });
 }
@@ -67,6 +68,7 @@ function saveUser() {
              )
         },
         error: function (data) {
+            handle403(data);
             Swal.fire(
                 'BAD!',
                 'Can not create',
@@ -100,6 +102,7 @@ function deleteUser(e) {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('deleteUserError'));
+            handle403(xhr);
             Swal.fire(
                 'BAD!',
                 'Error while deleting',

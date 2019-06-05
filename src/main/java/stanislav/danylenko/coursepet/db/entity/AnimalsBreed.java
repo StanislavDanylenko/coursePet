@@ -26,7 +26,7 @@ public class AnimalsBreed implements Serializable {
     @Column(nullable = false)
     private String name;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "animalClass_id")
     private AnimalsClass animalsClass;

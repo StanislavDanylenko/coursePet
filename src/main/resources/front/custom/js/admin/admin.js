@@ -1,6 +1,7 @@
 var countryTableTemplate;
 var graftTableTemplate;
 var animalClassTableTemplate;
+var animalBreedTableTemplate;
 var diseaseTableTemplate;
 var userTableTemplate;
 
@@ -24,6 +25,7 @@ $(document).ready(function() {
     loadUsers();
     loadProfile();
     loadAnimalClass();
+    loadAnimalBreed();
 
 });
 
@@ -43,6 +45,9 @@ function checkHash() {
             break;
         case "#animal_class": getAnimalClasses();
             refreshMenu("#animalClass");
+            break;
+        case "#animal_breed": getAnimalBreeds();
+            refreshMenu("#animalBreed");
             break;
         default: renderHome();
     }
@@ -101,6 +106,14 @@ function loadAnimalClass() {
     $(document).on('click', '.delete-animalClass', deleteAnimalClass);
 }
 
+function loadAnimalBreed() {
+    animalBreedTableTemplate = Handlebars.compile($('#animalBreedTemplate').html());
+
+    $(document).on('click', '.add-animalBreed', createAnimalBreed);
+    $(document).on('click', '.edit-animalBreed', editAnimalBreed);
+    $(document).on('click', '.delete-animalBreed', deleteAnimalBreed);
+}
+
 function setUpUserWorkspace() {
     try{
         loadUserLS();
@@ -111,5 +124,5 @@ function setUpUserWorkspace() {
 }
 
 function renderHome() {
-    $(MAIN_CONTAINER).empty().append('<h1> USER WORKSPACE HERE</h1>');
+    $(MAIN_CONTAINER).empty().append('<div class="row h-100 justify-content-center align-items-center"><h1 class="m-3"> ADMIN WORKSPACE</h1></div>');
 }

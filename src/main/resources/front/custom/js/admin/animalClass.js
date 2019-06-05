@@ -20,7 +20,8 @@ function getAnimalClasses() {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('getAnimalClassListError'));
-            alert('error');
+            // alert('error');
+            handle403(xhr);
         }
     });
 }
@@ -38,11 +39,11 @@ function getAnimalClass(id) {
         success: function (data) {
             $('#animalClassId').val(data.id);
             $('#animalClassName').val(data.name);
-            $('#animalClassFrequency').val(data.frequency);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('getAnimalClassError'));
-            alert('error');
+            // alert('error');
+            handle403(xhr);
         }
     });
 }
@@ -101,6 +102,7 @@ function saveAnimalClass() {
             )
         },
         error: function (data) {
+            handle403(data);
             Swal.fire(
                 'BAD!',
                 'Can not create',
@@ -142,6 +144,7 @@ function updateAnimalClass(animalClass) {
             )
         },
         error: function (data) {
+            handle403(data);
             Swal.fire(
                 'BAD!',
                 'Can not create',
@@ -175,6 +178,7 @@ function deleteAnimalClass(e) {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             // alert($.i18n._('deleteAnimalClassError'));
+            handle403(xhr);
             Swal.fire(
                 'BAD!',
                 'Error while deleting',
