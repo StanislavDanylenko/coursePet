@@ -46,6 +46,10 @@ function loginUser() {
         password: $('#password').val()
     };
 
+    if (!validateUser()) {
+        return;
+    }
+
     $.ajax({
         url: "http://localhost:8080/auth/signin",
         type: "POST",
@@ -64,10 +68,24 @@ function loginUser() {
         error: function(xhr, ajaxOptions, thrownError) {
             console.log('bad');
             Swal.fire(
-                'BAD!',
-                'Bad credentials',
+                $.i18n._('failed'),
+                $.i18n._('badCredentials'),
                 'error'
             )
         }});
+}
+
+//////
+function validateUser() {
+
+    if($('#username').val() == '' || $('#password').val() == '') {
+        Swal.fire(
+            $.i18n._('failed'),
+            $.i18n._('allFieldsAreRequired'),
+            'error'
+        );
+        return false;
+    }
+    return true;
 }
 

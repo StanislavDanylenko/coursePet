@@ -28,6 +28,8 @@ $(document).ready(function() {
     loadAnimalBreed();
     addSamePasswordValidator();
 
+    setTranslateUser();
+
 });
 
 function checkHash() {
@@ -125,5 +127,5 @@ function setUpUserWorkspace() {
 }
 
 function renderHome() {
-    $(MAIN_CONTAINER).empty().append('<div class="row h-100 justify-content-center align-items-center"><h1 class="m-3"> ADMIN WORKSPACE</h1></div>');
+    $(MAIN_CONTAINER).empty().append('<div class="row h-100 justify-content-center align-items-center"><h1 class="m-3">' + $.i18n._('page-workspace') + '</h1></div>');
 }

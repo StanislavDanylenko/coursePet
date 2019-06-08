@@ -4,6 +4,7 @@ function renderUserList(response) {
     var html = userTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('userTableTemplate');
+    setTranslateUser();
 }
 
 function getUsers() {
@@ -60,11 +61,7 @@ function saveUser() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getUsers();
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (xhr) {
             handleError(xhr, CREATE);
@@ -87,11 +84,7 @@ function deleteUser(e) {
         },
         success: function () {
             getUsers();
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             handleError(xhr, DELETE);
@@ -118,27 +111,16 @@ function validateUser() {
                 samePassword: true
             }
         },
-        // messages: {
-        //     userOldPassword: {
-        //         required: $.i18n._('requiredField')
-        //     },
-        //     userNewPassword: {
-        //         required: $.i18n._('requiredField')
-        //     },
-        //     userNewPasswordRepeat: {
-        //         required: $.i18n._('requiredField'),
-        //         samePassword: $.i18n._('samePassword')
-        //     }
-        // }
         messages: {
             username: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             },
             password: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             },
             repeatPassword: {
-                required: "required field"
+                required: $.i18n._('requiredField'),
+                samePassword: $.i18n._('samePassword')
             }
         }
     });

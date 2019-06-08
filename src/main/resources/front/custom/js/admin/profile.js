@@ -29,10 +29,6 @@ function updateProfile() {
         countryId: $('#userCountry').val()
     };
 
-    /*if (!$('#userForm').valid()) {
-        return;
-    }*/
-
     $.ajax({
         url: HOST + "/user/" + USER.id,
         type: "PUT",
@@ -45,11 +41,11 @@ function updateProfile() {
         },
         success: function () {
             $("[data-dismiss=modal]").trigger({type: "click"});
-            Swal.fire(
-                'Success!',
-                'Was updated',
-                'success'
-            )
+            USER.localization = profile.localization;
+            saveUserLS(USER);
+            setTranslateUser();
+            handleSuccessOperation(UPDATED);
+            renderHome();
         },
         error: function (xhr) {
             handleError(xhr, UPDATE);
@@ -123,14 +119,10 @@ function updateUserPassword() {
             $('#userOldPassword').val('');
             $('#userNewPassword').val('');
             $('#userNewPasswordRepeat').val('');
-            Swal.fire(
-                'Success!',
-                'Password was changed',
-                'success'
-            )
+            handleSuccessOperation($.i18n._("changed"));
         },
-        error: function(data) {
-            alert($.i18n._('updatePasswordError'));
+        error: function() {
+            handleCrudError($.i18n._("change"));
         }
     });
 }
@@ -154,27 +146,16 @@ function validatePassword() {
                 samePassword: true
             }
         },
-        // messages: {
-        //     userOldPassword: {
-        //         required: $.i18n._('requiredField')
-        //     },
-        //     userNewPassword: {
-        //         required: $.i18n._('requiredField')
-        //     },
-        //     userNewPasswordRepeat: {
-        //         required: $.i18n._('requiredField'),
-        //         samePassword: $.i18n._('samePassword')
-        //     }
-        // }
         messages: {
             userOldPassword: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             },
             userNewPassword: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             },
             userNewPasswordRepeat: {
-                required: "required field"
+                required: $.i18n._('requiredField'),
+                samePassword: $.i18n._('samePassword')
             }
         }
     });

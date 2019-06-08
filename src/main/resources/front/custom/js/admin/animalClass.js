@@ -4,6 +4,7 @@ function renderAnimalClassList(response) {
     var html = animalClassTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('animalClassTableTemplate');
+    setTranslateUser();
 }
 
 function getAnimalClasses() {
@@ -93,11 +94,7 @@ function saveAnimalClass() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimalClasses();
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (xhr) {
             handleError(xhr, CREATE);
@@ -129,11 +126,7 @@ function updateAnimalClass(animalClass) {
         success: function () {
             getAnimalClasses();
             $("[data-dismiss=modal]").trigger({type: "click"});
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(UPDATED);
         },
         error: function (xhr) {
             handleError(xhr, UPDATE);
@@ -156,11 +149,7 @@ function deleteAnimalClass(e) {
         },
         success: function () {
             getAnimalClasses();
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             handleError(xhr, DELETE);
@@ -183,7 +172,7 @@ function validateAnimalClass() {
         },
         messages: {
             animalClassName: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             }
         }
     });

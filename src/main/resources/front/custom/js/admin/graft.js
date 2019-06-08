@@ -4,6 +4,7 @@ function renderGraftList(response) {
     var html = graftTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('graftTableTemplate');
+    setTranslateUser();
 }
 
 function getGrafts() {
@@ -66,7 +67,6 @@ function editGraft(e) {
     var button = $('.action-graft');
     button.unbind();
     button.bind('click', updateGraft);
-    // $('#graftOperation')._t('editGraft');
     getGraft(id);
     validateGraft();
 }
@@ -97,11 +97,7 @@ function saveGraft() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getGrafts();
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (xhr) {
             handleError(xhr, CREATE);
@@ -134,11 +130,7 @@ function updateGraft(graft) {
         success: function () {
             getGrafts();
             $("[data-dismiss=modal]").trigger({type: "click"});
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(UPDATED);
         },
         error: function (xhr) {
             handleError(xhr, UPDATE);
@@ -161,11 +153,7 @@ function deleteGraft(e) {
         },
         success: function () {
             getGrafts();
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             handleError(xhr, DELETE);
@@ -191,10 +179,10 @@ function validateGraft() {
         },
         messages: {
             graftName: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             },
             graftFrequency: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             }
         }
     });

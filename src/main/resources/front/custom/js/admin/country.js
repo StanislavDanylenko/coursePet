@@ -5,6 +5,7 @@ function renderCountryList(response) {
     var html = countryTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('countryTableTemplate');
+    setTranslateUser();
 }
 
 function getCountries() {
@@ -103,13 +104,6 @@ function saveCountry() {
             $("[data-dismiss=modal]").trigger({type: "click"});
             country.id = data.id;
             updateCountry(country);
-            /* getCountries();
-             Swal.fire(
-                 'Success!',
-                 'Was created',
-                 'success'
-             )*/
-
         },
         error: function (xhr) {
             handleError(xhr, CREATE);
@@ -149,11 +143,7 @@ function updateCountry(country) {
         success: function () {
             getCountries();
             $("[data-dismiss=modal]").trigger({type: "click"});
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(UPDATED);
         },
         error: function (xhr) {
             handleError(xhr, UPDATE);
@@ -176,11 +166,7 @@ function deleteCountry(e) {
         },
         success: function () {
             getCountries();
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             handleError(xhr, DELETE);
@@ -268,13 +254,13 @@ function validateCountry() {
         },
         messages: {
             countryName: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             },
             countryDescription: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             },
             countryGrafts: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             }
         }
     });

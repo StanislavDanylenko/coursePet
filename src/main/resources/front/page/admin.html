@@ -44,14 +44,14 @@
                 <nav>
                     <ul class="metismenu" id="menu">
                         <li id="country"><a href="#country"><i
-                                class="fa fa-globe"></i><span>Country</span></a>
-                        <li id="animalClass"><a href="#animal_class"><i class="fa fa-paw"></i><span>Animal Class</span></a>
+                                class="fa fa-globe"></i><span class="country">Country</span></a>
+                        <li id="animalClass"><a href="#animal_class"><i class="fa fa-paw"></i><span class="animalClass">Animal Class</span></a>
                         </li>
                         <li id="animalBreed"><a href="#animal_breed"><i
-                                class="fa fa fa-bug"></i><span>Animal Breed</span></a></li>
-                        <li id="graft"><a href="#graft"><i class="fa fa-list-alt"></i><span>Graft</span></a></li>
-                        <li id="disease"><a href="#disease"><i class="fa fa-medkit"></i><span>Disease</span></a></li>
-                        <li id="users"><a href="#users"><i class="fa fa-users"></i><span>Users</span></a></li>
+                                class="fa fa fa-bug"></i><span class="animalBreed">Animal Breed</span></a></li>
+                        <li id="graft"><a href="#graft"><i class="fa fa-list-alt"></i><span class="graft">Graft</span></a></li>
+                        <li id="disease"><a href="#disease"><i class="fa fa-medkit"></i><span class="disease">Disease</span></a></li>
+                        <li id="users"><a href="#users"><i class="fa fa-users"></i><span class="users">Users</span></a></li>
                     </ul>
                 </nav>
             </div>
@@ -108,27 +108,27 @@
                 <div class="modal-body">
                     <form id="countryForm">
                         <div class="form-group" hidden>
-                            <label for="countryName" id="countryIdLabel">Country Id</label>
+                            <label for="countryName" id="countryIdLabel" class="countryId">Country Id</label>
                             <input type="text" class="form-control" id="countryId">
                         </div>
                         <div class="form-group">
-                            <label for="countryName" id="countryNameLabel">Country Name</label>
+                            <label for="countryName" id="countryNameLabel" class="countryName">Country Name</label>
                             <input type="text" class="form-control" id="countryName" name="countryName">
                         </div>
                         <div class="form-group">
-                            <label for="countryDescription" id="countryDescriptionLabel">Country Description</label>
+                            <label for="countryDescription" id="countryDescriptionLabel" class="descriptionM">Country Description</label>
                             <input type="text" class="form-control" id="countryDescription" name="countryDescription">
                         </div>
                         <div class="form-group">
-                            <label for="countryGrafts" id="countryGraftsLabel">Country Grafts</label>
+                            <label for="countryGrafts" id="countryGraftsLabel" class="countryGrafts">Country Grafts</label>
                             <select multiple class="form-control" id="countryGrafts" name="countryGrafts">
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary action-country">Save changes</button>
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-country saveChanges">Save changes</button>
                 </div>
             </div>
         </div>
@@ -144,22 +144,22 @@
                 <div class="modal-body">
                     <form id="graftForm">
                         <div class="form-group" hidden>
-                            <label for="graftName" id="graftIdLabel">Graft Id</label>
+                            <label for="graftName" id="graftIdLabel" class="graftId">Graft Id</label>
                             <input type="text" class="form-control" id="graftId">
                         </div>
                         <div class="form-group">
-                            <label for="graftName" id="graftNameLabel">Graft Name</label>
+                            <label for="graftName" id="graftNameLabel" class="graftName">Graft Name</label>
                             <input type="text" class="form-control" id="graftName" name="graftName">
                         </div>
                         <div class="form-group">
-                            <label for="graftFrequency" id="graftFrequencyLabel">Graft Frequency</label>
+                            <label for="graftFrequency" id="graftFrequencyLabel" class="graftFrequency">Graft Frequency</label>
                             <input type="text" class="form-control" id="graftFrequency" name="graftFrequency">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary action-graft">Save changes</button>
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal" >Close</button>
+                    <button type="button" class="btn btn-primary action-graft saveChanges" >Save changes</button>
                 </div>
             </div>
         </div>
@@ -175,17 +175,17 @@
                     </div>
                     <div class="modal-body">
                         <div class="form-group" hidden>
-                            <label for="diseaseName" id="diseaseIdLabel">Disease Id</label>
+                            <label for="diseaseName" id="diseaseIdLabel" class="diseaseId">Disease Id</label>
                             <input type="text" class="form-control" id="diseaseId">
                         </div>
                         <div class="form-group">
-                            <label for="diseaseName" id="diseaseNameLabel">Disease Name</label>
+                            <label for="diseaseName" id="diseaseNameLabel" class="diseaseName">Disease Name</label>
                             <input type="text" class="form-control" id="diseaseName" name="diseaseName">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary action-disease">Save changes</button>
+                        <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary action-disease saveChanges">Save changes</button>
                     </div>
                 </form>
             </div>
@@ -206,22 +206,22 @@
                             <input type="text" class="form-control" id="userId">
                         </div>
                         <div class="form-group">
-                            <label for="userName" id="usernameLabel">Username</label>
+                            <label for="userName" id="usernameLabel" class="username">Username</label>
                             <input type="text" class="form-control" id="username" name="username">
                         </div>
                         <div class="form-group">
-                            <label for="password" id="passwordLabel">Password</label>
+                            <label for="password" id="passwordLabel" class="password">Password</label>
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
                         <div class="form-group">
-                            <label for="repeatPassword" id="repeatPasswordLabel">Repeat password</label>
+                            <label for="repeatPassword" id="repeatPasswordLabel" class="repeatPassword">Repeat password</label>
                             <input type="password" class="form-control" id="repeatPassword" name="repeatPassword">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary action-user">Save changes</button>
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-user saveChanges">Save changes</button>
                 </div>
             </div>
         </div>
@@ -245,32 +245,32 @@
                                 <input type="text" class="form-control" id="profileId">
                             </div>
                             <div class="form-group">
-                                <label for="userLocalization" id="userLocalizationLabel">Localization</label>
+                                <label for="userLocalization" id="userLocalizationLabel" class="l18n">Localization</label>
                                 <select class="form-control" id="userLocalization" style="height: auto !important;">
                                     <option value="UKRAINIAN">Українська</option>
                                     <option value="ENGLISH">English</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="userCountry" id="userCountryLabel">Country</label>
+                                <label for="userCountry" id="userCountryLabel" class="country">Country</label>
                                 <select class="form-control" id="userCountry" style="height: auto !important;"></select>
                             </div>
                         </div>
                         <div class="col bg-light">
-                            <h3>Change password</h3>
+                            <h3 class="update-password">Change password</h3>
                             <form id="changePasswordForm">
                                 <div class="form-group">
-                                    <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
+                                    <label for="userOldPassword" id="userOldPasswordLabel" class="userOldPassword">Old password</label>
                                     <input type="password" class="form-control" id="userOldPassword"
                                            name="userOldPassword">
                                 </div>
                                 <div class="form-group">
-                                    <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
+                                    <label for="userNewPassword" id="userNewPasswordLabel" class="userNewPassword">New password</label>
                                     <input type="password" class="form-control" id="userNewPassword"
                                            name="userNewPassword">
                                 </div>
                                 <div class="form-group">
-                                    <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new
+                                    <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel" class="userNewPasswordRepeat">Repeat new
                                         password</label>
                                     <input type="password" class="form-control" id="userNewPasswordRepeat"
                                            name="userNewPasswordRepeat">
@@ -281,8 +281,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary action-profile">Save changes</button>
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-profile saveChanges">Save changes</button>
                 </div>
             </div>
         </div>
@@ -302,7 +302,7 @@
                             <input type="text" class="form-control" id="animalClassId">
                         </div>
                         <div class="form-group">
-                            <label for="animalClassName" id="animalClassNameLabel">Animal Class Name</label>
+                            <label for="animalClassName" id="animalClassNameLabel" class="animalClass">Animal Class Name</label>
                             <input type="text" class="form-control" id="animalClassName" name="animalClassName">
                         </div>
                     </form>
@@ -329,11 +329,11 @@
                             <input type="text" class="form-control" id="animalBreedId">
                         </div>
                         <div class="form-group">
-                            <label for="animalBreedName" id="animalBreedNameLabel">Animal Breed Name</label>
+                            <label for="animalBreedName" id="animalBreedNameLabel" class="animalBreed">Animal Breed Name</label>
                             <input type="text" class="form-control" id="animalBreedName" name="animalBreedName">
                         </div>
                         <div class="form-group">
-                            <label for="animalBreedClassName" id="animalBreedClassNameLabel">Animal Breed Class
+                            <label for="animalBreedClassName" id="animalBreedClassNameLabel" class="animalClass">Animal Breed Class
                                 Name</label>
                             <select class="form-control" id="animalBreedClassName"
                                     style="height: auto !important;"></select>
@@ -397,7 +397,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">Country</h4></div>
+                    <div><h4 class="header-title mt-2 country">Country</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-country" data-toggle="modal"
                                 data-target="#countryModal"><span class="fa fa-plus"> </span>Add
@@ -410,7 +410,7 @@
                         <tr>
                             <th class="id" hidden>Id</th>
                             <th class="name">Name</th>
-                            <th class="description">Description</th>
+                            <th class="descriptionM">Description</th>
                             <th class="countryGrafts">Grafts</th>
 
                             <th></th>
@@ -447,7 +447,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">Graft</h4></div>
+                    <div><h4 class="header-title mt-2 graft">Graft</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
                                 data-target="#graftModal"><span class="fa fa-plus"> </span>Add
@@ -495,7 +495,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">AnimalClass</h4></div>
+                    <div><h4 class="header-title mt-2 animalClass">AnimalClass</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-animalClass" data-toggle="modal"
                                 data-target="#animalClassModal"><span class="fa fa-plus"> </span>Add
@@ -542,7 +542,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">AnimalBreed</h4></div>
+                    <div><h4 class="header-title mt-2 animalBreed">AnimalBreed</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-animalBreed" data-toggle="modal"
                                 data-target="#animalBreedModal"><span class="fa fa-plus"> </span>Add
@@ -555,7 +555,7 @@
                         <tr>
                             <th class="id" hidden>Id</th>
                             <th class="name">Name</th>
-                            <th class="name">Animal Class</th>
+                            <th class="animalClass">Animal Class</th>
 
                             <th></th>
                         </tr>
@@ -590,7 +590,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">Disease</h4></div>
+                    <div><h4 class="header-title mt-2 disease">Disease</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-disease" data-toggle="modal"
                                 data-target="#diseaseModal"><span class="fa fa-plus"> </span>Add
@@ -636,7 +636,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">User</h4></div>
+                    <div><h4 class="header-title mt-2 user">User</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-user" data-toggle="modal"
                                 data-target="#userModal"><span class="fa fa-plus"> </span>Add

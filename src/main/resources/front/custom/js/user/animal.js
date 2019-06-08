@@ -71,7 +71,7 @@ function deleteAnimal(id) {
             }
         },
         success: function () {
-           getAnimals();
+            getAnimals();
             Swal.fire(
                 'SUCCES!',
                 'Deleted!',
@@ -91,6 +91,7 @@ function deleteAnimal(id) {
 
 function addAnimal() {
     $('.animalCreateModal')[0].click();
+    validateAnimal();
 }
 
 function saveAnimal() {
@@ -106,9 +107,9 @@ function saveAnimal() {
         birthDate: $('#animalCreateBirth').val()
     };
 
-    /*    if (!$('#countryForm').valid()) {
-            return;
-        }*/
+    if (!$('#animalForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/animal",
@@ -150,7 +151,7 @@ function updateAnimal() {
         length: $('#animalUpdateLength').val()
     };
 
-    /*    if (!$('#countryForm').valid()) {
+       /* if (!$('#animalForm').valid()) {
             return;
         }*/
 
@@ -212,7 +213,7 @@ function fillAnimalInfo() {
     $('#animalHeight').val(ANIMAL.animal.height);
     $('#animalLength').val(ANIMAL.animal.length);
 
-    if(ANIMAL.animal.photoURL) {
+    if (ANIMAL.animal.photoURL) {
         $('#animal-img').attr('src', ANIMAL.animal.photoURL);
     } else {
         $('#animal-img').attr('src', '../custom/img/default_animal.jpg');
@@ -221,8 +222,49 @@ function fillAnimalInfo() {
 
 ///////
 function getAnimalGender() {
-    if($('#animalCreateGenderMale').is(":checked")){
+    if ($('#animalCreateGenderMale').is(":checked")) {
         return 'MALE';
     }
     return 'FEMALE';
+}
+
+/////
+
+function validateAnimal() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#animalForm').validate({
+        rules: {
+            animalCreateName: {
+                required: true
+            },
+            animalCreateWeight: {
+                required: true,
+                number: true,
+                min: 0.1
+            },
+            animalCreateHeight: {
+                required: true,
+                number: true,
+                min: 0.1
+            },
+            animalCreateLength: {
+                required: true,
+                number: true,
+                min: 0.1
+            },
+            animalCreateBirth: {
+                required: true,
+                notFutureDate: true
+            }
+        },
+        messages: {
+            animalCreateName: {
+                required: "required field"
+            }
+        }
+    });
+
 }

@@ -105,6 +105,61 @@ function setTranslateLogin() {
 
 function setTranslateUser() {
     loadLocale();
+    setTranslateAlert();
+
+    $(".country")._t("country");
+    $(".animalClass")._t("animalClass");
+    $(".animalBreed")._t("animalBreed");
+    $(".graft")._t("graft");
+    $(".disease")._t("disease");
+    $(".users")._t("users");
+
+    $(".page-title")._t("page-title");
+
+
+    $(".closeM")._t("closeM");
+    $(".modal-title")._t("modal-title");
+    $(".saveChanges")._t("saveChanges");
+    $(".countryId")._t("countryId");
+    $(".countryName")._t("countryName");
+    $(".descriptionM")._t("descriptionM");
+    $(".countryGrafts")._t("countryGrafts");
+
+    $(".graftId")._t("graftId");
+    $(".graftName")._t("graftName");
+    $(".graftFrequency")._t("graftFrequency");
+
+    $(".diseaseId")._t("diseaseId");
+    $(".diseaseName")._t("diseaseName");
+
+    $(".userId")._t("userId");
+    $(".username")._t("username");
+    $(".password")._t("password");
+    $(".repeatPassword")._t("repeatPassword");
+
+    $(".userOldPassword")._t("userOldPassword");
+    $(".userNewPassword")._t("userNewPassword");
+    $(".userNewPasswordRepeat")._t("userNewPasswordRepeat");
+    $(".update-password")._t("update-password");
+    $(".l18n")._t("l18n");
+
+    $(".profile")._t("profile");
+    $(".log-out")._t("log-out");
+
+    $("button[class*='add']")._t("add");
+    $("button[class*='edit']")._t("edit");
+    $("button[class*='delete']")._t("delete");
+
+    $(".name")._t("name");
+    $(".frequency")._t("frequency");
+    $(".user")._t("user");
+
+}
+
+function setTranslateAlert() {
+    UPDATED = $.i18n._('Aupdated');
+    CREATED = $.i18n._('Acreated');
+    DELETED = $.i18n._('Adeleted');
 }
 
 var UA = {
@@ -139,7 +194,90 @@ var UA = {
     "repeat-password": "Повтор паролю",
     "submit": "Підтвердити<i class=\"ti-arrow-right\"></i>",
     "question": "Ще не маєте акаунту? <a href=\"register.html\" class=\"sign-up\">Зареєструватися</a>",
-    "questionR": "Ходімо до входу?<a href=\"login.html\" class=\"sign-in\">Увійти</a>"
+    "questionR": "Ходімо до входу?<a href=\"login.html\" class=\"sign-in\">Увійти</a>",
+
+    "country": "Країна",
+    "animalClass": "Клас тварини",
+    "animalBreed": "Порода тварини",
+    "graft": "Щеплення",
+    "disease": "Хвороба",
+    "users": "Користувачі",
+
+    "page-title": "Панель адміністратора",
+    "page-workspace": "РОБОЧИЙ ПРОСТІР АДМІНІСТРАТОРА",
+
+    "closeM": "Закрити",
+    "modal-title": "Виконати операцію",
+    "saveChanges": "Зберігти зміни",
+
+    "countryId": "Id Країни",
+    "countryName": "Назва країни",
+    "descriptionM": "Описання",
+    "countryGrafts": "Необхідні щеплення",
+
+    "graftId": "Id Щеплення",
+    "graftName": "Назва Щеплення",
+    "graftFrequency": "Періодичність Щеплення",
+
+    "diseaseId": "Id хвороби",
+    "diseaseName": "Назва хвороби",
+
+    "userId": "Id Користувача",
+    "repeatPassword": "Повторити пароль",
+
+    "userOldPassword": "Старий пароль",
+    "userNewPassword": "Новий пароль",
+    "userNewPasswordRepeat": "Повторити новий пароль",
+    "update-password": "Оновити пароль",
+
+    "l18n": "Локалізація",
+
+    "profile": "Профіль",
+    "log-out": "Вихід",
+
+    "name": "Назва",
+
+    "add": "<span class='fa fa-plus'> </span>Додати",
+    "edit": "Редагувати <i class='fa fa-edit'></i>",
+    "delete": "Видалити <i class='fa fa-close'></i>",
+
+    "frequency": "Частота",
+    "user": "Користувач",
+
+    "requiredField": "Обов'язкове поле",
+    "samePassword": "Паролі мають співпадати",
+
+    "Aupdate": "оновити",
+    "Aupdated": "оновлено",
+
+    "AgetInfo": "отримати інформацію",
+
+    "Acreate": "створити",
+    "Acreated": "створено",
+
+    "Adelete": "видалити",
+    "Adeleted": "видалено",
+
+    "AperformOperation": "виконати операцію",
+
+    "failed": "НЕВДАЧА!",
+    "cannot": "Не вийшло ",
+
+    "success": "УСПІХ!",
+    "was": "Було ",
+
+    "changed" : "змінено",
+    "change" : "змінити",
+
+    "badCredentials": "Невірний логін/пароль",
+
+    "allFieldsAreRequired": "Необхідно заповнити усі поля!",
+
+    "register": "зареєструватися",
+    "registration": " реєстрація",
+
+    'gotosignin': "Перейдіть до входу зараз!"
+
 };
 
 var EN = {
@@ -173,7 +311,93 @@ var EN = {
     "repeat-password": "Repeat password",
     "submit": "Submit<i class=\"ti-arrow-right\"></i>",
     "question": "Don't have an account?<a href=\"register.html\" class=\"sign-up\">Sign up</a>",
-    "questionR": "Go to login?<a href=\"login.html\" class=\"sign-in\">Sign in</a>"
+    "questionR": "Go to login?<a href=\"login.html\" class=\"sign-in\">Sign in</a>",
+
+    "country": "Country",
+    "animalClass": "Animal Class",
+    "animalBreed": "Animal Breed",
+    "graft": "Graft",
+    "disease": "Disease",
+    "users": "Users",
+
+    "page-title": "Admin dashboard",
+    "page-workspace": "ADMIN WORKSPACE",
+
+    "closeM": "Close",
+    "saveChanges": "Save changes",
+    "modal-title": "Perform action",
+
+    "countryId": "Country Id",
+    "countryName": "Country Name",
+    "descriptionM": "Description",
+    "countryGrafts": "Country Grafts",
+
+    "graftId": "Graft Id",
+    "graftName": "Graft Name",
+    "graftFrequency": "Graft Frequency",
+
+    "diseaseId": "Disease Id",
+    "diseaseName": "Disease Name",
+
+    "userId": "User Id",
+    "repeatPassword": "repeatPassword",
+
+    "userOldPassword": "Old Password",
+    "userNewPassword": "New password",
+    "userNewPasswordRepeat": "Repeat new password",
+    "update-password": "Update password",
+
+    "l18n": "Localization",
+
+    "profile": "Profile",
+    "log-out": "Log Out",
+
+    "name": "Name",
+
+    "add": "<span class='fa fa-plus'> </span> Add",
+    "edit": "Edit <i class='fa fa-edit'></i>",
+    "delete": "Delete <i class='fa fa-close'></i>",
+
+    "frequency": "Frequency",
+    "user": "User",
+
+    "requiredField": "Required Field",
+    "samePassword": "Passwords must be the same",
+
+
+    "Aupdate": "update",
+    "Aupdated": "updated",
+
+    "AgetInfo": "get info",
+
+    "Acreate": "create",
+    "Acreated": "created",
+
+    "Adelete": "delete",
+    "Adeleted": "deleted",
+
+    "AperformOperation": "perform operation",
+
+
+    "failed": "FAILED!",
+    "cannot": "Can not ",
+
+    "success": "Success!",
+    "was": "Was ",
+
+    "changed" : "changed",
+    "change" : "change",
+
+    "badCredentials": "Bad credentials",
+
+    "allFieldsAreRequired": "All fields must be filled!",
+
+    "register": "register",
+    "registration": " registration",
+
+    'gotosignin': "Go to sign in now!"
+
+
 };
 
 

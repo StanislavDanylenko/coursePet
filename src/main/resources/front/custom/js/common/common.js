@@ -20,15 +20,15 @@ function handleError(xhr, type) {
         handle403();
     } else {
         switch (type) {
-            case UPDATE: handleCrudError("update");
+            case UPDATE: handleCrudError($.i18n._('Aupdate'));
                 break;
-            case GET: handleCrudError("get info");
+            case GET: handleCrudError($.i18n._('AgetInfo'));
                 break;
-            case CREATE: handleCrudError("create");
+            case CREATE: handleCrudError($.i18n._('Acreate'));
                 break;
-            case DELETE: handleCrudError("delete");
+            case DELETE: handleCrudError($.i18n._('Adelete'));
                 break;
-            default: handleCrudError("perform operation");
+            default: handleCrudError($.i18n._('AperformOperation'));
         }
     }
 }
@@ -39,9 +39,17 @@ function handle403() {
 
 function handleCrudError(operation) {
     Swal.fire(
-        'BAD!',
-        'Can not ' + operation,
+        $.i18n._('failed'),
+        $.i18n._('cannot') + operation,
         'error'
+    )
+}
+
+function handleSuccessOperation(operation) {
+    Swal.fire(
+        $.i18n._('success'),
+        $.i18n._('was') + operation,
+        'success'
     )
 }
 
@@ -51,6 +59,15 @@ function addSamePasswordValidator() {
         return value == firstValue;
 
     }, "Passwords must be the same");
+}
+
+function addNotFutureDateValidator() {
+    $.validator.addMethod("notFutureDate", function(value, element) {
+        var now = new Date();
+        var dateValue = new Date(value);
+        return dateValue < now;
+
+    }, "Date must not be from the future");
 }
 
 // datatable lang

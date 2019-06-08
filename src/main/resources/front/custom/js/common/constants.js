@@ -5,3 +5,7 @@ var UPDATE = "UPDATE";
 var GET = "GET";
 var CREATE = "CREATE";
 var DELETE = "DELETE";
+
+var UPDATED = "UPDATED";
+var CREATED = "CREATED";
+var DELETED = "DELETED";

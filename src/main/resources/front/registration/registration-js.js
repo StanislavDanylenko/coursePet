@@ -48,6 +48,10 @@ function registerUser() {
         repeatPassword: $('#repeatPassword').val()
     };
 
+    if(!validateUser()) {
+        return;
+    }
+
     $.ajax({
         url: "http://localhost:8080/auth/signup",
         type: "POST",
@@ -56,16 +60,40 @@ function registerUser() {
         contentType: "application/json",
         success: function (response, status, xhr) {
             Swal.fire(
-                'Success registration!',
-                'Go to sign in now!',
+                $.i18n._('success'),
+                $.i18n._('gotosignin'),
                 'success'
-            )
+            );
+            $('#username').val('');
+            $('#password').val('');
+            $('#repeatPassword').val('');
         },
         error: function(xhr, ajaxOptions, thrownError) {
             Swal.fire(
-                'BAD!',
-                'Can-not register',
+                $.i18n._('failed'),
+                $.i18n._('cannot') + $.i18n._('register'),
                 'error'
             )
         }});
+}
+
+//////
+function validateUser() {
+
+    if($('#username').val() == '' || $('#password').val() == '' || $('#repeatPassword').val() == '') {
+        Swal.fire(
+            $.i18n._('failed'),
+            $.i18n._('allFieldsAreRequired'),
+            'error'
+        );
+        return false;
+    } else if($('#password').val() != $('#repeatPassword').val()) {
+        Swal.fire(
+            $.i18n._('failed'),
+            $.i18n._('samePassword'),
+            'error'
+        );
+        return false;
+    }
+    return true;
 }

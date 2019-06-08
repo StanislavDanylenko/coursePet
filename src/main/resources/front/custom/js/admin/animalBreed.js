@@ -4,6 +4,7 @@ function renderAnimalBreedList(response) {
     var html = animalBreedTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('animalBreedTableTemplate');
+    setTranslateUser();
 }
 
 function getAnimalBreeds() {
@@ -97,11 +98,7 @@ function saveAnimalBreed() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimalBreeds();
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (xhr) {
             handleError(xhr, CREATE);
@@ -134,11 +131,7 @@ function updateAnimalBreed(animalBreed) {
         success: function () {
             getAnimalBreeds();
             $("[data-dismiss=modal]").trigger({type: "click"});
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(UPDATED);
         },
         error: function (xhr) {
             handleError(xhr, UPDATE);
@@ -161,11 +154,7 @@ function deleteAnimalBreed(e) {
         },
         success: function () {
             getAnimalBreeds();
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             handleError(xhr, DELETE);
@@ -219,7 +208,7 @@ function validateAnimalBreed() {
         },
         messages: {
             animalBreedName: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             }
         }
     });

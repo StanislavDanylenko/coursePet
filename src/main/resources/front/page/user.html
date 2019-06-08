@@ -396,21 +396,22 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
+                    <form id="animalForm">
                     <div class="form-group">
                         <label for="animalName" id=animalNameLabel">Animal Name</label>
-                        <input type="text" class="form-control" id="animalCreateName">
+                        <input type="text" class="form-control" id="animalCreateName" name="animalCreateName">
                     </div>
                     <div class="form-group">
                         <label for="animalCreateWeight" id="animalCreateWeightLabel">Weight</label>
-                        <input type="number" class="form-control" id="animalCreateWeight">
+                        <input type="number" class="form-control" id="animalCreateWeight" name="animalCreateWeight">
                     </div>
                     <div class="form-group">
                         <label for="animalCreateHeight" id="animalCreateHeightLabel">Height</label>
-                        <input type="number" class="form-control" id="animalCreateHeight">
+                        <input type="number" class="form-control" id="animalCreateHeight" name="animalCreateHeight">
                     </div>
                     <div class="form-group">
                         <label for="animalCreateLength" id="animalCreateLengthLabel">Length</label>
-                        <input type="number" class="form-control" id="animalCreateLength">
+                        <input type="number" class="form-control" id="animalCreateLength" name="animalCreateLength">
                     </div>
                     <div class="form-group">
                         <label for="animalsBreed" id="animalsBreedLabel">Breed</label>
@@ -418,7 +419,7 @@
                     </div>
                     <div class="form-group">
                         <label for="animalCreateBirth" id="animalCreateBirthLabel">Date of birth</label>
-                        <input type="date" class="form-control" id="animalCreateBirth">
+                        <input type="date" class="form-control" id="animalCreateBirth" name="animalCreateBirth">
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-radio custom-control-inline">
@@ -433,6 +434,7 @@
                                    for="animalCreateGenderFemale">Female</label>
                         </div>
                     </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -546,6 +548,8 @@
 <script src="../lib/js/bootstrap.min.js"></script>
 <script src="../lib/js/metisMenu.min.js"></script>
 <script src="../lib/js/jquery.slimscroll.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.js"></script>
 
 <!-- Start datatable js -->
 <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>

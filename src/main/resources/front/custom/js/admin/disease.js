@@ -4,6 +4,7 @@ function renderDiseaseList(response) {
     var html = diseaseTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('diseaseTableTemplate');
+    setTranslateUser();
 }
 
 function getDiseases() {
@@ -50,7 +51,6 @@ function createDisease() {
         var button = $('.action-disease');
         button.unbind();
         button.bind('click', saveDisease);
-        // $('#diseaseOperation')._t('addDisease');
         validateDisease();
     }
 }
@@ -94,11 +94,7 @@ function saveDisease() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getDiseases();
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (xhr) {
             handleError(xhr, CREATE);
@@ -130,11 +126,7 @@ function updateDisease(disease) {
         success: function () {
             getDiseases();
             $("[data-dismiss=modal]").trigger({type: "click"});
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(UPDATED);
         },
         error: function (xhr) {
             handleError(xhr, UPDATE);
@@ -157,11 +149,7 @@ function deleteDisease(e) {
         },
         success: function () {
             getDiseases();
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             handleError(xhr, DELETE);
@@ -184,7 +172,7 @@ function validateDisease() {
         },
         messages: {
             diseaseName: {
-                required: "required field"
+                required: $.i18n._('requiredField')
             }
         }
     });
