@@ -9,6 +9,7 @@ var BREEDS = {};
 function renderAnimalList(data) {
     var html = animalCardTemplate(data);
     $('.animal-area').empty().append(html);
+    setTranslationUser();
 }
 
 function getAnimals() {
@@ -212,6 +213,8 @@ function fillAnimalInfo() {
     $('#animalWeight').val(ANIMAL.animal.weight);
     $('#animalHeight').val(ANIMAL.animal.height);
     $('#animalLength').val(ANIMAL.animal.length);
+    $('#animalClass').val(ANIMAL.animal.animalsBreed.animalsClass.name);
+    $('#animalBreed').val(ANIMAL.animal.animalsBreed.name);
 
     if (ANIMAL.animal.photoURL) {
         $('#animal-img').attr('src', ANIMAL.animal.photoURL);

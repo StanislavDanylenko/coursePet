@@ -103,36 +103,16 @@ function setTranslateLogin() {
     $(".question")._t("question");
 }
 
-function setTranslateUser() {
-    loadLocale();
-    setTranslateAlert();
+function setTranslateAlert() {
+    UPDATED = $.i18n._('Aupdated');
+    CREATED = $.i18n._('Acreated');
+    DELETED = $.i18n._('Adeleted');
+}
 
-    $(".country")._t("country");
-    $(".animalClass")._t("animalClass");
-    $(".animalBreed")._t("animalBreed");
-    $(".graft")._t("graft");
-    $(".disease")._t("disease");
-    $(".users")._t("users");
+function setTranslationAllRole() {
 
-    $(".page-title")._t("page-title");
-
-
-    $(".closeM")._t("closeM");
-    $(".modal-title")._t("modal-title");
-    $(".saveChanges")._t("saveChanges");
-    $(".countryId")._t("countryId");
-    $(".countryName")._t("countryName");
     $(".descriptionM")._t("descriptionM");
-    $(".countryGrafts")._t("countryGrafts");
 
-    $(".graftId")._t("graftId");
-    $(".graftName")._t("graftName");
-    $(".graftFrequency")._t("graftFrequency");
-
-    $(".diseaseId")._t("diseaseId");
-    $(".diseaseName")._t("diseaseName");
-
-    $(".userId")._t("userId");
     $(".username")._t("username");
     $(".password")._t("password");
     $(".repeatPassword")._t("repeatPassword");
@@ -146,20 +126,124 @@ function setTranslateUser() {
     $(".profile")._t("profile");
     $(".log-out")._t("log-out");
 
+    $(".country")._t("country");
+    $(".name")._t("name");
+
+    $(".animalClass")._t("animalClass");
+    $(".animalBreed")._t("animalBreed");
+
+    $(".graft")._t("graft");
+    $(".disease")._t("disease");
+    $(".frequency")._t("frequency");
+
+    $(".footer-area")._t("footer-area");
+
+}
+
+function setTranslateButtons() {
+
+    $(".closeM")._t("closeM");
+    $(".modal-title")._t("modal-title");
+    $(".saveChanges")._t("saveChanges");
+
     $("button[class*='add']")._t("add");
     $("button[class*='edit']")._t("edit");
     $("button[class*='delete']")._t("delete");
 
-    $(".name")._t("name");
-    $(".frequency")._t("frequency");
+    $(".deleteU")._t("deleteU");
+    $(".choose-animal")._t("choose");
+    $(".add-animal")._t("add-animal");
+
+}
+
+function setTranslateAdmin() {
+
+    loadLocale();
+    setTranslateAlert();
+    setTranslationAllRole();
+    setTranslateButtons();
+
+    $(".users")._t("users");
+
+    $(".page-title")._t("page-title-admin");
+
+    $(".countryId")._t("countryId");
+    $(".countryName")._t("countryName");
+    $(".countryGrafts")._t("countryGrafts");
+
+    $(".graftId")._t("graftId");
+    $(".graftName")._t("graftName");
+    $(".graftFrequency")._t("graftFrequency");
+
+    $(".diseaseId")._t("diseaseId");
+    $(".diseaseName")._t("diseaseName");
+
+    $(".userId")._t("userId");
+
     $(".user")._t("user");
 
 }
 
-function setTranslateAlert() {
-    UPDATED = $.i18n._('Aupdated');
-    CREATED = $.i18n._('Acreated');
-    DELETED = $.i18n._('Adeleted');
+function setTranslationSmartCardId() {
+    var scid = $('#SCID').text();
+    $(".scid")._t("scid");
+    $('#SCID').text(scid);
+}
+
+function setTranslationUser() {
+
+    loadLocale();
+    setTranslateAlert();
+    setTranslationAllRole();
+    setTranslateButtons();
+    setTranslationSmartCardId();
+
+    $(".animals")._t("animals");
+    $(".statistic")._t("statistic");
+    $(".brincountries")._t("brincountries");
+
+    $(".page-title")._t("page-title-user");
+
+    $(".info")._t("info");
+    $(".grafts")._t("grafts");
+    $(".diseases")._t("diseases");
+    $(".smartDevices")._t("smartDevices");
+    $(".records")._t("records");
+    $(".smartCard")._t("smartCard");
+
+    $(".animal-name")._t("animal-name");
+    $(".animal-date")._t("animal-date");
+    $(".animal-weight")._t("animal-weight");
+    $(".animal-height")._t("animal-height");
+    $(".animal-length")._t("animal-length");
+    $(".animal-gender")._t("animal-gender");
+
+    $(".selectImage")._t("selectImage");
+    $(".submitButton").val($.i18n._("submitButton"));
+
+    $(".check-info")._t("check-info");
+
+    $(".male")._t("male");
+    $(".female")._t("female");
+
+    $(".startDate")._t("startDate");
+    $(".finishDate")._t("finishDate");
+    $(".treathment")._t("treathment");
+    $(".date")._t("date");
+
+    $(".smartDevice")._t("smartDevice");
+    $(".battery-levell")._t("battery-levell");
+    $(".switcht")._t("switcht");
+    $(".sd-info")._t("sd-info");
+    $(".sd-charge")._t("sd-charge");
+
+    $(".animal-state")._t("animal-state");
+    $(".creation-date")._t("creation-date");
+    $(".pulze")._t("pulze");
+    $(".temperature")._t("temperature");
+    $(".longitude")._t("longitude");
+    $(".latitude")._t("latitude");
+
 }
 
 var UA = {
@@ -203,12 +287,15 @@ var UA = {
     "disease": "Хвороба",
     "users": "Користувачі",
 
-    "page-title": "Панель адміністратора",
-    "page-workspace": "РОБОЧИЙ ПРОСТІР АДМІНІСТРАТОРА",
+    "page-title-admin": "Панель адміністратора",
+    "page-workspace-admin": "РОБОЧИЙ ПРОСТІР АДМІНІСТРАТОРА",
+
+    "page-title-user": "Панель користувача",
+    "page-workspace-user": "РОБОЧИЙ ПРОСТІР КОРИСТУВАЧА",
 
     "closeM": "Закрити",
     "modal-title": "Виконати операцію",
-    "saveChanges": "Зберігти зміни",
+    "saveChanges": "Зберегти зміни",
 
     "countryId": "Id Країни",
     "countryName": "Назва країни",
@@ -276,8 +363,63 @@ var UA = {
     "register": "зареєструватися",
     "registration": " реєстрація",
 
-    'gotosignin': "Перейдіть до входу зараз!"
+    'gotosignin': "Перейдіть до входу зараз!",
 
+
+
+    'animals': "Тварини",
+    'statistic': "Статистика",
+    'brincountries': "Породи в країнах",
+
+    'info': "Інформація",
+    'grafts': "Щеплення",
+    'diseases': "Хвороби",
+    'smartDevices': "Розумні присторої",
+    'smartDevice': "Розумний присторій",
+    'records': "Записи",
+    'smartCard': "Смарт-карта",
+
+    'animal-name': "Кличка",
+    'animal-date': "Дата народження",
+    'animal-weight': "Маса",
+    'animal-height': "Висота",
+    'animal-length': "Довжина",
+    'animal-gender': "Стать",
+
+    'selectImage': "Обрати зображення",
+    'submitButton': "Підтвердити",
+
+    'check-info': "Перевірити",
+    'scid': "ID Розумної карти: <b id='SCID'></b>",
+
+    'male': "Чоловіча",
+    'female': "Жіноча",
+
+    'startDate': "Дата початку",
+    'finishDate': "Дата закінчення",
+    'treathment': "Лікування",
+    'date': "Дата",
+
+    'footer-area': "<p>© Copyright 2019. Усі права захищено. <b>Даниленко Станіслав.</b> Шаблон <a\n" +
+        "                href=\"https://colorlib.com/wp/\">Colorlib</a>.</p>",
+
+    'deleteU': "ВИДАЛИТИ",
+    'choose': "ВИБРАТИ",
+    'add-animal': "ДОДАТИ НОВУ",
+
+    'battery-levell': "Рівень заряду батареї",
+    'switcht': "Перемкнути",
+    'sd-info': "Показати записи",
+    'sd-charge': "ЗАРЯДИТИ",
+
+    'animal-state': "Стан тварини",
+    'creation-date': "Дата створення",
+    'pulze': "Пульс",
+    'temperature': "Температура",
+    'longitude': "Довгота",
+    'latitude': "Широта",
+
+    "graftsNeeded": "Необхідні щеплення",
 };
 
 var EN = {
@@ -320,8 +462,11 @@ var EN = {
     "disease": "Disease",
     "users": "Users",
 
-    "page-title": "Admin dashboard",
-    "page-workspace": "ADMIN WORKSPACE",
+    "page-title-admin": "Admin dashboard",
+    "page-workspace-admin": "ADMIN WORKSPACE",
+
+    "page-title-user": "User dashboard",
+    "page-workspace-user": "USER WORKSPACE",
 
     "closeM": "Close",
     "saveChanges": "Save changes",
@@ -395,9 +540,65 @@ var EN = {
     "register": "register",
     "registration": " registration",
 
-    'gotosignin': "Go to sign in now!"
+    'gotosignin': "Go to sign in now!",
 
 
+
+    'animals': "Animals",
+    'statistic': "Statistic",
+    'brincountries': "Breed in countries",
+
+    'info': "Info",
+    'grafts': "Grafts",
+    'diseases': "Diseases",
+    'smartDevices': "Smart Devices",
+    'smartDevice': "Smart Device",
+    'records': "Records",
+    'smartCard': "Smart Card",
+
+    'animal-name': "Name",
+    'animal-date': "Date of birth",
+    'animal-weight': "Weight",
+    'animal-height': "Height",
+    'animal-length': "Length",
+    'animal-gender': "Gender",
+
+    'selectImage': "Select Image",
+    'submitButton': "Submit",
+
+    'check-info': "Get info",
+    'scid': "SmartCard ID: <b id='SCID'></b>",
+
+    'male': "Male",
+    'female': "Female",
+
+    'startDate': "Start Date",
+    'finishDate': "Finish Date",
+    'treathment': "Treathment",
+    'date': "Date",
+
+    'footer-area': "<p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a\n" +
+        "                href=\"https://colorlib.com/wp/\">Colorlib</a>.</p>",
+
+    'deleteU': "DELETE",
+    'choose': "CHOOSE",
+    'add-animal': "ADD NEW",
+
+    'battery-levell': "Battery level",
+    'switcht': "Switch",
+    'sd-info': "Show records",
+    'sd-charge': "CHARGE",
+
+    'animal-state': "Animal State",
+    'creation-date': "Creation Date",
+    'pulze': "Pulse",
+    'temperature': "Temperature",
+    'longitude': "Longitude",
+    'latitude': "Latitude",
+
+    'latitude': "Latitude",
+
+    "graftsNeeded": "Grafts yoa are needed",
 };
 
 

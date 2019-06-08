@@ -4,7 +4,7 @@ function renderAnimalBreedList(response) {
     var html = animalBreedTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('animalBreedTableTemplate');
-    setTranslateUser();
+    setTranslateAdmin();
 }
 
 function getAnimalBreeds() {

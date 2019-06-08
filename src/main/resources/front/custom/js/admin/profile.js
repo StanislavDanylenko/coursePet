@@ -43,7 +43,11 @@ function updateProfile() {
             $("[data-dismiss=modal]").trigger({type: "click"});
             USER.localization = profile.localization;
             saveUserLS(USER);
-            setTranslateUser();
+            if(USER.role == 'ADMIN') {
+                setTranslateAdmin();
+            } else {
+                setTranslationUser();
+            }
             handleSuccessOperation(UPDATED);
             renderHome();
         },

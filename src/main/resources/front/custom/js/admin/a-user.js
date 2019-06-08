@@ -4,7 +4,7 @@ function renderUserList(response) {
     var html = userTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('userTableTemplate');
-    setTranslateUser();
+    setTranslateAdmin();
 }
 
 function getUsers() {

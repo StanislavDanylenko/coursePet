@@ -5,7 +5,7 @@ function renderCountryList(response) {
     var html = countryTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('countryTableTemplate');
-    setTranslateUser();
+    setTranslateAdmin();
 }
 
 function getCountries() {

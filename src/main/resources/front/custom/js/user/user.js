@@ -32,6 +32,8 @@ $(document).ready(function() {
     loadNotification();
     addNotFutureDateValidator();
 
+    setTranslationUser();
+
 });
 
 function checkHash() {
@@ -48,7 +50,7 @@ function checkHash() {
             break;
         case "#home": renderHome();
             break;*/
-        default: renderHome();
+        default: getUser();
     }
 }
 
@@ -142,7 +144,7 @@ function setUpUserWorkspace() {
 }
 
 function renderHome() {
-    //$(MAIN_CONTAINER).empty().append('<h1> USER WORKSPACE HERE</h1>');
+   // $(MAIN_CONTAINER).empty().append('<div class="row h-100 justify-content-center align-items-center"><h1 class="m-3">' + $.i18n._('page-workspace-user') + '</h1></div>');
 }
 
 function showStatistic() {
@@ -211,19 +213,8 @@ function sendNotification(notification) {
             }
         },
         success: function (data) {
-            /*$("[data-dismiss=modal]").trigger({type: "click"});
-            Swal.fire(
-                'SUCCES!',
-                'Sent!',
-                'success'
-            )*/
         },
         error: function (data) {
-            /*Swal.fire(
-                'BAD!',
-                'Can not send',
-                data
-            )*/
         }
     });
 

@@ -4,7 +4,7 @@ function renderAnimalClassList(response) {
     var html = animalClassTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('animalClassTableTemplate');
-    setTranslateUser();
+    setTranslateAdmin();
 }
 
 function getAnimalClasses() {

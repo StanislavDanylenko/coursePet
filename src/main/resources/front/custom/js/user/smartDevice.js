@@ -28,6 +28,8 @@ function fillSmartDevices() {
     var html = smartDeviceTemplate(ANIMAL.animal.smartDevices);
     $('.animal-sd').empty().append(html);
     setDataTable('smartDeviceTableTemplate');
+
+    setTranslationUser();
 }
 
 function fillRecords() {
@@ -44,6 +46,7 @@ function fillRecords() {
     $('.animal-records').empty().append(html);
     setDataTable('recordsTableTemplate');
 
+    setTranslationUser();
 }
 
 function getSmartDeviceInfo(e) {
@@ -63,6 +66,7 @@ function getSmartDeviceInfo(e) {
     setDataTable('recordTableTemplate');
 
     $('.record-window')[0].click();
+    setTranslationUser();
 }
 
 function deleteSmartDevice(e) {

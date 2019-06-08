@@ -48,15 +48,14 @@
             <div class="menu-inner">
                 <nav>
                     <ul class="metismenu" id="menu">
-                        <li><a href="#" class="animals-button"><i class="ti-dashboard"></i><span>Animals</span></a></li>
+                        <li><a href="#" class="animals-button"><i class="ti-dashboard"></i><span class="animals">Animals</span></a></li>
                         <li>
                             <a href="javascript:void(0)" aria-expanded="true"><i class="fa fa-align-left"></i>
-                                <span>Statistic</span></a>
+                                <span class="statistic">Statistic</span></a>
                             <ul class="collapse">
-                                <li><a href="#" class="statistic-button">Breed in countries</a></li>
+                                <li><a href="#" class="statistic-button brincountries">Breed in countries</a></li>
                             </ul>
                         </li>
-                        <!--<li><a href="#" class="notification-button"><i class="ti-dashboard"></i><span>Send notification</span></a></li>-->
                     </ul>
                 </nav>
             </div>
@@ -104,32 +103,32 @@
                     <div class="card-body">
                         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active show" id="pills-home-tab" data-toggle="pill"
+                                <a class="nav-link active show info" id="pills-home-tab" data-toggle="pill"
                                    href="#pills-home" role="tab" aria-controls="pills-home"
                                    aria-selected="true">Info</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
+                                <a class="nav-link grafts" id="pills-profile-tab" data-toggle="pill" href="#pills-profile"
                                    role="tab" aria-controls="pills-profile" aria-selected="false">Grafts</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-contact1-tab" data-toggle="pill" href="#pills-contact1"
+                                <a class="nav-link diseases" id="pills-contact1-tab" data-toggle="pill" href="#pills-contact1"
                                    role="tab" aria-controls="pills-contact" aria-selected="false">Diseases</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2"
+                                <a class="nav-link smartDevices" id="pills-contact2-tab" data-toggle="pill" href="#pills-contact2"
                                    role="tab" aria-controls="pills-contact" aria-selected="false">Smart Devices</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-contact5-tab" data-toggle="pill" href="#pills-contact5"
+                                <a class="nav-link records" id="pills-contact5-tab" data-toggle="pill" href="#pills-contact5"
                                    role="tab" aria-controls="pills-contact" aria-selected="false">Records</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3"
+                                <a class="nav-link smartCard" id="pills-contact3-tab" data-toggle="pill" href="#pills-contact3"
                                    role="tab" aria-controls="pills-contact" aria-selected="false">Smart Card</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4"
+                                <a class="nav-link country" id="pills-contact4-tab" data-toggle="pill" href="#pills-contact4"
                                    role="tab" aria-controls="pills-contact" aria-selected="false">Country</a>
                             </li>
                         </ul>
@@ -148,10 +147,10 @@
                                                 <div class="text-center">
                                                     <input type="text" name="upload_preset" value="jquery" hidden>
 
-                                                    <label for="avatar" class="btn btn-primary m-2">Select Image</label>
+                                                    <label for="avatar" class="btn btn-primary m-2 selectImage">Select Image</label>
                                                     <input type="file" name="file" id="avatar" hidden>
 
-                                                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                                                    <input type="submit" value="Submit" class="btn btn-primary submitButton"/>
                                                 </div>
                                             </form>
 
@@ -163,25 +162,33 @@
                                                 <input class="form-control" id="animalName" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label for="animalGender" id="animalGenderLabel" class="animal-name">Gender</label>
+                                                <label for="animalGender" id="animalGenderLabel" class="animal-gender">Gender</label>
                                                 <input class="form-control" id="animalGender" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label for="animalBirth" id="animalBirthLabel" class="animal-name">Date
+                                                <label for="animalBirth" id="animalBirthLabel" class="animal-date">Date
                                                     of birth</label>
                                                 <input class="form-control" id="animalBirth" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label for="animalWeight" id="animalWeightLabel" class="animal-name">Weight</label>
+                                                <label for="animalWeight" id="animalWeightLabel" class="animal-weight">Weight</label>
                                                 <input class="form-control" id="animalWeight" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label for="animalHeight" id="animalHeightLabel" class="animal-name">Height</label>
+                                                <label for="animalHeight" id="animalHeightLabel" class="animal-height">Height</label>
                                                 <input class="form-control" id="animalHeight" readonly>
                                             </div>
                                             <div class="form-group">
-                                                <label for="animalLength" id="animalLengthLabel" class="animal-name">Length</label>
+                                                <label for="animalLength" id="animalLengthLabel" class="animal-length">Length</label>
                                                 <input class="form-control" id="animalLength" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="animalLength" id="animalClassLabel" class="animalClass">Animal Class</label>
+                                                <input class="form-control" id="animalClass" readonly>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="animalLength" id="animalBreedLabel" class="animalBreed">Animal Breed</label>
+                                                <input class="form-control" id="animalBreed" readonly>
                                             </div>
                                             <button class="edit-animal btn btn-success edit-animal" data-toggle="modal"
                                                     data-target="#animalUpdateModal">Edit
@@ -210,13 +217,13 @@
                                         <img id="QR" src="" alt="QR here"/>
                                     </div>
                                 </div>
-                                <div class="text-center"><p class="m-1">SmartCard ID: <b id="SCID"></b></p></div>
+                                <div class="text-center"><p class="m-1 scid">SmartCard ID: <b id="SCID"></b></p></div>
                             </div>
                             <div class="tab-pane fade" id="pills-contact4" role="tabpanel"
                                  aria-labelledby="pills-contact-tab">
                                 <div id="chartdiv"></div>
                                 <div class="form-group ui-widget">
-                                    <label for="countriesAutocomplete" id="countrySearchLabel">Country</label>
+                                    <label for="countriesAutocomplete" id="countrySearchLabel" class="country">Country</label>
                                     <input class="form-control" id="countriesAutocomplete"/>
 
                                 </div>
@@ -307,29 +314,29 @@
                                 <input type="text" class="form-control" id="profileId">
                             </div>
                             <div class="form-group">
-                                <label for="userLocalization" id="userLocalizationLabel">Localization</label>
+                                <label for="userLocalization" id="userLocalizationLabel" class="l18n">Localization</label>
                                 <select class="form-control" id="userLocalization" style="height: auto !important;">
                                     <option value="UKRAINIAN">Українська</option>
                                     <option value="ENGLISH">English</option>
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="userCountry" id="userCountryLabel">Country</label>
+                                <label for="userCountry" id="userCountryLabel" class="country">Country</label>
                                 <select class="form-control" id="userCountry" style="height: auto !important;"></select>
                             </div>
                         </div>
                         <div class="col bg-light">
-                            <h3>Change password</h3>
+                            <h3 class="update-password">Change password</h3>
                             <div class="form-group">
-                                <label for="userOldPassword" id="userOldPasswordLabel">Old password</label>
+                                <label for="userOldPassword" id="userOldPasswordLabel" class="userOldPassword">Old password</label>
                                 <input type="password" class="form-control" id="userOldPassword" name="userOldPassword">
                             </div>
                             <div class="form-group">
-                                <label for="userNewPassword" id="userNewPasswordLabel">New password</label>
+                                <label for="userNewPassword" id="userNewPasswordLabel"  class="userNewPassword">New password</label>
                                 <input type="password" class="form-control" id="userNewPassword" name="userNewPassword">
                             </div>
                             <div class="form-group">
-                                <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel">Repeat new
+                                <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel" class="userNewPasswordRepeat">Repeat new
                                     password</label>
                                 <input type="password" class="form-control" id="userNewPasswordRepeat"
                                        name="userNewPasswordRepeat">
@@ -339,8 +346,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary action-profile">Save changes</button>
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-profile saveChanges">Save changes</button>
                 </div>
             </div>
         </div>
@@ -357,7 +364,7 @@
                     <div class="recordTableContainer"></div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -398,47 +405,48 @@
                 <div class="modal-body">
                     <form id="animalForm">
                     <div class="form-group">
-                        <label for="animalName" id=animalNameLabel">Animal Name</label>
+                        <label for="animalName" id=animalNameLabel" class="animal-name">Animal Name</label>
                         <input type="text" class="form-control" id="animalCreateName" name="animalCreateName">
                     </div>
                     <div class="form-group">
-                        <label for="animalCreateWeight" id="animalCreateWeightLabel">Weight</label>
+                        <label for="animalCreateWeight" id="animalCreateWeightLabel" class="animal-weight">Weight</label>
                         <input type="number" class="form-control" id="animalCreateWeight" name="animalCreateWeight">
                     </div>
                     <div class="form-group">
-                        <label for="animalCreateHeight" id="animalCreateHeightLabel">Height</label>
+                        <label for="animalCreateHeight" id="animalCreateHeightLabel" class="animal-height">Height</label>
                         <input type="number" class="form-control" id="animalCreateHeight" name="animalCreateHeight">
                     </div>
                     <div class="form-group">
-                        <label for="animalCreateLength" id="animalCreateLengthLabel">Length</label>
+                        <label for="animalCreateLength" id="animalCreateLengthLabel" class="animal-length">Length</label>
                         <input type="number" class="form-control" id="animalCreateLength" name="animalCreateLength">
                     </div>
                     <div class="form-group">
-                        <label for="animalsBreed" id="animalsBreedLabel">Breed</label>
+                        <label for="animalsBreed" id="animalsBreedLabel" class="animalBreed">Breed</label>
                         <select class="form-control" id="animalsBreed" style="height: auto !important;"></select>
                     </div>
                     <div class="form-group">
-                        <label for="animalCreateBirth" id="animalCreateBirthLabel">Date of birth</label>
+                        <label for="animalCreateBirth" id="animalCreateBirthLabel" class="animal-date">Date of birth</label>
                         <input type="date" class="form-control" id="animalCreateBirth" name="animalCreateBirth">
                     </div>
                     <div class="form-group">
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="animalCreateGenderMale"
                                    name="animalCreateGender" value="customEx" checked>
-                            <label class="custom-control-label userAvailable" for="animalCreateGenderMale">Male</label>
+                            <label class="custom-control-label userAvailable male"
+                                   for="animalCreateGenderMale">Male</label>
                         </div>
                         <div class="custom-control custom-radio custom-control-inline">
                             <input type="radio" class="custom-control-input" id="animalCreateGenderFemale"
                                    name="animalCreateGender" value="customEx">
-                            <label class="custom-control-label userUnavailable"
+                            <label class="custom-control-label userUnavailable female"
                                    for="animalCreateGenderFemale">Female</label>
                         </div>
                     </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary save-animal">Save changes</button>
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary save-animal saveChanges">Save changes</button>
                 </div>
             </div>
         </div>
@@ -453,20 +461,20 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="animalUpdateWeight" id="animalUpdateWeightLabel">Weight</label>
+                        <label for="animalUpdateWeight" id="animalUpdateWeightLabel" class="animal-weight">Weight</label>
                         <input type="number" class="form-control" id="animalUpdateWeight">
                     </div>
                     <div class="form-group">
-                        <label for="animalUpdateHeight" id="animalUpdateHeightLabel">Height</label>
+                        <label for="animalUpdateHeight" id="animalUpdateHeightLabel" class="animal-height">Height</label>
                         <input type="number" class="form-control" id="animalUpdateHeight">
                     </div>
                     <div class="form-group">
-                        <label for="animalUpdateLength" id="animalUpdateLengthLabel">Length</label>
+                        <label for="animalUpdateLength" id="animalUpdateLengthLabel" class="animal-length">Length</label>
                         <input type="number" class="form-control" id="animalUpdateLength">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary update-animal">Save changes</button>
+                        <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary update-animal saveChanges">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -482,24 +490,24 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="animalDisease" id="animalDiseaseLabel">Disease</label>
+                        <label for="animalDisease" id="animalDiseaseLabel" class="disease">Disease</label>
                         <select class="form-control" id="animalDisease" style="height: auto !important;"></select>
                     </div>
                     <div class="form-group">
-                        <label for="animalDiseaseStartDate" id="animalDiseaseStartDateLabel">Start Date</label>
+                        <label for="animalDiseaseStartDate" id="animalDiseaseStartDateLabel" class="startDate">Start Date</label>
                         <input type="date" class="form-control" id="animalDiseaseStartDate">
                     </div>
                     <div class="form-group">
-                        <label for="animalDiseaseFinishDate" id="animalDiseaseFinishDateLabel">Finish Date</label>
+                        <label for="animalDiseaseFinishDate" id="animalDiseaseFinishDateLabel" class="finishDate">Finish Date</label>
                         <input type="date" class="form-control" id="animalDiseaseFinishDate">
                     </div>
                     <div class="form-group">
-                        <label for="animalTreathment" id="animalTreathmentLabel">Treathment</label>
+                        <label for="animalTreathment" id="animalTreathmentLabel" class="treathment">Treathment</label>
                         <input type="text" class="form-control" id="animalTreathment">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary save-animal-disease">Save changes</button>
+                        <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary save-animal-disease saveChanges">Save changes</button>
                     </div>
                 </div>
             </div>
@@ -515,11 +523,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="animalGraft" id="animalGraftLabel">Graft</label>
+                        <label for="animalGraft" id="animalGraftLabel" class="graft">Graft</label>
                         <select class="form-control" id="animalGraft" style="height: auto !important;"></select>
                     </div>
                     <div class="form-group">
-                        <label for="animalGraftDate" id="animalGraftDateLabel">Date</label>
+                        <label for="animalGraftDate" id="animalGraftDateLabel" class="date">Date</label>
                         <input type="date" class="form-control" id="animalGraftDate">
                     </div>
                     <div class="modal-footer">
@@ -608,7 +616,7 @@
                             <h5 class="title"> {{ name }}</h5>
                             <a href="#" class="btn btn-primary actions-button choose-animal"
                                animal-id="{{ id }}">Choose</a>
-                            <a href="#" class="btn btn-danger actions-button remove-animal"
+                            <a href="#" class="btn btn-danger actions-button remove-animal deleteU"
                                animal-id="{{ id }}">DELETE</a>
                         </div>
                     </div>
@@ -632,7 +640,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">Disease</h4></div>
+                    <div><h4 class="header-title mt-2 disease">Disease</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-disease" data-toggle="modal"
                                 data-target="#diseaseModal"><span class="fa fa-plus"> </span>Add
@@ -645,9 +653,9 @@
                         <tr>
                             <th class="id" hidden>Id</th>
                             <th class="name">Name</th>
-                            <th class="start-date">Start Date</th>
-                            <th class="end-date">End Date</th>
-                            <th class="treatment">Treatment</th>
+                            <th class="startDate">Start Date</th>
+                            <th class="finishDate">End Date</th>
+                            <th class="treathment">Treatment</th>
 
                             <th></th>
                         </tr>
@@ -682,7 +690,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">Graft</h4></div>
+                    <div><h4 class="header-title mt-2 graft">Graft</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
                                 data-target="#graftModal"><span class="fa fa-plus"> </span>Add
@@ -730,7 +738,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="d-flex mb-3">
-                    <div><h4 class="header-title mt-2">SD</h4></div>
+                    <div><h4 class="header-title mt-2 smartDevice">SD</h4></div>
                     <div>
                         <button type="button" class="btn btn-primary ml-2 add-sd" data-toggle="modal"
                                 data-target="#sdModal"><span class="fa fa-plus"> </span>Add
@@ -742,11 +750,11 @@
                         <thead>
                         <tr>
                             <th class="id" hidden>Id</th>
-                            <th class="mac">mac</th>
+                            <th class="mac">Mac</th>
                             <th class="name">Name</th>
-                            <th class="battery-level">Battery level</th>
+                            <th class="battery-levell">Battery level</th>
                             <th></th>
-                            <th>switch</th>
+                            <th class="switch switcht">Switch</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -826,8 +834,8 @@
                 <th class="creation-date">Creation Date</th>
                 <th class="pulze">Pulse</th>
                 <th class="temperature">Temperature</th>
-                <th class="temperature">Longitude</th>
-                <th class="temperature">Latitude</th>
+                <th class="longitude">Longitude</th>
+                <th class="latitude">Latitude</th>
 
             </tr>
             </thead>

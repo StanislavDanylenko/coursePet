@@ -4,7 +4,7 @@ function renderGraftList(response) {
     var html = graftTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('graftTableTemplate');
-    setTranslateUser();
+    setTranslateAdmin();
 }
 
 function getGrafts() {

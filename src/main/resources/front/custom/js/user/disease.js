@@ -8,6 +8,8 @@ function fillDiseases() {
     var html = diseaseTemplate(ANIMAL.diseases);
     $('.animal-diseases').empty().append(html);
     setDataTable('diseaseTableTemplate');
+
+    setTranslationUser();
 }
 
 function getAnimalDiseases() {

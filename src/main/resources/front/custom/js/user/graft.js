@@ -9,6 +9,8 @@ function fillGrafts() {
     var html = graftTemplate(ANIMAL.grafts);
     $('.animal-grafts').empty().append(html);
     setDataTable('graftTableTemplate');
+
+    setTranslationUser();
 }
 
 function getAnimalGrafts() {

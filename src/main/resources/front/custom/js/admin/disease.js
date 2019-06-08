@@ -4,7 +4,7 @@ function renderDiseaseList(response) {
     var html = diseaseTableTemplate(response);
     $(MAIN_CONTAINER).empty().append(html);
     setDataTable('diseaseTableTemplate');
-    setTranslateUser();
+    setTranslateAdmin();
 }
 
 function getDiseases() {
