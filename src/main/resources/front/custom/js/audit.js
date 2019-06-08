@@ -42,8 +42,7 @@ function loadProfileAudit() {
             $('.user-name').html(data.username + '<i class="fa fa-angle-down"/>');
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert('error');
-            handle403(xhr);
+            handleError(xhr, GET);
         }
     });
 }

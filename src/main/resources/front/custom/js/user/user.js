@@ -185,8 +185,7 @@ function getUser() {
             getAnimals();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getUserError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
