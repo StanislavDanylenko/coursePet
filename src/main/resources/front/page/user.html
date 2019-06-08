@@ -378,14 +378,16 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
+                    <form id="sdForm">
                     <div class="form-group">
                         <label for="sdName" id=sdNameLabel">SD Name</label>
-                        <input type="text" class="form-control" id="sdName">
+                        <input type="text" class="form-control" id="sdName" name="sdName">
                     </div>
                     <div class="form-group">
                         <label for="sdMac" id="sdMacLabel">SD Mac</label>
-                        <input type="text" class="form-control" id="sdMac">
+                        <input type="text" class="form-control" id="sdMac" name="sdMac">
                     </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -460,22 +462,24 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
+                    <form id="updateAnimalForm">
                     <div class="form-group">
                         <label for="animalUpdateWeight" id="animalUpdateWeightLabel" class="animal-weight">Weight</label>
-                        <input type="number" class="form-control" id="animalUpdateWeight">
+                        <input type="number" class="form-control" id="animalUpdateWeight" name="animalUpdateWeight">
                     </div>
                     <div class="form-group">
                         <label for="animalUpdateHeight" id="animalUpdateHeightLabel" class="animal-height">Height</label>
-                        <input type="number" class="form-control" id="animalUpdateHeight">
+                        <input type="number" class="form-control" id="animalUpdateHeight" name="animalUpdateHeight">
                     </div>
                     <div class="form-group">
                         <label for="animalUpdateLength" id="animalUpdateLengthLabel" class="animal-length">Length</label>
-                        <input type="number" class="form-control" id="animalUpdateLength">
+                        <input type="number" class="form-control" id="animalUpdateLength" name="animalUpdateLength">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary update-animal saveChanges">Save changes</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -489,26 +493,28 @@
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
                 <div class="modal-body">
+                    <form id="diseaseForm">
                     <div class="form-group">
                         <label for="animalDisease" id="animalDiseaseLabel" class="disease">Disease</label>
                         <select class="form-control" id="animalDisease" style="height: auto !important;"></select>
                     </div>
                     <div class="form-group">
                         <label for="animalDiseaseStartDate" id="animalDiseaseStartDateLabel" class="startDate">Start Date</label>
-                        <input type="date" class="form-control" id="animalDiseaseStartDate">
+                        <input type="date" class="form-control" id="animalDiseaseStartDate" name="animalDiseaseStartDate">
                     </div>
                     <div class="form-group">
                         <label for="animalDiseaseFinishDate" id="animalDiseaseFinishDateLabel" class="finishDate">Finish Date</label>
-                        <input type="date" class="form-control" id="animalDiseaseFinishDate">
+                        <input type="date" class="form-control" id="animalDiseaseFinishDate" name="animalDiseaseFinishDate">
                     </div>
                     <div class="form-group">
                         <label for="animalTreathment" id="animalTreathmentLabel" class="treathment">Treathment</label>
-                        <input type="text" class="form-control" id="animalTreathment">
+                        <input type="text" class="form-control" id="animalTreathment" name="animalTreathment">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary save-animal-disease saveChanges">Save changes</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -521,6 +527,7 @@
                     <h5 class="modal-title">SD action</h5>
                     <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
                 </div>
+                <form id="graftForm">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="animalGraft" id="animalGraftLabel" class="graft">Graft</label>
@@ -528,13 +535,14 @@
                     </div>
                     <div class="form-group">
                         <label for="animalGraftDate" id="animalGraftDateLabel" class="date">Date</label>
-                        <input type="date" class="form-control" id="animalGraftDate">
+                        <input type="date" class="form-control" id="animalGraftDate" name="animalGraftDate">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button type="button" class="btn btn-primary save-animal-graft">Save changes</button>
                     </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
@@ -857,7 +865,7 @@
 
 <!--Record-->
 <script id="countryGraftsTemplate" type="text/x-handlebars-template">
-    <h3> Grafts yoa are needed</h3>
+    <h3 class="graftsNeeded"> Grafts yoa are needed</h3>
     <ul class="list-group">
         {{#this}}
         <li class="list-group-item">{{ name }}</li>

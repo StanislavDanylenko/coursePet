@@ -16,8 +16,7 @@ function getAnimalBreeds() {
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }

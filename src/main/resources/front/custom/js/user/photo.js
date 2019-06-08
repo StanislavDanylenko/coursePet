@@ -50,11 +50,7 @@ function updatePhoto(url) {
             }
         },
         success: function (data) {
-            Swal.fire(
-                'Success',
-                'Successfully updated',
-                'success'
-            )
+            handleSuccessOperation(UPDATED);
         },
         error: function (data) {
 

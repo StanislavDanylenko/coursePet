@@ -51,7 +51,7 @@ function getStatisticData() {
             renderChart(data);
         },
         error: function(xhr, ajaxOptions, thrownError) {
-            alert('Error while getting statistic');
+            handleError(xhr, GET);
         }});
 }
 

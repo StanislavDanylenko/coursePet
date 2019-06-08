@@ -31,6 +31,8 @@ $(document).ready(function() {
 
     loadNotification();
     addNotFutureDateValidator();
+    addStartDateValidator();
+    addFinishDateValidator();
 
     setTranslationUser();
 

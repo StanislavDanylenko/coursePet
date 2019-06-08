@@ -28,8 +28,7 @@ function getAnimalDiseases() {
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -48,24 +47,17 @@ function deleteAnimalDisease(e) {
         },
         success: function () {
             getAnimal(ANIMAL.animal.id);
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteDiseaseError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
 }
 
 function saveAnimalDisease() {
+
+    validateDisease();
 
     var disease = {
         animalId: ANIMAL.animal.id,
@@ -75,9 +67,9 @@ function saveAnimalDisease() {
         endDate: $('#animalDiseaseFinishDate').val()
     };
 
-    /*    if (!$('#diseaseForm').valid()) {
+        if (!$('#diseaseForm').valid()) {
             return;
-        }*/
+        }
 
     $.ajax({
         url: HOST + "/animalDisease",
@@ -93,20 +85,52 @@ function saveAnimalDisease() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimal(ANIMAL.animal.id);
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveDiseaseError'));
+            handleError(xhr, CREATE);
         }
     });
     $('#diseaseModal').find('input, select').val('');
+}
+
+/////
+function validateDisease() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#diseaseForm').validate({
+        rules: {
+            animalDiseaseStartDate: {
+                required: true,
+                startDate: true,
+                date: true,
+            },
+            animalDiseaseFinishDate: {
+                required: true,
+                finishDate: true,
+                date: true,
+            },
+            animalTreathment: {
+                required: true,
+            }
+        },
+        messages: {
+            animalDiseaseStartDate: {
+                required: $.i18n._('requiredField'),
+                date: $.i18n._('date'),
+                startDate: $.i18n._('startDateV')
+            },
+            animalDiseaseFinishDate: {
+                required: $.i18n._('requiredField'),
+                date: $.i18n._('date'),
+                finishDate: $.i18n._('finishDateV')
+            },
+            animalTreathment: {
+                required: $.i18n._('requiredField'),
+            }
+        }
+    });
+
 }

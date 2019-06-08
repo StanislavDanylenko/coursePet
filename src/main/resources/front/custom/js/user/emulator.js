@@ -60,7 +60,7 @@ function emulationStartedAlert() {
 
     Toast.fire({
         type: 'success',
-        title: 'Emulator is working!'
+        title: $.i18n._('emworking')
     })
 }
 
@@ -74,7 +74,7 @@ function emulationStoppedAlert() {
 
     Toast.fire({
         type: 'error',
-        title: 'Emulator is stopped!'
+        title: $.i18n._('emstopped')
     })
 }
 
@@ -88,7 +88,7 @@ function emulationAddedAlert() {
 
     Toast.fire({
         type: 'info',
-        title: 'Added new record!'
+        title: $.i18n._('addedNewRecord')
     })
 }
 
@@ -158,37 +158,41 @@ function generateRecord() {
 function analyzeRecord(record) {
 
     var errorMessage = '';
+    var errorCode = 0;
 
     if (record.temperature > 46) {
-        errorMessage += ' Higher temperature'
+        errorMessage += $.i18n._('higherTemperature');
+        errorCode += 1;
     }
 
     if (record.pulse > 125) {
-        errorMessage += ' Higher pulse'
+        errorMessage += $.i18n._('higherPulse')
+        errorCode += 2;
     }
 
     if (errorMessage.length > 0) {
-        fireError(errorMessage);
+        fireError(errorMessage, errorCode);
     } else {
         emulationAddedAlert();
     }
 
 }
 
-function fireError(errorMessage) {
+function fireError(errorMessage, errorCode) {
     Swal.fire({
-        title: 'Warning',
+        title: $.i18n._('warning'),
         text: errorMessage,
         type: 'warning',
-        confirmButtonText: 'Check',
+        confirmButtonText: $.i18n._('check'),
         preConfirm: function () {
             $('#pills-contact5-tab').click();
         }
     });
 
+    // todo add error localization [error code]
     var notification = {
-        theme: 'Warning',
-        message: errorMessage
+        theme: "Warning",
+        message: errorCode
     };
 
     sendNotification(notification);
@@ -220,8 +224,8 @@ function addRecord() {
                 cleanSetedTimeout();
                 $(activeDevice).prop('checked', false);
                 Swal.fire(
-                    'BAD!',
-                    'Emulation stopped. Low battery level.',
+                    $.i18n._('error'),
+                    $.i18n._('stopped'),
                     'error'
                 )
             }

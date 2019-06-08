@@ -29,8 +29,7 @@ function getAnimalGrafts() {
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -49,24 +48,17 @@ function deleteAnimalGraft(e) {
         },
         success: function () {
             getAnimal(ANIMAL.animal.id);
-            Swal.fire(
-                'Success!',
-                'Was deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteGraftError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
 }
 
 function saveAnimalGraft() {
+
+    validateGraft();
 
     var graft = {
         animalId: ANIMAL.animal.id,
@@ -74,9 +66,9 @@ function saveAnimalGraft() {
         date: $('#animalGraftDate').val()
     };
 
-    /*    if (!$('#graftForm').valid()) {
-            return;
-        }*/
+    if (!$('#graftForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/animalGraft",
@@ -92,20 +84,34 @@ function saveAnimalGraft() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimal(ANIMAL.animal.id);
-            Swal.fire(
-                'Success!',
-                'Was created',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveGraftError'));
+            handleError(xhr, CREATE);
         }
     });
     $('#graftModal').find('input, select').val('');
+}
+
+///////
+function validateGraft() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#graftForm').validate({
+        rules: {
+            animalGraftDate: {
+                required: true,
+                date: true,
+            }
+        },
+        messages: {
+            animalGraftDate: {
+                required: $.i18n._('requiredField'),
+                date: $.i18n._('date'),
+            }
+        }
+    });
+
 }

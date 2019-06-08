@@ -333,6 +333,8 @@ var UA = {
 
     "requiredField": "Обов'язкове поле",
     "samePassword": "Паролі мають співпадати",
+    "number": "Поле має мати числове значення",
+    "min": "Мінімальне значення поля 0,1",
 
     "Aupdate": "оновити",
     "Aupdated": "оновлено",
@@ -420,6 +422,37 @@ var UA = {
     'latitude': "Широта",
 
     "graftsNeeded": "Необхідні щеплення",
+
+
+    "infoM": "ІНФОРМАЦІЯ",
+    "infoNothing": "Інформація по цій країні невідома",
+
+    "allright": "УСЕ В ПОРЯДКУ",
+    "cango": "Ви можете відвідати цю країну",
+
+    "nocant": "<strong>НІ ВИ НЕ МОЖЕТЕ</strong>",
+
+    "startDateV": "Дата має бути менше дати закінчення",
+    "finishDateV": "Дата має бути більше дати початку",
+
+
+    "addedNewRecord": "Було додано новий запис!",
+    "higherTemperature": " Висока температура",
+    "higherPulse": " Високий пульс",
+    "warning": "Увага",
+    "check": "Перевірити",
+    "error": "Помилка!",
+    "stopped": "Емуляція зупинена. Низький рівень заряду батареї.",
+
+    "emworking": "Емулятор запущено!",
+    "emstopped": "Емулятор зупинено!",
+
+    "charged": "Успішно заряджено!",
+    "updatebl": "Помилка при оновленні рівня заряду батареї.",
+
+    "errorUpdateStatus": "Помилка при оновленні статусу розумного пристою.",
+    "errorUpdating": "Помилка при оновленні",
+    "errorUpdatingLL": "Неможливо почати емуляцію. Низький рівень заряду батареї",
 };
 
 var EN = {
@@ -508,6 +541,8 @@ var EN = {
 
     "requiredField": "Required Field",
     "samePassword": "Passwords must be the same",
+    "number": "Field must have number value",
+    "min": "Minimum value is 0.1",
 
 
     "Aupdate": "update",
@@ -596,9 +631,39 @@ var EN = {
     'longitude': "Longitude",
     'latitude': "Latitude",
 
-    'latitude': "Latitude",
+    "graftsNeeded": "Grafts you are needed",
 
-    "graftsNeeded": "Grafts yoa are needed",
+
+    "infoM": "INFO",
+    "infoNothing": "We have no info for you",
+
+    "allright": "ALL RIGHT",
+    "cango": "You may go here",
+
+    "nocant": "<strong>NO YOU CAN'T</strong>",
+
+    "startDateV": "Date must be less then finish date",
+    "finishDateV": "Date must be greater then start date",
+
+
+
+    "addedNewRecord": "Added new record!",
+    "higherTemperature": " Higher temperature",
+    "higherPulse": " Higher pulse",
+    "warning": "Warning",
+    "check": "Check",
+    "error": "Error!",
+    "stopped": "Emulation stopped. Low battery level.",
+
+    "emworking": "Emulator is working!",
+    "emstopped": "Emulator is stopped!",
+
+    "charged": "Successfully charged!",
+    "updatebl": "Error while updating battery level.",
+
+    "errorUpdateStatus": "Cannot update device status",
+    "errorUpdating": "Error while updating",
+    "errorUpdatingLL": "Cannot enable smart device. Low battery level.",
 };
 
 

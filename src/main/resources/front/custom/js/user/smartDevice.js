@@ -20,6 +20,7 @@ function getRecords() {
             fillRecords();
         },
         error: function (xhr, ajaxOptions, thrownError) {
+            handleError(xhr, GET);
         }
     });
 }
@@ -37,7 +38,7 @@ function fillRecords() {
     var devices = ANIMAL.animal.smartDevices;
     for (var i = 0; i < devices.length; i++) {
         var recordz = devices[i].records;
-        for(var j = 0; j < recordz.length; j++) {
+        for (var j = 0; j < recordz.length; j++) {
             recordz[j].creationDate = new Date(recordz[j].creationDate + " UTC").toLocaleString();
             records.push(recordz[j])
         }
@@ -55,8 +56,8 @@ function getSmartDeviceInfo(e) {
     var data = ANIMAL.animal.smartDevices;
     var device = {};
 
-    for(var i = 0; i < data.length; i++) {
-        if(data[i].id == sdId) {
+    for (var i = 0; i < data.length; i++) {
+        if (data[i].id == sdId) {
             device = data[i];
             break;
         }
@@ -83,19 +84,10 @@ function deleteSmartDevice(e) {
         },
         success: function () {
             getAnimal(ANIMAL.animal.id);
-            Swal.fire(
-                'SUCCESS!',
-                'Deleted',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteCountryError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
 }
@@ -117,15 +109,15 @@ function chargeSmartDevice(e) {
         success: function () {
             $('.battery-level[sd-id="' + id + '"]').text(100);
             Swal.fire(
-                'SUCCESS!',
-                'Successfully charged!',
+                $.i18n._('success'),
+                $.i18n._('charged'),
                 'success'
             )
         },
         error: function (xhr, ajaxOptions, thrownError) {
             Swal.fire(
-                'BAD!',
-                'Error while updating battery level.',
+                $.i18n._('error'),
+                $.i18n._('updatebl'),
                 'error'
             )
         }
@@ -138,7 +130,7 @@ function processSmartDevice(e) {
 
     var enableToggle = e.target;
 
-    if(!enableToggle.checked) {
+    if (!enableToggle.checked) {
         offSmartDevice(id, enableToggle);
     } else {
         onSmartDevice(id, enableToggle);
@@ -147,6 +139,8 @@ function processSmartDevice(e) {
 
 function saveSmartDevice() {
 
+    validateSD();
+
     var smartDevice = {
         name: $('#sdName').val(),
         mac: $('#sdMac').val(),
@@ -154,9 +148,9 @@ function saveSmartDevice() {
         batteryLevel: 100
     };
 
-    /*    if (!$('#countryForm').valid()) {
-            return;
-        }*/
+    if (!$('#sdForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/smartDevice",
@@ -172,19 +166,10 @@ function saveSmartDevice() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimal(ANIMAL.animal.id);
-            Swal.fire(
-                'SUCCESS!',
-                'Saved!',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
         error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveCountryError'));
+            handleError(xhr, CREATE);
         }
     });
     $('#sdModal').find('input, select').val('');
@@ -192,8 +177,8 @@ function saveSmartDevice() {
 
 function checkActiveSmartDevice() {
 
-    var checkedInputs = $( "input:checked.enable-sd" );
-    if(checkedInputs.length > 0) {
+    var checkedInputs = $("input:checked.enable-sd");
+    if (checkedInputs.length > 0) {
         var checkedInput = checkedInputs[0];
         if (timeoutId === undefined) {
             startEmulation(checkedInput.getAttribute('sd-id'));
@@ -213,24 +198,24 @@ function onSmartDevice(id, enableToggle) {
             }
         },
         success: function () {
-             var checkedInputs = $( "input:checked.enable-sd" );
-             if(checkedInputs.length > 0) {
-                 $('.enable-sd').prop('checked', false);
-                 emulationStoppedAlert();
-             }
-             $(enableToggle).prop('checked', true);
-             activeDevice = enableToggle;
-             activeDeviceId = id;
-             startEmulation(id);
+            var checkedInputs = $("input:checked.enable-sd");
+            if (checkedInputs.length > 0) {
+                $('.enable-sd').prop('checked', false);
+                emulationStoppedAlert();
+            }
+            $(enableToggle).prop('checked', true);
+            activeDevice = enableToggle;
+            activeDeviceId = id;
+            startEmulation(id);
         },
         error: function (xhr, ajaxOptions, thrownError) {
             $(enableToggle).prop('checked', false);
-            var message = 'Error while updating';
+            var message = $.i18n._('errorUpdating');
             if (xhr.status === 409) {
-                message = 'Cannot enable smart device. Low battery level.'
+                message = $.i18n._('errorUpdatingLL');
             }
             Swal.fire(
-                'BAD!',
+                $.i18n._('error'),
                 message,
                 'error'
             )
@@ -254,10 +239,37 @@ function offSmartDevice(id, enableToggle) {
         },
         error: function (xhr, ajaxOptions, thrownError) {
             Swal.fire(
-                'BAD!',
-                'Error while updating',
-                'cannot update device status'
+                $.i18n._('error'),
+                $.i18n._('errorUpdateStatus'),
+                'error'
             )
         }
     });
+}
+
+/////
+function validateSD() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#sdForm').validate({
+        rules: {
+            sdName: {
+                required: true
+            },
+            sdMac: {
+                required: true
+            }
+        },
+        messages: {
+            sdName: {
+                required: $.i18n._('requiredField')
+            },
+            sdMac: {
+                required: $.i18n._('requiredField')
+            }
+        }
+    });
+
 }

@@ -70,6 +70,24 @@ function addNotFutureDateValidator() {
     }, "Date must not be from the future");
 }
 
+function addStartDateValidator() {
+    $.validator.addMethod("startDate", function(value, element) {
+        var finishDate = new Date($("#animalDiseaseFinishDate").val());
+        var dateValue = new Date(value);
+        return dateValue < finishDate;
+
+    }, "Date must be less then finish date");
+}
+
+function addFinishDateValidator() {
+    $.validator.addMethod("finishDate", function(value, element) {
+        var startDate = new Date($("#animalDiseaseStartDate").val());
+        var dateValue = new Date(value);
+        return dateValue > startDate;
+
+    }, "Date must be greater then start date");
+}
+
 // datatable lang
 var langUA = {
     "sProcessing": "Зачекайте...",

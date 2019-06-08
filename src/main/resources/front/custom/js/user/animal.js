@@ -28,8 +28,7 @@ function getAnimals() {
             $('.animal-area').show();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
     getAnimalBreeds();
@@ -55,8 +54,7 @@ function getAnimal(id) {
             getAnimalCountries();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -73,19 +71,10 @@ function deleteAnimal(id) {
         },
         success: function () {
             getAnimals();
-            Swal.fire(
-                'SUCCES!',
-                'Deleted!',
-                'success'
-            )
+            handleSuccessOperation(DELETED);
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('deleteCountryError'));
-            Swal.fire(
-                'BAD!',
-                'Error while deleting',
-                'error'
-            )
+            handleError(xhr, DELETE);
         }
     });
 }
@@ -126,19 +115,10 @@ function saveAnimal() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimals();
-            Swal.fire(
-                'SUCCES!',
-                'Saved!',
-                'success'
-            )
+            handleSuccessOperation(CREATED);
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveCountryError'));
+        error: function (xhr) {
+            handleError(xhr, CREATE);
         }
     });
     $('#animalCreateModal').find('input, select').val('');
@@ -152,9 +132,9 @@ function updateAnimal() {
         length: $('#animalUpdateLength').val()
     };
 
-       /* if (!$('#animalForm').valid()) {
-            return;
-        }*/
+    if (!$('#updateAnimalForm').valid()) {
+        return;
+    }
 
     $.ajax({
         url: HOST + "/animal/" + ANIMAL.animal.id,
@@ -170,19 +150,10 @@ function updateAnimal() {
         success: function (data) {
             $("[data-dismiss=modal]").trigger({type: "click"});
             getAnimal(ANIMAL.animal.id);
-            Swal.fire(
-                'SUCCES!',
-                'Updated!',
-                'success'
-            )
+            handleSuccessOperation(UPDATED);
         },
-        error: function (data) {
-            Swal.fire(
-                'BAD!',
-                'Can not create',
-                'error'
-            )
-            // alert($.i18n._('saveCountryError'));
+        error: function (xhr) {
+            handleError(xhr, UPDATE);
         }
     });
     $('#animalUpdateModal').find('input, select').val('');
@@ -192,6 +163,7 @@ function fillAnimalUpdateModal() {
     $('#animalUpdateWeight').val(ANIMAL.animal.weight);
     $('#animalUpdateHeight').val(ANIMAL.animal.height);
     $('#animalUpdateLength').val(ANIMAL.animal.length);
+    validateUpdateAnimal();
 }
 
 function chooseAnimal(e) {
@@ -265,7 +237,69 @@ function validateAnimal() {
         },
         messages: {
             animalCreateName: {
-                required: "required field"
+                required: $.i18n._('requiredField')
+            },
+            animalCreateWeight: {
+                required: $.i18n._('requiredField'),
+                number: $.i18n._('number'),
+                min: $.i18n._('min')
+            },
+            animalCreateHeight: {
+                required: $.i18n._('requiredField'),
+                number: $.i18n._('number'),
+                min: $.i18n._('min')
+            },
+            animalCreateLength: {
+                required: $.i18n._('requiredField'),
+                number: $.i18n._('number'),
+                min: $.i18n._('min')
+            },
+            animalCreateBirth: {
+                required: $.i18n._('requiredField')
+            }
+        }
+    });
+
+}
+
+function validateUpdateAnimal() {
+
+    $("label.error").remove();
+    $(".error").removeClass("error");
+
+    $('#updateAnimalForm').validate({
+        rules: {
+            animalUpdateWeight: {
+                required: true,
+                number: true,
+                min: 0.1
+            },
+            animalUpdateHeight: {
+                required: true,
+                number: true,
+                min: 0.1
+            },
+            animalUpdateLength: {
+                required: true,
+                number: true,
+                min: 0.1
+            }
+        },
+        messages: {
+            animalUpdateWeight: {
+                required: $.i18n._('requiredField'),
+                number: $.i18n._('number'),
+                min: $.i18n._('min')
+            },
+            animalUpdateHeight: {
+                required: $.i18n._('requiredField'),
+                number: $.i18n._('number'),
+                min: $.i18n._('min')
+            },
+            animalUpdateLength: {
+                required: $.i18n._('requiredField'),
+                number: $.i18n._('number'),
+                min: $.i18n._('min')
             }
         }
     });

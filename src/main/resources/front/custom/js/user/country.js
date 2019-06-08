@@ -14,8 +14,7 @@ function getAnimalCountries() {
             setAutocomplete();
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
@@ -46,8 +45,8 @@ function checkInfo(name) {
     }
 
     Swal.fire(
-        'INFO',
-        'We have no info for you',
+        $.i18n._('infoM'),
+        $.i18n._('infoNothing'),
         'info'
     )
 
@@ -65,22 +64,22 @@ function getAnimalAvailability(countryId) {
         success: function (data) {
             if(data.isAvailable == true) {
                 Swal.fire(
-                    'ALL RIGHT',
-                    'You may go here',
+                    $.i18n._('allright'),
+                    $.i18n._('cango'),
                     'success'
                 )
             } else {
                 var html = getHtmlForNoAlert(data.grafts);
                 Swal.fire({
-                    title: '<strong>NO YOU CAN`T</strong>',
+                    title: $.i18n._('nocant'),
                     type: 'error',
                     html: html
-                })
+                });
+                $(".graftsNeeded")._t("graftsNeeded");
             }
         },
         error: function (xhr, ajaxOptions, thrownError) {
-            // alert($.i18n._('getCountryListError'));
-            alert('error');
+            handleError(xhr, GET);
         }
     });
 }
