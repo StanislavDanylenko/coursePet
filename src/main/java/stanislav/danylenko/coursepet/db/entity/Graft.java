@@ -12,6 +12,7 @@ import stanislav.danylenko.coursepet.web.JsonRules;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Data
@@ -38,5 +39,16 @@ public class Graft implements Serializable {
     @OneToMany(mappedBy = "country")
     private List<CountryGraft> countryGrafts;
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Graft graft = (Graft) o;
+        return id.equals(graft.id);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }

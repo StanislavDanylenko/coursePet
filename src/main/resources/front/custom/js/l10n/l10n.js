@@ -244,6 +244,15 @@ function setTranslationUser() {
     $(".longitude")._t("longitude");
     $(".latitude")._t("latitude");
 
+
+    $(".lastDate")._t("lastDate");
+    $(".nextDate")._t("nextDate");
+    $(".schedule-button")._t("schedule-button");
+
+    $(".lastGraft")._t("lastGraft");
+    $(".presentGrafts")._t("presentGrafts");
+    $(".nextGrafts")._t("nextGrafts");
+
 }
 
 var UA = {
@@ -453,6 +462,15 @@ var UA = {
     "errorUpdateStatus": "Помилка при оновленні статусу розумного пристою.",
     "errorUpdating": "Помилка при оновленні",
     "errorUpdatingLL": "Неможливо почати емуляцію. Низький рівень заряду батареї",
+
+    "lastDate": "Дата останньої вакцинації",
+    "nextDate": "Дата наступної вакцинації",
+
+    "schedule-button": "Розклад",
+
+    "lastGraft": "Просрочені",
+    "presentGrafts": "Поточні",
+    "nextGrafts": "Майбутні",
 };
 
 var EN = {
@@ -664,6 +682,15 @@ var EN = {
     "errorUpdateStatus": "Cannot update device status",
     "errorUpdating": "Error while updating",
     "errorUpdatingLL": "Cannot enable smart device. Low battery level.",
+
+    "lastDate": "Last date",
+    "nextDate": "Next date",
+
+    "schedule-button": "Schedule",
+
+    "lastGraft": "Overdue",
+    "presentGrafts": "Present",
+    "nextGrafts": "Future",
 };
 
 

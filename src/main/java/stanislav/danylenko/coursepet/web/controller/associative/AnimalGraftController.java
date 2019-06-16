@@ -4,10 +4,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 import stanislav.danylenko.coursepet.service.impl.associative.AnimalGraftService;
 import stanislav.danylenko.coursepet.web.JsonRules;
+import stanislav.danylenko.coursepet.web.model.schedule.ScheduleGraftDto;
 import stanislav.danylenko.coursepet.web.model.associative.AnimalGraftDto;
 
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +34,13 @@ public class AnimalGraftController {
     public @ResponseBody
     ResponseEntity<AnimalGraft> getAnimalGraft(@PathVariable Long id) {
         return new ResponseEntity<>(service.find(id), HttpStatus.OK);
+    }
+
+    @GetMapping("/scedule/{id}")
+    public @ResponseBody
+    ResponseEntity<ScheduleGraftDto> getListOfLastGrafts(@PathVariable Long id, Authentication authentication) {
+        User user = (User)authentication.getPrincipal();
+        return ResponseEntity.ok(service.getListOfLastGrafts(id, user.getLocalization()));
     }
 
     @JsonView(value = JsonRules.AnimalGraft.class)

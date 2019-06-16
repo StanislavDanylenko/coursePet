@@ -113,5 +113,39 @@ function validateGraft() {
             }
         }
     });
+}
 
+////////////
+function getAnimalGraftsSchedule() {
+    $.ajax({
+        url: HOST + "/animalGraft/scedule/" + ANIMAL.animal.id,
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            renderScheduleLists(data);
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            handleError(xhr, GET);
+        }
+    });
+}
+
+function renderScheduleLists(data) {
+    renderScheduleList("lastGrafts", data.criticalGrafts);
+    renderScheduleList("presentGrafts", data.presentGrafts);
+    renderScheduleList("nextGrafts", data.nextGrafts);
+
+    setTranslationUser();
+}
+
+function renderScheduleList(id, data) {
+    var tableName = id + "Table";
+    var html = scheduleTemplate(data);
+    html = html.replace("aaaaa", tableName);
+    $("#" + id).empty().append(html);
+    setDataTable(tableName);
 }

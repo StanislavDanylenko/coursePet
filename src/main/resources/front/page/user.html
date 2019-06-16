@@ -297,6 +297,7 @@
             data-target="#graftModal" hidden><span class="fa fa-plus"> </span></button>
     <button type="button" class="btn btn-primary ml-2 record-window diseaseModal" data-toggle="modal"
             data-target="#diseaseModal" hidden><span class="fa fa-plus"> </span></button>
+
     <!---->
     <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
@@ -546,6 +547,35 @@
         </div>
     </div>
 
+    <div class="modal fade" id="sceduleModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-tabs nav-pills nav-fill" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active lastGraft" id="home-tab" data-toggle="tab" href="#lastGrafts" role="tab" aria-controls="lastGrafts" aria-selected="true">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link presentGrafts" id="profile-tab" data-toggle="tab" href="#presentGrafts" role="tab" aria-controls="presentGrafts" aria-selected="false">Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nextGrafts" id="contact-tab" data-toggle="tab" href="#nextGrafts" role="tab" aria-controls="nextGrafts" aria-selected="false">Contact</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="lastGrafts" role="tabpanel" aria-labelledby="lastGrafts">...</div>
+                        <div class="tab-pane fade" id="presentGrafts" role="tabpanel" aria-labelledby="presentGrafts">...</div>
+                        <div class="tab-pane fade" id="nextGrafts" role="tabpanel" aria-labelledby="nextGrafts">...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- footer area start-->
     <div class="footer-area">
         <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a
@@ -702,6 +732,8 @@
                         <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
                                 data-target="#graftModal"><span class="fa fa-plus"> </span>Add
                         </button>
+                        <button type="button" class="btn btn-success ml-2 schedule-button" data-toggle="modal"
+                                data-target="#sceduleModal">Schedule</button>
                     </div>
                 </div>
                 <div class="data-tables datatable-dark">
@@ -870,6 +902,32 @@
         <li class="list-group-item">{{ name }}</li>
         {{/this}}
     </ul>
+</script>
+
+<!--Schedule-->
+<script id="scheduleTemplate" type="text/x-handlebars-template">
+    <div class="data-tables datatable-dark p-5">
+        <table id="aaaaa" class="display responsive nowrap" style="width:100%">
+            <thead>
+            <tr>
+                <th class="name">Name</th>
+                <th class="frequency">Frequency</th>
+                <th class="lastDate">Previous date</th>
+                <th class="nextDate">Next date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#this}}
+            <tr>
+                <td>{{ name }}</td>
+                <td>{{ frequency }}</td>
+                <td>{{ lastDate }}</td>
+                <td>{{ nextDate }}</td>
+            </tr>
+            {{/this}}
+            </tbody>
+        </table>
+    </div>
 </script>
 
 </body>

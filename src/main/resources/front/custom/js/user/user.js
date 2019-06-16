@@ -5,6 +5,7 @@ var smartDeviceTemplate;
 var recordTemplate;
 var recordsTemplate;
 var countryGraftsTemplate;
+var scheduleTemplate;
 
 $(document).ready(function() {
 
@@ -125,6 +126,9 @@ function loadGrafts() {
     });
     $(document).on('click', '.delete-graft', deleteAnimalGraft);
     $(document).on('click', '.save-animal-graft', saveAnimalGraft);
+
+    scheduleTemplate = Handlebars.compile($('#scheduleTemplate').html());
+    $(document).on('click', '.schedule-button', getAnimalGraftsSchedule);
 }
 
 function loadNotification() {
