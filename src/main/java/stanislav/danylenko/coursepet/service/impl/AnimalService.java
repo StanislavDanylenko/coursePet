@@ -177,7 +177,6 @@ public class AnimalService implements GenericService<Animal> {
         return animalRepository.findByName(DEFAULT_ANIMAL);
     }
 
-    // todo change here
     public AnimalFullInfoDto getAnimalFullInfo(Long id) {
         Animal animal = find(id);
         List<AnimalDisease> animalDiseases = findAnimalDiseasesByAnimalId(id);

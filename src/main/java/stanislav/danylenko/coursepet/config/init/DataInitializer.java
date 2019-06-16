@@ -25,6 +25,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 @Component
@@ -186,20 +187,23 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         ////////////Animal Graft
-        try{
+        List<AnimalGraft> animalGrafts = animalGraftService.getDefaultAnimalGraft(animal, graft);
+        if (animalGrafts != null) {
+            log.info("Test AnimalGraft is already in DB");
+        } else {
             AnimalGraft animalGraft = new AnimalGraft();
             animalGraft.setAnimal(animal);
             animalGraft.setGraft(graft);
             animalGraft.setDate(Date.from(Instant.now()));
             animalGraftService.save(animalGraft);
             log.info("Created AnimalGraft {AnimalGraft}");
-        } catch (Exception ex) {
-            log.info("Test AnimalGraft is already in DB");
         }
 
-
         ////////////Animal Disease
-        try{
+        List<AnimalDisease> animalDiseases = animalDiseaseService.getDefaultAnimalDisese(animal, disease);
+        if (animalDiseases != null) {
+            log.info("Test AnimalDisease is already in DB");
+        } else {
             AnimalDisease animalDisease = new AnimalDisease();
             animalDisease.setAnimal(animal);
             animalDisease.setDisease(disease);
@@ -208,8 +212,6 @@ public class DataInitializer implements CommandLineRunner {
             animalDisease.setEndDate(Date.from(Instant.now()));
             animalDiseaseService.save(animalDisease);
             log.info("Created AnimalDisease {AnimalDisease}");
-        } catch (Exception ex) {
-            log.info("Test AnimalDisease is already in DB");
         }
 
         ////////////Country Graft

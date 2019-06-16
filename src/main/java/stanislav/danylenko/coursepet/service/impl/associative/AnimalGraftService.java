@@ -2,12 +2,16 @@ package stanislav.danylenko.coursepet.service.impl.associative;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import stanislav.danylenko.coursepet.db.entity.Animal;
+import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 import stanislav.danylenko.coursepet.db.repository.associative.AnimalGraftRepository;
 import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.service.impl.AnimalService;
 import stanislav.danylenko.coursepet.service.impl.GraftService;
 import stanislav.danylenko.coursepet.web.model.associative.AnimalGraftDto;
+
+import java.util.List;
 
 @Service
 public class AnimalGraftService implements GenericService<AnimalGraft> {
@@ -48,6 +52,10 @@ public class AnimalGraftService implements GenericService<AnimalGraft> {
     @Override
     public void delete(Long id) {
        animalDiseaseRepository.deleteById(id);
+    }
+
+    public List<AnimalGraft> getDefaultAnimalGraft(Animal animal, Graft graft) {
+        return animalDiseaseRepository.findByAnimalAndGraft(animal, graft);
     }
 
     public AnimalGraft prepareForSaving(AnimalGraftDto dto) {
