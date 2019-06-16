@@ -18,12 +18,11 @@ import stanislav.danylenko.coursepet.web.model.IsAvailableCountry;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 public class AnimalService implements GenericService<Animal> {
 
-    public static String DEFAULT_ANIMAL = "DefaultAnimal";
+    public static final String DEFAULT_ANIMAL = "DefaultAnimal";
 
     @Autowired
     private AnimalRepository animalRepository;
@@ -126,9 +125,7 @@ public class AnimalService implements GenericService<Animal> {
 
         animal.setSmartCardId(getSmartCardId());
 
-        animal = prepareForUpdating(animal, dto);
-
-        return animal;
+        return prepareForUpdating(animal, dto);
     }
 
     public Animal prepareForUpdating(Animal animal, AnimalUpdateDto dto) {

@@ -9,7 +9,7 @@ import stanislav.danylenko.coursepet.service.GenericService;
 @Service
 public class GraftService implements GenericService<Graft> {
 
-    public static String DEFAULT_GRAFT = "DefaultGRAFT";
+    public static final String DEFAULT_GRAFT = "DefaultGRAFT";
     
     @Autowired
     private GraftRepository graftRepository;

@@ -21,12 +21,9 @@ import stanislav.danylenko.coursepet.service.impl.associative.AnimalGraftService
 import stanislav.danylenko.coursepet.service.impl.associative.CountryGraftService;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 @Component
 @Slf4j
@@ -78,7 +75,7 @@ public class DataInitializer implements CommandLineRunner {
 
         ////////// country
         Country country = countryService.getDefaultCountry();
-        if(country != null) {
+        if (country != null) {
             log.info("Test country is already in DB");
         } else {
             country = new Country();
@@ -105,12 +102,11 @@ public class DataInitializer implements CommandLineRunner {
             log.info("Created user {user, password}");
         }
 
-        UserDetails admin;
         try {
-            admin = userService.loadUserByUsername("admin");
+            userService.loadUserByUsername("admin");
             log.info("Test admin is already in DB");
         } catch (UsernameNotFoundException e) {
-            admin = userService.save(User.builder()
+            userService.save(User.builder()
                     .username("admin")
                     .password(this.passwordEncoder.encode("password"))
                     .roles(Arrays.asList(Role.ADMIN))
@@ -123,7 +119,7 @@ public class DataInitializer implements CommandLineRunner {
 
         ////////////Animal class
         AnimalsClass animalsClass = animalsClassService.getDefaultAnimalClass();
-        if(animalsClass != null) {
+        if (animalsClass != null) {
             log.info("Test AnimalClass is already in DB");
         } else {
             animalsClass = new AnimalsClass();
@@ -134,7 +130,7 @@ public class DataInitializer implements CommandLineRunner {
 
         ////////////Animal breed
         AnimalsBreed animalsBreed = animalsBreedService.getDefaultAnimalBreed();
-        if(animalsBreed != null) {
+        if (animalsBreed != null) {
             log.info("Test AnimalBreed is already in DB");
         } else {
             animalsBreed = new AnimalsBreed();
@@ -145,8 +141,8 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         ////////////Animal
-        Animal animal= animalService.getDefaultAnimal();
-        if(animal != null) {
+        Animal animal = animalService.getDefaultAnimal();
+        if (animal != null) {
             log.info("Test Animal is already in DB");
         } else {
             animal = new Animal();
@@ -157,7 +153,7 @@ public class DataInitializer implements CommandLineRunner {
             animal.setLength(40d);
             animal.setHeight(40d);
             animal.setGender(Gender.MALE);
-            animal.setUser((User)user);
+            animal.setUser((User) user);
             animal.setSmartCardId(animalService.getSmartCardId());
             animalService.save(animal);
             log.info("Created Animal {Animal}");
@@ -165,7 +161,7 @@ public class DataInitializer implements CommandLineRunner {
 
         ////////////Disease
         Disease disease = diseaseService.getDefaultDisease();
-        if(disease != null) {
+        if (disease != null) {
             log.info("Test Disease is already in DB");
         } else {
             disease = new Disease();
@@ -176,7 +172,7 @@ public class DataInitializer implements CommandLineRunner {
 
         ////////////Disease
         Graft graft = graftService.getDefaultGraft();
-        if(graft != null) {
+        if (graft != null) {
             log.info("Test Graft is already in DB");
         } else {
             graft = new Graft();
@@ -215,7 +211,7 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         ////////////Country Graft
-        try{
+        try {
             CountryGraft countryGraft = new CountryGraft();
             countryGraft.setCountry(country);
             countryGraft.setGraft(graft);
@@ -227,7 +223,7 @@ public class DataInitializer implements CommandLineRunner {
 
         ////////////Smart Device
         SmartDevice smartDevice = smartDeviceService.getDefaultSmartDevice();
-        if(smartDevice != null) {
+        if (smartDevice != null) {
             log.info("Test SmartDevice is already in DB");
         } else {
             smartDevice = new SmartDevice();

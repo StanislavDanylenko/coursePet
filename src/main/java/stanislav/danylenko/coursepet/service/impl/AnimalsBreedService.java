@@ -11,7 +11,7 @@ import stanislav.danylenko.coursepet.web.model.AnimalsBreedDto;
 @Service
 public class AnimalsBreedService implements GenericService<AnimalsBreed> {
 
-    public static String DEFAULT_ANIMAL_BREED = "DefaultAnimalBreed";
+    public static final String DEFAULT_ANIMAL_BREED = "DefaultAnimalBreed";
     
     @Autowired
     private AnimalsBreedRepository animalsBreedRepository;

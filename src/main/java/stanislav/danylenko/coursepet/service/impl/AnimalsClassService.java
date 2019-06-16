@@ -9,7 +9,7 @@ import stanislav.danylenko.coursepet.service.GenericService;
 @Service
 public class AnimalsClassService implements GenericService<AnimalsClass> {
 
-    public static String DEFAULT_ANIMAL_CLASS = "DefaultAnimalClass";
+    public static final String DEFAULT_ANIMAL_CLASS = "DefaultAnimalClass";
 
     @Autowired
     private AnimalsClassRepository animalsClassRepository;

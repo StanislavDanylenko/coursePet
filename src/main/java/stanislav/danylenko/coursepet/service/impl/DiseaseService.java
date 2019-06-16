@@ -9,7 +9,7 @@ import stanislav.danylenko.coursepet.service.GenericService;
 @Service
 public class DiseaseService implements GenericService<Disease> {
 
-    public static String DEFAULT_DISEASE = "DefaultDISEASE";
+    public static final String DEFAULT_DISEASE = "DefaultDISEASE";
     
     @Autowired
     private DiseaseRepository diseaseRepository;

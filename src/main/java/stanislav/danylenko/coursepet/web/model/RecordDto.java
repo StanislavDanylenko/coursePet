@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.enumeration.AnimalState;
 
-import javax.persistence.Entity;
 import java.io.Serializable;
 
 @Data

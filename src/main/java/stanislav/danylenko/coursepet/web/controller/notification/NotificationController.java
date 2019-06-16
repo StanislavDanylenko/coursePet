@@ -2,6 +2,7 @@ package stanislav.danylenko.coursepet.web.controller.notification;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
@@ -15,11 +16,12 @@ import stanislav.danylenko.coursepet.web.model.notification.NotificationRequestM
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
+@Slf4j
 @RestController
 @RequestMapping("/notification")
 public class NotificationController {
 
-    private final String TOPIC = "JavaSampleApproach";
+    private static final String TOPIC = "JavaSampleApproach";
 
     @Autowired
     private NotificationService notificationService;
@@ -48,10 +50,8 @@ public class NotificationController {
         try {
             String firebaseResponse = pushNotification.get();
             return new ResponseEntity<>(firebaseResponse, HttpStatus.OK);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
+        } catch (InterruptedException | ExecutionException e) {
+            log.error("Notification error!", e);
         }
         return new ResponseEntity<>("Push Notification ERROR!", HttpStatus.BAD_REQUEST);
     }

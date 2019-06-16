@@ -11,13 +11,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 import stanislav.danylenko.coursepet.db.enumeration.Gender;
-import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.web.JsonRules;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

@@ -7,7 +7,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,9 +26,7 @@ import stanislav.danylenko.coursepet.web.model.auth.AuthenticationResponseModel;
 import stanislav.danylenko.coursepet.web.model.auth.RegistrationRequestModel;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -78,10 +75,8 @@ public class AuthController {
     @PostMapping("/signup")
     public ResponseEntity signup(@RequestBody RegistrationRequestModel data) throws UserRegistrationException {
 
-        UserDetails userDetails;
-
         try {
-            userDetails = userService.loadUserByUsername(data.getUsername());
+            userService.loadUserByUsername(data.getUsername());
         } catch (UsernameNotFoundException e) {
             if (!data.getPassword().equals(data.getRepeatPassword())) {
                 throw new UserRegistrationException("Passwords bust be the same");

@@ -3,10 +3,8 @@ package stanislav.danylenko.coursepet.web.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import stanislav.danylenko.coursepet.db.enumeration.Gender;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor

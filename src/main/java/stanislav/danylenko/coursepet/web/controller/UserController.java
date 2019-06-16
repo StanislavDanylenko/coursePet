@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -22,9 +23,7 @@ import stanislav.danylenko.coursepet.web.model.auth.UserDetailsDto;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
 import static org.springframework.http.ResponseEntity.ok;
@@ -55,10 +54,8 @@ public class UserController {
     @PostMapping
     public ResponseEntity addAdmin(@RequestBody RegistrationRequestModel data) throws UserRegistrationException {
 
-        UserDetails userDetails;
-
         try {
-            userDetails = service.loadUserByUsername(data.getUsername());
+            service.loadUserByUsername(data.getUsername());
         } catch (UsernameNotFoundException e) {
             if (!data.getPassword().equals(data.getRepeatPassword())) {
                 throw new UserRegistrationException("Passwords bust be the same");
@@ -107,7 +104,7 @@ public class UserController {
         dto.setUsername(userDetails.getUsername());
         List<String> roles =  userDetails.getAuthorities()
                                      .stream()
-                                     .map(a -> a.getAuthority())
+                                     .map(GrantedAuthority::getAuthority)
                                      .collect(toList());
         dto.setRoles(roles);
         return ok(dto);

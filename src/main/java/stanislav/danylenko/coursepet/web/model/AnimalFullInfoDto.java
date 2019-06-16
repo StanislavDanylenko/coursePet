@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.entity.Animal;
-import stanislav.danylenko.coursepet.db.entity.Disease;
-import stanislav.danylenko.coursepet.db.entity.Graft;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalDisease;
 import stanislav.danylenko.coursepet.db.entity.associative.AnimalGraft;
 

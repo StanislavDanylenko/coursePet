@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import stanislav.danylenko.coursepet.db.enumeration.Gender;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data

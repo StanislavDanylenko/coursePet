@@ -80,12 +80,10 @@ public class UserService implements GenericService<User>, UserDetailsService {
 
     public boolean changePassword(UpdatePasswordModel model) {
         User user = userRepository.findById(model.getId()).orElse(null);
-        if (user != null) {
-            if (passwordEncoder.matches(model.getOldPassword(), user.getPassword())) {
+        if (user != null && passwordEncoder.matches(model.getOldPassword(), user.getPassword())) {
                 user.setPassword(passwordEncoder.encode(model.getNewPassword()));
                 userRepository.save(user);
                 return true;
-            }
         }
         return false;
     }

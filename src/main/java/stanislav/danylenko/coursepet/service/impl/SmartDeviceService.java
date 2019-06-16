@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import stanislav.danylenko.coursepet.db.entity.Animal;
 import stanislav.danylenko.coursepet.db.entity.SmartDevice;
-import stanislav.danylenko.coursepet.db.entity.User;
 import stanislav.danylenko.coursepet.db.repository.SmartDeviceRepository;
 import stanislav.danylenko.coursepet.exception.LowBatteryLevelException;
 import stanislav.danylenko.coursepet.service.GenericService;
@@ -13,7 +12,7 @@ import stanislav.danylenko.coursepet.web.model.SmartDeviceDto;
 @Service
 public class SmartDeviceService implements GenericService<SmartDevice> {
 
-    public static String DEFAULT_SMART_DEVICE = "DefaultSmartDevice";
+    public static final String DEFAULT_SMART_DEVICE = "DefaultSmartDevice";
     
     @Autowired
     private SmartDeviceRepository smartDeviceRepository;

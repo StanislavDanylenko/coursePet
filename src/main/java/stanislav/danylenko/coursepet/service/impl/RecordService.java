@@ -10,7 +10,6 @@ import stanislav.danylenko.coursepet.service.GenericService;
 import stanislav.danylenko.coursepet.web.model.RecordDto;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 @Service
