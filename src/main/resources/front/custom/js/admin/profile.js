@@ -15,7 +15,7 @@ function getProfile() {
             $('.profile-update')[0].click();
 
             updateUserLS(data);
-            $('.user-name').text(data.username);
+            $('.user-name').html(data.username + '<i class="fa fa-angle-down"/>');
         },
         error: function (xhr, ajaxOptions, thrownError) {
             handleError(xhr, GET);
