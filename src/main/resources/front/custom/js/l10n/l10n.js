@@ -253,6 +253,13 @@ function setTranslationUser() {
     $(".presentGrafts")._t("presentGrafts");
     $(".nextGrafts")._t("nextGrafts");
 
+    $(".epidemic")._t("epidemic");
+    $(".epidemy")._t("epidemy");
+    $(".countryD")._t("countryD");
+    $(".anWithBreed")._t("anWithBreed");
+    $(".diseaseD")._t("diseaseD");
+    $(".percentage")._t("percentage");
+
 }
 
 var UA = {
@@ -471,6 +478,13 @@ var UA = {
     "lastGraft": "Просрочені",
     "presentGrafts": "Поточні",
     "nextGrafts": "Майбутні",
+
+    "epidemic": "Епідемії",
+    "epidemy": "Епідемія",
+    "countryD": "Країна: ",
+    "anWithBreed": "Тварини з породою: ",
+    "diseaseD": "Хвороба: ",
+    "percentage": "Охват тварин у %: ",
 };
 
 var EN = {
@@ -691,6 +705,13 @@ var EN = {
     "lastGraft": "Overdue",
     "presentGrafts": "Present",
     "nextGrafts": "Future",
+
+    "epidemic": "Epidemics",
+    "epidemy": "Epidemic",
+    "countryD": "Country: ",
+    "anWithBreed": "Animal with breed: ",
+    "diseaseD": "Disease: ",
+    "percentage": "Percentage: ",
 };
 
 

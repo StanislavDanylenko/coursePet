@@ -18,22 +18,28 @@ public class StatisticService {
     private AnimalService animalService;
 
     public List<CountByBreedInCountryStatisticDto> getCountByBreedInCountryStatistic(Long countryId){
-       List<Animal> animals = animalService.findAnimalByUserCountryId(countryId);
-       Map<String, Long> breedCountMap = new HashMap<>();
-       for(Animal animal : animals) {
-           String breed = animal.getAnimalsBreed().getName();
-           if(breedCountMap.containsKey(breed)) {
-               Long value = breedCountMap.get(breed);
-               breedCountMap.put(breed, ++value);
-           } else {
-               breedCountMap.put(breed, 1L);
-           }
-       }
+       Map<String, Long> breedCountMap = getBreedCountMap(countryId);
+
        List<CountByBreedInCountryStatisticDto> result = new ArrayList<>();
        for(Map.Entry<String, Long> entry : breedCountMap.entrySet()) {
             result.add(new CountByBreedInCountryStatisticDto(entry.getKey(), entry.getValue()));
        }
        return result;
+    }
+
+    public Map<String, Long> getBreedCountMap(Long countryId) {
+        List<Animal> animals = animalService.findAnimalByUserCountryId(countryId);
+        Map<String, Long> breedCountMap = new HashMap<>();
+        for(Animal animal : animals) {
+            String breed = animal.getAnimalsBreed().getName();
+            if(breedCountMap.containsKey(breed)) {
+                Long value = breedCountMap.get(breed);
+                breedCountMap.put(breed, ++value);
+            } else {
+                breedCountMap.put(breed, 1L);
+            }
+        }
+        return breedCountMap;
     }
 
 }

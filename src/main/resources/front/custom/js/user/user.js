@@ -6,6 +6,7 @@ var recordTemplate;
 var recordsTemplate;
 var countryGraftsTemplate;
 var scheduleTemplate;
+var epidemicTemplate;
 
 $(document).ready(function() {
 
@@ -67,6 +68,7 @@ function loadMenuActions() {
     $(document).on('click', '.animals-button', showAnimalList);
     $(document).on('click', '.statistic-button', showStatistic);
     $(document).on('click', '.actions-button', showAnimalActions);
+    $(document).on('click', '.epidemics', showEpidemics);
 }
 
 function loadProfile() {
@@ -118,6 +120,8 @@ function loadDiseases() {
     });
     $(document).on('click', '.delete-disease', deleteAnimalDisease);
     $(document).on('click', '.save-animal-disease', saveAnimalDisease);
+
+    epidemicTemplate = Handlebars.compile($('#epidemicTemplate').html());
 }
 
 function loadGrafts() {
@@ -153,8 +157,15 @@ function renderHome() {
    // $(MAIN_CONTAINER).empty().append('<div class="row h-100 justify-content-center align-items-center"><h1 class="m-3">' + $.i18n._('page-workspace-user') + '</h1></div>');
 }
 
-function showStatistic() {
+function showEpidemics() {
+    console.log("hide - show");
     $('.my-area').hide();
+    $('.epidemic-area').show();
+    getEpidemicData();
+}
+
+function showStatistic() {
+    $('.my-area').hide();;
     $('.statistic-area').show();
     getStatisticData();
 }

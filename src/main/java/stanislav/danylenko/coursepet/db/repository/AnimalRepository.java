@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import stanislav.danylenko.coursepet.db.entity.Animal;
+import stanislav.danylenko.coursepet.web.model.epidemic.EpidemicStatistic;
 
 import java.util.List;
 

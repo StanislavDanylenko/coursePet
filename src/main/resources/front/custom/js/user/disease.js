@@ -134,3 +134,25 @@ function validateDisease() {
     });
 
 }
+
+/////////
+
+function getEpidemicData() {
+    $.ajax({
+        url: HOST + "/statistic/epidemic",
+        type: "GET",
+        beforeSend: function (xhr) {
+            if (USER.token) {
+                xhr.setRequestHeader('Authorization', 'Bearer ' + USER.token);
+            }
+        },
+        success: function (data) {
+            var html = epidemicTemplate(data);
+            $(".epidemicContainer").empty().append(html);
+            setTranslationUser();
+        },
+        error: function (xhr, ajaxOptions, thrownError) {
+            handleError(xhr, GET);
+        }
+    });
+}
