@@ -48,7 +48,11 @@ public class AnimalService implements GenericService<Animal> {
     }
 
     public String getSmartCardId() {
-        return animalRepository.getLastInsertedId() + 1 + "";
+        Long lastInsertedId = animalRepository.getLastInsertedId();
+        if (lastInsertedId == null) {
+            lastInsertedId = 0L;
+        }
+        return lastInsertedId + 1 + "";
     }
 
     @Override

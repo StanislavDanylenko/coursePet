@@ -114,7 +114,7 @@ function updateDisease(disease) {
     }
 
     $.ajax({
-        url: "http://localhost:8080/disease/" + disease.id,
+        url: HOST + "/disease/" + disease.id,
         type: "PUT",
         contentType: "application/json",
         data: JSON.stringify(disease),
@@ -140,7 +140,7 @@ function deleteDisease(e) {
     var id = getID(e, '#diseaseTableTemplate');
 
     $.ajax({
-        url: "http://localhost:8080/disease/" + id,
+        url: HOST + "/disease/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {

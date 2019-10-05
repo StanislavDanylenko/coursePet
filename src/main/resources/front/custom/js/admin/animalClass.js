@@ -114,7 +114,7 @@ function updateAnimalClass(animalClass) {
     }
 
     $.ajax({
-        url: "http://localhost:8080/animalClass/" + animalClass.id,
+        url: HOST + "/animalClass/" + animalClass.id,
         type: "PUT",
         contentType: "application/json",
         data: JSON.stringify(animalClass),
@@ -140,7 +140,7 @@ function deleteAnimalClass(e) {
     var id = getID(e, '#animalClassTableTemplate');
 
     $.ajax({
-        url: "http://localhost:8080/animalClass/" + id,
+        url: HOST + "/animalClass/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {

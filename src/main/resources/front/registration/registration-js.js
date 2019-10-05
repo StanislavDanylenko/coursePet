@@ -53,7 +53,7 @@ function registerUser() {
     }
 
     $.ajax({
-        url: "http://localhost:8080/auth/signup",
+        url: HOST + "/auth/signup",
         type: "POST",
         data: JSON.stringify(data),
         dataType: "json",
