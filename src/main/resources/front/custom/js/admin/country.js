@@ -131,7 +131,7 @@ function updateCountry(country) {
     }
 
     $.ajax({
-        url: "http://localhost:8080/country/" + country.id,
+        url: HOST + "/country/" + country.id,
         type: "PUT",
         contentType: "application/json",
         data: JSON.stringify(entity),
@@ -157,7 +157,7 @@ function deleteCountry(e) {
     var id = getID(e, '#countryTableTemplate');
 
     $.ajax({
-        url: "http://localhost:8080/country/" + id,
+        url: HOST + "/country/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {

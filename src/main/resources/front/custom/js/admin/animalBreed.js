@@ -119,7 +119,7 @@ function updateAnimalBreed(animalBreed) {
     }
 
     $.ajax({
-        url: "http://localhost:8080/animalBreed/" + animalBreed.id,
+        url: HOST + "/animalBreed/" + animalBreed.id,
         type: "PUT",
         contentType: "application/json",
         data: JSON.stringify(animalBreed),
@@ -145,7 +145,7 @@ function deleteAnimalBreed(e) {
     var id = getID(e, '#animalBreedTableTemplate');
 
     $.ajax({
-        url: "http://localhost:8080/animalBreed/" + id,
+        url: HOST + "/animalBreed/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {

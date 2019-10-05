@@ -118,7 +118,7 @@ function updateGraft(graft) {
     }
 
     $.ajax({
-        url: "http://localhost:8080/graft/" + graft.id,
+        url: HOST + "/graft/" + graft.id,
         type: "PUT",
         contentType: "application/json",
         data: JSON.stringify(graft),
@@ -144,7 +144,7 @@ function deleteGraft(e) {
     var id = getID(e, '#graftTableTemplate');
 
     $.ajax({
-        url: "http://localhost:8080/graft/" + id,
+        url: HOST + "/graft/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {

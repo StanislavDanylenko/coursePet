@@ -75,7 +75,7 @@ function deleteUser(e) {
     var id = getID(e, '#userTableTemplate');
 
     $.ajax({
-        url: "http://localhost:8080/user/" + id,
+        url: HOST + "/user/" + id,
         type: "DELETE",
         beforeSend: function (xhr) {
             if (USER.token) {

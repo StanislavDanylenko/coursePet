@@ -51,7 +51,7 @@ function loginUser() {
     }
 
     $.ajax({
-        url: "http://localhost:8080/auth/signin",
+        url: HOST + "/auth/signin",
         type: "POST",
         data: JSON.stringify(data),
         dataType: "json",
