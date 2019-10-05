@@ -1,0 +1,70 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../lib/css/themify-icons.css">
+    <!-- others css -->
+    <link rel="stylesheet" href="../lib/css/typography.css">
+    <link rel="stylesheet" href="../lib/css/default-css.css">
+    <link rel="stylesheet" href="../lib/css/styles.css">
+    <link rel="stylesheet" href="style-login.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <div class="login-area">
+        <div class="container">
+            <div class="login-box ptb--100">
+                <form id="loginForm">
+                    <div class="login-form-head">
+                        <h4 class="sign-in">Sign In</h4>
+                        <h4><a href="index.html" class="not-active"><span class="ti-arrow-left"></span></a></h4>
+                    </div>
+                    <div class="login-form-body">
+                        <div class="form-gp">
+                            <label for="username" class="username">Username</label>
+                            <input type="text" id="username" name="username">
+                            <i class="ti-email"></i>
+                        </div>
+                        <div class="form-gp">
+                            <label for="password" class="password">Password</label>
+                            <input type="password" id="password" name="password">
+                            <i class="ti-lock"></i>
+                        </div>
+
+                        <div class="submit-btn-area">
+                            <button id="login_submit" type="button" class="submit">Submit <i class="ti-arrow-right"></i></button>
+                        </div>
+                        <div class="form-footer text-center mt-5">
+                            <p class="text-muted question">Don't have an account? <a href="register.html" class="sign-up">Sign up</a></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="../lib/js/jquery-2.2.4.min.js"></script>
+    <script src="../lib/js/popper.min.js"></script>
+    <script src="../lib/js/bootstrap.min.js"></script>
+
+    <script src="../custom/js/l10n/jquery.i18n.js"></script>
+    <script src="../custom/js/l10n/l10n.js"></script>
+    <script src="../custom/js/audit.js"></script>
+    <script src="../login/script-login.js"></script>
+
+</body>
+
+</html>

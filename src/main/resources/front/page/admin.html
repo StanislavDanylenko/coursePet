@@ -1,0 +1,679 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>PETREW Admin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../lib/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../lib/css/metisMenu.css">
+    <link rel="stylesheet" href="../lib/css/themify-icons.css">
+    <!-- others css -->
+    <link rel="stylesheet" href="../lib/css/typography.css">
+    <link rel="stylesheet" href="../lib/css/default-css.css">
+    <link rel="stylesheet" href="../lib/css/styles.css">
+    <link rel="stylesheet" href="../lib/css/responsive.css">
+
+    <!-- Start datatable css -->
+    <link rel="stylesheet" type="text/css" href="../lib/fromCDN/dataTables/jquery.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/fromCDN/dataTables/dataTables.responsive.min.js">
+
+    <script src="../lib/fromCDN/sweetalert2@8.js"></script>
+</head>
+
+<body>
+<!-- preloader area start -->
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+<!-- preloader area end -->
+<!-- page container area start -->
+<div class="page-container">
+    <!-- sidebar menu area start -->
+    <div class="sidebar-menu">
+        <div class="sidebar-header">
+            <div class="logo">
+                <a href="#"><h1 style="color: white;">PETREW</h1></a>
+            </div>
+        </div>
+        <div class="main-menu">
+            <div class="menu-inner">
+                <nav>
+                    <ul class="metismenu" id="menu">
+                        <li id="country"><a href="#country"><i
+                                class="fa fa-globe"></i><span class="country">Country</span></a>
+                        <li id="animalClass"><a href="#animal_class"><i class="fa fa-paw"></i><span class="animalClass">Animal Class</span></a>
+                        </li>
+                        <li id="animalBreed"><a href="#animal_breed"><i
+                                class="fa fa fa-bug"></i><span class="animalBreed">Animal Breed</span></a></li>
+                        <li id="graft"><a href="#graft"><i class="fa fa-list-alt"></i><span class="graft">Graft</span></a></li>
+                        <li id="disease"><a href="#disease"><i class="fa fa-medkit"></i><span class="disease">Disease</span></a></li>
+                        <li id="users"><a href="#users"><i class="fa fa-users"></i><span class="users">Users</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- sidebar menu area end -->
+    <!-- main content area start -->
+    <div class="main-content">
+        <!-- page title area start -->
+        <div class="page-title-area">
+            <div class="row align-items-center">
+                <div class="col-sm-6">
+                    <div class="breadcrumbs-area clearfix">
+                        <div class="nav-btn pull-left" style="margin-top: 3px;">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <h4 class="page-title">Admin dashboard</h4>
+                    </div>
+                </div>
+                <div class="col-sm-6 clearfix">
+                    <div class="user-profile pull-right">
+                        <img class="avatar user-thumb" src="../lib/images/avatar.png" alt="avatar">
+                        <h4 class="user-name dropdown-toggle" data-toggle="dropdown">Username<i
+                                class="fa fa-angle-down"></i></h4>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item profile" href="#">Profile</a>
+                            <a class="dropdown-item log-out" href="#">Log Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- page title area end -->
+        <div class="main-content-inner">
+            <!-- MAIN CONTENT GOES HERE -->
+            <!-- Primary table end -->
+            <!-- Dark table start -->
+            <h1> USER WORKSPACE HERE</h1>
+        </div>
+    </div>
+    <!-- main content area end -->
+
+
+    <!--Modals here-->
+    <div class="modal fade" id="countryModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Country action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form id="countryForm">
+                        <div class="form-group" hidden>
+                            <label for="countryName" id="countryIdLabel" class="countryId">Country Id</label>
+                            <input type="text" class="form-control" id="countryId">
+                        </div>
+                        <div class="form-group">
+                            <label for="countryName" id="countryNameLabel" class="countryName">Country Name</label>
+                            <input type="text" class="form-control" id="countryName" name="countryName">
+                        </div>
+                        <div class="form-group">
+                            <label for="countryDescription" id="countryDescriptionLabel" class="descriptionM">Country Description</label>
+                            <input type="text" class="form-control" id="countryDescription" name="countryDescription">
+                        </div>
+                        <div class="form-group">
+                            <label for="countryGrafts" id="countryGraftsLabel" class="countryGrafts">Country Grafts</label>
+                            <select multiple class="form-control" id="countryGrafts" name="countryGrafts">
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-country saveChanges">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="modal fade" id="graftModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Graft action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form id="graftForm">
+                        <div class="form-group" hidden>
+                            <label for="graftName" id="graftIdLabel" class="graftId">Graft Id</label>
+                            <input type="text" class="form-control" id="graftId">
+                        </div>
+                        <div class="form-group">
+                            <label for="graftName" id="graftNameLabel" class="graftName">Graft Name</label>
+                            <input type="text" class="form-control" id="graftName" name="graftName">
+                        </div>
+                        <div class="form-group">
+                            <label for="graftFrequency" id="graftFrequencyLabel" class="graftFrequency">Graft Frequency</label>
+                            <input type="text" class="form-control" id="graftFrequency" name="graftFrequency">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal" >Close</button>
+                    <button type="button" class="btn btn-primary action-graft saveChanges" >Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="modal fade" id="diseaseModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <form id="diseaseForm">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Disease action</h5>
+                        <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group" hidden>
+                            <label for="diseaseName" id="diseaseIdLabel" class="diseaseId">Disease Id</label>
+                            <input type="text" class="form-control" id="diseaseId">
+                        </div>
+                        <div class="form-group">
+                            <label for="diseaseName" id="diseaseNameLabel" class="diseaseName">Disease Name</label>
+                            <input type="text" class="form-control" id="diseaseName" name="diseaseName">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary action-disease saveChanges">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="modal fade" id="userModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">user action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form id="userForm">
+                        <div class="form-group" hidden>
+                            <label for="userId" id="userIdLabel">user Id</label>
+                            <input type="text" class="form-control" id="userId">
+                        </div>
+                        <div class="form-group">
+                            <label for="userName" id="usernameLabel" class="username">Username</label>
+                            <input type="text" class="form-control" id="username" name="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="password" id="passwordLabel" class="password">Password</label>
+                            <input type="password" class="form-control" id="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="repeatPassword" id="repeatPasswordLabel" class="repeatPassword">Repeat password</label>
+                            <input type="password" class="form-control" id="repeatPassword" name="repeatPassword">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-user saveChanges">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <button type="button" class="btn btn-primary ml-2 profile-update" data-toggle="modal" data-target="#profileModal"
+            hidden><span class="fa fa-plus"> </span></button>
+    <!---->
+    <div class="modal fade" id="profileModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">profile action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="form-group" hidden>
+                                <label for="profileId" id="profileIdLabel">user Id</label>
+                                <input type="text" class="form-control" id="profileId">
+                            </div>
+                            <div class="form-group">
+                                <label for="userLocalization" id="userLocalizationLabel" class="l18n">Localization</label>
+                                <select class="form-control" id="userLocalization" style="height: auto !important;">
+                                    <option value="UKRAINIAN">Українська</option>
+                                    <option value="ENGLISH">English</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="userCountry" id="userCountryLabel" class="country">Country</label>
+                                <select class="form-control" id="userCountry" style="height: auto !important;"></select>
+                            </div>
+                        </div>
+                        <div class="col bg-light">
+                            <h3 class="update-password">Change password</h3>
+                            <form id="changePasswordForm">
+                                <div class="form-group">
+                                    <label for="userOldPassword" id="userOldPasswordLabel" class="userOldPassword">Old password</label>
+                                    <input type="password" class="form-control" id="userOldPassword"
+                                           name="userOldPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userNewPassword" id="userNewPasswordLabel" class="userNewPassword">New password</label>
+                                    <input type="password" class="form-control" id="userNewPassword"
+                                           name="userNewPassword">
+                                </div>
+                                <div class="form-group">
+                                    <label for="userNewPasswordRepeat" id="userNewPasswordRepeatLabel" class="userNewPasswordRepeat">Repeat new
+                                        password</label>
+                                    <input type="password" class="form-control" id="userNewPasswordRepeat"
+                                           name="userNewPasswordRepeat">
+                                </div>
+                            </form>
+                            <button type="button" class="btn btn-primary update-password">Update password</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary closeM" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-profile saveChanges">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="modal fade" id="animalClassModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Animal Class action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form id="animalClassForm">
+                        <div class="form-group" hidden>
+                            <label for="animalClassName" id="animalClassIdLabel">Animal Class Id</label>
+                            <input type="text" class="form-control" id="animalClassId">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalClassName" id="animalClassNameLabel" class="animalClass">Animal Class Name</label>
+                            <input type="text" class="form-control" id="animalClassName" name="animalClassName">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-animalClass">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <div class="modal fade" id="animalBreedModal" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Animal Breed action</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>×</span></button>
+                </div>
+                <div class="modal-body">
+                    <form id="animalBreedForm">
+                        <div class="form-group" hidden>
+                            <label for="animalBreedId" id="animalBreedIdLabel">Animal Breed Id</label>
+                            <input type="text" class="form-control" id="animalBreedId">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalBreedName" id="animalBreedNameLabel" class="animalBreed">Animal Breed Name</label>
+                            <input type="text" class="form-control" id="animalBreedName" name="animalBreedName">
+                        </div>
+                        <div class="form-group">
+                            <label for="animalBreedClassName" id="animalBreedClassNameLabel" class="animalClass">Animal Breed Class
+                                Name</label>
+                            <select class="form-control" id="animalBreedClassName"
+                                    style="height: auto !important;"></select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary action-animalBreed">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!---->
+    <!-- footer area start-->
+    <footer>
+        <div class="footer-area">
+            <p>© Copyright 2019. All right reserved. <b>Stanislav Danylenko.</b> Template by <a
+                    href="https://colorlib.com/wp/">Colorlib</a>.</p>
+        </div>
+    </footer>
+    <!-- footer area end-->
+</div>
+<!-- page container area end -->
+<!-- jquery latest version -->
+<script src="../lib/js/jquery-2.2.4.min.js"></script>
+<!-- bootstrap 4 js -->
+<script src="../lib/js/popper.min.js"></script>
+<script src="../lib/js/bootstrap.min.js"></script>
+<script src="../lib/js/metisMenu.min.js"></script>
+<script src="../lib/js/jquery.slimscroll.min.js"></script>
+
+<script src="../lib/fromCDN/jquery.validate.js"></script>
+
+<!-- Start datatable js -->
+<script src="../lib/fromCDN/dataTables/jquery.dataTables.min.js"></script>
+<script src="../lib/fromCDN/dataTables/dataTables.bootstrap4.min.js"></script>
+<!--Handlebars-->
+<script src="../lib/fromCDN/handlebars.js"></script>
+
+<!-- others plugins -->
+<script src="../lib/js/scripts.js"></script>
+<script src="../custom/js/audit.js"></script>
+<script src="../custom/js/l10n/jquery.i18n.js"></script>
+<script src="../custom/js/l10n/l10n.js"></script>
+<script src="../custom/js/common/common.js"></script>
+<script src="../custom/js/common/constants.js"></script>
+<script src="../custom/js/admin/admin.js"></script>
+<script src="../custom/js/admin/country.js"></script>
+<script src="../custom/js/admin/graft.js"></script>
+<script src="../custom/js/admin/disease.js"></script>
+<script src="../custom/js/admin/a-user.js"></script>
+<script src="../custom/js/admin/profile.js"></script>
+<script src="../custom/js/admin/animalClass.js"></script>
+<script src="../custom/js/admin/animalBreed.js"></script>
+
+
+<!--Country-->
+<script id="countryTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2 country">Country</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-country" data-toggle="modal"
+                                data-target="#countryModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="countryTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+                            <th class="descriptionM">Description</th>
+                            <th class="countryGrafts">Grafts</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ description }}</td>
+                            <td>{{ grafts }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-country text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-country text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--Graft-->
+<script id="graftTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2 graft">Graft</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-graft" data-toggle="modal"
+                                data-target="#graftModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="graftTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+                            <th class="frequency">Frequency</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ frequency }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-graft text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-graft text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--AnimalClass-->
+<script id="animalClassTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2 animalClass">AnimalClass</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-animalClass" data-toggle="modal"
+                                data-target="#animalClassModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="animalClassTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-animalClass text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-animalClass text-td changeStatus" type="button">
+                                    Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--AnimalBreed-->
+<script id="animalBreedTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2 animalBreed">AnimalBreed</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-animalBreed" data-toggle="modal"
+                                data-target="#animalBreedModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="animalBreedTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+                            <th class="animalClass">Animal Class</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+                            <td>{{ animalClass }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-animalBreed text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-animalBreed text-td changeStatus" type="button">
+                                    Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+<!--Disease-->
+<script id="diseaseTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2 disease">Disease</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-disease" data-toggle="modal"
+                                data-target="#diseaseModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="diseaseTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="name">Name</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ name }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-warning edit-disease text-td edit" type="button">Edit <i
+                                        class="fa fa-edit"></i></button>
+                                <button class="btn btn-danger delete-disease text-td changeStatus" type="button"> Delete
+                                    <i class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<!--User-->
+<script id="userTemplate" type="text/x-handlebars-template">
+    <div class="col-12 mt-5">
+        <div class="card">
+            <div class="card-body">
+                <div class="d-flex mb-3">
+                    <div><h4 class="header-title mt-2 user">User</h4></div>
+                    <div>
+                        <button type="button" class="btn btn-primary ml-2 add-user" data-toggle="modal"
+                                data-target="#userModal"><span class="fa fa-plus"> </span>Add
+                        </button>
+                    </div>
+                </div>
+                <div class="data-tables datatable-dark">
+                    <table id="userTableTemplate" class="display responsive nowrap" style="width:100%">
+                        <thead>
+                        <tr>
+                            <th class="id" hidden>Id</th>
+                            <th class="username">Username</th>
+
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#this}}
+                        <tr>
+                            <td hidden>{{ id }}</td>
+                            <td>{{ username }}</td>
+
+                            <td class="text-center">
+                                <button class="btn btn-danger delete-user text-td changeStatus" type="button"> Delete <i
+                                        class="fa fa-close"></i></button>
+                                </button>
+                            </td>
+                        </tr>
+                        {{/this}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+</body>
+
+</html>
