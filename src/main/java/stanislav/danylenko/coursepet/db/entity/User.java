@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
-@Table(name="Users")
+//@Table(name="Users")
 @Data
 @Builder
 @NoArgsConstructor
